@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('admin_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('upgrade')?>"><?=L('tpl_01')?></a></li></ul>
+</div>
+
+<table class="filetable2">
+    <thead>
+    	<tr>
+        <th width="30%"><?=L('tpl_02')?></th>
+        <th width="10%" style="text-align:center;"><?=L('tpl_03')?></th>
+        <th width="12%" style="text-align:center;"><?=L('tpl_04')?></th>
+        <th width="10%" style="text-align:center;"><?=L('tpl_05')?></th>
+        <th width="10%" style="text-align:center;"><?=L('tpl_06')?></th>
+        <th width="10%" style="text-align:center;"><?=L('tpl_07')?></th>
+        <th width="10%" style="text-align:center;"><?=L('tpl_08')?></th>
+        <th width="*"></th>
+        </tr>    	
+    </thead>
+    <tbody>
+<?php 
+if(empty($cscms_update)){
+     echo '<tr><td align="center" height="50" colspan="8">'.L('tpl_09').'</td></tr>';
+}else{
+   for ($i=0; $i<count($cscms_update); $i++) {
+        $update=date('Ymd',strtotime($cscms_update[$i]['date']));
+        $v=(CS_Uptime==$update)?'<b><font color=#0000ff>（'.L('tpl_10').'）</font></b>':'';
+		$uplink=(CS_Uptime<$update)?'<a href="javascript:void(0);" onclick="Popsbox(\''.L('tpl_11').'\',505,245,\''.L('tpl_12').'\',\''.site_url('upgrade/init').'?id='.$cscms_update[$i]['id'].'\');"><img src="'.Web_Path.'packs/admin/images/update.gif" /></a>':'--';
+		$downlink=(CS_Uptime<$update)?'<a href="http://www.chshcms.com/down/xia/gbk/'.$cscms_update[$i]['id'].'.html"><img src="'.Web_Path.'packs/admin/images/save.png"/></a>':'--';
+        echo '<tr><td>'.get_bm($cscms_update[$i]['name']).$v.'</td><td  align="center">'.$cscms_update[$i]['v'].'</td><td align="center">'.$cscms_update[$i]['date'].'</td><td  align="center">'.formatsize($cscms_update[$i]['size']).'</td><td align="center">'.$uplink.'</td><td align="center">'.$downlink.'</td><td align="center"><a href="http://www.chshcms.com/down/show/'.$cscms_update[$i]['id'].'.html" target="_blank" title="'.L('tpl_13').'"><img src="'.Web_Path.'packs/admin/images/view.png"/></a></td><td></td></tr>';
+   }
+} 
+?>
+    </tbody>
+</table>
+<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</body>
+</html>

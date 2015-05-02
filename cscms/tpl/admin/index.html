@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>CSCMS管理系统</title>
+<script type="text/javascript">
+var web_path="<?=Web_Path?>";
+var web_self="<?=SELF?>";
+var yun_url="<?=CS_YPTURL?>";
+function web_box(n){
+   if(n==1){
+      window.frames["topFrame"].document.getElementById("background").className="background";
+      window.frames["leftFrame"].document.getElementById("background").className="background";
+      window.frames["bottomFrame"].document.getElementById("background").className="background";
+      window.frames["topFrame"].document.getElementById("background").style.display="block";
+      window.frames["leftFrame"].document.getElementById("background").style.display="block";
+      window.frames["bottomFrame"].document.getElementById("background").style.display="block";
+   }else{
+      window.frames["topFrame"].document.getElementById("background").className="";
+      window.frames["leftFrame"].document.getElementById("background").className="";
+      window.frames["bottomFrame"].document.getElementById("background").className="";
+      window.frames["topFrame"].document.getElementById("background").style.display="none";
+      window.frames["leftFrame"].document.getElementById("background").style.display="none";
+      window.frames["bottomFrame"].document.getElementById("background").style.display="none";
+   }
+}
+</script>
+</head>
+<frameset id="cscms" rows="40,*,40" cols="*" frameborder="no" border="0" framespacing="0">
+  <frame src="<?=site_url('opt/head')?>" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" />
+  <frameset cols="186,*" frameborder="no" border="0" framespacing="0" id="index">
+    <frame src="<?=site_url('opt/menu')?>" name="leftFrame" scrolling="no" noresize="noresize" id="leftFrame" />
+    <frame src="<?=site_url('opt/main')?>" name="rightFrame" id="rightFrame" />
+  </frameset>
+  <frame src="<?=site_url('opt/bottom')?>" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" />
+</frameset>
+</html>
+

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:indextempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:indextempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:indexhead}
+<div id="cscms_space">
+                {cscms:indexleft}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li><span><a href="[user:url userlink=dance]">我分享的</a></span></li>
+								<li><span><a href="[user:url userlink=dance,verify]">审核中的</a></span></li>
+								<li><span><a href="[user:url userlink=fav]">我收藏的</a></span></li>
+								<li><span><a href="[user:url userlink=down]">我下载的</a></span></li>
+								<li class="right"><a href="[user:url userlink=dance,add]">上传歌曲</a></li>
+							</ul>
+						</div>
+						<div class="minHeight500">
+							<form class="think-form" action="[user:dancesave]" method="post">
+							<div class="profile" style="margin-top:10px;">
+           				 <!-- 表单项 -->
+            				<table class="bd">
+                				<tr>
+                    				<th>所属分类</th>
+                    				<td>
+										<div class="sex">
+											<select class="select_normal" name="cid" style="width:140px;">
+											{cscms:class table="dance_list" fid="0" sort="xid" order="asc"}
+												<option value="[class:id]">&nbsp;|—[class:name]</option>
+                                                {cscmstype:class table="dance_list" fid="auto" sort="xid" order="asc"}
+												<option value="[class:id]">&nbsp;|&nbsp;&nbsp;&nbsp;|—[class:name]</option>
+                                                {/cscmstype:class}
+                                            {/cscms:class}
+											</select>&nbsp;&nbsp;
+										    专辑&nbsp;
+											<select class="select_normal" name="tid" style="width:150px;">
+												<option value="0">&nbsp;默认单曲</option>
+											{cscms:topic table="dance_topic" uid="auto" sort="id" order="desc"}
+												<option value="[topic:id]">&nbsp;[topic:name]</option>
+                                            {/cscms:topic}
+											</select>
+                        				    <span class="Validform_checktip"></span>
+										</div>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>歌曲名称</th>
+                    				<td>
+                        				<input class="text" type="text" name="name" value="" datatype="*2-20" nullmsg="歌曲名称不能为空" errormsg="名称为2-20个字以内"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>演唱</th>
+                    				<td>
+                        				<input class="text" type="text" name="singer" value=""/>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>作词</th>
+                    				<td>
+                        				<input class="text" type="text" name="zc" style="width:140px;"/>&nbsp;&nbsp;
+										作曲&nbsp;<input class="text" type="text" name="zq" style="width:140px;"/>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>编曲</th>
+                    				<td>
+                        				<input class="text" type="text" name="bq" style="width:140px;"/>&nbsp;&nbsp;
+										混缩&nbsp;<input class="text" type="text" name="hy" style="width:140px;"/>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>标签</th>
+                    				<td>
+                        				<input class="text" type="text" id="tags" name="tags"/>&nbsp;
+										<input onclick="cscms_tags('tags');" class="button" type="button" name="button" value="快速选择">
+                        				<span class="Validform_checktip">多个逗号隔开</span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>图片</th>
+                    				<td>
+                        				<input class="text" type="text" id="pic" name="pic"/>&nbsp;
+										<input onclick="cscms_up('dance','pic','*.jpg;*.png;*.gif','up_pic');" class="button" type="button" name="button" value="上传图片">
+                        				<span class="Validform_checktip" id="up_pic"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>金币</th>
+                    				<td>
+                        				<input class="text" type="text" name="cion" value="0" datatype="n" nullmsg="金币不能为空" errormsg="金币格式不正确"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>歌曲路径</th>
+                    				<td>
+                        				<input class="text" type="text" id="purl" name="purl" value="" datatype="*" nullmsg="歌曲路径不能为空"/>&nbsp;
+										<input onclick="cscms_up('music','purl','*.mp3;*.m4a;*.mp4;*.wma','up_msg');" class="button" type="button" name="button" value="上传歌曲">
+                        				<span class="Validform_checktip" id="up_msg">歌曲地址路径</span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>LRC歌词</th>
+                    				<td>
+                        				<textarea style="width:400px;height:120px;" name="lrc"></textarea>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>歌曲介绍</th>
+                    				<td>
+                        				<textarea style="width:400px;height:120px;" name="text"></textarea>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>&nbsp;</th>
+                    				<td>
+					    				<input type="hidden" name="token" value="[user:token]"/>
+                        				<input class="submit" type="submit" value="确定保存" />
+                    				</td>
+                				</tr>
+            				</table>
+            				<!-- /表单项 -->
+							</div></form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_dance_2').addClass('on');
+user.form();
+</script>
+{cscms:indexbottom}
+</body>
+</html>

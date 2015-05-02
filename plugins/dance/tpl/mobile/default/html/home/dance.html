@@ -1,0 +1,24 @@
+{cscms:indexhead}
+<div class="mainNav mainNav3">
+<ul>
+<li class="current"><a href="[user:url ulink=dance]">歌曲</a></li>
+<li><a href="[user:url ulink=dance,album]">专辑</a></li>
+<li><a href="[user:url ulink=pic]">图片</a></li>
+</ul>
+</div>
+
+<ul class="musicList" id="musicList">
+{cscms:dance table="dance" pagesize="20" field="id,name,shits" uid="auto"}
+	  <li>
+          <span class="t-i"><img src="{cscms:indextempurl}images/icon1.png"></span>
+          <span class="t-t"><strong><a href="[dance:url zdy=dance,id,play,id]">[dance:name]</a></strong><em>[dance:shits]人收藏</em></span>
+          <span class="t-z"></span>
+	  </li>
+{/cscms:dance}  
+</ul>
+<div class="mores">{if:{cscms:pagecout}<={cscms:pagenow}}没有更多了...{else}<a href="{cscms:pagedown}">点击加载更多..</a>{end if}</div>
+</div>
+
+</div>
+</div>
+{cscms:indexbottom}

@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('admin_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$("#usual1 ul").idTabs();
+});
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('sys')?>"><?=$title?><?=L('tpl_04')?></a></li></ul>
+</div>
+<div class="rightinfo">
+    <div class="formtitle"><span><?=$title?><?=L('tpl_04')?></span></div>
+<?php if($id>1){ ?>
+    <div class="explain-col">
+		<font color="#999"><?=L('tpl_05')?></font>
+    </div>
+<?php } ?>
+    <form action="<?=site_url('sys/zu_save')?>" method="post">
+    <table class="tablelist">
+    	<tr><td width="150"><?=L('tpl_06')?></td><td><input name="name" value="<?=$name?>" type="text" class="dfinput" /></td>
+<?php if($id>1){ ?>
+    <tr><th colspan="2"><?=L('tpl_07')?></th></tr>
+    <tr><td><?=L('menu-02-0')?></td>
+	     <td id="sys_1" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="setting/index"<?php if(getqx('setting/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-02-1')?></label>
+	     <label><input name="sys[]" type="checkbox" value="setting/ftp"<?php if(getqx('setting/ftp',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-02-2')?></label>
+	     <label><input name="sys[]" type="checkbox" value="mail/index"<?php if(getqx('mail/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-02-3')?></label>
+	     <label><input name="sys[]" type="checkbox" value="sms/index"<?php if(getqx('sms/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-02-4')?></label>
+	     <label><input name="sys[]" type="checkbox" value="pay/index"<?php if(getqx('pay/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-02-5')?></label>
+	     <label><input name="sys[]" type="checkbox" value="setting/tb"<?php if(getqx('setting/tb',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-02-6')?></label>
+	     <label><input name="sys[]" type="checkbox" value="setting/denglu"<?php if(getqx('setting/denglu',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-02-6')?></label>
+		 <label style="color:#3333ff" class="sys" sid="1"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+    <tr><td><?=L('menu-03-0')?></td>
+	     <td id="sys_2" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="basedb/index"<?php if(getqx('basedb/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-03-1')?></label>
+	     <label><input name="sys[]" type="checkbox" value="basedb/restore"<?php if(getqx('basedb/restore',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-03-2')?></label>
+	     <label><input name="sys[]" type="checkbox" value="check/index"<?php if(getqx('check/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-03-3')?></label>
+	     <label><input name="sys[]" type="checkbox" value="upgrade/checkfile"<?php if(getqx('upgrade/checkfile',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-03-4')?></label>
+	     <label><input name="sys[]" type="checkbox" value="upload/index"<?php if(getqx('upload/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-03-5')?></label>
+		 <label style="color:#3333ff" class="sys" sid="2"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+    <tr><td><?=L('menu-04-0')?></td>
+	     <td id="sys_3" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="sys/index"<?php if(getqx('sys/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-04-1')?></label>
+	     <label><input name="sys[]" type="checkbox" value="sys/zu"<?php if(getqx('sys/zu',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-04-2')?></label>
+	     <label><input name="sys[]" type="checkbox" value="sys/log"<?php if(getqx('sys/log',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-04-3')?></label>
+		 <label style="color:#3333ff" class="sys" sid="3"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+    <tr><td><?=L('menu-05-0')?></td>
+	     <td id="sys_4" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="label/index"<?php if(getqx('label/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-05-1')?></label>
+	     <label><input name="sys[]" type="checkbox" value="label/js"<?php if(getqx('label/js',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-05-2')?></label>
+	     <label><input name="sys[]" type="checkbox" value="label/page"<?php if(getqx('label/page',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-05-3')?></label>
+		 <label style="color:#3333ff" class="sys" sid="4"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+    <tr><td><?=L('menu-06-0')?></td>
+	     <td id="sys_5" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="skin"<?php if(getqx('skin',$sys)=='ok') echo ' checked="checked"';?>/><?=L('tpl_09')?></label>
+	     <label><input name="sys[]" type="checkbox" value="skin/upload"<?php if(getqx('skin/upload',$sys)=='ok') echo ' checked="checked"';?>/><?=L('tpl_10')?></label>
+	     <label><input name="sys[]" type="checkbox" value="skin/yun"<?php if(getqx('skin/yun',$sys)=='ok') echo ' checked="checked"';?>/><?=L('tpl_11')?></label>
+		 <label style="color:#3333ff" class="sys" sid="5"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+    <tr><td><?=L('menu-07-0')?></td>
+	     <td id="sys_6" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="collect/index"<?php if(getqx('collect/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-07-1')?></label>
+	     <label><input name="sys[]" type="checkbox" value="collect/lists"<?php if(getqx('collect/lists',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-07-2')?></label>
+	     <label><input name="sys[]" type="checkbox" value="collect/ruku"<?php if(getqx('collect/ruku',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-07-3')?></label>
+		 <label style="color:#3333ff" class="sys" sid="6"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+    <tr><td><?=L('menu-08-0')?></td>
+	     <td id="sys_7" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="user/index"<?php if(getqx('user/index',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-2')?></label>
+	     <label><input name="sys[]" type="checkbox" value="user/verify"<?php if(getqx('user/verify',$sys)=='ok') echo ' checked="checked"';?>/><?=L('tpl_12')?></label>
+	     <label><input name="sys[]" type="checkbox" value="user/log"<?php if(getqx('user/log',$sys)=='ok') echo ' checked="checked"';?>/><?=L('tpl_13')?></label>
+	     <label><input name="sys[]" type="checkbox" value="user/setting"<?php if(getqx('user/setting',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-1')?></label>
+	     <label><input name="sys[]" type="checkbox" value="user/zu"<?php if(getqx('user/zu',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-3')?></label>
+	     <label><input name="sys[]" type="checkbox" value="user/level"<?php if(getqx('user/level',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-8')?></label>
+	     <label><input name="sys[]" type="checkbox" value="home"<?php if(getqx('home',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-09-1')?></label>
+		 <label style="color:#3333ff" class="sys" sid="7"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+    <tr><td><?=L('menu-08-4')?></td>
+	     <td id="sys_8" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="pay/lists"<?php if(getqx('pay/lists',$sys)=='ok') echo ' checked="checked"';?>/><?=L('tpl_15')?></label>
+	     <label><input name="sys[]" type="checkbox" value="pay/spend"<?php if(getqx('pay/spend',$sys)=='ok') echo ' checked="checked"';?>/><?=L('tpl_16')?></label>
+	     <label><input name="sys[]" type="checkbox" value="pay/card"<?php if(getqx('pay/card',$sys)=='ok') echo ' checked="checked"';?>/><?=L('tpl_17')?></label>
+	     <label><input name="sys[]" type="checkbox" value="pl"<?php if(getqx('pl',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-5')?></label>
+	     <label><input name="sys[]" type="checkbox" value="gbook"<?php if(getqx('gbook',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-6')?></label>
+	     <label><input name="sys[]" type="checkbox" value="blog"<?php if(getqx('blog',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-7')?></label>
+	     <label><input name="sys[]" type="checkbox" value="msg"<?php if(getqx('msg',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-9')?></label>
+	     <label><input name="sys[]" type="checkbox" value="share"<?php if(getqx('share',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-08-10')?></label>
+		 <label style="color:#3333ff" class="sys" sid="8"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+    <tr><td><?=L('tpl_14')?></td>
+	     <td id="sys_9" class="xuan">
+	     <label><input name="sys[]" type="checkbox" value="html"<?php if(getqx('html',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-01-7')?></label>
+	     <label><input name="sys[]" type="checkbox" value="check/init"<?php if(getqx('check/init',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-01-8')?></label>
+	     <label><input name="sys[]" type="checkbox" value="links"<?php if(getqx('links',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-01-9')?></label>
+	     <label><input name="sys[]" type="checkbox" value="tags"<?php if(getqx('tags',$sys)=='ok') echo ' checked="checked"';?>/><?=L('menu-01=10')?></label>
+	     <label><input name="sys[]" type="checkbox" value="opt/del_cache"<?php if(getqx('opt/del_cache',$sys)=='ok') echo ' checked="checked"';?>/><?=L('head-09')?></label>
+	     <label><input name="sys[]" type="checkbox" value="opt/del_dbcache"<?php if(getqx('opt/del_dbcache',$sys)=='ok') echo ' checked="checked"';?>/><?=L('head-08')?></label>
+		 <label style="color:#3333ff" class="sys" sid="9"><?=L('tpl_08')?></label>
+		 </td>
+	</tr>
+<?php } ?>
+    <input name="id" type="hidden" value="<?=$id?>">
+    </table>
+    <div class="pagin"><input name="submit" type="submit" class="btn" value="<?=L('admin_edit_08')?>"/></div>
+    </form>
+    <div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+<script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+
+</script>
+</body>
+</html>

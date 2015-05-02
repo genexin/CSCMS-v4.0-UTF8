@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li class=""><span><a href="[user:url userlink=edit]">基本资料</a></span></li>
+								<li class=""><span><a href="[user:url userlink=edit,logo]">修改头像</a></span></li>
+								<li class="on"><span><a href="[user:url userlink=edit,pass]">修改密码</a></span></li>
+								<li class=""><span><a href="[user:url userlink=edit,open]">绑定同步</a></span></li>
+							</ul>
+						</div><div class="clear"></div>
+						<div class="minHeight500">
+							<form class="think-form" action="[user:passsave]" method="post">
+							<div class="profile">
+           				 <!-- 表单项 -->
+            				<table class="bd">
+                				<tr>
+                    				<th>原密码</th>
+                    				<td>
+                        				<input class="text" type="password" name="userpass" datatype="*6-20" nullmsg="请填写原密码" errormsg="密码为6-20位"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>新密码</th>
+                    				<td>
+                        				<input class="text" type="password" name="userpass1" datatype="*6-20" nullmsg="请填写新密码" errormsg="密码为6-20位"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>密码确定</th>
+                    				<td>
+                        				<input class="text" type="password" name="userpass2" datatype="*" nullmsg="请填确认密码" errormsg="您两次输入的密码不一致" recheck="userpass1"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>&nbsp;</th>
+                    				<td>
+					    				<input type="hidden" name="token" value="[user:token]"/>
+                        				<input class="submit" type="submit" value="保存" />
+                    				</td>
+                				</tr>
+            				</table>
+            				<!-- /表单项 -->
+							</div></form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_edit').addClass('on');
+user.form();
+</script>
+{cscms:bottom}
+</body>
+</html>

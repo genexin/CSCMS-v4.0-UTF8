@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+    $(".select3").uedSelect({
+		width : 460			  
+	});
+	$("#usual1 ul").idTabs();
+});
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('collect')?>"><?=L('tpl_38')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=L('tpl_39')?></a></li> 
+  	        </ul>
+        </div> 
+  	    <div id="tab1" class="tabson">
+
+<?php if($page<2){ ?>
+           <form action="<?=$savelink?>&page=2" method="post">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_40')?></label><input name="name" type="text" class="dfinput" value="<?=$name?>" style="width:245px;"/><b>*</b><?=L('tpl_41')?></li>
+                <li><label><?=L('tpl_42')?></label><input name="url" type="text" class="dfinput" value="<?=$url?>" style="width:345px;"/><b>*</b><?=L('tpl_43')?></li>
+                <li><label><?=L('tpl_44')?></label>
+				   <div class="vocation">
+                      <select class="select1" name="code"><option value="gbk"<?php if($code=='gbk') echo ' selected="elected"';?>>gbk</option><option value="utf-8"<?php if($code=='utf-8') echo ' selected="elected"';?>>utf-8</option></select>
+				   </div>
+                </li>
+                <li><label><?=L('tpl_45')?></label>
+				   <div class="vocation">
+                      <select class="select1" name="dir">
+<?php
+$query = $this->db->query("SELECT name,dir FROM ".CS_SqlPrefix."plugins order by id asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->dir==$dir)?' selected="elected"':'';
+			echo '<option value="'.$row->dir.'"'.$clas.'>'.$row->name.'</option>';
+}
+?>
+					  </select>
+				   </div>
+                </li>	
+                <li><label><?=L('tpl_46')?></label><input name="cjurl" type="text" class="dfinput" value="<?=$cjurl?>" style="width:345px;"/><b>*</b><?=L('tpl_47')?>{$id}</li>
+                <li><label><?=L('tpl_48')?></label><?=L('tpl_49')?><input name="ksid" type="text" class="dfinput" value="<?=$ksid?>" style="width:75px;"/>&nbsp;-&nbsp;<?=L('tpl_50')?><input name="jsid" type="text" class="dfinput" value="<?=$jsid?>" style="width:75px;"/><b>*</b><?=L('tpl_51')?></li>
+                <li><label><?=L('tpl_52')?></label><input class="box" name="cfid" type="radio" value="0"<?php if($cfid==0) echo ' checked="checked"';?>><?=L('tpl_53')?>&nbsp;&nbsp;&nbsp;&nbsp;<input class="box" name="cfid" type="radio" value="1"<?php if($cfid==1) echo ' checked="checked"';?>><?=L('tpl_54')?>&nbsp;&nbsp;&nbsp;&nbsp;<input class="box" name="cfid" type="radio" value="2"<?php if($cfid==2) echo ' checked="checked"';?>><?=L('tpl_55')?><b>*</b><?=L('tpl_56')?></li>
+                <li><label><?=L('tpl_57')?></label><input class="box" type="checkbox" name="picid" value="1"<?php if($picid==1) echo ' checked="checked"';?>><?=L('tpl_58')?>&nbsp;&nbsp;&nbsp;&nbsp;<input class="box" name="dxid" type="checkbox" value="1"<?php if($dxid==1) echo ' checked="checked"';?>><?=L('tpl_59')?></li>
+                <li><label><?=L('tpl_60')?></label><input class="box" name="rkid" type="radio" value="0"<?php if($rkid==0) echo ' checked="checked"';?>><?=L('tpl_61')?>(<font color="red"><?=L('tpl_62')?></font>)&nbsp;&nbsp;&nbsp;&nbsp;<input class="box" name="rkid" type="radio" value="1"<?php if($rkid==1) echo ' checked="checked"';?>><?=L('tpl_63')?></li>
+
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('tpl_64')?>"/></li>
+      	   </ul>
+		   </form>
+<?php } ?>
+
+<?php if($page==2){ ?>
+           <form action="<?=$savelink?>&page=3" method="post">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_65')?></label><input onclick="$('#html').hide();" class="box" name="htmlid" type="radio" value="0" checked="checked"><?=L('tpl_66')?>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="$('#html').show();" class="box" name="htmlid" type="radio" value="1"><?=L('tpl_67')?></li>
+                <li id="html" style="display: none;"><label><?=L('tpl_68')?></label>
+                <textarea name="html" cols="150" rows="30" class="textinput"><?=str_replace('<form','&lt;form',str_replace('</textarea>','&lt;/textarea&gt;',$html))?></textarea>
+                </li>
+                <li><label><?=L('tpl_69')?></label><textarea name="listks" cols="70" rows="3" class="textinput"><?=$listks?></textarea><b>*</b><?=L('tpl_69')?></li>
+                 <li><label><?=L('tpl_70')?></label><textarea name="listjs" cols="70" rows="3" class="textinput"><?=$listjs?></textarea><b>*</b><?=L('tpl_70')?></li>
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('tpl_64')?>"/></li>
+      	   </ul>
+		   </form>
+<?php } ?>
+
+<?php if($page==3){ ?>
+           <form action="<?=$savelink?>&page=4" method="post">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_65')?></label><input onclick="$('#html').hide();" class="box" name="html" type="radio" value="0" checked="checked"><?=L('tpl_66')?>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="$('#html').show();" class="box" name="html" type="radio" value="1"><?=L('tpl_67')?></li>
+                <li id="html" style="display: none;"><label><?=L('tpl_68')?></label>
+                <textarea name="html" cols="150" rows="30" class="textinput"><?=str_replace('form','fo<x>>rm',str_replace('</textarea>','&lt;/textarea&gt;',$html))?></textarea>
+                </li>
+                <li><label><?=L('tpl_71')?></label><textarea name="linkks" cols="70" rows="3" class="textinput"><?=$linkks?></textarea><b>*</b><?=L('tpl_71')?></li>
+                 <li><label><?=L('tpl_72')?></label><textarea name="linkjs" cols="70" rows="3" class="textinput"><?=$linkjs?></textarea><b>*</b><?=L('tpl_72')?></li>
+                <li><label><?=L('tpl_73')?></label><input onclick="$('#pic1').hide();$('#pic2').hide();" class="box" name="picmode" type="radio" value="0"<?php if($picmode==0) echo ' checked="checked"';?>><?=L('tpl_74')?>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="$('#pic1').show();$('#pic2').show();" class="box" name="picmode" type="radio" value="1"<?php if($picmode==1) echo ' checked="checked"';?>><?=L('tpl_75')?>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="$('#pic1').hide();$('#pic2').hide();" class="box" name="picmode" type="radio" value="2"<?php if($picmode==2) echo ' checked="checked"';?>><?=L('tpl_76')?></li>
+                <li id="pic1" style="display:none;"><label><?=L('tpl_77')?></label><textarea name="picks" cols="70" rows="3" class="textinput"><?=$picks?></textarea></li>
+                <li id="pic2" style="display:none;"><label><?=L('tpl_78')?></label><textarea name="picjs" cols="70" rows="3" class="textinput"><?=$picjs?></textarea></li>
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('tpl_64')?>"/></li>
+      	   </ul>
+		   </form>
+<?php } ?>
+
+<?php if($page==4){ ?>
+           <form action="<?=$savelink?>&page=5" method="post">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_79')?></label>
+				   <div class="vocation">
+                      <select class="select3" name="urls">
+<?php
+foreach ($links as $url) {
+					  echo '<option value="'.$url.'">'.$url.'</option>';
+}
+?>
+					  </select>
+				   </div>
+                </li>
+                <li><label><?=L('tpl_65')?></label><input onclick="$('#html').hide();" class="box" name="html" type="radio" value="0" checked="checked"><?=L('tpl_66')?>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="$('#html').show();" class="box" name="html" type="radio" value="1"><?=L('tpl_67')?></li>
+                <li id="html" style="display: none;"><label><?=L('tpl_68')?></label>
+                <textarea name="html" cols="150" rows="30" class="textinput"><?=str_replace('<form','&lt;form',str_replace('</textarea>','&lt;/textarea&gt;',$html))?></textarea>
+                </li>
+                <li><label><?=L('tpl_80')?></label><textarea name="nameks" cols="70" rows="3" class="textinput"><?=$nameks?></textarea><b>*</b><?=L('tpl_80')?></li>
+                 <li><label><?=L('tpl_81')?></label><textarea name="namejs" cols="70" rows="3" class="textinput"><?=$namejs?></textarea><b>*</b><?=L('tpl_81')?></li>
+          <?php if($picmode==2){ ?>
+                <li><label><?=L('tpl_77')?></label><textarea name="picks" cols="70" rows="3" class="textinput"><?=$picks?></textarea></li>
+                <li><label><?=L('tpl_78')?></label><textarea name="picjs" cols="70" rows="3" class="textinput"><?=$picjs?></textarea></li>
+          <?php } ?>
+                <li><label>&nbsp;<img onClick="zdyadd();" name="btn_addpaly" src="<?=Web_Path?>packs/admin/images/add.png" id="btn_addplay"  style="cursor:pointer" title="<?=L('tpl_82')?>"/></label><b><?=L('tpl_83')?></b>
+      	   </ul>
+      	   <ul class="forminfo" id="zdys">
+<?php
+$ziduan='';
+if ($this->db->table_exists(CS_SqlPrefix.$dir)){
+     $query = $this->db->query("SHOW FULL FIELDS FROM ".CS_SqlPrefix.$dir."");
+	 $fieldarray = $query->result_array();
+     foreach ($fieldarray as $row){
+	      if($row['Field']!='id'){
+              $ziduan.='<option value="'.$row['Field'].'">'.$row['Comment'].'</option>';
+		  }
+     }
+}
+echo '<div style="display:none;" id="ziduan">'.$ziduan.'</div>';
+$query=$this->db->query("SELECT * FROM ".CS_SqlPrefix."cjannex where cid=".$id." order by id asc"); 
+$i=1;
+foreach ($query->result() as $row) {
+        $ziduan='';
+        foreach ($fieldarray as $rowf){
+	      if($rowf['Field']!='id'){
+		      if($row->zd==$rowf['Field']){
+                  $ziduan.='<option value="'.$rowf['Field'].'" selected="selected">'.$rowf['Comment'].'</option>';
+			  }else{
+                  $ziduan.='<option value="'.$rowf['Field'].'">'.$rowf['Comment'].'</option>';
+			  }
+		  }
+        }
+		if($row->fid==1){
+		       $none2='';
+		       $none1='display: none;';
+               $fid='<option value="0">'.L('tpl_84').'</option><option value="1" selected="selected">'.L('tpl_85').'</option>';
+		}else{
+		       $none1='';
+		       $none2='display: none;';
+               $fid='<option value="0" selected="selected">'.L('tpl_84').'</option><option value="1">'.L('tpl_85').'</option>';
+		}
+               echo '<li id="zdy_'.$i.'_1"><label>'.L('tpl_86').'</label><input name="zdy[name][]" type="text" class="dfinput" value="'.$row->name.'" style="width:145px;"/>&nbsp;&nbsp;<img onClick="zdydel('.$i.');" name="btn_addpaly" src="'.Web_Path.'packs/admin/images/cut.png" id="btn_addplay"  style="cursor:pointer" title="'.L('tpl_87').'"/><input name="zdy[id][]" type="hidden" value="'.$row->id.'"></li>
+			   <li id="zdy_'.$i.'_2"><label>'.L('tpl_88').'</label><div class="vocation"><select class="select1" name="zdy[zd][]">'.$ziduan.'</select></div></li>
+			   <li id="zdy_'.$i.'_3"><label>'.L('tpl_89').'</label><div class="vocation"><select id="fid_'.$i.'" class="select1" name="zdy[fid][]" OnChange="zdyfid('.$i.');">'.$fid.'</select></div></li>
+               <li id="zdy_'.$i.'_4" style="'.$none1.'"><label>'.L('tpl_90').'</label><textarea name="zdy[ks][]" cols="70" rows="3" class="textinput">'.$row->ks.'</textarea></li>
+               <li id="zdy_'.$i.'_5" style="'.$none1.'"><label>'.L('tpl_91').'</label><textarea name="zdy[js][]" cols="70" rows="3" class="textinput">'.$row->js.'</textarea></li>
+               <li id="zdy_'.$i.'_6" style="'.$none2.'"><label>'.L('tpl_92').'</label><input name="zdy[fname][]" type="text" class="dfinput" value="'.$row->fname.'" style="width:245px;"/></li><li id="zdy_'.$i.'_7" class="end"></li>';
+$i++;
+}
+?>
+      	   </ul>
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_93')?></label><textarea name="strth" cols="70" rows="3" class="textinput"><?=$strth?></textarea><b>*</b><?=L('tpl_94')?></li>
+
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('tpl_64')?>"/></li>
+      	   </ul>
+		   </form>
+<?php } ?>
+
+<?php if($page==5){ ?>
+      	   <ul class="forminfo">
+                <li><b><?=L('tpl_25')?></b><?=str_encode($name)?></li>
+				<?php 
+				if($picmode==2){
+                      echo '<li><b>'.L('tpl_26').'</b>'.str_encode($pic).'</li>';
+				}
+				if(!empty($zdy)){
+				   for ($i=0; $i < count($zdy['name']); $i++) {
+                      echo '<li><b>'.$zdy['name'][$i].'：</b>'.str_encode($zdy['text'][$i]).'</li>';
+				   } 
+				}
+				?>
+		        <li><label>&nbsp;</label><input name="button" onClick="location.href='<?=site_url('collect')?>';" type="button" class="btn" value="<?=L('tpl_95')?>"/></li>
+      	   </ul>
+<?php } ?>
+
+  	    </div> 
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

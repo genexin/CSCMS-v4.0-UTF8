@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>相册选择</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="{cscms:path}packs/admin/css/style.css" />
+<script type="text/javascript" src="{cscms:path}packs/js/jquery-min.js"></script>
+</head>
+<body>
+<div class="rightinfo" style="width:500px">
+
+    <ul class="imglist2">
+    {cscms:pic table="pic_type" pagesize="8" user="auto" sort="addtime" order="desc"}
+         <li{if:[pic:id]==[pic:sid]} class="selected"{end if} onclick="pic_go('[pic:id]','[pic:name]');" title="选择相册"><span><img src="[pic:pic dir=pic]" /></span><h2>[pic:name]</h2></li>
+    {/cscms:pic}
+    </ul>
+    <div class="pagin">
+        <ul class="paginList">
+		<li class="paginItem"><a title="上一页" href="{cscms:pageup}"><span class="pagepre"></span></a></li>
+		<li class="paginItem"><a title="下一页" href="{cscms:pagedown}"><span class="pagenxt"></span></a></li>
+		<li class='paginItem'><span class='zhuan'>转<input type=text size=4 id='gopage' value='{cscms:pagecout}'/>页</span><a style='cursor:pointer;' onclick=window.location='[user:url userlink=pic,res]/[pic:sid]/'+gopage.value+'' title='跳转'>GO></a></li>
+		</ul>
+    </div>
+</div> 
+<script type="text/javascript"> 
+function pic_go(_sid,_name) { 
+	parent.$('#sid').val(_sid);
+	parent.$('#name').val(_name);
+	parent.layer.closeAll();
+}
+</script>
+</body>
+</html>

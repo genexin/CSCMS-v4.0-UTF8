@@ -1,0 +1,125 @@
+/**
+* @cscms4.x open source management system
+* @copyright 2009-2015  All rights reserved.
+* @Author:Cheng Jie
+* @Dtime:2015-01-17
+*/
+.fl {float: left;}
+.fr {float: right;}
+p.musicName{ width:100%; text-align:center; height:20px; line-height:20px; overflow:hidden; margin-top:10px;}
+p.musicName a{ color:#333;}
+p.musicName a:hover{ color:#1093d7;}
+p.singerName a{ color:#828383;}
+a.img{ display:block; border:2px solid #fff;}
+a.img:hover{ border:2px solid #1093d7;}
+h1.title{ font-size:26px; height:34px; line-height:34px; margin:10px 0; font-weight:normal;}
+h1.title a.detail{color:#828383;float:right;font-size:14px;padding-top:0px;}
+h1.title a.detail:hover{color:#1093d7;text-decoration:underline;}
+.bg{ background:url(../images/new_icons.png) no-repeat;}
+.ads{border:1px solid #D9D9D9;background:#FFF;text-align:center;}
+
+/*歌曲排行*/
+.musicRank {padding:10px;padding-top:0px;}
+.musicRank h1.title{ font-size:26px; height:34px; line-height:34px; margin:10px 0; font-weight:normal;}
+.musicRank a.playall{ display:block; width:67px; height:18px; line-height:18px; background-position:0 -182px; font-size:12px; color:#fff; text-indent:1em; position:absolute; top:3px; left:100px;}
+.musicRank a.playall:hover{ text-decoration:none;}
+.rank{ width:310px; overflow:hidden; position:relative; margin-right:10px;}
+.rank h2{ font-size:16px; color:#333; margin-bottom:10px;}
+.rank h2 span{ color:#f27815;}
+.rank .tab_menu{ position:absolute; top:4px; right:0;}
+.rank .tab_menu li{ float:left; text-align:center; width:50px; height:14px; line-height:14px; border-right:1px solid #a7a7a7;}
+.rank .tab_menu li.noborder{ border:none;}
+.rank .tab_div{ height:360px; overflow:hidden; font-size:14px;}
+.rank .line{ height:30px; line-height:30px; overflow:hidden; background:url(../images/line.gif) repeat-x left bottom;}
+.rank .line:hover{ background:#f0f0f0;}
+.rank .line p.num{ width:20px; height:20px; line-height:20px; text-align:center; overflow:hidden; float:left; margin:5px 3px 0 0; background:#f0f0f0; color:#8c8c8c; border-radius:3px; font-size:12px;}
+.rank .line p.topnum{ background:#f48a34; color:#fff;}
+.rank .line p.music span{ display:block; float:left; margin-right:10px; overflow:hidden;}
+.rank .line p.music a{ display:block; float:left; overflow:hidden;}
+.rank .line p.music span.m_name{ width:170px; text-indent:3px; color:#333;}
+.rank .line p.music span.m_name a{ color:#333;}
+.rank .top p.music span.m_name a{ color:#333;}
+.rank .line p.music span.m_name:hover a{ color:#f30;}
+.rank .line p.music span.s_name{ width:70px; color:#828383;}
+.rank .line p.music span.s_name a{ color:#828383;}
+.rank .line p.music span.s_name a:hover{ color:#333;}
+.rank .top p.music span.s_name a{ color:#333;}
+.rank .line p.music a.listen{ width:22px; height:17px; background-position:0 -30px; margin:0; margin-top:6px;}
+.rank .line p.music a.listen:hover{ background-position:-22px -30px;}
+.rank.m0{ margin:0;}
+
+/*首页专辑*/
+.album,.mvalbum{ position:relative; width:958px; overflow:hidden;padding:10px;padding-top:0px;}
+.album .tab_menu li a{ color:#1093d7;}
+.album .tab_menu li a:hover{ color:#333;}
+.album .tab_menu li.selected a{ color:#333; text-decoration:underline;}
+.album .tab_menu{ position:absolute; top:20px; left:135px;}
+.album .tab_menu ul li{ float:left; width:72px; height:14px; line-height:14px; text-align:center; border-right:1px dashed #a7a7a7; cursor:pointer;}
+.album .tab_menu ul li.noborder{ border:none;}
+.album .tab_div ul{ width:960px;}
+.album .tab_div ul li{ float:left; width:142px; overflow:hidden;margin-top:5px;margin-left:8px;margin-right:10px;}
+.album .tab_div ul li p {}
+.album .tab_div ul li p.singerName{ font-size:12px; margin:2px 0;}
+.ablum .tab_div ul li p.singerName a{ color:#828383;}
+
+
+/*首页歌手*/
+.hotSinger{ margin-bottom:5px; width:958px; overflow:hidden;padding:10px;padding-top:0px;}
+.hotSinger ul{width:960px;}
+.hotSinger ul li{ float:left; width:142px; overflow:hidden;margin-top:5px;margin-left:8px;margin-right:10px;}
+
+.singerlist{width:958px;margin-left:10px;overflow:hidden;}
+.singerlist .list h2.tit{ background-position:13px 13px; color:#1093d7; font-size:15px; text-indent:26px;padding-top:5px;}
+.singerlist .list{ float:left; background:#f2f2f2; width:470px; height:145px; overflow:hidden;}
+.singerlist .list p{ padding-left:13px;}
+.singerlist .list p a{ display:block; width:4em; float:left; margin:8px 9px 0 0; overflow:hidden; height:20px; line-height:20px; color:#333; _margin:7px 8px 0 0;}
+.singerlist .list p a:hover{ color:#1093d7;}
+
+/* 推荐视频 */
+.movie_list{width:958px;padding:10px;padding-top:0px;}
+.movie_list h1.title{ font-size:26px; height:30px; line-height:30px; margin:10px 0; font-weight:normal;}
+.movie_list ul{margin-left:-10px;_margin-left:-20px;padding-top:0px;position:relative;zoom:1;}
+.movie_list li{position:relative;float:left;width:140px;margin-top:5px;margin-left:20px;}
+.movie_list h3{font-size:16px;height:30px;line-height:30px;margin:5px 0 20px;overflow:hidden;}
+.movie_list img{width:140px;height:170px;}
+.movie_list a:hover img{filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity:0.5;opacity:0.5;}
+.movie_list .movie_date{color:#eee;font-size:12px;position:absolute;display:block;height:26px;line-height:26px;top:140px;left:1px;background:rgba(0,0,0,0.5);border-radius:13px;padding:0 10px;text-shadow:1px 1px 1px #000;}
+@media \0screen\,screen\9{
+.movie_list .movie_date{padding:0;}
+.movie_list .bg_top{display:inline-block;height:26px;line-height:27px;padding:0 0 0 14px;cursor:pointer;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='crop',src='/images/tag-bg_b725ffb28a.png');zoom:1}
+.movie_list .bg_tail{display:inline-block;zoom:1;position:absolute;width:13px;height:26px;right:-13px;cursor:pointer;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='crop',src='/images/tag-bg-tail_5aa4fe5fc6.png')}
+}
+
+/*图片列表版块*/
+.pic_list {width:960px;margin:0px auto;margin-top:10px;padding:10px;padding-top:0px;}
+.pic_list h2 {font-size:26px;height: 30px;padding: 15px 0 0 0;padding-top:0;position: relative;clear: both;}
+.pic_list .hot {width: 300px;height: 250px;position: relative;overflow: hidden;margin-top: 10px;}
+.pic_list .black{width: 100%;height: 25px;line-height: 25px;color: #fff;position: absolute;left: 0;bottom: 0;overflow: hidden;background: #000;}
+.pic_list .black a {display: block;width: 92%;height: 25px;line-height: 25px;color: #fff;margin: 0 auto;overflow: hidden;}
+.pic_list .picList_small {width: 660px;}
+.pic_list .picList_small li{float: left;width: 155px;margin: 10px 0 0 10px;display: inline;position: relative;}
+.pic_list .picList {width: 960px;}
+.pic_list .picList li{float: left;width: 180px;margin: 10px 0 0 10px;display: inline;position: relative;}
+.pic_list .picList_small .picTips {width:150px;}
+.pic_list .picList .picTips {width:175px;}
+.pic_list .picTips a{padding-left:10px;color:#fff}
+.pic_list .picTips {width:100%;height:25px; line-height:25px; color:#fff; position:absolute; left:0; bottom:0; overflow:hidden;}
+.pic_list .picTips {filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7F000000', endColorstr='#7F000000');background:rgba(0,0,0,0.5);}
+
+/* 文章列表 */
+.news_list{width:958px;margin:0px auto;margin-top:10px;padding:10px;padding-top:0px;}
+.news_list .box_left,.news_list .box_right{width:478px;}
+.news_list .box_left{float:left;}
+.news_list .box_right{float:right;}
+.news_list .box_left ul,.news_list .box_right ul{margin-top:0px;}
+.news_list .box_left li a,.news_list .box_right li a{height:36px;line-height:36px;background:url(../images/text.png) 2px 13px no-repeat;}
+.news_list .box_left li a:hover,.news_list .box_right li a:hover {background:url(../images/text_active.png) 2px 13px no-repeat;}
+.news_list li{border-bottom:#CEDCF0 dashed 1px;font-size:15px;}
+.news_list li a{display:block;overflow:hidden;padding-left:20px;}
+.news_list li a:hover,.news_list li a:active{background-color:#EEF3FA;text-decoration:none;}
+.news_list li a:visited{color:#000;} 
+.news_list span{float:right;margin-right:29px;cursor:pointer;font-size:13px;color:#000;overflow:hidden;}
+
+/*友情链接*/
+.links {border:1px solid #D9D9D9;margin-top:10px;margin-bottom:10px;background:#FFF;}
+

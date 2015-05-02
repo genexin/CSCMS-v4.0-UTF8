@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li class=""><span><a href="[user:url userlink=web]">主页模板</a></span></li>
+								<li class="on"><span><a href="[user:url userlink=web,pic]">主页背景</a></span></li>
+							</ul>
+						</div><div class="clear"></div>
+						<div class="minHeight500">
+							<div class="up_file">
+								<p>支持2M以内的jpg、jpeg、png图片</p>
+								<p>建议使用宽1920px 高350px 的图片，保证最佳效果</p>
+								<hr>
+								<div class="file_posi">
+                                <iframe id="iframe-post-form" name="iframe-post-form" style="display:none;"></iframe>
+
+                                <div class="file_box file_working " style="display:none;">
+                                    <div class="working_tips">
+                                        <b class="working_icon"></b><br>
+                                        <span class="working_name bn_blue">正在上传图片<a href="javascript:void(0)" onclick="cancelUpload()">取消</a></span>
+                                    </div>
+                                </div>
+
+								<div id="banner_clip" class="banner_clip" style="width:720px;height:186px;background-image: url([user:bgpic dir=bgpic]?size=720*186); background-position: 50% 50%; background-repeat: initial initial;">
+                                    <span class="banner_clip_change">更换图片<form name="myform" id="myform" action="[user:bgpicsave]" enctype="multipart/form-data" method="post" target="iframe-post-form"><input class="upload_title_pic2" type="file" id="fileUploadHead" name="bgpic"></form></span>
+                                </div>
+
+                            </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_web').addClass('on');
+web.up();
+</script>
+{cscms:bottom}
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/dance.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<script>$("#class_[dance:cid]").addClass("a_sub_nav_clo");</script>
+<div id="cscms_down" style="border:1px solid #D9D9D9;background:#FFF;">
+    <div class="zuo">
+        <div class="title"><a href="[dance:url link=play,id]" target="_blank" title="[dance:name]">[dance:name]</a></div>
+        <div class="sing_view">
+            <span class="l">
+               <p>作词：<a href="{cscmsphp}linkurl('search','zc','[dance:zc]',1);{/cscmsphp}" target="_blank">[dance:zc]</a></p>
+               <p>作曲：<a href="{cscmsphp}linkurl('search','zq','[dance:zq]',1);{/cscmsphp}" target="_blank">[dance:zc]</a></p>
+               <p>编曲：<a href="{cscmsphp}linkurl('search','bq','[dance:bq]',1);{/cscmsphp}" target="_blank">[dance:zc]</a></p>
+               <p>演唱：<a href="[dance:url zdy=singer,singerid,show,id]" target="_blank">[dance:singer zd=name]</a></p>
+               <p>扣币：[dance:cion]个</p>
+            </span>
+            <span class="r">
+               <p>视听：[dance:hits]次</p>
+               <p>下载：[dance:xhits]次</p>
+               <p>收藏：[dance:shits]次</p>
+               <p>标签：[dance:tags]</p>
+               <p>时间：[dance:addtime style=Y-m-d]</p>
+            </span>
+        </div>
+        <div class="sing_view_bnt">
+                <a class="pt" href="[dance:url link=down,load]" target="_blank" title="下载到电脑" >下载到电脑</a>
+        </div>
+    </div>
+
+    <div class="you">
+        <div class="ads">300x250广告位</div>
+    </div>
+    <div class="clear"></div>
+</div>
+{cscms:bottom}
+</body>
+</html>

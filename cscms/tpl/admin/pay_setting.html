@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$("#usual1 ul").idTabs();
+});
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('pay')?>"><?=L('tpl_61')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=L('tpl_62')?></a></li> 
+               <li><a href="#tab2"><?=L('tpl_63')?></a></li> 
+               <li><a href="#tab3"><?=L('tpl_64')?></a></li> 
+               <li><a href="#tab4"><?=L('tpl_65')?></a></li> 
+               <li><a href="#tab5"><?=L('tpl_66')?></a></li> 
+               <li><a href="#tab6"><?=L('tpl_67')?></a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('pay/save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_68')?></label>
+				  <input onclick="$('#off').show();" class="box" name="CS_Alipay" type="radio" value="1"<?php if(CS_Alipay==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#off').hide();" class="box" name="CS_Alipay" type="radio" value="0"<?php if(CS_Alipay==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="off"<?php if(CS_Alipay==0) echo 'style="display:none";';?>>
+                <li><label><?=L('tpl_69')?></label><a style="float:left;margin-top:4px;" href="http://www.alipay.com/" target="sms">http://www.alipay.com/</a></li>
+                <li><label><?=L('tpl_70')?></label>
+				  <input onclick="$('#zfb_1').show();$('#zfb_2').show();" class="box" name="CS_Alipay_JK" type="radio" value="1"<?php if(CS_Alipay_JK==1) echo ' checked="checked"';?>>&nbsp;<?=L('tpl_71')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#zfb_1').show();$('#zfb_2').show();" class="box" name="CS_Alipay_JK" type="radio" value="2"<?php if(CS_Alipay_JK==2) echo ' checked="checked"';?>>&nbsp;<?=L('tpl_72')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#zfb_1').hide();$('#zfb_2').hide();" class="box" name="CS_Alipay_JK" type="radio" value="3"<?php if(CS_Alipay_JK==3) echo ' checked="checked"';?>>&nbsp;<?=L('tpl_73')?>&nbsp;&nbsp;&nbsp;&nbsp;<b>*</b><?=L('tpl_74')?>
+                </li>
+                <li id="zfb_1"<?php if(CS_Alipay_JK==3) echo 'style="display:none";';?>><label><?=L('tpl_75')?></label><input name="CS_Alipay_ID" type="text" class="dfinput" value="<?=CS_Alipay_ID?>" style="width:245px;"/><b>*</b><?=L('tpl_76')?></li>
+                <li id="zfb_2"<?php if(CS_Alipay_JK==3) echo 'style="display:none";';?>><label><?=L('tpl_77')?></label><input name="CS_Alipay_Key" type="text" class="dfinput" value="<?=CS_Alipay_Key?>" style="width:245px;"/><b>*</b><?=L('tpl_78')?></li>
+                <li><label><?=L('tpl_79')?></label><input name="CS_Alipay_Name" type="text" class="dfinput" value="<?=CS_Alipay_Name?>" style="width:245px;"/><b>*</b><?=L('tpl_80')?></li>
+      	   </ul>
+  	    </div> 
+  	    <div id="tab2" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_81')?></label>
+				  <input onclick="$('#off2').show();" class="box" name="CS_Tenpay" type="radio" value="1"<?php if(CS_Tenpay==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#off2').hide();" class="box" name="CS_Tenpay" type="radio" value="0"<?php if(CS_Tenpay==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="off2"<?php if(CS_Tenpay==0) echo 'style="display:none";';?>>
+                <li><label><?=L('tpl_69')?></label><a style="float:left;margin-top:4px;" href="http://www.tenpay.com/" target="sms">http://www.tenpay.com/</a></li>
+                <li><label><?=L('tpl_82')?></label><input name="CS_Tenpay_ID" type="text" class="dfinput" value="<?=CS_Tenpay_ID?>" style="width:245px;"/><b>*</b><?=L('tpl_82')?></li>
+                <li><label><?=L('tpl_83')?></label><input name="CS_Tenpay_Key" type="text" class="dfinput" value="<?=CS_Tenpay_Key?>" style="width:245px;"/><b>*</b><?=L('tpl_83')?></li>
+      	   </ul>
+  	    </div>
+  	    <div id="tab3" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_84')?></label>
+				  <input onclick="$('#off3').show();" class="box" name="CS_Wypay" type="radio" value="1"<?php if(CS_Wypay==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#off3').hide();" class="box" name="CS_Wypay" type="radio" value="0"<?php if(CS_Wypay==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="off3"<?php if(CS_Wypay==0) echo 'style="display:none";';?>>
+                <li><label><?=L('tpl_69')?></label><a style="float:left;margin-top:4px;" href="http://www.chinabank.com.cn/" target="sms">http://www.chinabank.com.cn/</a></li>
+                <li><label><?=L('tpl_82')?></label><input name="CS_Wypay_ID" type="text" class="dfinput" value="<?=CS_Wypay_ID?>" style="width:245px;"/><b>*</b><?=L('tpl_82')?></li>
+                <li><label><?=L('tpl_83')?></label><input name="CS_Wypay_Key" type="text" class="dfinput" value="<?=CS_Wypay_Key?>" style="width:245px;"/><b>*</b><?=L('tpl_83')?></li>
+      	   </ul>
+  	    </div>
+  	    <div id="tab4" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_85')?></label>
+				  <input onclick="$('#off4').show();" class="box" name="CS_Kqpay" type="radio" value="1"<?php if(CS_Kqpay==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#off4').hide();" class="box" name="CS_Kqpay" type="radio" value="0"<?php if(CS_Kqpay==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="off4"<?php if(CS_Kqpay==0) echo 'style="display:none";';?>>
+                <li><label><?=L('tpl_69')?></label><a style="float:left;margin-top:4px;" href="https://www.99bill.com/" target="sms">https://www.99bill.com/</a></li>
+                <li><label><?=L('tpl_82')?></label><input name="CS_Kqpay_ID" type="text" class="dfinput" value="<?=CS_Kqpay_ID?>" style="width:245px;"/><b>*</b><?=L('tpl_82')?></li>
+                <li><label><?=L('tpl_83')?></label><input name="CS_Kqpay_Key" type="text" class="dfinput" value="<?=CS_Kqpay_Key?>" style="width:245px;"/><b>*</b><?=L('tpl_83')?></li>
+      	   </ul>
+  	    </div>
+  	    <div id="tab5" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_86')?></label>
+				  <input onclick="$('#off5').show();" class="box" name="CS_Ybpay" type="radio" value="1"<?php if(CS_Ybpay==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#off5').hide();" class="box" name="CS_Ybpay" type="radio" value="0"<?php if(CS_Ybpay==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="off5"<?php if(CS_Ybpay==0) echo 'style="display:none";';?>>
+                <li><label><?=L('tpl_69')?></label><a style="float:left;margin-top:4px;" href="http://www.yeepay.com/" target="sms">http://www.yeepay.com/</a></li>
+                <li><label><?=L('tpl_82')?></label><input name="CS_Ybpay_ID" type="text" class="dfinput" value="<?=CS_Ybpay_ID?>" style="width:245px;"/><b>*</b><?=L('tpl_82')?></li>
+                <li><label><?=L('tpl_83')?></label><input name="CS_Ybpay_Key" type="text" class="dfinput" value="<?=CS_Ybpay_Key?>" style="width:245px;"/><b>*</b><?=L('tpl_83')?></li>
+      	   </ul>
+  	    </div>
+  	    <div id="tab6" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_87')?></label>
+				  <input onclick="$('#off6').show();" class="box" name="CS_Cspay" type="radio" value="1"<?php if(CS_Cspay==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#off6').hide();" class="box" name="CS_Cspay" type="radio" value="0"<?php if(CS_Cspay==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="off6"<?php if(CS_Cspay==0) echo 'style="display:none";';?>>
+                <li><label><?=L('tpl_69')?></label><a style="float:left;margin-top:4px;" href="http://www.chshcms.com/member/cspay.html" target="sms">http://www.chshcms.com/member/cspay.html</a></li>
+                <li><label><?=L('tpl_82')?></label><input name="CS_Cspay_ID" type="text" class="dfinput" value="<?=CS_Cspay_ID?>" style="width:245px;"/><b>*</b><?=L('tpl_82')?></li>
+                <li><label><?=L('tpl_83')?></label><input name="CS_Cspay_Key" type="text" class="dfinput" value="<?=CS_Cspay_Key?>" style="width:245px;"/><b>*</b><?=L('tpl_83')?></li>
+      	   </ul>
+  	    </div>
+      	<ul class="forminfo">
+		     <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('setting_57')?>"/></li>
+      	</ul>
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

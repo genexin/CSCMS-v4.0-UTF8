@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:indextempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:indexhead}
+<div id="cscms_space">
+                {cscms:indexleft}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li><span><a href="[user:url userlink=dance]">我分享的</a></span></li>
+								<li><span><a href="[user:url userlink=dance,verify]">审核中的</a></span></li>
+								<li class="on"><span><a href="[user:url userlink=fav]">我收藏的</a></span></li>
+								<li><span><a href="[user:url userlink=down]">我下载的</a></span></li>
+								<li class="right"><a class="" href="[user:url userlink=dance,add]">上传歌曲</a></li>
+							</ul>
+						</div>
+						<div class="main_nav2">
+							<ul>
+							    <li class="current"><a href="[user:url userlink=fav]">收藏的歌曲</a></li>
+							    <li><a href="[user:url userlink=fav,album]">收藏的专辑</a></li>
+							</ul>
+						</div>
+						<div id="dancelist" class="minHeight500">
+							<div class="private_dance_list">
+								<!--有内容-->
+								<ul id="list" style="{if:{cscms:pagedata}==0}display:none;{end if}">
+									<li class="title">
+										<div class="song">&nbsp;&nbsp;歌曲名称</div>
+										<div class="phits">歌曲分类</div>
+										<div class="phits">收藏人气</div>
+										<div class="time">收藏时间</div>
+										<div class="down">下载</div>
+										<div class="deleting">删除</div>
+									</li>
+                                    {cscms:dance table="dance_fav" pagesize="20" uid="auto" sort="time" order="desc"}
+									<li>
+										<div class="song">
+											<span class="cbox"><input name="check" type="checkbox" value="[dance:did]"/></span>
+											<div class="aleft"><a class="mname" href="[dance:url zdy=dance,did,play,id]" target="p">[dance:i].&nbsp;&nbsp;[dance:name]</a></div>
+										</div>
+										<div class="phits"><a class="mname" href="[dance:url zdy=dance,cid,lists,id]" target="lists">{cscmsphp}getzd('dance_list','name','[dance:cid]');{/cscmsphp}</a></div>
+										<div class="phits">{cscmsphp}getzd('dance','shits','[dance:did]');{/cscmsphp}</div>
+										<div class="time">[dance:addtime style=time]</div>
+										<div class="down"><a class="download" href="[dance:url zdy=dance,did,down,id]" title="下载歌曲" target="down"></a></div>
+										<div class="deleting"><a class="del" onClick="fav.del('[user:url userlink=fav,del]/[dance:id]/1');" href="javascript:;" title="删除收藏歌曲"></a></div>
+									</li>
+                                    {/cscms:dance}
+								</ul>
+							</div>
+							{if:{cscms:pagedata}==0}<div class="zanwu">暂无数据！</div>{end if}
+							<div class="page" style="{if:{cscms:pagedata}==0}display:none;{end if}">
+								<div class="play_button">
+									<a class="select_all" href="javascript:;" onclick="playsong(1);">
+										全选
+									</a>
+									<a class="select_add_list" href="javascript:;" onclick="playsong(2);">
+										播放所选
+									</a>
+								</div>
+								<div class="pages" style="{if:{cscms:pagecout}<2}display:none;{end if}">
+									<em title="总数量">{cscms:pagedata}</em>
+                                    <a href="{cscms:pagefirst}">首页</a>
+									{cscms:pagenum len=8}
+                                    <a href="{cscms:pagelast}">尾页</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_dance_1').addClass('on');
+</script>
+{cscms:indexbottom}
+</body>
+</html>

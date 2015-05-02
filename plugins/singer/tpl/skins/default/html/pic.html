@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>[singer:name]图片_[singer:name]演唱会图片_[singer:name]写真图片_[singer:name]图片下载_{cscms:webname}</title>
+<meta name="keywords" content="[singer:name]的图片, [singer:name]写真, [singer:name]好看的图片, [singer:name]演唱会图片_[singer:name]图片下载,{cscms:webname}" />
+<meta name="description" content="[singer:name]写真大全，{cscms:webname}提供最新[singer:name]写真大全，演唱会图片大全，包含[singer:name]写真图片，演唱会图片，好看的[singer:name]图片下载，[singer:name]所有图片免费下载" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/singer.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div id="cscms_singer_show" style="border:1px solid #D9D9D9;background:#FFF;">
+    <div class="wrapper clearfix">
+            	<div class="title clearfix">
+                    <h1 title="[singer:name]">[singer:name] 相册</h1>
+                </div>
+                <div class="submenu">
+                    <ul>
+                        <li><a href="[singer:url link=show]" title="[singer:name]主页">主页</a></li>
+                        <li><a href="[singer:url link=info]" title="[singername]资料">资料</a></li>
+                        <li><a href="[singer:url link=music,id]" title="[singer:name]歌曲">歌曲</a></li>
+                        <li class="current"><a href="[singer:url link=pic,id]" title="[singer:name]图片">图片</a></li>
+                        <li><a href="[singer:url link=mv,hits]" title="[singer:name]MV">MV</a></li>
+                        <li><a href="[singer:url link=album,id]" title="[singer:name]专辑">专辑</a></li>
+                    </ul>
+                </div>
+                <!-- 左边内容 begin -->
+                <div class="mainwrap fl">
+                  <!-- tab begin -->
+                    <div class="tab">
+                    	<h1>[singer:name]相册</h1>
+                    	<!-- tab_menu begin -->
+                    	<div class="tab_menu clearfix">
+                        	<ul>
+                                <li{if:'{cscms:fid}'=='id'} class="selected"{end if}><a href="[singer:url link=pic,id]">最新</a></li>
+                            	<li{if:'{cscms:fid}'=='hits'} class="selected"{end if}><a href="[singer:url link=pic,hits]">最热</a></li>
+                            </ul>
+                        </div>
+                        <!-- tab_menu end -->
+                        <!-- tab_box begin -->
+                        <div class="tab_box">
+                        	<div class="tab_div">
+                            	<p class="picNum">共{cscms:pagedata}张</p>
+                            	<dl class="clearfix">
+								{cscms:pic table="pic_type" field="id,name,pic" pagesize="20" singerid="auto" sort="addtime" order="desc"}
+                                    <dd><a href="[pic:url zdy=pic,id,show,id]" target="_blank" title="[pic:name]"><img width="160"  height="120" alt="[pic:name]" class="lazy" data-original="[pic:pic dir=pic]?size=160*120"/></a></dd>
+								{/cscms:pic}
+                                 </dl>
+								 <div class="pagination"{if:{cscms:pagecout}==1} style="display:none;"{end if}>
+								 <a href="{cscms:pagefirst}" class="pagelink_a">首页</a>
+								 <a href="{cscms:pageup}" class="pagelink_a">上一页</a>
+								 {cscms:pagenum len=10}
+								 <a href="{cscms:pagedown}" class="pagelink_a">下一页</a>
+								 <a href="{cscms:pagelast}" class="pagelink_a">尾页</a>
+								 </div>
+                        </div>
+                        <!-- tab_box end -->
+                    </div>
+                    <!-- tab end -->
+                    </div>
+                    <!-- comment begin -->
+                </div>
+                <!-- 左边内容 end-->
+
+                <!-- 右边内容 begin -->
+                <div class="sider">
+                    <div class="singers clear">
+                    	<h1>[singer:name]相似歌手</h1>
+                        <ul>
+{cscms:singer table="singer" loop="12" tags="auto" sort="hits"}
+                            <li>
+                                    <a href="[singer:url link=show]" title="[singer:name]" class="img"><img src="[singer:pic dir=singer]?size=60*60" width="55" height="55"></a>
+                                    <a href="[singer:url link=show]" title="[singer:name]" class="s_name">[singer:name]</a>
+                                </li>
+{/cscms:singer}
+                         </ul>
+                    </div>
+                    <!-- singer end -->
+                    <p class="h10"></p>
+                    <div class="music">
+                	<h1 class="clearfix"><a href="[singer:url link=music]" target="_blank" title="更多">更多</a>歌曲榜<span>Top10</span></h1>
+                    <div class="tab">
+                    	<div class="tab_menu1">
+                        	<ul>
+                            	<li id="music_1" class="selected">最新</li>
+                                <li id="music_2" class="">最热</li>
+                            </ul>
+                        </div>
+                        <!-- tab_menu end -->
+                        <div class="tab_box1">
+							<div id="musics_1" class="tab_div" style="display:block">
+	                            	<ul>
+									{cscms:dance table="dance" loop="10" singerid="auto" sort="id"}
+	                            	<li class="clearfix"><span class="{if:[dance:i]>3}sub{end if}num">[dance:i]</span><span class="m_name"><em class="m_name"><a href="[dance:url zdy=dance,id,play,id]" target="_blank" title="[dance:name]">[dance:name]</a></em></span><span class="listen"><a href="[dance:url zdy=dance,id,play,id]" target="webmusic" title="试听"></a></span></li>
+									{/cscms:dance}
+	                                </ul>
+	                        </div>
+                            <div id="musics_2" class="tab_div hide" style="display:none">
+	                            	<ul>
+									{cscms:dance table="dance" loop="10" singerid="auto" sort="hits"}
+	                            	<li class="clearfix"><span class="{if:[dance:i]>3}sub{end if}num">[dance:i]</span><span class="m_name"><em class="m_name"><a href="[dance:url zdy=dance,id,play,id]" target="_blank" title="[dance:name]">[dance:name]</a></em></span><span class="listen"><a href="[dance:url zdy=dance,id,play,id]" target="webmusic" title="试听"></a></span></li>
+									{/cscms:dance}
+	                                </ul>
+	                        </div>
+                            <!-- tab_div end -->
+                        </div>
+                        <!-- tab_box end -->
+                    </div>
+                    <!-- tab end -->
+                </div>
+                </div>
+                <!-- 右边内容 end-->
+            </div>
+</div>
+<script type="text/javascript">singer.init();</script>
+{cscms:bottom}
+</body>
+</html>

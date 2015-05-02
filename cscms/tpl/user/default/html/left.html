@@ -1,0 +1,33 @@
+		<div class="common">
+			<h1>[user:nichen]的个人中心</h1>
+			<div class="text">空间地址： <a href="[user:url ulink=index]" target="_blank">[user:url ulink=index]</a></div>
+			<ul class="medal"></ul>
+		</div>
+		<div class="center">
+			<div class="user_center">
+				<div class="user_menu">
+					<div class="menu_center">
+						<ul>
+							<li class="menu_title">综合管理</li>
+							<li id="left_space"><a href="[user:url userlink=space]">最新动态</a></li>
+							<li id="left_blog"><a href="[user:url userlink=blog]">我的说说</a></li>
+							<li id="left_msg"><a href="[user:url userlink=msg]">我的消息<font color=red id="newsmsg"><img src="{cscms:indextempurl}images/new.gif"></font></a></li>
+							<li id="left_gbook"><a href="[user:url userlink=gbook]">我的留言</a></li>
+							<li id="left_fans"><a href="[user:url userlink=fans]">粉丝关注</a></li>
+{cscmsmenu:user}
+							<li class="menu_title">[menu:name]</li>
+          {cscmsmenu:auto}
+							<li id="left_[menu:dir]_[menu:i]"><a href="[menu:link]">[menu:name]</a></li>
+          {/cscmsmenu:auto}
+{/cscmsmenu}
+							<li class="menu_title">账户管理</li>
+							<li id="left_edit"><a href="[user:url userlink=edit]">账号设置</a></li>
+							<li id="left_web"><a href="[user:url userlink=web]">主页模板</a></li>
+							<li id="left_pay"><a href="[user:url userlink=pay]">充值升级</a></li>
+							<li id="left_paylist"><a href="[user:url userlink=pay,lists]">财务记录</a></li>
+							<li id="left_journal"><a href="[user:url userlink=journal]">登录日志</a></li>
+							<li id="left_share"><a href="[user:url userlink=share]">宣传分享</a></li>
+						</ul>
+					</div>
+				</div>
+<script type="text/javascript">msg.init();</script>

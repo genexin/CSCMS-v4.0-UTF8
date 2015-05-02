@@ -1,0 +1,184 @@
+/**
+* @cscms4.x open source management system
+* @copyright 2009-2015  All rights reserved.
+* @Author:Cheng Jie
+* @Dtime:2015-01-17
+*/
+/* 推荐视频 */
+.movie_list{width:920px;padding:20px 29px;}
+.movie_list ul{margin-left:-40px;_margin-left:-80px;padding-top:10px;position:relative;zoom:1;}
+.movie_list li{position:relative;float:left;width:200px;margin-top:10px;margin-left:40px;}
+.movie_list h3{font-size:16px;height:30px;line-height:30px;margin:5px 0 20px;overflow:hidden;}
+.movie_list img{width:200px;height:230px;}
+.movie_list a:hover img{filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity:0.5;opacity:0.5;}
+.movie_list .movie_date{color:#fff;font-size:12px;position:absolute;display:block;height:26px;line-height:26px;top:200px;left:5px;background:rgba(0,0,0,0.5);border-radius:13px;padding:0 13px;text-shadow:1px 1px 1px #000;}
+@media \0screen\,screen\9{
+.movie_list .movie_date{padding:0;}
+.movie_list .bg_top{display:inline-block;height:26px;line-height:27px;padding:0 0 0 14px;cursor:pointer;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='crop',src='/images/tag-bg_b725ffb28a.png');zoom:1}
+.movie_list .bg_tail{display:inline-block;zoom:1;position:absolute;width:13px;height:26px;right:-13px;cursor:pointer;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='crop',src='/images/tag-bg-tail_5aa4fe5fc6.png')}
+}
+
+/*视频列表版块*/
+#vod_video {width:980px;margin:0px auto;}
+#vod_video .title {margin-top:10px;margin-bottom:10px;}
+#vod_video .title h2 {font-size:20px;}
+#vod_video .zuo{width:720px; height:323px auto; float:left;margin-top:10px;background-color:#fff;padding-left:10px; border:1px solid #D9D9D9;}
+#vod_video .you{width:230px; float:right;margin-top:10px;background-color:#fff;padding-left:10px; border:1px solid #D9D9D9;}
+#vod_video .video_list ul{padding-left:8px;overflow:hidden; zoom:1; width:720px;}
+#vod_video .video_list li{float:left; width:158px; margin:9px 20px 10px 0; line-height:2; color:#aaa;overflow: hidden;height:228.5px;}
+#vod_video .video_list li img{width:158px;height:205px;}
+#vod_video .zuo .name{width:150px;white-space:nowrap;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow: hidden;}
+#vod_video .v_rlist{width:220px;}
+#vod_video .v_rlist li{border-bottom:#CEDCF0 dashed 1px;font-size:15px;}
+#vod_video .v_rlist li a{display:block;overflow:hidden;padding:4px;}
+#vod_video .v_rlist li a:hover,#vod_video .v_rlist li a:active{background-color:#EEF3FA;text-decoration:none;}
+#vod_video .v_rlist li a:visited{color:#000;} 
+#vod_video .v_rlist span{float:right;margin-right:3px;cursor:pointer;font-size:12px;color:#000;overflow:hidden;}
+
+
+/*视频内容*/
+#cscms_vod_show {width: 980px;margin: 0 auto}
+#box{width:980px;margin:0 auto;clear:both}
+#sidebar{width:225px;float:right;overflow:hidden}
+.h2title{height:33px;padding:10px 15px 0;overflow:hidden;border-bottom:1px #e3e3e3 solid}
+.hshare{height:30px;overflow:hidden;padding:5px 0 10px;line-height:13px;}
+.hshare1{height:25px;overflow:hidden;padding:5px 0 15px;line-height:13px;width:930px;}
+.hsimg{width:930px!important;height:30px!important;float:none!important;border:none!Important;padding:none!important}
+#vod img{width:160px;height:100px;padding:4px;border:1px solid #c8c8c8;float:left;}
+#vod img:hover{border: 1px solid #83bb48}
+.hshare a{margin-left:3px}
+#box #bdhd h2{ background:url(../images/h2title.gif) -9px -450px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #yuku h2{ background:url(../images/h2title.gif) -9px -130px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #tudou h2{ background:url(../images/h2title.gif) -9px -130px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #qiyi h2{ background:url(../images/h2title.gif) -9px -130px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #qvod h2{ background:url(../images/h2title.gif) -9px -410px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #letv h2{ background:url(../images/h2title.gif) -9px -565px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #qq h2{ background:url(../images/h2title.gif) -9px -130px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #sohu h2{ background:url(../images/h2title.gif) -9px -130px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #sinahd h2{ background:url(../images/h2title.gif) -9px -130px no-repeat;width:150px; height:22px;overflow:hidden}
+#box #swf h2{ background:url(../images/h2title.gif) -9px -130px no-repeat;width:150px; height:22px;overflow:hidden}
+.h2title h3{float:left;font-size: 18px;font-weight:bold;color:#095e9f;}
+.h2title .more{float: right;background: url(../images/more.png) no-repeat 0 48%; COLOR: #444444;padding-left:12px;font-size: 12px;}
+.topinfo2{height:25px;overflow:hidden;padding:5px 0 10px;line-height:13px;width:958px;text-align:center;border-left:1px #d4d3d3 solid;border-right:1px #d4d3d3 solid;border-top:1px #d4d3d3 solid;}
+.topinfo{font-size: 12px/30px;color:#095e9f;border:1px #CBCBCB solid;background:url(../images/infobg.png) 0 0 repeat;padding:0 20px;margin:5px auto 0;width:918px;position:relative}
+.h2title .more a{color:#f00;}
+.fr{float:right;padding-right:20px}
+.topinfo h3{ no-repeat 17px; padding-left:3px}
+.topinfo span{ float:right; font-size:12px; font-weight:normal; padding-right:5px;color:#FF0000}
+.lmain{background:#fff;border:1px #d4d3d3 solid;margin-top:5px;zoom:1}
+#vod{padding:0 10px;width:958px;background-color:#fff;border:1px #d4d3d3 solid;float:left;margin-top:5px;margin-bottom:5px}
+#vod img{width:180px;height:220px;margin:5px;border:1px solid #c8c8c8;float:left;}
+#vod img:hover{border: 1px solid #83bb48}
+#vod .vodshow {float:left;width:678px;height:245px}
+#vod .vodmain {float:left;width:680px;overflow:hidden;margin-left:12px;line-height:25px;border-right:0px #d4d3d3 solid;padding-right:2px;height:148px auto;}
+#vod .vodmain .title{padding-top:8px;font-size: 18px;color:#095e9f;}
+#vod .vodmain .title em{font-size: 12px;margin-left: 10px;font-style:normal;color:#ff6600 !important}
+#vod .vodmain .score{float:right;display:inline-block;padding-right:10px;margin-top:2px}
+#vod .vodmain .score span{text-align: right;margin-top: -25px;height: 21px;font-size:bold 20px/1.5em arial;color:#e02e2e}
+#vod .vodmain .score em{color:#ff6600;font-size:12px;}
+#vod .vodmain .actor{padding-top:8px;}
+#vod .neir{float:left;width:644px;overflow:hidden;line-height:23px;margin-left:10px;border-right:0px #d4d3d3 solid;}
+#vod .jieshao{padding-top:8px;}
+#vod .vodmain .wide{padding-top:5px;display:inline-block;width:48%;}
+#vod .btn_play{width:98px;height:29px;margin-top:5px;text-indent:-999px;display:block;}
+
+/*热门推荐*/
+.vlistbox{padding-left:30px;overflow:hidden;}
+.vlistbox li{float:left;width:106px;overflow:hidden;margin-top:13px;margin-right:29px;padding-bottom:10px;text-align:center;overflow: hidden;text-overflow:ellipsis;}
+.vlistbox li a{float:left;font-size:14px;line-height:20px;width:106px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap;}
+.vlistbox li img{width:106px;height:133px;}
+.vcs{padding:5px 20px;color:#646464 !important;line-height:24px;font-size:14px;width:950px;clear:both;}
+
+/* 播放列表  */
+#listbox{border:1px #dfdfdf solid;width:980px;margin:5px auto 0;background:#fff;overflow:hidden;clear:both}
+.listbox{padding-left:45px;padding-top:20px}
+.listbox li{width: 130px;float: left;margin-right:32px;display: inline;height: 270px;overflow: hidden;}
+.listbox li img {padding: 4px;border: 1px solid #dcdcdc;background: #fff;margin:0 auto;display:block;margin-bottom:2px;position: relative;}
+.listbox li img:hover{border: 1px solid #83bb48}
+.listbox li a{ font-size:14px ;}
+.listbox li p{width:130px;overflow:hidden;white-space:nowrap;padding:0 2px;line-height:22px;color:#999}
+.play-list-box{float:left;margin:0 10px;width:100%;}
+.play-list-box .Title{height:60px;background:url(../images/line.gif) 0 55px repeat-x;margin:0 10px;overflow:hidden}
+.play-list-box h4{width:120px;height:30px;margin-top:20px;float:left;text-indent:-999px;overflow:hidden}
+#bdhd.play-list-box h4{ background:url(../images/player/baiduhd.gif) no-repeat;display:block}
+#swf.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#sohu.play-list-box h4{ background:url(../images/player/sohu.gif) no-repeat;display:block}
+#ku6.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#jplayer.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#flv.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#cmp.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#ckplayer.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#media.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#http.play-list-box h4{ background:url(../images/player/http.gif) no-repeat;display:block}
+#ftp.play-list-box h4{ background:url(../images/player/ftp.gif) no-repeat;display:block}
+#thunder.play-list-box h4{ background:url(../images/player/thunder.gif) no-repeat;display:block}
+#flashget.play-list-box h4{ background:url(../images/player/flashget.gif) no-repeat;display:block}
+#qqdl.play-list-box h4{ background:url(../images/player/qqdl.gif) no-repeat;display:block}
+#bt.play-list-box h4{ background:url(../images/player/bt.gif) no-repeat;display:block}
+#sinahd.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#yyt.play-list-box h4{ background:url(../images/player/yyt.gif) no-repeat;display:block}
+#letv.play-list-box h4{ background:url(../images/player/letv.gif) no-repeat;display:block}
+#qq.play-list-box h4{ background:url(../images/player/normal.gif) no-repeat;display:block}
+#qiyi.play-list-box h4{ background:url(../images/player/qiyi.gif) no-repeat;display:block}
+#youku.play-list-box h4{ background:url(../images/player/youku.gif) no-repeat;display:block}
+#tudou.play-list-box h4{ background:url(../images/player/tudou.gif) no-repeat;display:block}
+#qvod.play-list-box h4{ background:url(../images/player/qvod.gif) no-repeat;display:block}
+#xgvod.play-list-box h4{ background:url(../images/player/xgvod.gif) no-repeat;display:block}
+#jjvod.play-list-box h4{ background:url(../images/player/jjvod.gif) no-repeat;display:block}
+#yyxf.play-list-box h4{ background:url(../images/player/yyxf.gif) no-repeat;display:block}
+.play-list-box .contents{float:left;margin-bottom:10px;height:auto !important;height:30px;min-height:30px;}
+.play-list-box .play-list{width:956px;overflow:auto;overflow-x:hidden;position:relative;padding-left:12px; }
+.play-list-box .play-list a{width:110px;height:28px;line-height:28px;border:1px #e0e0e0 solid;float:left;display:block;text-align:center;margin:8px 7px 0 0;background:#f5f5f5;position:relative;color:#444}
+.play-list-box .play-list a:hover{ text-decoration:none}
+.play-list-box .play-list .new{top:0;right:0;width:22px;height:12px;display:block;position:absolute;background:url(../images/new.gif) no-repeat;text-indent:-999px}
+.play-list-box .play-list a:hover{background:#ff6600;border-color:#ff3300;color:#fff;}
+.txt{height:22px;line-height:22px;float:right;margin-top:15px; font-family:Tahoma;}
+.txt a{color:#e12160}
+.plalistbox{width:978px;border:1px #ccc solid;clear:both;background:#fff;}
+.playlist-tab{height:50px;border-bottom:1px #ccc solid;width:958px;}
+.playlist-tab ul li{padding:4px 5px;float:left;cursor:pointer;border-right:1px #ccc solid}
+.playlist-tab ul li img{display:inline}
+.playlist-box{width:980px;clear:both}
+.pplist{display:block;overflow:hidden}
+.pplist ul li{width:150px;float:left;height:20px;padding:5px 2px}
+
+/*播放页*/
+.cmd {width: 100%;font-size:14px;height: 40px;line-height: 40px;overflow: hidden;}
+.cmd .left {float: left;}
+.cmd .bdsharebuttonbox {float: left;margin-left:30px;margin-top:3px;}
+.cmd .left img {height: 24px;}
+.cmd .left a {margin-left:10px;margin-right:5px;}
+.cmd .right {float: right;padding-right:6px;color:#555;}
+.playend {float: left;width: 100%;color:#333;}
+.playend  .t{float: left;width: 100%;margin:0 auto;margin-top:5px;text-align: center;padding-bottom:10px;border-bottom: solid 1px #f90;}
+.playend  .s{float: left;width: 100%;margin:0 auto;margin-top:10px;}
+.playend  .t a{float: left;margin-left:20px;font-size:16px;width: 100px;height: 25px;text-align: center;padding-top:5px;padding-bottom:5px;}
+.playend  .t a.cur{background:#f60;color:#fff;}
+.playend  .s {float: left;height:auto !important;height:250px;min-height:250px;}
+.playend  .s p{font-size:14px;float: left;width: 100%;margin:5px;}
+.playend  .s .pl h2,.playend  .s .plist h2 {font-size:16px;margin:5px;border-bottom: solid 1px #ccc;}
+.playend  .s .plist {float: left;width: 98%;}
+.playend  .s .plist h2{float: left;width: 100%;padding-bottom:8px;}
+.playend  .s .plist a{font-size:14px;float: left;margin:6px;padding:5px;padding-left:11px;padding-right:10px;background: #6D6D6D;color:#fff;}
+.playend  .s .plist a.cur{background: #ff6600;}
+.down {float:left;width:80px;border:1px solid #ccc;height:32px;line-height:32px;text-align:center;font-size:14px;color:#444;}
+.vlistbox2{padding-left:20px;overflow:hidden;}
+.vlistbox2 li{float:left;width:106px;overflow:hidden;margin-top:13px;margin-right:28px;padding-bottom:5px;text-align:center}
+.vlistbox2 li a{ font-size:14px;line-height:20px}
+.vlistbox2 li img{width:106px;height:133px;}
+.playshow_mask{display:none;width:100%;height:100%;filter:alpha(opacity=100);opacity:1.0;z-index:1001;background-color:#101010;position:fixed;_position:absolute;top:0;left:0;}
+.playArea {position:relative;z-index:1000;margin: 0 auto;}
+.light_switch {width:40px;height:60px;position:absolute;right:80px;top:300px;z-index:999;background:url(../images/kd.png) no-repeat;cursor:pointer;}
+.light_switch span {float:left;margin-top:40px;margin-left:5px;color:#111}
+
+/*评分*/		
+#detail-rating{	float: right;margin-right:20px;}
+#rating{width: 328px;height: 32px;line-height: 30px;overflow: hidden;	color: #666;border: 1px solid #ddd;border-radius: 2px;float: left;clear: both;}			
+#rating span{float: left;font-size: 14px;height: 32px;overflow: hidden;}	
+#rating span.label{padding: 0 0 0 10px;background-color: #eee;}
+#rating .rating{float: left;width: 120px;height: 24px;overflow: hidden;padding: 3px 10px 0 7px;}	
+#rating .rating li{cursor: pointer;float:left;overflow: hidden;width: 24px;height: 24px;text-indent: -99px;background: url(../images/rating.png) 0 0 no-repeat;}
+#rating .rating li.hover,
+#rating .rating li.active{background: url(../images/rating.png) 0 -24px no-repeat;}
+#pingfen{margin-left:15px;font-family: Georgia,"Times New Roman",Times,serif;color:#7c4600;font-weight: normal;}
+

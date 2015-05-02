@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+</head>
+<body>
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>">首页</a></li><li><a href="<?=site_url('pic/admin/lists')?>">图片分类管理</a></li></ul>
+</div>
+<div class="rightinfo">
+    <table class="tablelist">
+    	<thead>
+    	<tr align="left">
+        <th width="250">编号、名称</th>
+        <th width="50">排序</th>
+        <th width="100">中文</th>
+        <th width="100">英文</th>
+        <th width="110">模板</th>
+        <th width="40">状态</th>
+		<th width="*">操作</th>
+        </tr>
+        </thead>
+        <form action="<?=site_url('pic/admin/lists/plsave')?>" id="myform" name="myform" method="post">
+        <tbody>
+<?php
+foreach ($pic_list as $row) {
+        //数量
+        $nums=$this->db->query("SELECT id FROM ".CS_SqlPrefix."pic where cid=".$row->id."")->num_rows();
+		//状态
+		$zt=($row->yid==0)?'<a title="点击隐藏" href="javascript:get_cmd(\''.site_url('pic/admin/lists/init').'?sid=1\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/ok.gif" /></a>':'<a title="点击显示" href="javascript:get_cmd(\''.site_url('pic/admin/lists/init').'?sid=0\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" /></a>';
+        echo '<tr>
+		<td><input name="id[]" type="checkbox" value="'.$row->id.'">'.$row->id.'、'.$row->name.'(<font color="red">'.$nums.'</font>)</td>
+		<td><input class="dfinput" style="width:45px;" name="xid_'.$row->id.'" value="'.$row->xid.'"></td>
+		<td><input class="dfinput" style="width:90px;" name="name_'.$row->id.'" value="'.$row->name.'"></td>
+		<td><input class="dfinput" style="width:90px;" name="bname_'.$row->id.'" value="'.$row->bname.'"></td>
+		<td><input class="dfinput" style="width:100px;" name="skins_'.$row->id.'" value="'.$row->skins.'"></td>
+		<td id="zt_'.$row->id.'">'.$zt.'</td>
+		<td>
+		<a href="###" onclick="Popsbox(\'提示信息\',505,245,\'同时会删除该分类下的所有子分类，您确定删除吗？\',\''.site_url('pic/admin/lists/del').'?id='.$row->id.'\');">删除</a>&nbsp;|&nbsp;
+		<a href="'.site_url('pic/admin/lists/edit').'?id='.$row->id.'">修改</a>&nbsp;|&nbsp;
+		<a href="'.site_url('pic/admin/lists/edit').'?fid='.$row->id.'" style="color:green;">新增</a>
+		</td>
+		</tr>';
+
+
+        $sql_string = "SELECT * FROM ".CS_SqlPrefix."pic_list where fid=".$row->id." order by xid asc";
+        $query = $this->db->query($sql_string); 
+		foreach ($query->result() as $rows) {
+                //数量
+                $nums=$this->db->query("SELECT id FROM ".CS_SqlPrefix."pic where cid=".$rows->id."")->num_rows();
+		        //状态
+		        $zt=($rows->yid==0)?'<a title="点击隐藏" href="javascript:get_cmd(\''.site_url('pic/admin/lists/init').'?sid=1\',\'zt\','.$rows->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/ok.gif" /></a>':'<a title="点击显示" href="javascript:get_cmd(\''.site_url('pic/admin/lists/init').'?sid=0\',\'zt\','.$rows->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" /></a>';
+                echo '<tr>
+				<td><input name="id[]" type="checkbox" value="'.$rows->id.'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├&nbsp;'.$rows->id.'、'.$rows->name.'(<font color="red">'.$nums.'</font>)</td>
+		        <td><input class="dfinput" style="width:45px;" name="xid_'.$rows->id.'" value="'.$rows->xid.'"></td>
+		        <td><input class="dfinput" style="width:90px;" name="name_'.$rows->id.'" value="'.$rows->name.'"></td>
+		        <td><input class="dfinput" style="width:90px;" name="bname_'.$rows->id.'" value="'.$rows->bname.'"></td>
+		        <td><input class="dfinput" style="width:100px;" name="skins_'.$rows->id.'" value="'.$rows->skins.'"></td>
+		        <td id="zt_'.$rows->id.'">'.$zt.'</td>
+		        <td>
+		        <a href="###" onclick="Popsbox(\'提示信息\',505,245,\'您确定删除吗？\',\''.site_url('pic/admin/lists/del').'?id='.$rows->id.'\');">删除</a>&nbsp;|&nbsp;
+	        	<a href="'.site_url('pic/admin/lists/edit').'?id='.$rows->id.'">修改</a>
+		        </td>
+		        </tr>';
+		}
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span>全选</li>
+            <li class="click" onclick="Popsbox('提示信息',505,245,'您确定修改所选吗？','submit');"><span><img src="<?=Web_Path?>packs/admin/images/t02.png" /></span>修改选中</li>
+            <li class="click"><a href="<?=site_url('pic/admin/lists/edit')?>"><span><img src="<?=Web_Path?>packs/admin/images/t01.png" /></span>新增大类</a></li>
+       </ul>
+        <ul class="toolbar1">
+            <li style="border:0;"><div style="float:left;">转移到：</div>
+			<div class="vocation">
+            <select style="float:left;" class="select2" name="cid" id="cid">
+		         <option value="0">请选择目标</option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."pic_list where fid=0 order by xid asc"); 
+foreach ($query->result() as $row) {
+		echo '<option value="'.$row->id.'">&nbsp;|—'.$row->name.'</option>';
+        $sql_string = "SELECT id,name FROM ".CS_SqlPrefix."pic_list where fid=".$row->id." order by xid asc";
+        $query = $this->db->query($sql_string); 
+		foreach ($query->result() as $row2) {
+             echo '<option value="'.$row2->id.'">&nbsp;|&nbsp;&nbsp;&nbsp;|—'.$row2->name.'</option>';
+		}
+}
+?>
+            </select>
+			</div>
+            </li>
+            <li class="click" onclick="cmd();"><span></span><font color=#0000ff>确定转移</font></li>
+       </ul>
+    </div>
+	</form>
+    <div class="footer">页面执行时间{elapsed_time}秒，共{sql_queries}个查询语句，消耗内存{memory_usage}</div>
+</div>
+<script type="text/javascript"> 
+$(".select2").uedSelect({
+		width : 120			  
+});
+function cmd() {
+    var cid=$('#cid').val();
+	if(cid==0){
+         alert('请选择目标');
+	}else{
+         $('#myform').attr('action','<?=site_url('pic/admin/lists/zhuan')?>?cid='+cid);
+	     $('#myform').submit();
+	}
+}
+$('.tablelist tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('basedb')?>"><?=L('tpl_01')?></a></li></ul>
+</div>
+<div class="rightinfo">
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click"><a href="#beifen"><span></span><?=L('tpl_02')?></a></li>
+            <li class="click"><a href="<?=site_url('basedb/restore')?>"><span></span><?=L('tpl_03')?></a></li>
+       </ul>
+    </div>
+	<form action="<?=site_url('basedb/optimize')?>" method="post" id="myform" name="myform">
+    <table class="imgtable">
+    	<thead>
+    	<tr>
+        <th><?=L('tpl_04')?></th>
+        <th><?=L('tpl_05')?></th>
+        <th><?=L('tpl_06')?></th>
+        <th><?=L('tpl_07')?></th>
+        <th><?=L('tpl_08')?></th>
+        <th><?=L('tpl_09')?></th>
+        <th><?=L('tpl_10')?></th>
+        <th><?=L('tpl_11')?></th>
+        </tr>
+        </thead>
+        <tbody>
+<?php
+foreach ($tables as $row) {
+        $bname=empty($row->Comment)?'':' （'.$row->Comment.'）';
+        echo '
+        <tr height="30">
+        <td><input name="id[]" type="checkbox" value="'.$row->Name.'" /></td>
+        <td>'.$row->Name.$bname.'</td>
+        <td>'.$row->Engine.'</td>
+        <td>'.$row->Collation.'</td>
+        <td>'.$row->Rows.'</td>
+        <td>'.formatsize($row->Data_length).'</td>
+        <td>'.formatsize($row->Data_free).'</td>
+        <td><a href="'.site_url('basedb/optimize').'?table='.$row->Name.'">'.L('tpl_12').'</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="'.site_url('basedb/repair').'?table='.$row->Name.'">'.L('tpl_13').'</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Popsboxif(\''.$row->Name.'\',505,355,\''.site_url('basedb/fields').'?table='.$row->Name.'\');">'.L('tpl_14').'</a></td>
+        </tr> ';
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools" id="beifen">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span><?=L('tpl_15')?></li>
+            <li class="click" onclick="cmd(1);"><span></span><?=L('tpl_16')?></li>
+            <li class="click" onclick="cmd(2);"><span></span><?=L('tpl_17')?></li>
+       </ul>
+        <ul class="toolbar1">
+            <li style="border:0"><?=L('tpl_18')?>：<input name="size" type="text" id="size" class="dfinput" value="1024" style="width:55px;"/>&nbsp;KB</li>
+            <li class="click" onclick="cmd(3);"><span></span><font color=#0000ff><?=L('tpl_19')?></font></li>
+       </ul>
+    </div>
+	</form>
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+<script type="text/javascript"> 
+function cmd(n) {
+    if(n==1){
+         $('#myform').attr('action','<?=site_url('basedb/optimize')?>');
+	}else if(n==2){
+         $('#myform').attr('action','<?=site_url('basedb/repair')?>');
+	}else{
+         $('#myform').attr('action','<?=site_url('basedb/backup')?>');
+	}
+	$('#myform').submit();
+}
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

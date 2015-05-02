@@ -1,0 +1,44 @@
+<?php  
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+$config['base_url']	            = 'http://'.Web_Url.Web_Path;
+$config['index_page']           = SELF;
+$config['uri_protocol']	        = 'AUTO';
+$config['url_suffix']           = '';
+$config['language']	            = CS_Language;
+$config['charset']              = 'GBK';
+$config['enable_hooks']         = FALSE;
+$config['subclass_prefix']      = 'Cscms_';
+$config['permitted_uri_chars']  ='a-z 0-9~.:_\-@';
+$config['allow_get_array']	    = TRUE;
+$config['enable_query_strings'] = FALSE;
+$config['controller_trigger']	= 'c';
+$config['function_trigger']	    = 'm';
+$config['directory_trigger']	= 'd';
+$config['log_threshold']        = 0;
+$config['log_path']             = CSCMS.'logs/';
+$config['log_date_format']      = 'Y-m-d H:i:s';
+$config['cache_path']           = 'cache/';
+$config['encryption_key']       = CS_Encryption_Key;
+$config['sess_cookie_name'] 	= 'cscms_cookie'; //session名称
+$config['sess_expiration']	    = 7200; //session保存时间
+$config['sess_expire_on_close']	= TRUE;  //是否导致session自动失效
+$config['sess_encrypt_cookie']	= TRUE; //是否加密session
+$config['sess_use_database']	= FALSE;  //是否保存session数据到数据库
+$config['sess_table_name']	    = 'user_session';  //保存session数据库表的名称
+$config['sess_match_ip']	    = FALSE;   //是否匹配用户的IP地址读取session数据
+$config['sess_match_useragent']	= FALSE;   //是否匹配用户代理读取session数据
+$config['sess_time_to_update']	= 7200;    //多少秒刷新session信息之间的词
+$config['cookie_prefix']	    = "cscms_";   //设定一个Cookie前缀，如果你需要避免碰撞
+$config['cookie_domain']	    = "";        //Cookie域
+$config['cookie_path']		    = Web_Path;       //Cookie路径
+$config['cookie_secure']	    = FALSE;     //Cookie安全的HTTPS连接
+$config['global_xss_filtering'] = FALSE;
+$config['csrf_protection']      = FALSE;   //开关
+$config['csrf_token_name']      = 'csrf_text_name';      //token名称
+$config['csrf_cookie_name']     = 'csrf_cookie_name';   //cookie名称
+$config['csrf_expire']          = 1800;   //到期秒数
+$config['compress_output']      = FALSE;
+$config['time_reference']       = 'local';
+$config['rewrite_short_tags']   = TRUE;
+$config['proxy_ips']            = '';

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/news.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div class="wrap mt20" style="margin-top:10px;">
+<div class="box cat_pos clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+<span class="cat_pos_l">您的位置：<a href='{cscms:webpath}'>首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href='[news:url link=lists,id]' >[news:name]</a></h2></span><span class="cat_pos_r">共有<em>{cscms:pagedata}</em>篇文章</span></div></div>
+<div class="wrap mt20" style="border:1px solid #D9D9D9;background:#FFF; margin-top:10px;">
+<div class="box channel list2">
+<ul class="list">
+{cscms:news table="news" field="id,color,name,addtime" pagesize="20" cid="auto" sort="addtime" order="desc"}<li><a href="[news:url link=show,id]" target="_blank"><span>[news:addtime style=Y-m-d H:i:s]</span><font color="[news:color]">[news:name]</font></a></li>{/cscms:news}
+{if:{cscms:pagedata}==0}<li style="text-align:center;color:#333;"><b>&nbsp;&nbsp;没有相关记录~!</b></li>{end if}
+</ul>
+<div class="clear"></div>
+<div class="pagination"{if:{cscms:pagecout}==1} style="display:none;"{end if}>
+<a href="{cscms:pagefirst}" class="pagelink_a">首页</a>
+<a href="{cscms:pageup}" class="pagelink_a">上一页</a>
+{cscms:pagenum len=10}
+<a href="{cscms:pagedown}" class="pagelink_a">下一页</a>
+<a href="{cscms:pagelast}" class="pagelink_a">尾页</a>
+</div>
+</div>
+</div>
+{cscms:bottom}
+</body>
+</html>

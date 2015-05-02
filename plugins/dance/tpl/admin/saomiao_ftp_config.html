@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('dance/admin/dance/saomiao')?>"><?=L('tpl_233')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('dance/admin/saomiao')?>"><?=L('tpl_234')?></a></li> 
+               <li><a href="<?=site_url('dance/admin/saomiao/ftp')?>"><?=L('tpl_235')?></a></li> 
+               <li><a href="#tab1" class="selected" href="<?=site_url('dance/admin/saomiao/ftp_config')?>"><?=L('tpl_236')?></a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('dance/admin/saomiao/ftpsave')?>" method="post" id="myform" name="myform">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_255')?></label><input name="FTP_Sm_Server" type="text" class="dfinput" value="<?=FTP_Sm_Server?>" style="width:250px;"/>&nbsp;&nbsp;<?=L('tpl_256')?>
+				</li>
+                <li><label><?=L('tpl_257')?></label><input name="FTP_Sm_Port" type="text" class="dfinput" value="<?=FTP_Sm_Port?>" style="width:250px;"/>&nbsp;&nbsp;<?=L('tpl_258')?>
+				</li>
+                <li><label><?=L('tpl_259')?></label><input name="FTP_Sm_Name" type="text" class="dfinput" value="<?=FTP_Sm_Name?>" style="width:250px;"/>&nbsp;&nbsp;<?=L('tpl_259')?>
+				</li>
+                <li><label><?=L('tpl_260')?></label><input name="FTP_Sm_Pass" type="text" class="dfinput" value="<?=substr(FTP_Sm_Pass,0,3)?>*****<?=substr(FTP_Sm_Pass,-3)?>" style="width:250px;"/>&nbsp;&nbsp;<?=L('tpl_261')?>
+				</li>
+                <li><label><?=L('tpl_262')?></label>
+				  <input class="box" name="FTP_Sm_Ive" type="radio" value="TRUE"<?php if(FTP_Sm_Ive==TRUE) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="FTP_Sm_Ive" type="radio" value="false"<?php if(FTP_Sm_Ive==false) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>
+                </li>
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('tpl_263')?>"/></li>
+      	   </ul>
+  	    </div> 
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

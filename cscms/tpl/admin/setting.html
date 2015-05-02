@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$("#usual1 ul").idTabs();
+});
+function pl(t) {
+   for (var i = 0; i < 6; i++) {
+      if(t==i){
+          $('#pl'+i).show();
+      }else{
+          $('#pl'+i).hide();
+	  }
+	  if(t==0) $('#pl4').show();
+	  if(t==1) $('#pl4').hide();
+	  if(t==4) $('#pl4').hide();
+   }
+}
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('setting')?>"><?=L('setting_01')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=L('setting_02')?></a></li> 
+               <li><a href="#tab2"><?=L('setting_03')?></a></li> 
+               <li><a href="#tab3"><?=L('setting_04')?></a></li>
+               <li><a href="#tab4"><?=L('setting_05')?></a></li>
+               <li><a href="#tab5"><?=L('setting_06')?></a></li>
+               <li><a href="#tab6"><?=L('setting_07')?></a></li> 
+               <li><a href="#tab7"><?=L('setting_69')?></a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('setting/save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_08')?></label><input name="Web_Name" type="text" class="dfinput" value="<?=Web_Name?>" style="width:245px;"/><b>*</b><?=vsprintf(L('setting_00'),array('{cscms:webname}'))?></li>
+                <li><label><?=L('setting_09')?></label><input name="Web_Url" type="text" class="dfinput" value="<?=Web_Url?>" style="width:245px;"/><b>*</b><?=L('setting_10')?></li>
+                <li><label><?=L('setting_11')?></label><input name="Web_Path" type="text" class="dfinput" value="<?=Web_Path?>" style="width:145px;"/><b>*</b><?=L('setting_12')?></li>
+                <li><label><?=L('setting_13')?></label><input name="Admin_Code" type="text" class="dfinput" value="<?=Admin_Code?>" style="width:145px;"/><b>*</b><?=L('setting_14')?></li>
+                <li><label><?=L('setting_15')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="Admin_QQ" type="text" class="dfinput" value="<?=Admin_QQ?>" style="width:145px;"/><b></b><?=vsprintf(L('setting_00'),array('{cscms:qq}'))?></li>
+                <li><label><?=L('setting_16')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="Admin_Tel" type="text" class="dfinput" value="<?=Admin_Tel?>" style="width:145px;"/><b></b><?=vsprintf(L('setting_00'),array('{cscms:tel}'))?></li>
+                <li><label><?=L('setting_17')?></label><input name="Admin_Mail" type="text" class="dfinput" value="<?=Admin_Mail?>" style="width:145px;"/><b></b><?=vsprintf(L('setting_00'),array('{cscms:mail}'))?></li>
+                <li><label><?=L('setting_18')?></label><input name="Web_Icp" type="text" class="dfinput" value="<?=Web_Icp?>" style="width:145px;"/><b></b><?=vsprintf(L('setting_00'),array('{cscms:icp}'))?></li>
+      	   </ul>
+  	    </div> 
+
+        <div id="tab2" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_19')?></label>
+				  <input onclick="$('#off').hide();" class="box" name="Web_Off" type="radio" value="1"<?php if(Web_Off==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#off').show();" class="box" name="Web_Off" type="radio" value="0"<?php if(Web_Off==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                <li id="off"<?php if(Web_Off==1) echo 'style="display:none";';?>><label><?=L('setting_20')?></label><input name="Web_Onneir" type="text" class="dfinput" value="<?=Web_Onneir?>" style="width:245px;"/><b></b><?=L('setting_21')?></li>
+                <li><label><?=L('setting_22')?></label>  
+				  <input onclick="$('#offss').hide();" class="box" name="Web_Mode" type="radio" value="1"<?php if(Web_Mode==1) echo ' checked="checked"';?>>&nbsp;<?=L('setting_23')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#offss').hide();" class="box" name="Web_Mode" type="radio" value="3"<?php if(Web_Mode==3) echo ' checked="checked"';?>>&nbsp;<?=L('setting_24_2')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#offss').show();" class="box" name="Web_Mode" type="radio" value="2"<?php if(Web_Mode==2) echo ' checked="checked"';?>>&nbsp;<?=L('setting_24')?>&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                <li id="offss"<?php if(Web_Mode!=2) echo 'style="display:none";';?>><label><?=L('setting_26')?></label>  
+                  <div class="vocation">
+                      <select class="select1" name="Html_Index" onchange="menu('jingtai',$(this).val());">
+                            <option value="index.html"<?php if(Html_Index=='index.html') echo ' selected';?>>index.html</option>
+                            <option value="index.htm"<?php if(Html_Index=='index.htm') echo ' selected';?>>index.htm</option>
+                            <option value="index.shtml"<?php if(Html_Index=='index.shtml') echo ' selected';?>>index.shtml</option>
+                            <option value="index.shtm"<?php if(Html_Index=='index.shtm') echo ' selected';?>>index.shtm</option>
+                      </select>
+                  </div>
+                </li>
+				<li><label><?=L('setting_27')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="Html_StopTime" type="text" class="dfinput" value="<?=Html_StopTime?>" style="width:145px;"/><b>*</b><?=L('setting_28')?></li>
+				<li><label><?=L('setting_29')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="Html_PageNum" type="text" class="dfinput" value="<?=Html_PageNum?>" style="width:145px;"/><b>*</b><?=L('setting_30')?></li>
+                <li><label><?=L('setting_61')?></label>  
+                  <div class="vocation">
+                      <select class="select1" id="CS_Language" name="CS_Language">
+                            <option value="zh_cn"<?php if(CS_Language=='zh_cn') echo ' selected';?>><?=L('zh_cn')?>（zh_cn）</option>
+                            <option value="english"<?php if(CS_Language=='english') echo ' selected';?>><?=L('english')?>（english）</option>
+                      </select>
+                  </div>
+                </li>
+      	   </ul>
+  	    </div> 
+
+        <div id="tab3" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_31')?></label> 
+				  <input onclick="$('#cache').show();" class="box" name="Cache_Is" type="radio" value="1"<?php if(Cache_Is==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#cache').hide();" class="box" name="Cache_Is" type="radio" value="0"<?php if(Cache_Is==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+      	   </ul>
+		   <ul class="forminfo" id="cache"<?php if(Cache_Is==0) echo 'style="display:none";';?>>
+                <li><label><?=L('setting_32')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="Cache_Time" type="text" class="dfinput" value="<?=Cache_Time?>" style="width:145px;"/><b>*</b><?=L('setting_33')?></li>
+      	   </ul>
+      	   <ul class="forminfo" style="float:left;width:98%;border-top:1px solid #ccc;">
+                <li><label><?=L('setting_31_2')?></label> 
+				  <input onclick="$('#cache2').show();" class="box" name="CS_Cache_On" type="radio" value="TRUE"<?php if(CS_Cache_On==TRUE) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#cache2').hide();" class="box" name="CS_Cache_On" type="radio" value="FALSE"<?php if(CS_Cache_On==FALSE) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+      	   </ul>
+		   <ul class="forminfo" id="cache2"<?php if(CS_Cache_On==FALSE) echo 'style="display:none";';?>>
+                <li><label><?=L('setting_32')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="CS_Cache_Time" type="text" class="dfinput" value="<?=CS_Cache_Time?>" style="width:145px;"/><b>*</b><?=L('setting_33')?></li>
+                <li><label><?=L('setting_34')?></label><input name="CS_Cache_Dir" type="text" class="dfinput" value="<?=CS_Cache_Dir?>" style="width:145px;"/><b>*</b><?=L('setting_35')?></li>
+      	   </ul>
+  	    </div> 
+        <div id="tab4" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_36')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="CS_Play_w" type="text" class="dfinput" value="<?=CS_Play_w?>" style="width:75px;"/>px<b>*</b><?=L('setting_36')?></li>
+				<li><label><?=L('setting_37')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="CS_Play_h" type="text" class="dfinput" value="<?=CS_Play_h?>" style="width:75px;"/>px<b>*</b><?=L('setting_37')?></li>
+                <li><label><?=L('setting_38')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="CS_Play_sw" type="text" class="dfinput" value="<?=CS_Play_sw?>" style="width:75px;"/>px<b>*</b><?=L('setting_38')?></li>
+				<li><label><?=L('setting_39')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="CS_Play_sh" type="text" class="dfinput" value="<?=CS_Play_sh?>" style="width:75px;"/>px<b>*</b><?=L('setting_39')?></li>
+				<li><label><?=L('setting_40')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="CS_Play_AdloadTime" type="text" class="dfinput" value="<?=CS_Play_AdloadTime?>" style="width:75px;"/><?=L('miao')?><b>*</b><?=L('setting_41')?></li>
+      	   </ul>
+  	    </div> 
+        <div id="tab5" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_42')?></label><textarea name="Web_Title" cols="70" rows="3" class="textinput"><?=Web_Title?></textarea><b></b><?=vsprintf(L('setting_00'),array('{cscms:title}'))?></li>
+				<li><label><?=L('setting_43')?></label><textarea name="Web_Keywords" cols="70" rows="3" class="textinput"><?=Web_Keywords?></textarea><b></b><?=vsprintf(L('setting_00'),array('{cscms:keywords}'))?></li>
+				<li><label><?=L('setting_44')?></label><textarea name="Web_Description" cols="70" rows="3" class="textinput"><?=Web_Description?></textarea><b></b><?=vsprintf(L('setting_00'),array('{cscms:description}'))?></li>
+      	   </ul>
+  	    </div> 
+        <div id="tab6" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_45')?></label><textarea name="Web_Key" cols="70" rows="3" class="textinput"><?=Web_Key?></textarea><b></b><?=L('setting_58').vsprintf(L('setting_00'),array('{cscms:keyword}'))?></li>
+				<li><label><?=L('setting_46')?></label><textarea name="Web_Notice" cols="70" rows="3" class="textinput"><?=Web_Notice?></textarea><b></b><?=vsprintf(L('setting_00'),array('{cscms:notice}'))?></li>
+				<li><label><?=L('setting_47')?></label><textarea name="Web_Count" cols="70" rows="3" class="textinput"><?=Web_Count?></textarea><b></b><?=vsprintf(L('setting_00'),array('{cscms:stat}'))?></li>
+				<li><label><?=L('setting_48')?></label><textarea name="Pl_Str" cols="70" rows="3" class="textinput"><?=Pl_Str?></textarea><b></b><?=L('setting_59')?></li>
+                <li><label><?=L('setting_49')?></label>  
+				  <input onclick="pl(0);" class="box" name="Pl_Modes" type="radio" value="0"<?php if(Pl_Modes==0) echo ' checked="checked"';?>>&nbsp;<?=L('setting_50')?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="pl(1);" class="box" name="Pl_Modes" type="radio" value="1"<?php if(Pl_Modes==1) echo ' checked="checked"';?>>&nbsp;<?=L('setting_51')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="pl(2);" class="box" name="Pl_Modes" type="radio" value="2"<?php if(Pl_Modes==2) echo ' checked="checked"';?>>&nbsp;<?=L('setting_52')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="pl(3);" class="box" name="Pl_Modes" type="radio" value="3"<?php if(Pl_Modes==3) echo ' checked="checked"';?>>&nbsp;<?=L('setting_70')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="pl(4);" class="box" name="Pl_Modes" type="radio" value="4"<?php if(Pl_Modes==4) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                <li id="pl0"<?php if(Pl_Modes>0) echo 'style="display:none";';?>><label><?=L('setting_53_1')?></label>  
+				  <input class="box" name="Pl_Youke" type="radio" value="0"<?php if(Pl_Youke==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="Pl_Youke" type="radio" value="1"<?php if(Pl_Youke==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>
+                </li>
+                <li id="pl4"<?php if(Pl_Modes>0) echo 'style="display:none";';?>><label><?=L('setting_53')?></label><input name="Pl_Num" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" type="text" class="dfinput" value="<?=Pl_Num?>" style="width:75px;"/><b>*</b><?=L('setting_54')?></li>
+                <li id="pl1"<?php if(Pl_Modes!=1) echo 'style="display:none";';?>><label><?=L('setting_55')?></label><input name="Pl_Yy_Name" type="text" class="dfinput" value="<?=Pl_Yy_Name?>" style="width:145px;"/><b>*</b><?=L('setting_55')?></li>
+                <li id="pl2"<?php if(Pl_Modes!=2) echo 'style="display:none";';?>><label><?=L('setting_56')?></label><input name="Pl_Ds_Name" type="text" class="dfinput" value="<?=Pl_Ds_Name?>" style="width:145px;"/><b>*</b><?=L('setting_56')?></li>
+                <li id="pl3"<?php if(Pl_Modes!=3) echo 'style="display:none";';?>><label><?=L('setting_71')?></label><input name="Pl_Cy_Id" type="text" class="dfinput" value="<?=Pl_Cy_Id?>" style="width:150px;"/><b>*</b><?=L('setting_71')?></li>
+      	   </ul>
+  	    </div> 
+        <div id="tab7" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_62')?></label>
+				  <input onclick="$('#mobile').show();" class="box" name="Mobile_Is" type="radio" value="1"<?php if(Mobile_Is==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#mobile').hide();" class="box" name="Mobile_Is" type="radio" value="0"<?php if(Mobile_Is==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <b></b><?=L('setting_63')?></li>
+      	   </ul>
+      	   <ul class="forminfo" id="mobile"<?php if(Mobile_Is==0) echo 'style="display:none";';?>>
+				<li><label><?=L('setting_64')?></label><input name="Mobile_Url" type="text" class="dfinput" value="<?=Mobile_Url?>" style="width:245px;"/><b>*</b><?=L('setting_65')?></li>
+				<li><label><?=L('setting_66')?></label>
+				  <input class="box" name="Mobile_Win" type="radio" value="1"<?php if(Mobile_Win==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="Mobile_Win" type="radio" value="0"<?php if(Mobile_Win==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <b></b><?=L('setting_67')?></li>				
+				<li><label><?=L('setting_68')?></label>
+                  <div class="vocation">
+                      <select class="select1" name="Mobile_Skins">
+<?php
+foreach ($mobile_skins as $t) {
+          $clas=(Mobile_Skins==$t['path'])?' selected':'';
+          echo '<optgroup label="'.$t['name'].'"><option value="'.$t['path'].'"'.$clas.'>'.$t['path'].'</option></optgroup>';
+}
+?>
+                      </select>
+                  </div>
+				</li>		
+      	   </ul>
+  	    </div> 
+      	<ul class="forminfo">
+		     <input name="Web_Skins" type="hidden" value="<?=Web_Skins?>">
+		     <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('setting_57')?>"/></li>
+      	</ul>
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

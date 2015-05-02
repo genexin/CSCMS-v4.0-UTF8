@@ -1,0 +1,31 @@
+{cscms:gbook table="gbook" cid="1" pagesize="5" sort="id" fid="0" order="desc"}
+ 			      <div style="width:100%;height:auto; border:1px solid #ddd; margin:0 auto;margin-top:10px;color:#333;" >
+                       <div style="width:100%; height:30px; line-height:30px; font-size:12px; background:#f6f6f6">
+ 			                  <div style="width:50%; float:left;  color:#185691;">&nbsp;<strong>[gbook:user zd=nichen]</strong>&nbsp;&nbsp;IP：[gbook:ip]</div>
+ 			                  <div style="width:48%; float:left;text-align:right; font-size:12px;">发表于:<font color="red">[gbook:addtime]</font></div>
+ 			            </div>
+ 			            <div style="width:95%; margin:0 auto; height:50px;font-size:12px; line-height:25px;">&nbsp;&nbsp;[gbook:neir]</div>
+                        {cscmstype:gbook table="gbook" fid="auto" sort="id" order="desc"}
+ 			            <div style="width:95%; margin:0 auto; height:20px;font-size:12px; line-height:20px; color:red;">&nbsp;&nbsp;站长回复：</div>
+ 			            <div style="width:95%; margin:0 auto; color:red;height:auto;font-size:12px; line-height:20px;">&nbsp;&nbsp;[gbook:neir]</div>
+                        {/cscmstype:gbook}
+                  </div>
+{/cscms:gbook}
+<div class="pages">
+<a href="{cscms:pagefirst}" target="_self">首页</a>
+<a href="{cscms:pageup}" target="_self">上一页</a>
+{cscms:pagenum len=8}
+<a href="{cscms:pagedown}" target="_self">下一页</a>
+<a href="{cscms:pagelast}" target="_self">尾页</a>
+<span class="page_num">当前在第<em>{cscms:pagenow}/{cscms:pagecout}</em>页</span>
+</div>
+<style>
+.pages {width:100%;margin:0 auto;border:1px solid #ddd;height:30px;line-height:30px;font-size:12px;text-align: center;}
+.pages a{margin-left:10px;}
+</style>
+<input type='hidden' id='gbook_token' value='[gbook:token]'/>
+<div style="border:1px solid #ddd; height:200px; width:100%;">
+    <div><textarea name="cscms_gbook_content" id="cscms_gbook_content" style="width:95%;border:1px solid #ddd;float:left;margin:10px;" rows="7"></textarea></div>
+    <div style="float:left;width:99.8%;height:30px;padding-left:10px;color:#36C;font-size:12px;line-height:30px;">声明：您如果有什么建议或意见,请在这里给管理员留言,您所发的信息不能触犯国家法律,否者您需对自己言行负全部责任！</div>
+	<div style="margin-top:5px;padding:10px;">&nbsp;&nbsp;<input onclick="cscms_gbookadd();" type="button" value="我要留言" style="border:1px solid #999;color:#39F;height:31px;width:96px;margin-top:5px;font-weight:bold;cursor:pointer;" ></div>
+</div>

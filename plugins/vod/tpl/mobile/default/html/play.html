@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+</head>
+<body id="xtopjsinfo">
+<div class="wrapper">
+{cscms:head}
+<div class="container">
+<section class="module_user">
+<div class="hd"><div class="mod_left"><span class="name">当前位置：播放[vod:name]</span></div></div>
+</section>
+ <div class="player" style="background-image:url('[vod:pic dir=vod]');background-repeat:repeat;">
+    <div class="title">[vod:name]<span id="currTimeId"></span></div>
+	<video id="player" width="100%" controls="" preload="" poster="{cscms:tempurl}images/player.png">
+			<source src="[vod:wapurl]">
+	</video>
+ </div>
+ <div class="cmd">
+     <div class="left">
+         <a href="javascript:vod_fav([vod:id]);"><img align="absmiddle" title="收藏" src="{cscms:tempurl}images/fav.png">&nbsp;<span id="shits">[vod:shits]</span></a>
+         <a href="javascript:vod_ding([vod:id]);"><img align="absmiddle" title="喜欢" src="{cscms:tempurl}images/ding.png">&nbsp;<span id="dhits">[vod:dhits]</span></a>
+	 </div>
+     <div class="right">
+         人气：[vod:hits]
+	 </div>
+ </div>
+ <div class="playend">
+     <div class="t">
+          <a id="t_1" class="cur" href="javascript:play_cmd(1);">详情</a>
+          <a id="t_2" href="javascript:play_cmd(2);">剧集</a>
+          <a id="t_3" href="javascript:play_cmd(3);">评论</a>
+	 </div>
+     <div class="s" id="s_1">
+	    <p>名称：[vod:name]</p>
+	    <p>导演：[vod:daoyan]</p>
+	    <p>主演：[vod:zhuyan]</p>
+	    <p>地区：[vod:diqu]</p>
+	    <p>时间：[vod:addtime]</p>
+	    <p>介绍：[vod:text]</p>
+	 </div>
+     <div class="s" id="s_2" style="display:none;">
+		 <div class="plist">
+         {vod:play}
+		      <h2>[play:name]</h2>
+              {vod:url order=desc}<a title="[url:name]" href="[url:link]">[url:name]</a>{/vod:url}
+		 {/vod:play}
+		 </div>
+	 </div>
+     <div class="s" id="s_3" style="display:none;">
+		 <div class="pl">
+         [vod:pl]
+		 </div>
+	 </div>
+ </div>
+</div>
+<div class="push"></div>
+</div>
+{cscms:bottom}
+<script type='text/javascript'>
+function play_cmd(n){
+	for (i=1; i<4; i++) {
+        if(i==n){
+              $('#t_'+i).addClass('cur');
+              $('#s_'+i).show();
+		}else{
+              $('#t_'+i).removeClass('cur');
+              $('#s_'+i).hide();
+		}
+	}
+}
+function formatSeconds(value) {
+   if(value=='NaN'){
+       return '';
+   }
+   var theTime = parseInt(value);// 秒
+   var theTime1 = 0;// 分
+   var theTime2 = 0;// 小时
+   if(theTime > 60) {
+      theTime1 = parseInt(theTime/60);
+      theTime = parseInt(theTime%60);
+      if(theTime1 > 60) {
+         theTime2 = parseInt(theTime1/60);
+         theTime1 = parseInt(theTime1%60);
+       }
+   }
+   shi=parseInt(theTime2);
+   fen=parseInt(theTime1);
+   miao=parseInt(theTime);
+   if(shi > 0){
+       fen=shi*60+fen;
+   }
+   if(miao < 10){
+         miao = "0"+miao;
+   }
+   if(fen < 10){
+         fen = "0"+fen;
+   }
+   result=fen+":"+miao;
+   return result;
+}
+var _video = document.getElementById('player');
+function ptimes(){
+	  mpetime=formatSeconds(_video.currentTime);
+      $('#currTimeId').html(mpetime);
+}
+$('#player').click(function(){
+   $('.player').css('background-image','url()')
+   if(!_video.paused){
+       _video.play();
+	   setInterval('ptimes()',1000);
+   }else{
+       _video.pause();
+   }
+});
+//顶视频 
+function vod_ding(id){
+     $.getJSON(cscms_path+"index.php/vod/ajax/vodding/"+id+"?callback=?",function(data) {
+           if(data){
+               if(data['msg']=='ok'){
+                   $("#dhits").text(parseInt($("#dhits" ).text()) + 1);
+               }else{
+                   do_alert(data['msg']);
+               }
+           } else {
+                do_alert('网络故障，连接失败!');
+           }
+     });
+}
+//收藏视频 
+function vod_fav(id){
+     $.getJSON(cscms_path+"index.php/vod/ajax/vodfav/"+id+"?callback=?",function(data) {
+           if(data){
+               if(data['msg']=='ok'){
+                   $("#shits").text(parseInt($("#shits" ).text()) + 1);
+               }else{
+                   do_alert(data['msg']);
+               }
+           } else {
+                do_alert('网络故障，连接失败!');
+           }
+     });
+}
+</script>
+</body>
+</html>

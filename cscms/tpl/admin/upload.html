@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/swfupload/swfupload.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/swfupload/swfupload.js"></script>
+<script type="text/javascript">
+var swfu;
+$(document).ready(function(){
+	SwapTab(0);
+	swfu = new SWFUpload({
+		flash_url:"<?=Web_Path?>packs/swfupload/swfupload.swf?"+Math.random(),
+		upload_url:"<?=$upsave?>",
+		file_post_name : "Filedata",
+		post_params:{"dir":"<?=$dir?>","fid":"<?=$fid?>","key":"<?=$key?>"},
+		file_size_limit:"<?=$size?>",
+		file_types:"<?=$types?>",
+		file_types_description:"All Files",
+		file_upload_limit:"<?=$nums?>",
+		custom_settings : {progressTarget : "fsUploadProgress",cancelButtonId : "btnCancel"},
+
+		button_image_url: "",
+		button_width: 75,
+		button_height: 28,
+		button_placeholder_id: "buttonPlaceHolder",
+		button_text_style: "",
+		button_text_top_padding: 3,
+		button_text_left_padding: 12,
+		button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+		button_cursor: SWFUpload.CURSOR.HAND,
+
+		file_dialog_start_handler : fileDialogStart,
+		file_queued_handler : fileQueued,
+		file_queue_error_handler:fileQueueError,
+		file_dialog_complete_handler:fileDialogComplete,
+		upload_progress_handler:uploadProgress,
+		upload_error_handler:uploadError,
+		upload_success_handler:uploadSuccess,
+		upload_complete_handler:uploadComplete
+	});
+})
+function att_show(serverData,file)
+{
+	var serverData = serverData.replace(/<div.*?<\/div>/g,'');
+	var data = serverData.split('=cscms=');
+	var sid=<?=$sid?>;
+    var msg=unescape(data[0]);
+	if(msg=='ok'){
+          var filename=unescape(data[1]);
+	     if(sid==0){
+	         parent.$('#<?=$fhid.$fid?>').val(filename);
+	     }else{
+	         var text=parent.$('#<?=$fhid.$fid?>').val();
+	         if(text!='') text+="\n";
+	         parent.$('#<?=$fhid.$fid?>').val(text+filename);
+	     }
+	     parent.tip_cokes();
+	} else {
+         alert(msg);
+		 location.reload();
+	}
+}
+function SwapTab(n){
+    for(var i=0;i<3;i++){
+          if(n==i){
+             $('#cnt_'+i).show();
+             $('#tab_'+i).addClass('on');
+		  }else{
+             $('#cnt_'+i).hide();
+             $('#tab_'+i).removeClass('on');
+		  }
+	}
+}
+</script>
+</head>
+<body>
+<div class="pad-10">
+    <div class="table-list col-tab" id="myform">
+        <ul class="tabBut cu-li">
+            <li id="tab_0" onclick="SwapTab(0);" class="on"><?=L('tpl_01')?></li>
+			<li id="tab_1" onclick="SwapTab(1);"><?=L('tpl_02')?></li>
+			<li id="tab_2" onclick="$('#myattach').attr('src','<?=site_url('upload/myattach')?>?ext=<?=str_replace(array(';', '*.'), array('|', ''), $types)?>');SwapTab(2);"><?=L('tpl_03')?></li>
+		</ul>
+        <div class="content pad-10" style="clear:both">
+			<div id="cnt_0" style="display:block" class="dr_hide">
+				<div>
+					<div class="addnew" id="addnew">
+						<span id="buttonPlaceHolder"></span>
+					</div>
+					<input type="button" id="btupload" value="<?=L('tpl_04')?>" onClick="swfu.startUpload();" />
+					<div id="nameTip" class="onShow"><?=vsprintf(L('tpl_05'),array($nums,($size/1024)))?></div>
+					<div class="bk3"></div>
+					<div class="lh24"><?=L('tpl_06').str_replace(array(';', '*.'), array('、', ''), $types)?></div>
+				</div> 	
+				<div class="bk10"></div>
+				<fieldset class="blue pad-10" id="swfupload">
+				<legend><?=L('tpl_07')?></legend>
+				<ul class="attachment-list" id="fsUploadProgress">    
+				</ul>
+				</fieldset>
+			</div>
+			<div id="cnt_1" style="display: none;" class="dr_hide">
+				<input type="text" name="url" id="url" class="dfinput" value="http://" style="width:410px;">
+				<input onclick="att_show($('#url').val());" class="button" type="button" name="button" value="<?=L('tpl_08')?>">
+				<br><?=L('tpl_09')?>
+			</div>
+			<div id="cnt_2" style="display: none;" class="dr_hide">
+				<iframe name="myfile" src="http://cms.cscms.com/dayrui/statics/images/loading.gif" frameborder="false" scrolling="auto" style="overflow-x:hidden;border:none" width="100%" height="330" allowtransparency="true" id="myattach"></iframe>
+			</div>
+		</div>
+        <div id="att-status" class="hidden"></div>
+        <div id="att-status-del" class="hidden"></div>
+        <!-- swf -->
+    </div>
+</div>
+</body>
+</html>

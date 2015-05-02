@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>[singer:name]新专辑_[singer:name]所有专辑列表_最新[singer:name]专辑大全在线试听_MP3下载_{cscms:webname}</title>
+<meta name="Keywords" content="[singer:name]新专辑,[singer:name]专辑,[singer:name]所有专辑,[singer:name]新专辑试听,[singer:name]新专辑下载,{cscms:webname}" />
+<meta name="Description" content="[singer:name]新专辑，{cscms:webname}提供最新[singer:name]最好听的专辑下载，包含[singer:name]新歌在线试听，好听的[singer:name]歌曲大全在线播放，[singer:name]所有专辑免费在线试听、mp3下载。" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/singer.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div id="cscms_singer_show" style="border:1px solid #D9D9D9;background:#FFF;">
+    <div class="wrapper clearfix">
+            	<div class="title clearfix">
+                    <h1 title="[singer:name]">[singer:name] MV</h1>
+                </div>
+                <div class="submenu">
+                    <ul>
+                        <li><a href="[singer:url link=show]" title="[singer:name]主页">主页</a></li>
+                        <li><a href="[singer:url link=info]" title="[singername]资料">资料</a></li>
+                        <li><a href="[singer:url link=music,id]" title="[singer:name]歌曲">歌曲</a></li>
+                        <li><a href="[singer:url link=pic,id]" title="[singer:name]图片">图片</a></li>
+                        <li><a href="[singer:url link=mv,hits]" title="[singer:name]MV">MV</a></li>
+                        <li class="current"><a href="[singer:url link=album,id]" title="[singer:name]专辑">专辑</a></li>
+                    </ul>
+                </div>
+                <!-- 左边内容 begin -->
+                <div class="mainwrap">
+                    <!-- tab begin -->
+                    <div class="tab">
+                    	<!-- tab_menu begin -->
+                    	<div class="tab_menu clearfix">
+                        	<ul>
+                            	<li{if:'{cscms:fid}'=='id'} class="selected"{end if}><a href="[singer:url link=album,id]">按日期排序</a></li>
+                                <li{if:'{cscms:fid}'=='hits'} class="selected"{end if}><a href="[singer:url link=album,hits]">按人气排序</a></li>
+                            </ul>
+                        </div>
+                        <!-- tab_menu end -->
+                        <!-- tab_box begin -->
+                        <div class="tab_box">
+                        	<div class="tab_div">
+                            	<p class="albumNum">共<span>{cscms:pagedata}</span>张专辑</p>
+{cscms:topic table="dance_topic" field="id,name,pic,diqu,yuyan,fxgs,year,neir" pagesize="10" singerid="auto" sort="addtime" order="desc"}
+	                            <div class="music clearfix">
+		                                	<a href="[topic:url zdy=dance,id,topic/show]" target="_blank" title="[topic:name]"><img class="lazy" data-original="[topic:pic dir=dancetopic]?size=160*160" width="155" height="155"></a>
+		                                    <div class="comm">
+		                                    	<h2 class="album"><a href="[topic:url zdy=dance,id,topic/show]" target="_blank" title="[topic:name]">[topic:name] - [singer:name]</a></h2>
+		                                        <p class="author1">唱片公司:<span>[topic:fxgs]</span></p>
+												<p class="author1">发行时间:<span>[topic:year]</span></p>
+												<p class="author1">专辑地区:<span>[topic:diqu]</span></p>
+												<p class="author1">专辑语言:<span>[topic:yuyan]</span></p>
+		                                        <p class="tips">[topic:neir len=70]</p>
+		                                    </div>
+		                         </div>
+{/cscms:topic}
+								 <div class="pagination"{if:{cscms:pagecout}==1} style="display:none;"{end if}>
+								 <a href="{cscms:pagefirst}" class="pagelink_a">首页</a>
+								 <a href="{cscms:pageup}" class="pagelink_a">上一页</a>
+								 {cscms:pagenum len=10}
+								 <a href="{cscms:pagedown}" class="pagelink_a">下一页</a>
+								 <a href="{cscms:pagelast}" class="pagelink_a">尾页</a>
+								 </div>
+                            </div>
+                            <!-- tab_div end -->
+                        </div>
+                        <!-- tab_box end -->
+                    </div>
+                    <!-- tab end -->
+                </div>
+                <!-- 左边内容 end-->
+
+                <!-- 右边内容 begin -->
+                <div class="sider">
+                    <!-- singer begin -->
+                    <div class="singers clear">
+                    	<h1>[singer:name]相似歌手</h1>
+                        <ul>
+{cscms:singer table="singer" loop="12" tags="auto" sort="hits"}
+                            <li>
+                                    <a href="[singer:url link=show]" title="[singer:name]" class="img"><img src="[singer:pic dir=singer]?size=60*60" width="55" height="55"></a>
+                                    <a href="[singer:url link=show]" title="[singer:name]" class="s_name">[singer:name]</a>
+                                </li>
+{/cscms:singer}
+                         </ul>
+                    </div>
+                    <!-- singer end -->
+                    <p class="h10"></p>
+                    <!-- 专辑排行 begin -->
+                    <div class="albumrank clearfix">
+                    	<h1>全站热门专辑</h1>
+                        <div class="rank">
+{cscms:topic table="dance_topic" field="id,name,singerid,pic" loop="10" sort="hits" order="desc"}
+	                            <p class="clearfix{if:[topic:i]==1} untxt{end if}" id="hsmallDiv[topic:i]" rel="htop5small" oindex="[topic:i]">
+	                            	<span class="num{if:[topic:i]<4} topnum{end if}">[topic:i]</span>
+	                            	<span class="m_name"><a href="[topic:url zdy=dance,id,topic/show]" title="[topic:name]">[topic:name]</a></span>
+	                                <span class="s_name"><a href="[topic:url zdy=singer,singerid,show]" target="_blank" title="[topic:singer zd=name]">[topic:singer zd=name]</a></span>
+	                            </p>
+	                            <div class="album2 clearfix{if:[topic:i]>1} untxt{end if}" id="hbigDiv[topic:i]" style="height:110px">
+	                            	<span class="num{if:[topic:i]<4} topnum{end if}">[topic:i]</span>
+	                                <a href="[topic:url zdy=dance,id,topic/show]" title="[topic:name]"><img src="[topic:pic dir=dancetopic]?size=100*100" title="[topic:name]" alt="[topic:name]" width="100" height="100"></a>
+	                                <p><a href="[topic:url zdy=dance,id,topic/show]" title="[topic:name]" class="m_name">[topic:name]</a></p>
+	                                <p><a href="[topic:url zdy=singer,singerid,show]" target="_blank" title="[topic:singer zd=name]" class="s_name">[topic:singer zd=name]</a></p>
+	                            </div>
+{/cscms:topic}
+			                </div>
+                    </div>
+                    <!-- 专辑排行 end -->
+                </div>
+                <!-- 右边内容 end-->
+            </div>
+</div>
+<script type="text/javascript">singer.init();</script>
+{cscms:bottom}
+</body>
+</html>

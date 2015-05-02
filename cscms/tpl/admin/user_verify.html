@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/datepicker/wdatepicker.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('user')?>"><?=L('tpl_01')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('user')?>"><?=L('tpl_02')?></a></li> 
+               <li><a href="<?=site_url('user/verify')?>" class="selected"><?=L('tpl_03')?></a></li> 
+               <li><a href="<?=site_url('user/log')?>"><?=L('tpl_04')?></a></li> 
+  	        </ul>
+        </div> 
+    </div> 
+    <div class="rightinfo">
+	<form action="<?=site_url('user/del')?>" method="post" id="myform" name="myform">
+    <table class="imgtable">
+    	<thead>
+    	<tr>
+        <th><?=L('tpl_16')?></th>
+        <th><?=L('tpl_07')?>
+<?php 
+if($sort=='id' && $desc=='asc'){
+		echo '&nbsp;<a title="'.L('tpl_18').'" href="?sort=id&desc=desc"><i class="sort"><img src="'.Web_Path.'packs/admin/images/down.gif" align="absmiddle"/></i></a>';
+}else{
+		echo '&nbsp;<a title="'.L('tpl_19').'" href="?sort=id&desc=asc"><i class="sort"><img src="'.Web_Path.'packs/admin/images/up.gif" align="absmiddle"/></i></a>';
+}
+?>
+        </th>
+        <th><?=L('tpl_06')?></th>
+        <th><?=L('tpl_08')?></th>
+        <th><?=L('tpl_09')?></th>
+        <th><?=L('tpl_32')?>
+<?php 
+if($sort=='addtime' && $desc=='asc'){
+		echo '&nbsp;<a title="'.L('tpl_33').'" href="?sort=addtime&desc=desc"><i class="sort"><img src="'.Web_Path.'packs/admin/images/down.gif" align="absmiddle"/></i></a>';
+}else{
+		echo '&nbsp;<a title="'.L('tpl_34').'" href="?sort=addtime&desc=asc"><i class="sort"><img src="'.Web_Path.'packs/admin/images/up.gif" align="absmiddle"/></i></a>';
+}
+?>
+		</th>
+        <th><?=L('tpl_35')?></th>
+        </tr>
+        </thead>
+
+        <tbody>
+<?php
+if(empty($user)) echo '<tr><td align="center" height="50" colspan="7">'.L('tpl_36').'</td></tr>';
+foreach ($user as $row) {
+        echo '
+        <tr height="35">
+        <td><input name="id[]" type="checkbox" value="'.$row->id.'" /></td>
+        <td>'.$row->id.'</td>
+        <td>'.$row->name.'</td>
+        <td>'.$row->email.'</td>
+        <td>'.$row->regip.'</td>
+        <td>'.date('Y-m-d',$row->addtime).'</td>
+        <td>
+		<a href="'.site_url('user/verify_save').'?id='.$row->id.'&op=ok">'.L('tpl_204').'</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="'.site_url('user/verify_save').'?id='.$row->id.'&op=no">'.L('tpl_205').'</a></td>
+        </tr> ';
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span><?=L('tpl_54')?></li>
+            <li class="click" onclick="Popsbox('<?=L('tpl_45')?>',505,245,'<?=L('tpl_206')?>','submit');"><span><img src="<?=Web_Path?>packs/admin/images/t03.png" /></span><?=L('tpl_49')?></li>
+       </ul>
+    </div>
+	</form>
+    <div class="pagin">
+    	<div class="message"><?=vsprintf(L('tpl_51'),array($nums,$page))?></div>
+        <ul class="paginList"><?=$pages?></ul>
+    </div>
+</div> 
+<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+<script type="text/javascript"> 
+$(document).ready(function(e) {
+	$(".select3").uedSelect({
+		width : 80,
+		clas:'uew-select2'
+	});
+});
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

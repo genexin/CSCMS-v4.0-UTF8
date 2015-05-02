@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/city.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li class="on"><span><a href="[user:url userlink=edit]">基本资料</a></span></li>
+								<li class=""><span><a href="[user:url userlink=edit,logo]">修改头像</a></span></li>
+								<li class=""><span><a href="[user:url userlink=edit,pass]">修改密码</a></span></li>
+								<li class=""><span><a href="[user:url userlink=edit,open]">绑定同步</a></span></li>
+							</ul>
+						</div><div class="clear"></div>
+						<div class="minHeight500">
+							<!--修改基本资料--><form class="think-form" action="[user:editsave]" method="post">
+							<div class="profile">
+           				 <!-- 表单项 -->
+            				<table class="bd">
+                				<tr>
+                    				<th>帐　　号</th>
+                   				    <td>[user:name]</td>
+                				</tr>
+                				<tr>
+                    				<th>昵　　称</th>
+                    				<td>
+                        				<input class="text" type="text" name="usernichen" value="[user:nichen]" datatype="s2-15" nullmsg="昵称不能为空" errormsg="昵称为2-15个字以内"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>邮　　箱</th>
+                    				<td>
+                        				<input class="text" type="text" name="useremail" value="[user:email]" datatype="e" nullmsg="请填写邮箱" errormsg="请填写正确格式的邮箱"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>手　　机</th>
+                    				<td>
+                        				<input class="text" type="text" name="usertel" value="[user:tel]" datatype="m" nullmsg="请填写手机号码" errormsg="请填写正确的手机号码"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>性　　别</th>
+                    				<td>
+										<div class="sex">
+											<select class="select_normal" name="usersex" style="width:70px;">
+												<option{if:[user:sex]==0} selected="selected"{end if} value="0">帅 哥</option>
+												<option{if:[user:sex]==1} selected="selected"{end if} value="1">美 女</option>
+												<option{if:[user:sex]==2} selected="selected"{end if} value="2">保 密</option>
+											</select>
+                        				    <span class="Validform_checktip"></span>
+										</div>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>城　　市</th>
+                    				<td>
+                        				<input id="usercity" class="text" type="text" name="usercity" value="[user:city]" datatype="*" nullmsg="城市不能为空"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>Ｑ　　Ｑ</th>
+                    				<td>
+                        				<input class="text" type="text" name="userqq" value="[user:qq]" datatype="s5-20" nullmsg="QQ不能为空" errormsg="QQ格式不正确"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>个人签名</th>
+                    				<td>
+                        				<textarea style="width:350px;height:130px;" name="userqianm">[user:qianm]</textarea>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>&nbsp;</th>
+                    				<td>
+					    				<input type="hidden" name="token" value="[user:token]"/>
+                        				<input class="submit" type="submit" value="保存" />
+                    				</td>
+                				</tr>
+            				</table>
+            				<!-- /表单项 -->
+							</div></form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+cityPopup('usercity');
+$('#left_edit').addClass('on');
+user.form();
+</script>
+{cscms:bottom}
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('dance/admin/lists')?>"><?=L('tpl_112')?></a></li></ul>
+</div>
+<div class="rightinfo">
+    <table class="tablelist">
+    	<thead>
+    	<tr align="left">
+        <th width="250"><?=L('tpl_113')?></th>
+        <th width="50"><?=L('tpl_114')?></th>
+        <th width="100"><?=L('tpl_115')?></th>
+        <th width="100"><?=L('tpl_116')?></th>
+        <th width="110"><?=L('tpl_117')?></th>
+        <th width="40"><?=L('tpl_118')?></th>
+		<th width="*"><?=L('tpl_119')?></th>
+        </tr>
+        </thead>
+        <form action="<?=site_url('dance/admin/lists/plsave')?>" id="myform" name="myform" method="post">
+        <tbody>
+<?php
+foreach ($dance_list as $row) {
+        //数量
+        $nums=$this->db->query("SELECT id FROM ".CS_SqlPrefix."dance where cid=".$row->id."")->num_rows();
+		//状态
+		$zt=($row->yid==0)?'<a title="'.L('tpl_120').'" href="javascript:get_cmd(\''.site_url('dance/admin/lists/init').'?sid=1\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/ok.gif" /></a>':'<a title="'.L('tpl_121').'" href="javascript:get_cmd(\''.site_url('dance/admin/lists/init').'?sid=0\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" /></a>';
+        echo '<tr>
+		<td><input name="id[]" type="checkbox" value="'.$row->id.'">'.$row->id.'、'.$row->name.'(<font color="red">'.$nums.'</font>)</td>
+		<td><input class="dfinput" style="width:45px;" name="xid_'.$row->id.'" value="'.$row->xid.'"></td>
+		<td><input class="dfinput" style="width:90px;" name="name_'.$row->id.'" value="'.$row->name.'"></td>
+		<td><input class="dfinput" style="width:90px;" name="bname_'.$row->id.'" value="'.$row->bname.'"></td>
+		<td><input class="dfinput" style="width:100px;" name="skins_'.$row->id.'" value="'.$row->skins.'"></td>
+		<td id="zt_'.$row->id.'">'.$zt.'</td>
+		<td>
+		<a href="###" onclick="Popsbox(\''.L('tpl_48').'\',505,245,\''.L('tpl_122').'\',\''.site_url('dance/admin/lists/del').'?id='.$row->id.'\');">'.L('tpl_50').'</a>&nbsp;|&nbsp;
+		<a href="'.site_url('dance/admin/lists/edit').'?id='.$row->id.'">'.L('edit').'</a>&nbsp;|&nbsp;
+		<a href="'.site_url('dance/admin/lists/edit').'?fid='.$row->id.'" style="color:green;">'.L('add').'</a>
+		</td>
+		</tr>';
+
+
+        $sql_string = "SELECT * FROM ".CS_SqlPrefix."dance_list where fid=".$row->id." order by xid asc";
+        $query = $this->db->query($sql_string); 
+		foreach ($query->result() as $rows) {
+                //数量
+                $nums=$this->db->query("SELECT id FROM ".CS_SqlPrefix."dance where cid=".$rows->id."")->num_rows();
+		        //状态
+		        $zt=($rows->yid==0)?'<a title="'.L('tpl_120').'" href="javascript:get_cmd(\''.site_url('dance/admin/lists/init').'?sid=1\',\'zt\','.$rows->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/ok.gif" /></a>':'<a title="'.L('tpl_121').'" href="javascript:get_cmd(\''.site_url('dance/admin/lists/init').'?sid=0\',\'zt\','.$rows->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" /></a>';
+                echo '<tr>
+				<td><input name="id[]" type="checkbox" value="'.$rows->id.'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├&nbsp;'.$rows->id.'、'.$rows->name.'(<font color="red">'.$nums.'</font>)</td>
+		        <td><input class="dfinput" style="width:45px;" name="xid_'.$rows->id.'" value="'.$rows->xid.'"></td>
+		        <td><input class="dfinput" style="width:90px;" name="name_'.$rows->id.'" value="'.$rows->name.'"></td>
+		        <td><input class="dfinput" style="width:90px;" name="bname_'.$rows->id.'" value="'.$rows->bname.'"></td>
+		        <td><input class="dfinput" style="width:100px;" name="skins_'.$rows->id.'" value="'.$rows->skins.'"></td>
+		        <td id="zt_'.$rows->id.'">'.$zt.'</td>
+		        <td>
+		        <a href="###" onclick="Popsbox(\''.L('tpl_48').'\',505,245,\''.L('tpl_49').'\',\''.site_url('dance/admin/lists/del').'?id='.$rows->id.'\');">'.L('tpl_50').'</a>&nbsp;|&nbsp;
+	        	<a href="'.site_url('dance/admin/lists/edit').'?id='.$rows->id.'">'.L('edit').'</a>
+		        </td>
+		        </tr>';
+		}
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span><?=L('tpl_62')?></li>
+            <li class="click" onclick="Popsbox('<?=L('tpl_48')?>',505,245,'<?=L('tpl_127')?>','submit');"><span><img src="<?=Web_Path?>packs/admin/images/t02.png" /></span><?=L('tpl_128')?></li>
+            <li class="click"><a href="<?=site_url('dance/admin/lists/edit')?>"><span><img src="<?=Web_Path?>packs/admin/images/t01.png" /></span><?=L('tpl_123')?></a></li>
+       </ul>
+        <ul class="toolbar1">
+            <li style="border:0;"><div style="float:left;"><?=L('tpl_124')?></div>
+			<div class="vocation">
+            <select style="float:left;" class="select2" name="cid" id="cid">
+		         <option value="0"><?=L('tpl_125')?></option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."dance_list where fid=0 order by xid asc"); 
+foreach ($query->result() as $row) {
+		echo '<option value="'.$row->id.'">&nbsp;|—'.$row->name.'</option>';
+        $sql_string = "SELECT id,name FROM ".CS_SqlPrefix."dance_list where fid=".$row->id." order by xid asc";
+        $query = $this->db->query($sql_string); 
+		foreach ($query->result() as $row2) {
+             echo '<option value="'.$row2->id.'">&nbsp;|&nbsp;&nbsp;&nbsp;|—'.$row2->name.'</option>';
+		}
+}
+?>
+            </select>
+			</div>
+            </li>
+            <li class="click" onclick="cmd();"><span></span><font color=#0000ff><?=L('tpl_126')?></font></li>
+       </ul>
+    </div>
+	</form>
+    <div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+<script type="text/javascript"> 
+$(".select2").uedSelect({
+		width : 120			  
+});
+function cmd() {
+    var cid=$('#cid').val();
+	if(cid==0){
+         alert('<?=L('tpl_125')?>');
+	}else{
+         $('#myform').attr('action','<?=site_url('dance/admin/lists/zhuan')?>?cid='+cid);
+	     $('#myform').submit();
+	}
+}
+$('.tablelist tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

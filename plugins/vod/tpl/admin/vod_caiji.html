@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript">
+function m_video(){
+	var id=$("#ids").val();
+	var sid=$("#sid").val();
+	var vodurl=$("#videourl").val();
+	if(vodurl!=''){
+	    $('#videourl').val('采集中，请稍候……');
+		$.ajax({
+			type: 'get',
+			cache: false,
+			dataType: 'json',
+			url: "<?=site_url('vod/admin/vod/caiji')?>?ac=go&vodurl="+encodeURIComponent(vodurl),
+			timeout: 3000, 
+			success:function(row){
+				if(row['error']=='no'){
+					   $('#videourl').val(vodurl);
+				       alert('抱歉，没有采集到视频地址~!');
+				}else{
+				       if(sid==2){
+				            var downurl=parent.$("#m_downurl"+id).val();
+					        if(downurl!='') downurl+="\n";
+				            parent.$("#m_downurl"+id).val(downurl+row['url']);
+					   }else{
+				            var playurl=parent.$("#m_playurl"+id).val();
+					        if(playurl!='') playurl+="\n";
+				            parent.$("#m_playurl"+id).val(playurl+row['url']);
+					        parent.$("#m_playfrom"+id).val(row['laiy']);
+					   }
+					   if($("#nameid").is(":checked")){
+					     	parent.$("#name").val(row['name']);  
+					   }
+					   if($("#picid").is(":checked")){
+					     	parent.$("#pic").val(row['pic']);  
+					   }
+					   parent.tip_cokes();
+				}
+			}
+		});
+
+	}else{
+        alert('抱歉，采集地址不能为空~!');
+	}
+
+}
+</script>
+</head>
+<body>
+<div class="rightinfo">
+	<p style='height:50px;text-align:left;color:red;'>&nbsp;&nbsp;粘贴播放页面地址&nbsp;&nbsp;(支持优酷、酷6、土豆、搜狐、新浪、6房间、QQ、奇艺、PPS、<br>&nbsp;&nbsp;乐视、56、音悦台)地址</p>
+	<p style='height:45px;'>
+	<input type='text' style='width:350px;height:25px; line-height:25px; border-top:solid 1px #a7b5bc; border-left:solid 1px #a7b5bc; border-right:solid 1px #ced9df; border-bottom:solid 1px #ced9df;text-indent:10px;' id='videourl' value='' />
+	<input type='button' class='button' value='确定' onclick='m_video();'>
+	</p>
+	<p style='height:30px;text-align:left;'>&nbsp;&nbsp;同时更新：<input type='checkbox' id='nameid' value='1' <?=$check?> />视频名称&nbsp;&nbsp;
+	<input type='checkbox' id='picid' value='1' <?=$check?> />视频图片&nbsp;&nbsp;
+	<input type='checkbox' id='laiyid' value='1' checked />视频来源</p>
+	<input id="ids" type="hidden" value="<?=$id?>">
+	<input id="sid" type="hidden" value="<?=$sid?>">
+</div>
+</body>
+</html>

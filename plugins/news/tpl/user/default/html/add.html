@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:indextempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:indextempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:indexhead}
+<div id="cscms_space">
+                {cscms:indexleft}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li><span><a href="[user:url userlink=news]">已通过的</a></span></li>
+								<li><span><a href="[user:url userlink=news,verify]">审核中的</a></span></li>
+								<li><span><a href="[user:url userlink=look]">我阅读的</a></span></li>
+								<li class="right"><a class="" href="[user:url userlink=news,add]">文章投稿</a></li>
+							</ul>
+						</div>
+						<div class="minHeight500">
+							<form class="think-form" action="[user:newssave]" method="post">
+							<div class="profile" style="margin-top:10px;">
+           				 <!-- 表单项 -->
+            				<table class="bd">
+                				<tr>
+                    				<th>所属分类</th>
+                    				<td>
+										<div class="sex">
+											<select class="select_normal" name="cid" style="width:140px;">
+											{cscms:class table="news_list" fid="0" sort="xid" order="asc"}
+												<option value="[class:id]">&nbsp;|—[class:name]</option>
+                                                {cscmstype:class table="news_list" fid="auto" sort="xid" order="asc"}
+												<option value="[class:id]">&nbsp;|&nbsp;&nbsp;&nbsp;|—[class:name]</option>
+                                                {/cscmstype:class}
+                                            {/cscms:class}
+											</select>
+                        				    <span class="Validform_checktip"></span>
+										</div>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>文章名称</th>
+                    				<td>
+                        				<input class="text" type="text" name="name" value="" datatype="*2-20" nullmsg="文章名称不能为空" errormsg="名称为2-20个字以内"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>标签</th>
+                    				<td>
+                        				<input class="text" type="text" id="tags" name="tags"/>&nbsp;
+										<input onclick="cscms_tags('tags');" class="button" type="button" name="button" value="快速选择">
+                        				<span class="Validform_checktip">多个逗号隔开</span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>图片</th>
+                    				<td>
+                        				<input class="text" type="text" id="pic" name="pic"/>&nbsp;
+										<input onclick="cscms_up('news','pic','*.jpg;*.png;*.gif','up_pic');" class="button" type="button" name="button" value="上传图片">
+                        				<span class="Validform_checktip" id="up_pic"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>阅读金币</th>
+                    				<td>
+                        				<input class="text" type="text" name="cion" value="0" datatype="n" nullmsg="金币不能为空" errormsg="金币格式不正确"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>文章内容</th>
+                    				<td>
+                        				<textarea style="width:98%;height:300px;" name="content" datatype="*" nullmsg="文章内容不能为空"></textarea>
+                        				<span class="Validform_checktip"></span>
+										<script src="{cscms:path}packs/editor/kindeditor.js"></script>
+										<script type="text/javascript">cscms_editor('content',2);</script>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>&nbsp;</th>
+                    				<td>
+					    				<input type="hidden" name="token" value="[user:token]"/>
+                        				<input class="submit" type="submit" value="确定保存" />
+                    				</td>
+                				</tr>
+            				</table>
+            				<!-- /表单项 -->
+							</div></form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_news_2').addClass('on');
+user.form();
+</script>
+{cscms:indexbottom}
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+</head>
+<body id="xtopjsinfo">
+<div class="wrapper">
+{cscms:head}
+<div class="container">
+<section class="mod_tab">
+<div class="tabNav">
+热门推荐
+<a href="{cscms:opt-hot}">更多</a>
+</div>
+<div class="tabCon">
+<ul class="img_list">
+{cscms:vod table="vod" field="id,name,addtime,pic,color" loop="6" reco="3,4,5" sort="hits"}
+<li><a href="[vod:url link=play,id]"><img src="[vod:pic dir=vod]" alt="[vod:name]" height="150"><span><font color="[vod:color]">[vod:name len=8]</font><br>[vod:addtime style=Y-m-d]</span></a></li>
+{/cscms:vod}
+</ul>
+</div>
+</section>
+<section class="mod_tab">
+<div class="tabNav">
+{cscms:class table="vod_list" field="id,name" id="1"}[class:name]<a href="[class:url link=lists,id]">更多</a>{/cscms:class}
+</div>
+<div class="tabCon">
+<ul class="img_list">
+{cscms:vod table="vod" field="id,name,addtime,pic,color" loop="4" cid="1,6,7,8,9,10,11,12,13,14" sort="addtime"}
+<li><a href="[vod:url link=play,id]"><img src="[vod:pic dir=vod]" alt="[vod:name]" height="150"><span><font color="[vod:color]">[vod:name len=8]</font><br>[vod:addtime style=Y-m-d]</span></a></li>
+{/cscms:vod}
+</ul>
+</div>
+</section>
+<section class="mod_tab">
+<div class="tabNav">
+{cscms:class table="vod_list" field="id,name" id="2"}[class:name]<a href="[class:url link=lists,id]">更多</a>{/cscms:class}
+</div>
+<div class="tabCon">
+<ul class="img_list">
+{cscms:vod table="vod" field="id,name,addtime,pic,color" loop="4" cid="2,15,16,17,18,19" sort="addtime"}
+<li><a href="[vod:url link=play,id]"><img src="[vod:pic dir=vod]" alt="[vod:name]" height="150"><span><font color="[vod:color]">[vod:name len=8]</font><br>[vod:addtime style=Y-m-d]</span></a></li>
+{/cscms:vod}
+</ul>
+</div>
+</section>
+<section class="mod_tab">
+<div class="tabNav">
+{cscms:class table="vod_list" field="id,name" id="3"}[class:name]<a href="[class:url link=lists,id]">更多</a>{/cscms:class}
+</div>
+<div class="tabCon">
+<ul class="img_list">
+{cscms:vod table="vod" field="id,name,addtime,pic,color" loop="4" cid="3" sort="addtime"}
+<li><a href="[vod:url link=play,id]"><img src="[vod:pic dir=vod]" alt="[vod:name]" height="150"><span><font color="[vod:color]">[vod:name len=8]</font><br>[vod:addtime style=Y-m-d]</span></a></li>
+{/cscms:vod}
+</ul>
+</div>
+</section>
+<section class="mod_tab">
+<div class="tabNav">
+{cscms:class table="vod_list" field="id,name" id="4"}[class:name]<a href="[class:url link=lists,id]">更多</a>{/cscms:class}
+</div>
+<div class="tabCon">
+<ul class="img_list">
+{cscms:vod table="vod" field="id,name,addtime,pic,color" loop="4" cid="4" sort="addtime"}
+<li><a href="[vod:url link=play,id]"><img src="[vod:pic dir=vod]" alt="[vod:name]" height="150"><span><font color="[vod:color]">[vod:name len=8]</font><br>[vod:addtime style=Y-m-d]</span></a></li>
+{/cscms:vod}
+</ul>
+</div>
+</section>
+</div>
+<div class="push"></div>
+</div>
+{cscms:bottom}
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+</head>
+<body id="xtopjsinfo">
+<div class="wrapper">
+{cscms:head}
+<div class="container">
+<section class="module_user">
+<div class="hd">
+<div class="mod_left"><span class="name">歌曲分类</span></div>
+</div>
+<div class="tabCon">
+  <div class="dance_type">
+      <div class="mod_subnav">
+        <ul>
+		{cscms:class table="dance_list" field="id,name" order="asc"}
+			<li><a href="[class:url link=lists,id]"><i>[class:name]</i></a></li>
+			{if:[class:i]%2!=1}</ul><ul>{end if}
+		{/cscms:class}
+        </ul>
+      </div>
+  </div>
+</div>
+</section>
+<div class="push"></div>
+</div>
+</div>
+{cscms:bottom}
+</body>
+</html>

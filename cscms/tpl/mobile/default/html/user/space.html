@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{cscms:title}</title>
+<link href="{cscms:tempurl}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:tempurl}css/user.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:tempurl}css/space.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{cscms:tempurl}js/user.js"></script>
+</head>
+<body>
+<div class="sub_bodybg"></div>
+<div class="sub_head_top">
+	<div class="title">会员中心</div>
+	<div class="back" id="pageback"><img src="{cscms:tempurl}/images/18.jpg" alt="#"   border="0"/></div>  
+	<div class="menu" id="topmenu_sub"><a href="javascript:;"><img src="{cscms:tempurl}/images/2.jpg"  border="0"/></a></div>
+</div>
+{cscms:head}
+<div class="user_personal_main_top clearfix">
+    <div class="personal_top_left">
+        <img src="[user:logo dir=logo]"/>
+    </div>
+    <div class="personal_top_right">
+        <p><span style="color:#0180cf">欢迎您 </span> , [user:nichen]</p>
+        <p style="margin:5px 0;">金额:&nbsp;&nbsp;[user:rmb]&nbsp;&nbsp金币:&nbsp;&nbsp;[user:cion]</p>
+        <p>邮箱：[user:email]</p>
+    </div>
+</div>
+{cscms:left}
+<!-- footer -->
+<script>user.init();</script>
+{cscms:bottom}
+</body>
+</html>

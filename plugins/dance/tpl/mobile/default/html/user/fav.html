@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{cscms:title}</title>
+<link href="{cscms:indextempurl}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:indextempurl}css/user.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:indextempurl}css/space.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{cscms:indextempurl}js/user.js"></script>
+</head>
+<body>
+<div class="sub_bodybg"></div>
+<div class="sub_head_top">
+	<div class="title">用户注册</div>
+	<div class="back" id="pageback"><img src="{cscms:indextempurl}images/18.jpg" alt="#"   border="0"/></div>  
+	<div class="menu" id="topmenu_sub"><a href="javascript:;"><img src="{cscms:indextempurl}images/2.jpg"  border="0"/></a></div>
+</div>
+{cscms:indexhead}
+<div class="apply_jobs">
+	<div class="apply_title">我收藏的歌曲</div>
+	<div class="apply_jobs_list">
+{cscms:dance table="dance_fav" pagesize="10" uid="auto" sort="time" order="desc"}
+		<div class="list_centent">
+			<div class="jobs_t1">
+				<span><a href="[dance:url zdy=dance,did,play,id]">[dance:name]</a></span>
+				<br />{cscmsphp}getzd('dance_list','name','[dance:cid]');{/cscmsphp}
+			</div>
+			<div class="jobs_t2">
+				[dance:addtime style=Y-m-d]
+				<br />人气：{cscmsphp}getzd('dance','hits','[dance:did]');{/cscmsphp}
+			</div>
+			<div class="clear"></div>
+		</div>
+{/cscms:dance}
+	</div>
+</div>
+
+<div class="check_more">{if:{cscms:pagecout}<={cscms:pagenow}}没有更多了...{else}<a href="{cscms:pagedown}">点击加载更多..</a>{end if}</div>
+
+<!-- footer -->
+{cscms:indexbottom}
+</body>
+</html>

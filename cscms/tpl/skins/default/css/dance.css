@@ -1,0 +1,254 @@
+/**
+* @cscms4.x open source management system
+* @copyright 2009-2015  All rights reserved.
+* @Author:Cheng Jie
+* @Dtime:2015-01-17
+*/
+.fl {float: left;}
+.fr {float: right;}
+p.musicName{ width:100%; text-align:center; height:20px; line-height:20px; overflow:hidden; margin-top:10px;}
+p.musicName a{ color:#333;}
+p.musicName a:hover{ color:#1093d7;}
+p.singerName a{ color:#828383;}
+a.img{ display:block; border:2px solid #fff;}
+a.img:hover{ border:2px solid #1093d7;}
+.bg{ background:url(../images/new_icons.png) no-repeat;}
+h1.title{ font-size:26px; height:34px; line-height:34px; margin:10px 0; font-weight:normal;}
+h1.title a.detail{color:#828383;float:right;font-size:14px;padding-top:5px;}
+h1.title a.detail:hover{color:#1093d7;text-decoration:underline;}
+.fenleft {float: left;width: 4px;height: 33px;background: url(../images/fentan1.png);_filter: alpha(opacity:60);}
+.fenmiddle {float: left;width: 190px;height: 33px;background: url(../images/fentan2.png) repeat-x;_filter: alpha(opacity:60);}
+.fenright {float: left;width: 4px;height: 33px;background: url(../images/fentan3.png);_filter: alpha(opacity:60);}
+.fenmiddle .closed {width: 9px;height: 9px;margin-left: 10px;}
+
+/*分页*/
+.page{ overflow:hidden; zoom:1; padding:20px 0 30px;}
+.page_num{ float:right; padding:4px 0 2px 0;}
+.page_num em{ color:#6DB823; font-weight:900;}
+.page_rt{ float:right; overflow:hidden; zoom:1; padding-top:3px;}
+.page_rt span.num{ overflow:hidden; zoom:1; float:right;}
+.page_rt a{ float:left; margin-left:6px;}
+.page_rt a{display:block;padding:3px 10px 1px;border:1px solid #ddd;}
+.page_rt a:hover{ background:#6DB823; color:#fff; text-decoration:none;}
+.page_rt a.on{ background:#6DB823; color:#fff;}
+.play_all{ float:left; display:block;}
+.play_all a{ display:block; border:1px solid #fff; width:113px; height:28px; line-height:28px; line-height:32px\9; _line-height:28px; text-indent:32px; background:url(../images/yc_bg.png) no-repeat 7px -167px #6db823; overflow:hidden;}
+.play_all a:link,.play_all a:visited{ color:#fff;}
+.play_all a:hover{ border:1px solid #499200; text-decoration:none;}
+.yc_footer{ text-align:center; border-top:1px solid #ededed; padding:20px 0 30px; line-height:1.8;}
+
+
+/*歌曲排行*/
+.musicRank {padding:10px;padding-top:0px;}
+.musicRank h1.title{ font-size:26px; height:34px; line-height:34px; margin:10px 0; font-weight:normal;}
+.musicRank a.playall{ display:block; width:67px; height:18px; line-height:18px; background-position:0 -182px; font-size:12px; color:#fff; text-indent:1em; position:absolute; top:3px; left:100px;}
+.musicRank a.playall:hover{ text-decoration:none;}
+.musicRank h1.title a{ color:#333;font-size:22px;}
+.musicRank h1.title a:hover{ text-decoration:none;}
+.rank{ width:310px; overflow:hidden; position:relative; margin-right:10px;}
+.rank h2{ font-size:16px; color:#333; margin-bottom:10px;}
+.rank h2 span{ color:#f27815;}
+.rank .tab_menu{ position:absolute; top:4px; right:0;}
+.rank .tab_menu li{ float:left; text-align:center; width:50px; height:14px; line-height:14px; border-right:1px solid #a7a7a7;}
+.rank .tab_menu li.noborder{ border:none;}
+.rank .tab_div{ height:300px; overflow:hidden; font-size:14px;}
+.rank .line{ height:30px; line-height:30px; overflow:hidden; background:url(../images/line.gif) repeat-x left bottom;}
+.rank .line:hover{ background:#f0f0f0;}
+.rank .line p.num{ width:20px; height:20px; line-height:20px; text-align:center; overflow:hidden; float:left; margin:5px 3px 0 0; background:#f0f0f0; color:#8c8c8c; border-radius:3px; font-size:12px;}
+.rank .line p.topnum{ background:#f48a34; color:#fff;}
+.rank .line p.music span{ display:block; float:left; margin-right:10px; overflow:hidden;}
+.rank .line p.music a{ display:block; float:left; overflow:hidden;}
+.rank .line p.music span.m_name{ width:170px; text-indent:3px; color:#333;}
+.rank .line p.music span.m_name a{ color:#333;}
+.rank .top p.music span.m_name a{ color:#333;}
+.rank .line p.music span.m_name:hover a{ color:#f30;}
+.rank .line p.music span.s_name{ width:70px; color:#828383;}
+.rank .line p.music span.s_name a{ color:#828383;}
+.rank .line p.music span.s_name a:hover{ color:#333;}
+.rank .top p.music span.s_name a{ color:#333;}
+.rank .line p.music a.listen{ width:22px; height:17px; background-position:0 -30px; margin:0; margin-top:6px;}
+.rank .line p.music a.listen:hover{ background-position:-22px -30px;}
+.rank.m0{ margin:0;}
+
+/*首页专辑*/
+.album,.mvalbum{ position:relative; width:958px; overflow:hidden;padding:10px;padding-top:0px;}
+.album .tab_menu li a{ color:#1093d7;}
+.album .tab_menu li a:hover{ color:#333;}
+.album .tab_menu li.selected a{ color:#333; text-decoration:underline;}
+.album .tab_menu{ position:absolute; top:20px; left:135px;}
+.album .tab_menu ul li{ float:left; width:72px; height:14px; line-height:14px; text-align:center; border-right:1px dashed #a7a7a7; cursor:pointer;}
+.album .tab_menu ul li.noborder{ border:none;}
+.album .tab_div ul{ width:960px;}
+.album .tab_div ul li{ float:left; width:142px; overflow:hidden;margin-top:5px;margin-left:8px;margin-right:10px;}
+.album .tab_div ul li p {}
+.album .tab_div ul li p.singerName{ font-size:12px; margin:2px 0;}
+.ablum .tab_div ul li p.singerName a{ color:#828383;}
+
+
+/*首页歌手*/
+.hotSinger{ margin-bottom:5px; width:958px; overflow:hidden;padding:10px;padding-top:0px;}
+.hotSinger ul{width:960px;}
+.hotSinger ul li{ float:left; width:142px; overflow:hidden;margin-top:5px;margin-left:8px;margin-right:10px;}
+
+.singerlist{width:958px;margin-left:10px;overflow:hidden;}
+.singerlist .list h2.tit{ background-position:13px 13px; color:#1093d7; font-size:15px; text-indent:26px;padding-top:5px;}
+.singerlist .list{ float:left; background:#f2f2f2; width:470px; height:145px; overflow:hidden;}
+.singerlist .list p{ padding-left:13px;}
+.singerlist .list p a{ display:block; width:4em; float:left; margin:8px 9px 0 0; overflow:hidden; height:20px; line-height:20px; color:#333; _margin:7px 8px 0 0;}
+.singerlist .list p a:hover{ color:#1093d7;}
+
+
+/*歌曲分类*/
+#cscms_music_list {width:980px;margin:0px auto;margin-top:10px;}
+#cscms_music_list .ct_list{ font-size:12px;}
+#cscms_music_list .ct_list tr th{ background:#f8f8f8; padding:9px 0 8px; border-bottom:1px solid #d9d9d9;text-align:center}
+#cscms_music_list .ct_list tr td{ padding:14px 0 12px; background:#fff; text-align:center}
+#cscms_music_list .ct_list tr.c2 td{ background:#f8f8f8;}
+#cscms_music_list .yc_list_main{ overflow:hidden; zoom:1; background:#fff; padding:10px;}
+#cscms_music_list .yc_list_fen{ width:120px; float:left; margin-top:12px;}
+#cscms_music_list .yc_list{ margin-left:20px; width:820px; float:left;}
+#cscms_music_list .yc_list_fen_clo{ border:1px solid #ededed; border-right:none; background:#fff;}
+#cscms_music_list .yc_list_fen li a{ display:block; line-height:40px; height:40px; text-indent:17px;}
+#cscms_music_list .yc_list_fen li a:hover{ background:#f8f8f8; text-decoration:none;}
+#cscms_music_list .yc_list_fen .yc_list_fen_clo a:link,.yc_list_fen .yc_list_fen_clo a:visited{ color:#6DB823; font-weight:900;}
+#cscms_music_list .yc_list_fen .yc_list_fen_clo a:hover{ background:#fff;}
+#cscms_music_list .yc_list .title{font-size:16px;height:30px; line-height:25px;color:#333}
+#cscms_music_list .aleft{ text-align:left; text-indent:12px;}
+#cscms_music_list .aling{ color:#999;}
+#cscms_music_list .t_bnt{ display:block; width:14px; height:14px; line-height:0; font-size:0; background:url(../images/yc_bg.png) no-repeat; text-indent:-9999px; overflow:hidden; margin:0 auto;}
+#cscms_music_list .shit{ background-position:0 -95px;}
+#cscms_music_list .xiaz{ background-position:0 -125px;}
+#cscms_music_list .c2 .shit{ background-position:0 -110px;}
+#cscms_music_list .c2 .xiaz{ background-position:0 -140px;}
+
+/*歌曲下载*/
+#cscms_down {width:980px;margin:0 auto;margin-top:10px;}
+#cscms_down .zuo {width:620px;float:left;margin-right:10px;padding:10px;background-color:#fff;}
+#cscms_down .you {width:310px;float:right;background-color:#fff;padding:10px;}
+#cscms_down .title {padding:10px;}
+#cscms_down .title a{font-size:20px;}
+#cscms_down .sing_view{width:490px;padding:10px;}
+#cscms_down .sing_view span {padding-bottom:20px;}
+#cscms_down .sing_view .l{float:left;width:50%;}
+#cscms_down .sing_view .r{float:left;width:50%;}
+#cscms_down .sing_view p{padding-bottom:10px;font-size:14px;}
+#cscms_down .sing_view_bnt{width:480px;}
+#cscms_down .sing_view_bnt a {float:left;display:block;display:block; width:186px; height:59px; text-indent:-9999px;margin-bottom:15px;}
+#cscms_down .sing_view_bnt .pt{background:url(../images/down.jpg) no-repeat;margin-left:5px;}
+#cscms_down .you .ads{width:300px;height:252px;}
+
+/*专辑列表*/
+#cscms_topic_list {width: 980px;margin: 0 auto;margin-top:10px;}
+#cscms_topic_list .v_left{ float:left; width:180px;padding:5px;margin-top:10px;margin-left:10px;}
+#cscms_topic_list .v_sort h3{ font-size:18px;border-left:3px solid #333;text-indent:8px; margin-left:8px;margin-bottom:8px; font-weight:400;color:#333;}
+#cscms_topic_list .v_sort ul{ overflow:hidden; zoom:1;margin-top:10px;margin-bottom:28px;}
+#cscms_topic_list .v_sort ul.list li a{ float:left;width:70px;height:19px;margin:5px;padding:5px;background:#eee;text-align:center;overflow:hidden;}
+#cscms_topic_list .v_sort ul.hot li a{float:left;overflow:hidden;width:40px;height:19px;margin:5px;padding:5px;background:#eee;text-align:center;}
+#cscms_topic_list .v_sort ul.list li a:hover,
+#cscms_topic_list .v_sort ul.hot li a:hover,
+#cscms_topic_list .v_sort ul li a.on{ background:#f60;color:#fff;text-decoration:none;}
+
+#cscms_topic_list .v_right{ float:left; width:750px; overflow:hidden;margin-left:20px;margin-top:10px;padding:5px;}
+#cscms_topic_list .v_sift .title {height:30px;font-size:16px;border-bottom: 1px dotted #ddd;}
+#cscms_topic_list .v_list {float:left;padding-top:10px;overflow:hidden;}
+#cscms_topic_list .v_list .topic {width:750px;margin-bottom:20px;overflow:hidden;}
+#cscms_topic_list .v_list .topic span {float:left;}
+#cscms_topic_list .v_list .topic .pics{width:150px;height:150px;margin-right:20px;border:1px solid #ddd;}
+#cscms_topic_list .v_list .topic img{width:140px;height:140px;padding:5px 5px}
+#cscms_topic_list .v_list .topic .info {margin-top:5px;}
+#cscms_topic_list .v_list .topic .info .tags a{color:#666}
+#cscms_topic_list .v_list .topic .info .tags a:hover{color:red}
+#cscms_topic_list .v_list .topic .info p {height:27px;font-size:13px;}
+#cscms_topic_list .v_list .topic .info .name a{font-size:16px;color:#111;}
+#cscms_topic_list .v_list .topic .info .name a:hover{color:#ff0000;}
+#cscms_topic_list .v_list .topic .info .tags .user{width:150px;}
+#cscms_topic_list .v_list .topic .info .jies {width:550px;height:40px;}
+
+/*歌手内容、专辑内容*/
+.headwrap h1, .btn, .listen a, .listen a:hover, p.listen a, p.video a, p.share a, p.down a, .listen a:hover, p.video a:hover, p.share a:hover, p.down a:hover, .ranklist ul li, span.rank, .main .hotmusic ul li p.play, .butn, .butn:hover, .showbox p.tip, .btn_icon { background: url('../images/icon2.png') no-repeat;}
+.mainwrap {float: left;width: 655px;padding: 0 15px;background: #fff;margin-right: 15px;padding-bottom: 21px;overflow: hidden;}
+.submenu{ height:36px; line-height:36px; border-bottom:1px solid #c8c8c8; width:980px; margin:0 auto 15px;}
+.submenu ul li{ float:left; width:86px; padding:0 10px; text-align:center; font-size:18px; background:url(../images/line2.gif) no-repeat right center;}
+.submenu ul li.nobg{ background:none;}
+.submenu ul li a{ color:#000; display:block; height:35px; line-height:35px;}
+.submenu ul li a:hover{ text-decoration:none; color:#f60; border-bottom:2px solid #f60;}
+.submenu ul li.current a{ border-bottom:2px solid #f60; color:#f60;}
+.wrapper .title{ height:48px; line-height:48px; overflow:hidden; width:100%; padding-top:7px;}
+.wrapper .title h1{ font-size:24px; text-indent:16px; float:left; margin-right:25px;color:#111;}
+.wrapper .title h1 span{ margin-left:10px;}
+.wrapper .title a{ display:block; float:left; margin-top:9px;}
+.wrapper .title p{ float:right; margin-right:30px; display:inline;}
+.wrapper{ background:#fff;}
+.topicfav {float:left;width:50px;cursor:pointer;height:50px;background:url(../images/fav_t.jpg) no-repeat;}
+
+.singerwrap .s_img{ width:240px; float:left; overflow:hidden; margin-right:21px;}
+.singerwrap .comm{ float:left; width:380px; position:relative;overflow:hidden;}
+.singerwrap .comm ul.tipscomm li{ float:left; width:185px; margin-right:5px; overflow:hidden; height:20px; line-height:20px; margin-bottom:4px; color:#6e6e6e;}
+.singerwrap .comm ul.tipscomm li span{ color:#000;}
+.gbg{ background:#f0f0f0;}
+.singerwrap.gbg .comm ul li span{ color:#6e6e6e;}
+.singerwrap .comm h1{ font-size:20px; color:#000; padding:14px 0;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 380px;}
+.singerwrap .comm p.button{ height:53px; line-height:53px; margin-bottom:20px; font-size:18px; color:#898989;}
+.singerwrap .comm p.button a{ background-position:0 -803px; display:block; width:53px; height:53px; float:left; margin-right:10px;}
+.singerwrap .comm .share{ position:absolute; top: 18px; right: 6px;}
+.singerwrap .comm p.tag{ color:#555;}
+.singerwrap .comm p.tag span, .singerwrap .comm p.tag a{ margin:0 5px; color:#999;}
+.tipcomm{ margin:20px 0;}
+.tipcomm p{ text-indent:2em; color:#555; line-height:200%;}
+.tipcomm p a{ color:#000; text-decoration:underline;}
+p.listen, p.video, p.share, p.down{ width:24px; margin-right:16px;}
+p.listen a, p.video a, p.share a, p.down a, .listen a:hover, p.video a:hover, p.share a:hover, p.down a:hover{ display:block; width:24px; height:25px; padding:0;}
+.m_list{ width:100%; overflow:hidden;}
+.m_list .top{ height:25px; line-height:25px;}
+.m_list .top p.fl input{ float:left; margin:6px 5px 0 17px; display:inline;}
+.m_list .top a{ display:inline-block; padding:0 20px; background:#f1f1f1; color:#5d5d5d; border-radius:3px;}
+.m_list .top a:hover{ text-decoration:none; background:#f60; color:#fff;}
+.m_list .top a.current{ text-decoration:none; background:#f60; color:#fff;}
+.m_list .list dl{ background:#f5f5f5; margin-top:13px;}
+.m_list .list dl dd{ height:28px; line-height:28px; float:left; color:#7c7c7c; text-align:center; overflow:hidden; padding:0 10px;}
+.m_list .list dl dd.m_name{ width:340px; text-align:center;}
+.m_list .list dl dd.s_name{ width:82px;}
+.m_list .list dl dd.listen, .main .m_list .list dl dd.video, .main .m_list .list dl dd.share, .main .m_list .list dl dd.down{ width:40px;}
+.m_list .list ul li{ height:25px; line-height:25px; overflow:hidden; margin:18px 0; font-weight:normal;}
+.m_list .list ul li p{ display:block; height:25px; line-height:25px; overflow:hidden; float:left; color:#3b3b3b;padding:0 10px;}
+.m_list .list ul li p.number{ width:45px; margin:0px 5px 0 7px; _margin:0px 5px 0 2px;}
+.m_list .list ul li p.number input{ margin-right:5px;}
+.m_list .list ul li p.m_name{ width:280px;}
+.m_list .list ul li p.s_name{ width:77px;}
+.m_list .list ul li p a{ color:#3b3b3b;}
+.m_list .list ul li p.down{ margin:0;}
+.m_list .list ul li p.listen a{ background-position:0 -300px; _background-position:0 -301px}
+.m_list .list ul li p.listen a:hover{ background-position:0 -325px;}
+.m_list .list ul li p.video a{ background-position:0 -350px;}
+.m_list .list ul li p.video a:hover{ background-position:0 -375px;}
+.m_list .list ul li p.share a{ background-position:0 -400px;}
+.m_list .list ul li p.share a:hover{ background-position:0 -425px;}
+.m_list .list ul li p.down a{ background-position:0 -450px;}
+.m_list .list ul li p.down a:hover{ background-position:0 -475px;}
+
+/*右边样式*/
+.sider h1 {height: 43px;line-height: 43px;width: 100%;background: #f60;color: #fff;font-size: 18px;text-indent: 13px;}
+.sider h1 a {float: right;font-size: 12px;color: #fff;margin-right: 12px;display: inline;}
+.sider .mvrank, .sider .albumrank, .sider .musicrank, .sider .mvlist, .sider .ranklist, .sider .hotlist, .sider .tjlist, .sider .sdlist{ margin-bottom:15px; background:#fff;}
+.sider .rank{ width:270px; margin:0 auto; overflow:hidden;}
+.sider .rank p{ height:25px; line-height:25px; margin-top:12px;}
+.sider .rank span{ display:block; float:left; height:25px; line-height:25px;}
+.sider .rank span.num{ width:25px; text-align:center; color:#656565; background:#dadada; margin-right:11px;}
+.sider .rank span.topnum{ color:#fff; background:#666;}
+.sider .rank span.m_name{ width:160px; overflow:hidden;}
+.sider .rank span.m_name a{ color:#111;}
+.sider .rank span.s_name{ width:5em; overflow:hidden;}
+.sider .rank span.s_name a{ font-size:12px; color:#808080;}
+.sider .rank .album2{ height:74px; overflow:hidden; margin-top:12px;}
+.sider .rank .album2 img{ display:block; float:left; margin-right:12px; margin-top:10px;}
+.sider .rank .album2 p{ display:block; float:left; height:20px; line-height:20px; margin-top:11px; width:120px; overflow:hidden; margin-right:-3px;}
+.sider .rank .album2 p a{ display:block;}
+.sider .rank .album2 p a.m_name{ color:#111;}
+.sider .rank .album2 p a.s_name{ font-size:12px; color:#808080;}
+.untxt {display: none !important;}
+
+
+
+
+
+

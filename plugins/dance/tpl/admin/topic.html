@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('dance/admin/topic')?>"><?=L('tpl_271')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('dance/admin/topic')?>" class="selected"><?=L('tpl_272')?></a></li> 
+               <li><a href="<?=site_url('dance/admin/topic/edit')?>"><?=L('tpl_273')?></a></li>  
+  	        </ul>
+        </div> 
+    </div> 
+    <div class="rightinfo">
+	<form action="<?=site_url('dance/admin/topic')?>" method="post">
+    <ul class="seachform">
+         <li><label>
+             <div class="vocation">
+                <select class="select3" name="zd">
+                   <option value="name"<?php if($zd=='name') echo ' selected';?>><?=L('tpl_274')?></option>
+				   <?php if($this->db->table_exists(CS_SqlPrefix.'singer')){ ?>
+                   <option value="singer"<?php if($zd=='singer') echo ' selected';?>><?=L('tpl_275')?></option>
+				   <?php } ?>
+                   <option value="user"<?php if($zd=='user') echo ' selected';?>><?=L('tpl_276')?></option>
+                   <option value="tags"<?php if($zd=='tags') echo ' selected';?>><?=L('tpl_277')?></option>
+                </select>
+             </div>
+         </label><input style="width:150px;" name="key" value="<?=$key?>" type="text" class="scinput" />
+         </li>
+         <li>
+         <li>
+         <div style="margin-left:10px;" class="vocation">
+                <select class="select3" name="yid">
+                   <option value="0"<?php if($yid==0) echo ' selected';?>><?=L('tpl_278')?></option>
+                   <option value="1"<?php if($yid==1) echo ' selected';?>><?=L('tpl_279')?></option>
+                   <option value="2"<?php if($yid==2) echo ' selected';?>><?=L('tpl_280')?></option>
+                </select>
+         </div>
+         <div style="margin-left:10px;" class="vocation">
+                <select class="select3" name="tid">
+                   <option value="0"<?php if($tid==0) echo ' selected';?>><?=L('tpl_281')?></option>
+                   <option value="1"<?php if($tid==1) echo ' selected';?>><?=L('tpl_282')?></option>
+                   <option value="2"<?php if($tid==2) echo ' selected';?>><?=L('tpl_283')?></option>
+                </select>
+         </div>  
+         <div style="margin-left:10px;" class="vocation">
+                <select class="select3" name="sort">
+                   <option value=""<?php if($sort=='') echo ' selected';?>><?=L('tpl_284')?></option>
+	               <option value="id"<?php if($sort=='id') echo ' selected';?>><?=L('tpl_24')?></option>
+	               <option value="addtime"<?php if($sort=='addtime') echo ' selected';?>><?=L('tpl_25')?></option>
+	               <option value="hits"<?php if($sort=='hits') echo ' selected';?>><?=L('tpl_26')?></option>
+	               <option value="yhits"<?php if($sort=='yhits') echo ' selected';?>><?=L('tpl_27')?></option>
+	               <option value="zhits"<?php if($sort=='zhits') echo ' selected';?>><?=L('tpl_28')?></option>
+	               <option value="rhits"<?php if($sort=='rhits') echo ' selected';?>><?=L('tpl_29')?></option>
+                </select>
+         </div>  
+         </li>
+         <li><label>&nbsp;</label><input name="so" type="submit" class="scbtn" value="<?=L('tpl_30')?>"/></li>
+    </ul>
+	</form>
+	<form action="<?=site_url('dance/admin/topic/del')?>" method="post" id="myform" name="myform">
+    <table class="imgtable">
+    	<thead>
+    	<tr>
+        <th><?=L('tpl_31')?></th>
+        <th>ID</th>
+        <th width="70px;"><?=L('tpl_32')?></th>
+        <th width="370px;"><?=L('tpl_274')?></th>
+        <th><?=L('tpl_275')?></th>
+        <th><?=L('tpl_285')?></th>
+        <th><?=L('tpl_36')?></th>
+        <th><?=L('tpl_37')?></th>
+        <th><?=L('tpl_38')?></th>
+        <th><?=L('tpl_39')?></th>
+        <th><?=L('tpl_40')?></th>
+        </tr>
+        </thead>
+
+        <tbody>
+<?php
+if(empty($topic)) echo '<tr><td align="center" height="50" colspan="11">'.L('tpl_41').'</td></tr>';
+foreach ($topic as $row) {
+        //歌曲数量
+		$numss=$this->db->query("SELECT id FROM ".CS_SqlPrefix."dance where tid=".$row->id."")->num_rows();
+        $pic=!empty($row->pic)?'<img height="30" src="'.piclink('dancetopic',$row->pic).'">':'-';
+		//状态
+		$zt=($row->yid==0)?'<a title="'.L('tpl_42').'" href="javascript:get_cmd(\''.site_url('dance/admin/topic/init').'?sid=1\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/ok.gif" /></a>':'<a title="'.L('tpl_43').'" href="javascript:get_cmd(\''.site_url('dance/admin/topic/init').'?sid=0\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" /></a>';
+		//推荐状态
+		$tj=($row->tid==1)?'<a title="'.L('tpl_44').'" href="javascript:get_cmd(\''.site_url('dance/admin/topic/init').'?sid=0\',\'tj\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/ok.gif" /></a>':'<a title="'.L('tpl_45').'" href="javascript:get_cmd(\''.site_url('dance/admin/topic/init').'?sid=1\',\'tj\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" /></a>';
+		//时间加亮
+		if(date('Y-m-d',$row->addtime)==date('Y-m-d')){
+             $addtime='<font color=red>'.date('Y-m-d',$row->addtime).'</font>';
+		}else{
+             $addtime=date('Y-m-d',$row->addtime);
+		}
+		//歌手
+		$singer='-';
+		if($this->db->table_exists(CS_SqlPrefix.'singer')){  //歌手表存在
+             $singer=$this->CsdjDB->getzd('singer','name',$row->singerid);
+			 if($singer!='null'){
+                 $singer='<a href="'.linkurl('show','',$row->singerid,1,'singer').'" target="singer">'.$singer.'</a>';
+			 }
+		}
+        echo '
+        <tr>
+        <td><input name="id[]" type="checkbox" value="'.$row->id.'" /></td>
+        <td>'.$row->id.'</td>
+        <td class="imgtd">'.$pic.'</td>
+        <td><a href="'.linkurl('topic','show',$row->id,1,'dance').'" target="web">'.$row->name.'</a></td>
+        <td>'.$singer.'</td>
+        <td>'.$numss.'</td>
+        <td>'.$row->hits.'</td>
+        <td id="tj_'.$row->id.'">'.$tj.'</td>
+        <td id="zt_'.$row->id.'">'.$zt.'</td>
+        <td>'.$addtime.'</td>
+        <td><a href="'.site_url('dance/admin/topic/edit').'?id='.$row->id.'">'.L('edit').'</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Popsbox(\''.L('tpl_48').'\',505,245,\''.L('tpl_49').'\',\''.site_url('dance/admin/topic/del').'?id='.$row->id.'\');">'.L('tpl_50').'</a></td>
+        </tr> ';
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span><?=L('tpl_62')?></li>
+            <li class="click" onclick="Popsbox('<?=L('tpl_48')?>',505,245,'<?=L('tpl_51')?>','submit');"><span><img src="<?=Web_Path?>packs/admin/images/t03.png" /></span><?=L('tpl_52')?></li>
+       </ul>
+       <ul class="toolbar1">
+            <li class="click"><a href="<?=site_url('dance/admin/topic/edit')?>"><span><img src="<?=Web_Path?>packs/admin/images/t01.png" /></span><?=L('tpl_286')?></a></li>
+       </ul>
+    </div>
+	</form>
+    <div class="pagin">
+    	<div class="message"><?=L('tpl_58',array($nums,$page))?></div>
+        <ul class="paginList"><?=$pages?></ul>
+    </div>
+</div> 
+<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+<script type="text/javascript"> 
+$(document).ready(function(e) {
+	$(".select3").uedSelect({
+		width : 80,
+		clas:'uew-select2'
+	});
+	$(".select4").uedSelect({
+		width : 90,
+		clas:'uew-select2'
+	});
+	$(".select5").uedSelect({
+		width : 120,
+		clas:'uew-select2'
+	});
+});
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

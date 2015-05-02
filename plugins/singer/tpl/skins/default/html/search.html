@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/singer.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div class="wrap mt20 clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+   <div class="singer">
+       <!-- left start -->
+       <div class="left">
+           <div class="cate">
+               <ul><li class="active"><a href="{cscmsphp}cscmslink('singer');{/cscmsphp}">全部歌手</a></li></ul>
+		   </div>
+		   <div class="cate">
+		       <h3>华语</h3>
+		       <ul>
+			   {cscms:class table="singer_list" field="id,name" fid="1" sort="xid" order="asc"}
+        	      <li><a href="[class:url link=lists,id]">[class:name]</a></li>
+			   {/cscms:class}
+			   </ul>
+		   </div>
+		   <div class="cate">
+		       <h3>欧美</h3>
+			   <ul>
+			   {cscms:class table="singer_list" field="id,name" fid="2" sort="xid" order="asc"}
+        	      <li><a href="[class:url link=lists,id]">[class:name]</a></li>
+			   {/cscms:class}
+			   </ul>
+		   </div>
+		   <div class="cate">
+		       <h3>日韩</h3>
+			   <ul>
+			   {cscms:class table="singer_list" field="id,name" fid="3" sort="xid" order="asc"}
+        	      <li><a href="[class:url link=lists,id]">[class:name]</a></li>
+			   {/cscms:class}
+			   </ul>
+		   </div>
+	   </div>
+	   <!-- left end -->
+	   <!-- right start -->
+	   <div class="right">
+	       <div class="mod-hd">
+	           <h2 class="mod-hd">{if:'{cscms:zm}'!=''}搜索字母：{cscms:zm}{else}搜索：{cscms:key}{end if}</h2>
+               <dl class="filter">
+			       <dt>按字母查找</dt>
+			       <dd>{cscmszm:27}<a href="{cscmsphp}linkurl('search','zm','[zm:name]',1);{/cscmsphp}">[zm:name]</a>{/cscmszm}</dd>
+			       </dl>
+			   </div>
+			   <div class="mod-bd">
+			   <div class="section section-img js-track">
+			       <ul>
+			       {cscms:singer table="singer" field="id,name,pic" pagesize="40" sort="addtime"}
+				       <li><a href="[singer:url link=show]" target="_blank"><img class="lazy" data-original="[singer:pic dir=singer]?size=120*120" alt="[singer:name]"><p>[singer:name]</p></a></li>
+			       {/cscms:singer}   
+			       </ul>
+			   </div>
+	           <div class="section">
+					<div class="pagination"{if:{cscms:pagecout}==1} style="display:none;"{end if}>
+							<a href="{cscms:pagefirst}" class="pagelink_a">首页</a>
+							<a href="{cscms:pageup}" class="pagelink_a">上一页</a>
+						    {cscms:pagenum len=10}
+						    <a href="{cscms:pagedown}" class="pagelink_a">下一页</a>
+							<a href="{cscms:pagelast}" class="pagelink_a">尾页</a>
+					</div>
+			   </div>
+			   </div>
+	       </div>
+	   </div>
+	   <!-- right end -->
+	</div>
+</div>
+
+{cscms:bottom}
+</body>
+</html>

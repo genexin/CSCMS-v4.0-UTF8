@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/index.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body>
+{cscms:head}
+
+<!---------------ads--------------->
+<div class="wrap mt10 clearfix">
+   <div class="box ads">980x90AD</div>
+</div>
+
+<!---------------dance------------->
+<div class="wrap mt20" style="margin-top:10px;">
+     <div class="musicRank clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+	     <h1 class="title">
+		    <a class="detail" href="{cscmsphp}cscmslink('dance');{/cscmsphp}" target="_blank" title="更多歌曲">更多歌曲</a>
+		    <a href="{cscmsphp}cscmslink('dance');{/cscmsphp}" title="歌曲排行">歌曲排行</a>
+		 </h1>
+		 <div class="rank fl">
+		    <h2>最新歌曲榜<span>Top12</span></h2>
+			<div class="tab_box">
+			<div class="tab_div">
+			      <a href="javascript:playsong(1);" title="全部播放" class="bg playall" style="left:150px;">全部播放</a>
+{cscms:dance table="dance" loop="12" field="id,name,singerid" sort="addtime"}
+			      <div id="song-1" class="line clearfix{if:[dance:i]<4} top{end if}" did="[dance:id]">
+				  <p class="num{if:[dance:i]<4} topnum{end if}">[dance:i]</p>
+				  <p class="music">
+				      <span class="m_name"><a href="[dance:url zdy=dance,id,play,id]" target="_blank" title="[dance:name]">[dance:name]</a></span>
+					  <span class="s_name"><a href="[dance:url zdy=singer,singerid,show]" target="_blank" title="[dance:singer zd=name]">[dance:singer zd=name]</a></span>
+					  <a href="[dance:url zdy=dance,id,play,id]" target="_blank" title="[dance:name]" class="bg listen"></a>
+				  </p>
+				  </div>
+{/cscms:dance}
+			</div>
+			</div>
+		 </div>
+
+		 <div class="rank fl">
+			<h2>歌曲推荐榜<span>Top12</span></h2>
+			<div class="tab_box">
+			<div class="tab_div">
+			      <a href="javascript:playsong(2);" title="全部播放" class="bg playall" style="left:150px;">全部播放</a>
+{cscms:dance table="dance" loop="12" field="id,name,singerid" reco="1,2,3,4,5" sort="rhits"}
+			      <div id="song-2" class="line clearfix{if:[dance:i]<4} top{end if}" did="[dance:id]">
+				  <p class="num{if:[dance:i]<4} topnum{end if}">[dance:i]</p>
+				  <p class="music">
+				      <span class="m_name"><a href="[dance:url zdy=dance,id,play,id]" target="_blank" title="[dance:name]">[dance:name]</a></span>
+					  <span class="s_name"><a href="[dance:url zdy=singer,singerid,show]" target="_blank" title="[dance:singer zd=name]">[dance:singer zd=name]</a></span>
+					  <a href="[dance:url zdy=dance,id,play,id]" target="_blank" title="[dance:name]" class="bg listen"></a>
+				  </p>
+				  </div>
+{/cscms:dance}
+			</div>
+			</div>
+		 </div>
+
+		 <div class="rank fr" style="margin:0;">
+			<h2>歌曲视听榜<span>Top12</span></h2>
+			<div class="tab_box">
+			<div class="tab_div">
+			      <a href="javascript:playsong(3);" title="全部播放" class="bg playall" style="left:150px;">全部播放</a>
+{cscms:dance table="dance" loop="12" field="id,name,singerid" sort="hits"}
+			      <div id="song-3" class="line clearfix{if:[dance:i]<4} top{end if}" did="[dance:id]">
+				  <p class="num{if:[dance:i]<4} topnum{end if}">[dance:i]</p>
+				  <p class="music">
+				      <span class="m_name"><a href="[dance:url zdy=dance,id,play,id]" target="_blank" title="[dance:name]">[dance:name]</a></span>
+					  <span class="s_name"><a href="[dance:url zdy=singer,singerid,show]" target="_blank" title="[dance:singer zd=name]">[dance:singer zd=name]</a></span>
+					  <a href="[dance:url zdy=dance,id,play,id]" target="_blank" title="[dance:name]" class="bg listen"></a>
+				  </p>
+				  </div>
+{/cscms:dance}
+			</div>
+			</div>
+		 </div>
+
+     </div>
+</div>
+
+<!---------------ads--------------->
+<div class="wrap mt10 clearfix">
+   <div class="box ads">980x90AD</div>
+</div>
+
+<!--------------vod---------------->
+<div class="wrap mt20" style="border:1px solid #D9D9D9; margin-top:10px; background:#FFF;">
+     <div class="box movie_list">
+	    <h1 class="title">
+		    <a class="detail" href="{cscmsphp}cscmslink('vod');{/cscmsphp}" target="_blank" title="更多视频">更多视频</a>
+		    <a href="{cscmsphp}cscmslink('vod');{/cscmsphp}" title="推荐视频">推荐视频</a>
+		</h1>
+        <ul>
+        {cscms:vod table="vod" loop="12" field="id,color,name,addtime,pic" reco="3,4,5" sort="hits"}
+            <li><a href="[vod:url zdy=vod,id,show,id]" target="_blank"><img class="lazy" data-original="[vod:pic dir=vod]?size=201*230"><h3><font color="[vod:color]">[vod:name]</font></h3><span class="movie_date"><!--[if lt IE 9 ]><span class="bg_top"><![endif]--> [vod:addtime style=Y/m/d H:i:s]<!--[if lt IE 9 ]></span><span class="bg_tail"></span><![endif]--></span></a></li>
+        {/cscms:vod}
+        </ul>
+      </div>
+</div>
+
+<!------------topic---------------->
+<div class="wrap mt20" style="margin-top:10px;">
+     <div class="album" style="border:1px solid #D9D9D9;background:#FFF;">
+	     <h1 class="title">
+		     <a class="detail" href="{cscmsphp}linkurl('topic','id',1,1,'dance');{/cscmsphp}" target="_blank" title="更多专辑">专辑大全</a>
+		     <a href="{cscmsphp}linkurl('topic','id',1,1,'dance');{/cscmsphp}" title="音乐专辑" target="_blank">专辑推荐</a>
+		 </h1>
+		 <div class="tab">
+		     <div class="tab_menu">
+		        <ul>
+		           <li id="topic_1" class="selected"><a href="javascript:;" title="最新">最新</a></li>
+				   <li id="topic_2" class="noborder"><a href="javascript:;" title="排行">排行</a></li>
+				</ul>
+			 </div>
+			 <div class="tab_box">
+			     <div id="topics_1" class="tab_div" style="display: block;">
+			         <ul class="clearfix">
+{cscms:topic table="dance_topic" loop="12" field="id,name,pic,singerid" sort="addtime"}
+					     <li><a href="[topic:url zdy=dance,id,topic/show]" target="_blank" title="[topic:name]" class="img"><img class="lazy" data-original="[topic:pic dir=dancetopic]?size=140*140" width="140" height="140" alt="[topic:name]"></a><p class="musicName"><a href="[topic:url zdy=dance,id,topic/show]" target="_blank" title="[topic:name]">[topic:name]</a></p><p class="musicName singerName"><a href="[topic:url zdy=singer,singerid,show]" target="_blank" title="[topic:singer zd=name]">[topic:singer zd=name]</a></p></li>
+{/cscms:topic}
+			         </ul>
+			     </div>
+				 <div id="topics_2" class="tab_div hide" style="display: none;">
+				     <ul class="clearfix">
+{cscms:topic table="dance_topic" loop="12" field="id,name,pic,singerid" sort="hits"}
+					     <li><a href="[topic:url zdy=dance,id,topic/show]" target="_blank" title="[topic:name]" class="img"><img class="lazy" data-original="[topic:pic dir=dancetopic]?size=140*140" width="140" height="140" alt="[topic:name]"></a><p class="musicName"><a href="[topic:url zdy=dance,id,topic/show]" target="_blank" title="[topic:name]">[topic:name]</a></p><p class="musicName singerName"><a href="[topic:url zdy=singer,singerid,show]" target="_blank" title="[topic:singer zd=name]">[topic:singer zd=name]</a></p></li>
+{/cscms:topic}
+				     </ul>
+				 </div>
+			 </div>
+		 </div>
+     </div>
+</div>
+<script type='text/javascript'>topic.init();</script>
+
+<!---------------ads--------------->
+<div class="wrap mt10 clearfix">
+   <div class="box ads">980x90AD</div>
+</div>
+
+<!---------------singer------------------->
+<div class="wrap mt20" style="margin-top:10px;">
+  <div style="border:1px solid #D9D9D9;background:#FFF;">
+     <div class="hotSinger clearfix">
+	 <h1 class="title"><a class="detail" href="{cscmsphp}cscmslink('singer');{/cscmsphp}" target="_blank" title="更多歌手">歌手大全</a><a href="{cscmsphp}cscmslink('singer');{/cscmsphp}" target="_blank" title="热门明星">热门歌手</a></h1>
+	 <ul>
+{cscms:singer table="singer" loop="6" field="id,name,pic" reco="1,2,3,4,5" sort="hits"}
+	 <li><a href="[singer:url zdy=singer,id,show]" target="_blank" title="[singer:name]" class="img"><img class="lazy" data-original="[singer:pic dir=singer]?size=140*140" width="140" height="140" alt="[singer:name]"></a><p class="musicName"><a href="[singer:url zdy=singer,id,show]" target="_blank" title="[singer:name]">[singer:name]</a></p></li>
+{/cscms:singer}
+	 </ul>
+	 </div>
+
+     <div class="singerlist clearfix">
+	     <div class="list" style="margin-right:15px;">
+		    <h2 class="bg tit">男歌手</h2>
+		    <p>
+            {cscms:singer table="singer" cid="4,7" loop="25" field="id,name" sort="hits"}
+			    <a href="[singer:url zdy=singer,id,show]" target="_blank" title="[singer:name]">[singer:name]</a>
+            {/cscms:singer}
+			<a href="{cscmsphp}cscmslink('singer');{/cscmsphp}" target="_blank" title="男歌手">更多&gt;&gt;</a>
+			</p>
+		 </div>
+
+		 <div class="list" style="margin:0">
+		    <h2 class="bg tit">女歌手</h2>
+			<p>
+            {cscms:singer table="singer" cid="5,8" loop="25" field="id,name" sort="hits"}
+			    <a href="[singer:url zdy=singer,id,show]" target="_blank" title="[singer:name]">[singer:name]</a>
+            {/cscms:singer}
+			<a href="{cscmsphp}cscmslink('singer');{/cscmsphp}" target="_blank" title="女歌手">更多&gt;&gt;</a>
+			</p>
+	 </div></div>
+  </div>
+</div>
+
+<!--------------pic------------------->
+<div class="wrap mt20" style="margin-top:10px;">
+  <div style="border:1px solid #D9D9D9;background:#FFF;">
+     <div class="pic_list clearfix">
+	  <h1 class="title">
+		    <a class="detail" href="{cscmsphp}cscmslink('pic');{/cscmsphp}" target="_blank" title="更多相册">更多相册</a>
+		    <a href="{cscmsphp}cscmslink('pic');{/cscmsphp}" title="热门相册">热门相册</a>
+	  </h1>
+      <div class="hot fl">
+                {cscms:pic table="pic_type" field="id,name,pic" start="1" loop="1" sort="hits"}
+                     <a href="[pic:url zdy=pic,id,show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="300" height="225" alt="[pic:name]"></a>
+                     <p class="black"><a href="[pic:url zdy=pic,id,show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                {/cscms:pic}
+       </div>
+       <div class="picList_small fl">
+                <ul>
+			    {cscms:pic table="pic_type" field="id,name,pic" start="2" loop="8" sort="hits"}
+                     <li>
+                            <a href="[pic:url zdy=pic,id,show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="150" height="120" alt="[pic:name]"></a>
+                            <p class="picTips"><a href="[pic:url zdy=pic,id,show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                     </li>
+				 {/cscms:pic}
+                 </ul>
+       </div>
+     </div>
+  </div>
+</div>
+
+<!----------------news---------------->
+<div class="wrap mt20" style="margin-top:10px;">
+  <div style="border:1px solid #D9D9D9;background:#FFF;">
+     <div class="news_list clearfix">
+	    <h1 class="title">
+	       <a class="detail" href="{cscmsphp}cscmslink('news');{/cscmsphp}" target="_blank" title="更多新闻">更多新闻</a>
+		   <a href="{cscmsphp}cscmslink('news');{/cscmsphp}" title="新闻资讯">新闻资讯</a>
+	    </h1>
+        <div class="box box_left">
+           <ul>
+           {cscms:news table="news" field="id,color,name,addtime" loop="20" sort="addtime"}
+             <li><a href="[news:url zdy=news,id,show,id]" target="_blank"><span>[news:addtime style=Y-m-d H:i:s]</span><font color="[news:color]">[news:name]-[news:i]</font></a></li>
+             {if:[news:i]==10}</ul></div><div class="box box_right"><ul>{end if}
+           {/cscms:news}
+           </ul>
+        </div>
+     </div>
+   </div>
+</div>
+
+<!---------------links----------------->
+<table width="980" border="0" align="center" class="links" style="">
+    <tr>
+        <td height="50">&nbsp;友情链接：{cscms:link table="link" field="url,name" loop="100" order="asc"}<a href="[link:url]" target="_blank">[link:name] </a>&nbsp;&nbsp;{/cscms:link}</td>
+    </tr>
+</table>
+{cscms:bottom}
+</body>
+</html>

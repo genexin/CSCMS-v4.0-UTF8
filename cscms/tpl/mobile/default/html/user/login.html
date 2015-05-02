@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{cscms:title}</title>
+<link href="{cscms:tempurl}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:tempurl}css/user.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{cscms:tempurl}js/user.js"></script>
+</head>
+<body>
+<div class="sub_bodybg"></div>
+<div class="sub_head_top">
+	<div class="title">用户登录</div>
+	<div class="back" id="pageback"><img src="{cscms:tempurl}images/18.jpg" alt="#"   border="0"/></div>  
+	<div class="menu" id="topmenu_sub"><a href="javascript:;"><img src="{cscms:tempurl}images/2.jpg"  border="0"/></a></div>
+</div>
+{cscms:head}
+<form id="login_form" action="[user:loginsave]" method="post">
+<div class="user_login_box">
+ <input name="username" type="text" class="txtinput" placeholder="用户名"/>
+ <div class="more" id="clearkey"><img src="{cscms:tempurl}images/17.jpg"  border="0"/></div>
+</div>
+<div class="user_login_box">
+<input name="userpass" type="password" class="txtinput" placeholder="密码"/>
+</div>
+<div class="user_login_box" style="{if:[user:codecheck]==0}display:none;{end if}">
+<input name="usercode" type="text" class="txtinput"  placeholder="验证码" id="code"/>
+<div class="more"><img class="codes" style="width:100px;height:25px;" _src="{cscms:codes}" src="{cscms:codes}" alt="点击切换" border="0"/></div>
+</div>
+<input type="hidden" name="token" value="[user:token]"/>
+<div class="user_login_but">登陆</div>
+</form>
+<div class="user_login_getpws link_blue">
+  <div class="left"><a href="{cscms:passlink}">忘记密码</a></div>  
+  <div class="right"><a href="{cscms:reglink}">注册账号</a></div>
+  <div class="clear"></div>
+</div>
+<div class="user_login_open">
+  <div class="title">
+    <span >使用其他账号登陆</span>
+  </div>
+</div>
+<div class="user_login_open_img">
+  <div class="imglist">
+	<div align="center"><a href="{cscms:qqlink}"><img src="{cscms:tempurl}images/qq_icon.gif"  border="0"/></a></div>
+  </div>
+  <div class="imglist">
+	<div align="center"><a href="{cscms:weibolink}"><img src="{cscms:tempurl}images/weibo_icon.gif"  border="0"/></a></div>
+  </div>
+  <div class="imglist">
+	<div align="center"><a href="{cscms:baidulink}"><img src="{cscms:tempurl}images/baidu_icon.gif"  border="0"/></a></div>
+  </div>
+  <div class="imglist">
+	<div align="center"><a href="{cscms:renrenlink}"><img src="{cscms:tempurl}images/renren_icon.gif"  border="0"/></a></div>
+  </div>
+  <div class="imglist">
+	<div align="center"><a href="{cscms:doubanlink}"><img src="{cscms:tempurl}images/douban_icon.gif"  border="0"/></a></div>
+  </div>
+  <div class="imglist">
+	<div align="center"><a href="{cscms:kaixinlink}"><img src="{cscms:tempurl}images/kaixin_icon.gif"  border="0"/></a></div>
+  </div>
+  <div class="clear"></div>
+</div>
+<script>user.init();</script>
+{cscms:bottom}
+</body>
+</html>

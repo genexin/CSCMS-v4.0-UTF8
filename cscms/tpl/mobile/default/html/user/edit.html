@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{cscms:title}</title>
+<link href="{cscms:tempurl}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:tempurl}css/user.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:tempurl}css/space.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{cscms:tempurl}js/user.js"></script>
+</head>
+<body>
+<div class=""></div>
+<div class="sub_head_top">
+	<div class="title">基本信息</div>
+	<div class="back" id="pageback"><img src="{cscms:tempurl}/images/18.jpg" alt="#"   border="0"/></div>  
+	<div class="menu" id="topmenu_sub"><a href="javascript:;"><img src="{cscms:tempurl}/images/2.jpg"  border="0"/></a></div>
+</div>
+{cscms:head}
+<div class="make_resume_top">
+  <p>基本信息</p>
+</div>
+
+<form id="Form1" method="post" action="?act=make_resume_save" style="padding:0 10px;" >
+    <table style="width:100%;border-collapse:collapse;">
+      
+       <tr>
+          <td class="make_resume_td_L">帐　　号</td>
+          <td class="make_resume_td_R">&nbsp;&nbsp;&nbsp;[user:name]<span style="position: absolute;top:40px"></span></td>  
+        </tr>
+
+        <tr>
+          <td class="make_resume_td_L">昵　　称</td>
+          <td class="make_resume_td_R"><input type="text" name="usernichen" class="make_resume_input" value="[user:nichen]"/><span style="position: absolute;top:40px"></span></td>  
+        </tr>
+
+        <tr>
+          <td class="make_resume_td_L">邮　　箱</td>
+          <td class="make_resume_td_R"><input type="text" name="useremail" class="make_resume_input" value="[user:email]"/><span style="position: absolute;top:40px"></span></td>  
+        </tr>
+
+        <tr>
+          <td class="make_resume_td_L">手　　机</td>
+          <td class="make_resume_td_R"><input type="text" name="usertel" class="make_resume_input" value="[user:tel]"/><span style="position: absolute;top:40px"></span></td>  
+        </tr>
+        <tr>
+          <td class="make_resume_td_L">性　　别</td>
+          <td class="make_resume_td_R">
+   <input class="input_radio" type="radio" name="sex_cn" value="0" title="男" {if:[user:sex]==0}checked{end if}/>男&nbsp;
+   <input class="input_radio" type="radio" name="sex_cn" value="1" title="女" {if:[user:sex]==1}checked{end if}/>女&nbsp;
+   <input class="input_radio" type="radio" name="sex_cn" value="2" title="保 密" {if:[user:sex]==2}checked{end if}/>保 密
+         </td>
+        </tr>
+
+        <tr>
+          <td class="make_resume_td_L">Ｑ　　Ｑ</td>
+          <td class="make_resume_td_R"><input name="userqq" type="text" class="make_resume_input" value="[user:qq]" /></td> 
+        </tr>
+        <tr>
+          <td class="make_resume_td_L">个人签名</td>
+          <td class="make_resume_td_R">[user:qianm]</td>  
+        </tr>
+    </table>
+    <input type="submit" id="submit" value="保存信息" class="personal_submit"/>
+</form>
+
+<!-- footer -->
+{cscms:bottom}
+</body>
+</html>
+            

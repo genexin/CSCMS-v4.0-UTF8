@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/dance.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<script>$("#class_0").addClass("a_sub_nav_clo");</script>
+<div id="cscms_topic_list" style="border:1px solid #D9D9D9;background:#FFF;">
+    <div class="wrapper clearfix">
+            	<div class="title clearfix">
+                    <h1 title="[topic:name]">[topic:name] - [topic:singer zd=name]</h1>
+                </div>
+                <div class="submenu">
+                    <ul>
+                        <li><a href="[topic:url zdy=singer,singerid,show]" title="[topic:singer zd=name]主页">主页</a></li>
+                        <li><a href="[topic:url zdy=singer,singerid,info]" title="[topic:singer zd=name]资料">资料</a></li>
+                        <li><a href="[topic:url zdy=singer,singerid,music]" title="[topic:singer zd=name]歌曲">歌曲</a></li>
+                        <li><a href="[topic:url zdy=singer,singerid,pic]" title="[topic:singer zd=name]图片">图片</a></li>
+                        <li><a href="[topic:url zdy=singer,singerid,mv]" title="[topic:singer zd=name]MV">MV</a></li>
+                        <li class="current"><a href="[topic:url zdy=singer,singerid,topic]" title="[topic:singer zd=name]专辑">专辑</a></li>
+                    </ul>
+                </div>
+                <!-- 左边内容 begin -->
+                <div class="mainwrap fl">
+                    <!-- singer begin -->
+                    <div class="singerwrap clearfix gbg">
+                    	<!-- s_img begin -->
+                        <div class="s_img">
+                        	<a href="[topic:url zdy=singer,singerid,show]" target="_blank" title="[topic:singer zd=name]"><img src="[topic:pic dir=dancetopic]?size=240*240" title="[topic:name]" w="240" h="240" width="240" height="240" alt="[topic:name]"></a>
+                        </div>
+                        <!-- s_img end -->
+                        <!-- comm begin -->
+                        <div class="comm" style="overflow: visible;">
+                        	<h1 title="[topic:name]">[topic:name]</h1>
+                            <p class="button" style="margin-bottom:10px;"><a href="javascript:void(0)" onclick="playsongs()" class="btn play" title="全部播放[topic:name]专辑"></a>立即播放
+							<span style="float:right;" onclick="album_fav('[topic:id]')" title="收藏[topic:name]专辑">
+							   <b class="topicfav"></b>（<font id="shits">[topic:shits]</font>）
+							</span>
+							</p>
+                        	<ul class="tipscomm">
+                            	<li>歌手：<span>[topic:singer zd=name]</span></li>
+                                <li>唱片公司：[topic:fxgs]</li>
+                                <li>发行时间：[topic:year]</li>
+                                <li>语言：[topic:yuyan]</li>
+                                <li>地区：[topic:diqu]</li>
+                                <li>标签：[topic:tags]</li>
+                                <li>日人气：[topic:rhits]</li>
+                                <li>周人气：[topic:zhits]</li>
+                                <li>月人气：[topic:yhits]</li>
+                                <li>总人气：[topic:hits]</li>
+                            </ul>
+                            <div class="share">
+                            	<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="padding-top:2px" data="{
+											    	'text':'听了这张《[topic:name]》专辑，一下子就爱上了[topic:singer zd=name]，你也来听听看吧(分享自@{cscms:webname})。',
+											    	'comment':'',
+													'pic':'',
+													'url':'[topic:url link=topic/show,id]'
+											    }">
+                                    <span class="bds_more" style="padding-left:0px !important;background:none !important">分享到：</span>
+                                    <a class="bds_tsina" title="分享到新浪微博" href="#" hidefocus="true"></a>
+                                    <a class="bds_qzone" title="分享到QQ空间" href="#" hidefocus="true"></a>
+                                    <a class="bds_tqq" title="分享到腾讯微博" href="#" hidefocus="true"></a>
+                                    <a class="bds_renren" title="分享到人人网" href="#" hidefocus="true"></a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!-- comm end -->
+                    </div>
+                    <!-- singer end -->
+                    <!-- 歌手简介 -->
+                    <div class="tipcomm">
+                   		<div id="moreContent" style="height: 64px; overflow: hidden;">
+	                   		<p id="intro" style="word-wrap:break-word;">
+	                   			[topic:neir]
+							</p>
+                   		</div>
+						<p class="tr" style="text-align: right;margin-right: 10px;" id="moreInfo"><a href="#none" id="neir1" class="dIcon" title="查看专辑详细信息">查看详细</a><a href="#none" id="neir2" class="upIcon untxt" title="收起专辑详细信息">收起详细</a></p>
+                  	</div>
+                    <!-- 歌手简介 -->
+                    
+                    <!-- musiclist begin -->
+                    <div class="m_list clearfix">
+                        <form action="#" method="post">
+                            <div class="top">
+                                <p class="fl"><input id="checkALL" type="checkbox" name="allSelect" onchange="checkAll();" checked="checked" value="">全选</p>
+                                <p class="fl" style="margin-left:20px; display:inline;" title="亲爱的你全部歌曲">亲爱的你全部歌曲</p>
+                                <p class="fr">
+                                    <a href="javascript:void(0);" onclick="playsongs(1)" title="全部播放" class="current">全部播放</a>
+                                    <a href="javascript:void(0);" onclick="playsongs(2);" title="播放选中">播放选中</a>
+                                </p>
+                            </div>
+                            <div class="list">
+                                <dl class="clearfix">
+                                    <dd class="m_name">歌曲名称</dd>
+                                    <dd class="s_name">歌手</dd>
+                                    <dd class="listen" style="margin-right:8px;">试听</dd>
+                                    <dd class="share" style="margin-right:12px;">分享</dd>
+                                    <dd class="down">下载</dd>
+                                </dl>
+                                <ul>
+{cscms:dance table="dance" field="id,name,tid,singerid" tid="auto" sort="addtime" order="desc"}
+                                    <li class="clearfix">
+                                            <p class="number"><input type="checkbox" name="check" value="[dance:id]" checked="checked">[dance:i]</p>
+                                            <p class="m_name">
+                                                <a href="[dance:url link=play,id]" title="[dance:name]" target="_blank">[dance:name]</a>
+                                            </p>
+                                            <p class="s_name"><a href="[dance:url zdy=singer,singerid,show]" title="[dance:singer zd=name]" target="_blank">[dance:singer zd=name]</a></p>
+                                            <p class="listen"><a href="[dance:url link=play,id]" target="_blank" title="试听[dance:name]"></a></p>
+                                            <p class="share"><a href="javascript:void(0);" title="分享[dance:name]" onclick="showShareMusic(this,'[dance:name]','[topic:pic dir=dancetopic]','[dance:url link=play,id]')"></a></p>
+                                            <p class="down"><a href="[dance:url link=down,id]" target="_blank" title="[dance:name]下载"></a></p>
+                                    </li>
+{/cscms:dance}
+                                 </ul>
+                               
+                            </div>
+                            <!-- list end -->
+                        </form>
+                    </div>
+                    <!-- musiclist end -->
+                    
+                    <div class="comment">
+                    	<!--此处为评论  -->
+						[topic:pl]
+                    </div>
+                    
+                </div>
+                <!-- 左边内容 end-->
+                <!-- 右边内容 begin -->
+                <div class="sider fl">
+                    <!-- 专辑排行 begin -->
+                    <div class="albumrank clearfix">
+                    	<h1><a href="[topic:url zdy=singer,singerid,topic]" target="_blank" title="更多">更多</a>
+                    	[topic:singer zd=name]热门专辑</h1>
+                        <div class="rank">
+{cscms:topic table="dance_topic" field="id,name,singerid,pic" loop="10" singerid="auto" sort="hits" order="desc"}
+	                            <p class="clearfix{if:[topic:i]==1} untxt{end if}" id="hsmallDiv[topic:i]" rel="htop5small" oindex="[topic:i]">
+	                            	<span class="num{if:[topic:i]<4} topnum{end if}">[topic:i]</span>
+	                            	<span class="m_name"><a href="[topic:url link=topic/show,id]" title="[topic:name]">[topic:name]</a></span>
+	                                <span class="s_name"><a href="[topic:url zdy=singer,singerid,show]" target="_blank" title="[topic:singer zd=name]">[topic:singer zd=name]</a></span>
+	                            </p>
+	                            <div class="album2 clearfix{if:[topic:i]>1} untxt{end if}" id="hbigDiv[topic:i]" style="height:110px">
+	                            	<span class="num{if:[topic:i]<4} topnum{end if}">[topic:i]</span>
+	                                <a href="[topic:url link=topic/show,id]" title="[topic:name]"><img src="[topic:pic dir=dancetopic]?size=100*100" title="[topic:name]" alt="[topic:name]" width="100" height="100"></a>
+	                                <p><a href="[topic:url link=topic/show,id]" title="[topic:name]" class="m_name">[topic:name]</a></p>
+	                                <p><a href="[topic:url zdy=singer,singerid,show]" target="_blank" title="[topic:singer zd=name]" class="s_name">[topic:singer zd=name]</a></p>
+	                            </div>
+{/cscms:topic}
+			                </div>
+                    </div>
+                    <!-- 专辑排行 end -->
+                </div>
+                <!-- 右边内容 end-->
+            </div>
+</div>
+<!-- 分享弹窗 -->
+<div class="fentan" style="display: none; position: absolute; top: 260px; left: 565px; height:33px" id="fsId">
+    <div class="fenleft"></div>
+    <div class="fenmiddle">
+        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="padding-top:2px" data="">
+            <span class="bds_more" style="padding-left:0px !important;background:none !important">分享到：</span>
+            <a class="bds_tsina" title="分享到新浪微博" href="#"></a>
+            <a class="bds_qzone" title="分享到QQ空间" href="#"></a>
+            <a class="bds_tqq" title="分享到腾讯微博" href="#"></a>
+            <a class="bds_renren" title="分享到人人网" href="#"></a>
+            <a class="bds_douban" title="分享到豆瓣网" href="#"></a>
+            <a href="javascript:void(0);" onclick="$('#fsId').hide();" class="closed"
+               style="padding-top:0px;margin-top:3px;margin-left:20px;padding-left:0px;background: url('{cscms:indextempurl}images/icon3.png') no-repeat scroll 0 -51px transparent;"></a>
+        </div>
+    </div>
+    <div class="fenright">
+    </div>
+</div>
+<script type="text/javascript">topic.init();</script>
+<!-- baidu share js begin-->
+<script type="text/javascript" id="bdshare_js" data="type=slide&img=2&uid=676795" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	var bds_config = {"bdTop":168,'snsKey':{'tsina':'4256128524','tqq':'801535601'}};
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+	</script>
+<!-- baidu share js end-->
+{cscms:bottom}
+</body>
+</html>

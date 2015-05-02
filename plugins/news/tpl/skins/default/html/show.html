@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/news.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div class="wrap mt20" style="border:1px solid #D9D9D9;background:#FFF; margin-top:10px;">
+<div class="box news_text">
+<div class="page_title">[news:name]</div>
+<ul>
+<table width="100%" border="0">
+<tr>
+<td align="center"><em>更新时间：[news:addtime style=Y-m-d H:i:s]</em>&nbsp;&nbsp;<em>人气：[news:hits]</em>&nbsp;&nbsp;<em>作者：[news:user zd=nichen]</em></td>
+</tr>
+</table>
+</ul>	
+ 
+<div class="content">
+<div>[news:content]</div>
+</div>
+<ul>
+<table width="100%" border="0">
+<tr>
+<td>上一篇：<a href="[news:slink]" title="[news:sname]">[news:sname]</a></td>
+<td align="right">下一篇：<a href="[news:xlink]" title="[news:xname]">[news:xname]</a>&nbsp;&nbsp;</td>
+</tr>
+</table>
+</ul>
+</div>
+</div>
+<div class="wrap mt20" style="border:1px solid #D9D9D9;background:#FFF; margin-top:10px;">
+<table width="100%" border="0">
+<tr><td><h2 style="border-bottom:1px solid #D9D9D9;font-size:16px;">文章评论</h2></td></tr>
+<tr><td>[news:pl]</td></tr>
+</table>
+</div>
+{cscms:bottom}
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+</head>
+<body>
+<div class="rightinfo">
+    <table class="stablelist">
+    	<thead>
+    	<tr><th><?=vsprintf(L('tpl_24'),array($dir))?></th></tr>
+        </thead>
+        <form action="<?=site_url('plugins/role_save')?>" method="post">
+        <tbody>
+        <tr><td><font color=#0000ff><?=L('tpl_25')?></font></td>
+<?php 
+	for($j=0;$j<count($link['admin']);$j++){
+	    echo '<tr><td height="30" id="sys_'.$j.'" class="xuan">';
+        for($k=0;$k<count($link['admin'][$j]['menu']);$k++){
+		     $links=$link['admin'][$j]['menu'][$k]['link'];
+		     $name=$link['admin'][$j]['menu'][$k]['name'];
+	         $check=(getqx($dir.'/'.$links,$app)=='ok')?' checked="checked"':'';
+             echo '<label><input name="sys[]" type="checkbox" value="'.$dir.'/'.$links.'"'.$check.'/>'.$name.'</label>';
+        }
+		echo '<label style="color:#3333ff" class="sys" sid="'.$j.'">'.L('tpl_26').'</label></td></tr>';
+    }
+?>
+        <input name="id" type="hidden" value="<?=$id?>">
+        <input name="dir" type="hidden" value="<?=$dir?>">
+		<tr><td align="center" height="50"><input name="submit" type="submit" class="btn" value="<?=L('admin_edit_08')?>"/></td></tr>
+        </tbody>
+		</form>
+    </table>
+</div>
+<script type="text/javascript">
+	$('.stablelist tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

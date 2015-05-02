@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>CSCMS后台管理</title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('sys/log')?>"><?=L('tpl_37')?></a></li></ul>
+</div>
+<div class="rightinfo">
+    <div class="explain-col">
+		<font color="#999"><?=L('tpl_38')?></font>
+    </div>
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th><?=L('tpl_39')?>
+<?php 
+if($sort=='id' && $desc=='asc'){
+		echo '&nbsp;<a title="'.L('tpl_40').'" href="?sort=id&desc=desc"><i class="sort"><img src="'.Web_Path.'packs/admin/images/down.gif" align="absmiddle"/></i></a>';
+}else{
+		echo '&nbsp;<a title="'.L('tpl_41').'" href="?sort=id&desc=asc"><i class="sort"><img src="'.Web_Path.'packs/admin/images/up.gif" align="absmiddle"/></i></a>';
+}
+?>
+        </th>
+        <th><?=L('tpl_42')?></th>
+        <th><?=L('tpl_43')?>
+<?php 
+if($sort=='logintime' && $desc=='asc'){
+		echo '&nbsp;<a title="'.L('tpl_44').'" href="?sort=logintime&desc=desc"><i class="sort"><img src="'.Web_Path.'packs/admin/images/down.gif" align="absmiddle"/></i></a>';
+}else{
+		echo '&nbsp;<a title="'.L('tpl_45').'" href="?sort=logintime&desc=asc"><i class="sort"><img src="'.Web_Path.'packs/admin/images/up.gif" align="absmiddle"/></i></a>';
+}
+?>
+		</th>
+        <th><?=L('tpl_46')?></th>
+        <th><?=L('tpl_47')?></th>
+        <th><?=L('tpl_48')?></th>
+        </tr>
+        </thead>
+
+        <tbody>
+<?php
+foreach ($log as $row) {
+        echo '
+        <tr>
+        <td>'.$row->id.'</td>
+        <td>'.$this->CsdjDB->getzd('admin','adminname',$row->uid).'</td>
+        <td>'.date('Y-m-d H:i:s',$row->logintime).'</td>
+        <td>'.$row->loginip.'</td>
+        <td>'.$this->ip->address($row->loginip).'</td>
+        <td>'.$row->useragent.'</td>
+        </tr> ';
+}
+?>
+        </tbody>
+    </table>
+    
+    <div class="pagin">
+    	<div class="message"><?=vsprintf(L('tpl_49'),array($nums,$page))?></div>
+        <ul class="paginList"><?=$pages?></ul>
+    </div>
+    <div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+<script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

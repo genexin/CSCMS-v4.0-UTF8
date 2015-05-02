@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+</head>
+<body id="xtopjsinfo">
+<div class="wrapper">
+{cscms:head}
+<div class="container">
+<section class="module_user">
+<div class="hd">
+<div class="mod_left"><span class="name">[dance:name]-下载</span></div>
+<div class="mod_right"><a href="javascript:history.back();"><<返回</a></div>
+</div>
+<div class="tabCon">
+  <div class="dance_type">
+     <p>作词：<a href="{cscmsphp}linkurl('search','zc','[dance:zc]',1);{/cscmsphp}" target="_blank">[dance:zc]</a></p>
+     <p>作曲：<a href="{cscmsphp}linkurl('search','zq','[dance:zq]',1);{/cscmsphp}" target="_blank">[dance:zc]</a></p>
+     <p>编曲：<a href="{cscmsphp}linkurl('search','bq','[dance:bq]',1);{/cscmsphp}" target="_blank">[dance:zc]</a></p>
+     <p>演唱：<a href="[dance:url zdy=singer,singerid,show,id]" target="_blank">[dance:singer zd=name]</a></p>
+     <p>扣币：[dance:cion]个</p>
+	 <p><a class="down" href="[dance:url link=down,load]">下载到手机</a></p>
+  </div>
+</div>
+</section>
+<div class="push"></div>
+</div>
+</div>
+{cscms:bottom}
+</body>
+</html>

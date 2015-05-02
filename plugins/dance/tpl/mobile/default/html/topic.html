@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+</head>
+<body id="xtopjsinfo">
+<div class="wrapper">
+{cscms:head}
+<div class="container">
+<section class="mod_tab">
+<div class="tabNav">
+最新专辑
+</div>
+<div class="tabCon">
+<ul class="singer_list">
+{cscms:topic table="dance_topic" field="id,name,pic" pagesize="9" cid="auto" sort="addtime" order="desc"}
+<li><a href="[topic:url link=topic/show,id]"><img src="[topic:pic dir=dancetopic]" alt="[topic:name]"><span>[topic:name len=5]</span></a></li>
+{if:[topic:i]==3 or [topic:i]==6 or [topic:i]==9 or [topic:i]==12}</ul><ul class="singer_list">{end if}
+{/cscms:topic}
+</ul>
+</div>
+</section>
+<div class="pagination clearfix"><a class="pre" href="{cscms:pageup}">上一页</a><a class="next" href="{cscms:pagedown}">下一页</a><span>{cscms:pagenow}/{cscms:pagecout}</span></div>
+</div>
+</div>
+<div class="push"></div>
+</div>
+{cscms:bottom}
+</body>
+</html>

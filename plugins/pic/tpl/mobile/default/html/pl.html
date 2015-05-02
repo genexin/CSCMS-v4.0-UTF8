@@ -1,0 +1,66 @@
+{cscms:pl table="pl" did="auto" fid="0" pagesize="5" sort="id" order="desc"}
+ 			      <div style="float:left;width:95%;height:auto;margin:0 auto;margin-top:10px;margin-left:10px;border:solid 1px #666;" >
+                       <div style="width:100%; height:20px; line-height:20px; font-size:12px;background:#666">
+ 			                  <div style="width:50%; float:left;color:#ccc;">&nbsp;<strong>[pl:user zd=nichen]</strong></div>
+ 			                  <div style="width:48%;float:left;text-align:right;color:#fff;font-size:12px;">[pl:addtime style=time]&nbsp;&nbsp;<span style="cursor:pointer;color:#f30" onclick="hf([pl:id]);">回复</span></div>
+ 			            </div>
+ 			            <div style="margin-left:5px;width:95%;margin:0 auto;font-size:12px;height:auto !important;height:30px;min-height:30px;">[pl:content]</div>
+
+ 			            <div id="cscms_hf_[pl:id]" style="display:none;margin-left:30px;width:95%; margin:0 auto; height:50px;font-size:12px; line-height:25px;">
+						<input style="width:60%;margin-left:25px;height:25px;line-height:25px;float:left;background:#6D6D6D;border:0;" id="cscms_pl_hf_[pl:id]" value="">&nbsp;
+						<input onclick="cscms_plhf([pl:id]);" type="button" id="button" style="height:25px;width:60px;cursor:pointer;background:#6D6D6D;border:0;" value="提 交">
+						</div>
+                        {cscmstype:pl table="pl" fid="auto" sort="id" order="desc"}
+                        <div style="margin-bottom:5px;margin-left:30px;width:85%;margin-top:10px;border-top:1px dotted #C8C8C8;">
+ 			                  <div style="width:90%;color:#f90;height:auto !important;height:30px;min-height:30px;margin-top:5px;font-size:12px;">&nbsp;<strong>[pl:user zd=nichen]&nbsp;[pl:addtime style=time]&nbsp;回复：</strong>&nbsp;&nbsp;[pl:content]</div>
+ 			            </div>
+                        {/cscmstype:pl}
+                  </div>
+{/cscms:pl}
+<div class="pages" style="float:left;">
+<a href="{cscms:pageup}" target="_self">上一页</a>
+<span class="page_num">当前页<em>{cscms:pagenow}/{cscms:pagecout}</em></span>
+<a href="{cscms:pagedown}" target="_self">下一页</a>
+</div>
+<style>
+.pages {width:95%;margin:0 auto;height:30px;line-height:30px;font-size:12px;text-align: center;}
+.pages a{margin-left:10px;margin-right:10px;}
+</style>
+
+<!-------------评论框开始----------------->
+<div style="float:left;width:95%;height:30px;margin-top:10px;padding-left:10px;line-height:30px;">
+<input id="faces" onclick="faces();" type="button" id="button" style="height:25px;background: #6D6D6D;width:60px;color:#fff;cursor:pointer;border:0;font-size:12px;" value="开启表情">
+</div>
+<div style=" height:200px auto; width:100%;">
+    <div id="cscms_faces" style="float:left;display:none;margin:10px;width:100%;">
+       <div style="float:left;padding:10px;width:340px;">
+          [pl:faces]
+	   </div>
+    </div>
+    <div>
+	   <input type='hidden' id='pl_token' value='[pl:token]'/>
+	   <textarea name="cscms_gbook_content" id="cscms_pl_content" style="width:95%;background:#6D6D6D;float:left;color:#fff;margin:10px;border:0;" rows="3"></textarea>
+	</div>
+	<div style="margin-top:5px;padding:10px;"><input onclick="cscms_pladd();" type="button" value="我要评论" style="height:25px;background:#6D6D6D;width:60px;color:#fff;cursor:pointer;border:0;font-size:12px;" ></div>
+</div>
+<script type='text/javascript'>
+function hf(_id){
+     var none=$('#cscms_hf_'+_id).css('display');
+	 if(none=='none'){
+         $('#cscms_hf_'+_id).show();
+	 }else{
+         $('#cscms_hf_'+_id).hide();
+	 }
+}
+function faces(){
+     var none=$('#cscms_faces').css('display');
+	 if(none=='none'){
+         $('#cscms_faces').show();
+		 $('#faces').val('关闭表情');
+	 }else{
+         $('#cscms_faces').hide();
+		 $('#faces').val('打开表情');
+	 }
+}
+</script>
+

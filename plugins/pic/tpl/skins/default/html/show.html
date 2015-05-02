@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/pic.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div class="wrap mt20" style="border:1px solid #D9D9D9;background:#FFF; margin-top:10px;">
+    <div class="comm clear">
+                <!-- 图片滚动 -->
+                <div class="pic">
+                    <div class="tp_title">
+                         <h1>[pic:name](<span style="color:red" id="photoNavIndex">1</span>/[pic:count])</h1>
+                    </div>
+                   <div class="big">
+                        <a href="javascript:prevPic();" class="big_prev"></a>
+						<a href="javascript:prevPic();" class="area left_area" title="点击浏览上一张图片" style="cursor: url('{cscms:indextempurl}images/prev.cur'), auto;"></a>
+                        <span id="mainPic"><img width="960" id="bigPic" src="[pic:url]"></span>
+                        <a href="javascript:nextPic();" class="big_next"></a>
+						<a href="javascript:nextPic();" class="area right_area" title="点击浏览下一张图片" style="cursor: url('{cscms:indextempurl}images/next.cur'), auto;"></a>
+						<div class="piclist" id="addiv" style="z-index:20;display:none;">
+                        	<a href="javascript:closead();" class="close"></a>
+                        	<div class="ad">
+	                        	<a href="http://www.chshcms.com/" target="_blank" title="美女图片"><img src="{cscms:indextempurl}images/pic_ad.jpg" width="400" height="320"></a>
+	                        </div>
+                            <div class="tj">
+                            	<div class="bt">图片浏览完毕<a href="[pic:xlink]" target="_blank" title="下一图集">下一图集</a><a href="[pic:url link=show,id]" title="图片浏览">重新浏览</a></div>
+                                <div class="picList">
+                                    <ul id="recList1">
+									{cscms:pic table="pic_type" loop="4" sort="rand"}
+                                            <li>
+                                                    <a href="[pic:url link=show,id]" target="_blank" title="[pic:name]"><img src="[pic:pic dir=pic]" width="160" height="120"></a>
+                                                    <a href="[pic:url link=show,id]" target="_blank" title="[pic:name]" class="picTips">[pic:name]</a>
+                                            </li>
+									{/cscms:pic}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small clear">
+                    	<p class="prev" id="preGroup">
+                            <a href="[pic:slink]" title="[pic:sname]"><img src="[pic:spic]" width="93" height="72" alt="上一图集"></a><a href="[pic:slink]" class="gray">上一图集</a>
+                            </p>
+                        <div class="pic_list">
+                            <a href="javascript:prevGroup();" class="small_btn small_prev"></a>
+                            <ul id="lists_1">
+                            {cscms:pic table="pic" sid="auto" sort="id"}
+							<li id="thumb-[pic:i]"><a href="javascript:choose([pic:i]);"><img id="pic-[pic:i]" src="[pic:pic dir=pic]" width="95" height="72"></a><a data-i="[pic:i]" data-txt="[pic:content]" id="txt-[pic:i]" href="javascript:choose([pic:i]);" class="{if:[pic:i]==1}orange{else}gray{end if}">[pic:i]/[pic:count]</a></li>
+							{if:[pic:i]%7==0}</ul><ul id="lists_[pic:i]" style="display:none;">{end if}
+                            {/cscms:pic}
+							</ul>
+                            <a href="javascript:nextGroup();" class="small_btn small_next"></a>
+                        </div>
+                        <p class="next" id="nextGroup">
+                            <a href="[pic:xlink]" title="[pic:xname]"><img src="[pic:xpic]" width="93" height="72" alt="下一图集"></a><a href="[pic:xlink]" title="下一图集" class="gray">下一图集</a>
+                            </p>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="btm">
+                    	<ul>
+                            <li class="tab">标签：[pic:tags]</li>
+                            <li class="down"><a id="downItem" href="[pic:url]" target="_blank" title="图片下载"><img src="{cscms:indextempurl}images/down.png" width="19" height="20" alt="图片下载"></a></li>
+                            <li class="zan"><a id="pointUp" href="javascript:pic_ding('ding',[pic:id]);" title="赞一下"><img src="{cscms:indextempurl}images/zan.png" width="21" height="20"></a><span id="upCnt" style="color:#ac2020">[pic:dhits]</span></li>
+                            <li class="cai"><a id="pointDown" href="javascript:pic_ding('cai',[pic:id]);" title="踩一下"><img src="{cscms:indextempurl}images/bs.png" width="21" height="20"></a><span id="downCnt" style="color:#ac2020">[pic:chits]</span></li>
+                            <li class="author" style="width:10em">源自：<a href="[pic:url ulink=index]" title="[pic:user zd=nichen]">[pic:user zd=nichen]</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 图片滚动 -->
+                <div class="tips"><p>[pic:content]</p></div>
+
+                <div class="recommend">
+                    <div class="left_con">
+                        <h1>相册评论</h1>
+                        <!-- 评论 -->
+                        <div class="comments">
+                             [pic:pl]
+                        </div>
+                        <!-- 评论 -->
+                    </div>
+
+                    <div class="right_con">
+                        <h1>推荐相册</h1>
+						<ul>
+						{cscms:pic table="pic_type" loop="10" reco="1,2,3,4,5" stor="hits"}
+						     <li>
+                            	<a href="[pic:url link=show,id]" target="_blank" title="[pic:name]"><img src="[pic:pic dir=pic]" width="140" height="100"></a>
+                            	<a href="[pic:url link=show,id]" target="_blank" title="[pic:name]" class="picTips">[pic:name]</a>
+                            </li>
+						{/cscms:pic}
+						</ul>
+                    </div>
+                </div>
+            </div>
+</div>
+{cscms:bottom}
+</body>
+</html>

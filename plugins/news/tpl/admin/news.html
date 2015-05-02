@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/datepicker/wdatepicker.js"></script>
+</head>
+<body>
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>">首页</a></li><li><a href="<?=site_url('news/admin/news')?>">新闻管理</a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('news/admin/news')?>"<?php if($yid!=2 && $yid!=3) echo ' class="selected"';?>>新闻列表</a></li> 
+               <li><a href="<?=site_url('news/admin/news')?>?yid=2"<?php if($yid==2) echo ' class="selected"';?>>待审核新闻</a></li>  
+               <li><a href="<?=site_url('news/admin/news')?>?yid=3"<?php if($yid==3) echo ' class="selected"';?>>回收站新闻</a></li> 
+               <li><a href="<?=site_url('news/admin/news/edit')?>">增加新闻</a></li>  
+  	        </ul>
+        </div> 
+    </div> 
+    <div class="rightinfo">
+	<form action="<?=site_url('news/admin/news')?>" method="post">
+    <ul class="seachform">
+         <li><label>
+             <div class="vocation">
+                <select class="select3" name="zd">
+                   <option value="name"<?php if($zd=='name') echo ' selected';?>>新闻名称</option>
+                   <option value="id"<?php if($zd=='id') echo ' selected';?>>新闻ID</option>
+                   <option value="user"<?php if($zd=='user') echo ' selected';?>>录入会员</option>
+                   <option value="tags"<?php if($zd=='tags') echo ' selected';?>>关键字</option>
+                </select>
+             </div>
+         </label><input style="width:150px;" name="key" value="<?=$key?>" type="text" class="scinput" />
+         </li>
+         <li>
+         <div class="vocation">
+                <select class="select5" name="cid">
+		        <option value="0"<?php if($cid==0) echo ' selected';?>>新闻分类</option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."news_list where fid=0 order by xid asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$cid)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>&nbsp;|—'.$row->name.'</option>';
+            $query2 = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."news_list where fid=".$row->id." order by xid asc"); 
+            foreach ($query2->result() as $row2) {
+                $clas2=($row2->id==$cid)?' selected="elected"':'';
+			    echo '<option value="'.$row2->id.'"'.$clas2.'>&nbsp;|&nbsp;&nbsp;&nbsp;|—'.$row2->name.'</option>';
+			}
+}
+?>
+                </select>
+         </div>
+         <div style="margin-left:10px;" class="vocation">
+                <select class="select3" name="yid">
+                   <option value="0"<?php if($yid==0) echo ' selected';?>>新闻状态</option>
+                   <option value="1"<?php if($yid==1) echo ' selected';?>>正常</option>
+                   <option value="2"<?php if($yid==2) echo ' selected';?>>待审核</option>
+                   <option value="3"<?php if($yid==3) echo ' selected';?>>回收站</option>
+                </select>
+         </div>
+         <div style="margin-left:10px;" class="vocation">
+                <select class="select4" name="reco">
+                   <option value="0"<?php if($reco==0) echo ' selected';?>>新闻推荐</option>
+	               <option value="1"<?php if($reco=='1') echo ' selected';?>>★☆☆☆☆</option>
+	               <option value="2"<?php if($reco=='2') echo ' selected';?>>★★☆☆☆</option>
+	               <option value="3"<?php if($reco=='3') echo ' selected';?>>★★★☆☆</option>
+	               <option value="4"<?php if($reco=='4') echo ' selected';?>>★★★★☆</option>
+	               <option value="5"<?php if($reco=='5') echo ' selected';?>>★★★★★</option>
+                </select>
+         </div>  
+         <div style="margin-left:10px;" class="vocation">
+                <select class="select3" name="sort">
+                   <option value=""<?php if($sort=='') echo ' selected';?>>新闻排序</option>
+	               <option value="id"<?php if($sort=='id') echo ' selected';?>>ID编号</option>
+	               <option value="addtime"<?php if($sort=='addtime') echo ' selected';?>>更新时间</option>
+	               <option value="hits"<?php if($sort=='hits') echo ' selected';?>>总人气</option>
+	               <option value="yhits"<?php if($sort=='yhits') echo ' selected';?>>月人气</option>
+	               <option value="zhits"<?php if($sort=='zhits') echo ' selected';?>>周人气</option>
+	               <option value="rhits"<?php if($sort=='rhits') echo ' selected';?>>日人气</option>
+                </select>
+         </div>  
+         </li>
+         <li><label>&nbsp;</label><input name="so" type="submit" class="scbtn" value="查询"/></li>
+    </ul>
+	</form>
+	<form action="<?=site_url('news/admin/news/del')?>?yid=<?=$yid?>" method="post" id="myform" name="myform">
+    <table class="imgtable">
+    	<thead>
+    	<tr>
+        <th>选</th>
+        <th>ID</th>
+        <th width="70px;">图片</th>
+        <th width="370px;">新闻标题</th>
+        <th>分类</th>
+        <th>人气</th>
+        <th>推荐</th>
+        <th>状态</th>
+        <th>更新时间</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+<?php
+if(empty($news)) echo '<tr><td align="center" height="50" colspan="10">没有找到相关记录~!</td></tr>';
+foreach ($news as $row) {
+        $pic=!empty($row->pic)?'<a href="'.piclink('news',$row->pic).'" target="pic"><img height="30" src="'.piclink('news',$row->pic).'"></a>':'-';
+		//状态
+		$zt=($row->yid==0)?'<a title="点击锁定" href="javascript:get_cmd(\''.site_url('news/admin/news/init').'?sid=1\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/ok.gif" /></a>':'<a title="点击解除锁定" href="javascript:get_cmd(\''.site_url('news/admin/news/init').'?sid=0\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" /></a>';
+		if($row->hid==1){ //回收站
+		    $zt='<img title="回收站" align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" />';
+		}
+		//推荐状态
+		$tj='<a title="点击取消推荐" href="javascript:get_cmd(\''.site_url('news/admin/news/init').'?sid=0\',\'tj\','.$row->id.');"><font color="#ff0033">×</font></a>';
+        for($i=1;$i<=$row->reco;$i++){
+            $tj.='<a title="推荐：'.$i.'星" href="javascript:get_cmd(\''.site_url('news/admin/news/init').'?sid='.$i.'\',\'tj\','.$row->id.');">★</a>';
+        }
+        for($j=$row->reco+1;$j<=5;$j++){
+            $tj.='<a title="推荐：'.$j.'星" href="javascript:get_cmd(\''.site_url('news/admin/news/init').'?sid='.$j.'\',\'tj\','.$row->id.');">☆</a>';
+        }
+		//分类
+		$cname=$this->CsdjDB->getzd('news_list','name',$row->cid);
+		//时间加亮
+		if(date('Y-m-d',$row->addtime)==date('Y-m-d')){
+             $addtime='<font color=red>'.date('Y-m-d',$row->addtime).'</font>';
+		}else{
+             $addtime=date('Y-m-d',$row->addtime);
+		}
+        echo '
+        <tr>
+        <td><input name="id[]" type="checkbox" value="'.$row->id.'" /></td>
+        <td>'.$row->id.'</td>
+        <td class="imgtd">'.$pic.'</td>
+        <td><a href="'.linkurl('show','id',$row->id,1,'news').'" target="web">'.$row->name.'</a></td>
+        <td><a href="'.linkurl('lists','id',$row->cid,1,'news').'" target="web">'.$cname.'</a></td>
+        <td>'.$row->hits.'</td>
+        <td id="tj_'.$row->id.'">'.$tj.'</td>
+        <td id="zt_'.$row->id.'">'.$zt.'</td>
+        <td>'.$addtime.'</td>
+        <td><a href="'.site_url('news/admin/news/edit').'?id='.$row->id.'">修改</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Popsbox(\'提示信息\',505,245,\'您确定删除吗？\',\''.site_url('news/admin/news/del').'?id='.$row->id.'&yid='.$yid.'\');">删除</a></td>
+        </tr> ';
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span>全选</li>
+            <li class="click" onclick="Popsbox('提示信息',505,245,'您确定删除所选新闻吗？','submit');"><span><img src="<?=Web_Path?>packs/admin/images/t03.png" /></span>删除所选</li>
+            <li onclick="pledit();" class="click"><span><img src="<?=Web_Path?>packs/admin/images/t01.png" /></span>批量修改</li>
+
+<?php 
+if($yid==3) echo '<li class="click" onclick="cmd(1);"><span><img src="'.Web_Path.'packs/admin/images/t05.png" /></span>还原所选</li><li class="click" onclick="cmd(3);"><span></span>一键清空回收站</li>';
+if(config('Web_Mode')==3 && $yid!=3) echo '<li id="html" class="click" onclick="cmd(2);"><span><img src="'.Web_Path.'packs/admin/images/t04.png" /></span>生成所选</li><li class="click" id="loading" style="display:none;color:red"><span><img src="'.Web_Path.'packs/admin/images/loading.gif"></span>页面生成中...</li>';
+?>
+       </ul>
+    </div>
+	</form>
+    <div class="pagin">
+    	<div class="message">共<i class="blue"><?=$nums?></i>条记录，当前显示第&nbsp;<i class="blue"><?=$page?>&nbsp;</i>页</div>
+        <ul class="paginList"><?=$pages?></ul>
+    </div>
+</div> 
+<div class="footer">页面执行时间{elapsed_time}秒，共{sql_queries}个查询语句，消耗内存{memory_usage}</div>
+<script type="text/javascript"> 
+$(document).ready(function(e) {
+	$(".select3").uedSelect({
+		width : 80,
+		clas:'uew-select2'
+	});
+	$(".select4").uedSelect({
+		width : 90,
+		clas:'uew-select2'
+	});
+	$(".select5").uedSelect({
+		width : 120,
+		clas:'uew-select2'
+	});
+});
+$('.imgtable tbody tr:odd').addClass('odd');
+function cmd(n) {
+    if(n==1){
+        $('#myform').attr('action','<?=site_url('news/admin/news/hy')?>');
+	    Popsbox('提示信息',505,245,'您确定还原所选新闻吗？','submit');
+    } else if(n==3){
+        $('#myform').attr('action','<?=site_url('news/admin/news/hy')?>');
+	    Popsbox('提示信息',505,245,'不可还原，您确定清空回收站吗？','<?=site_url('news/admin/news/del')?>?ac=hui');
+	}else{
+　　    var a=$("input[name='id[]']");  
+        var v = [];
+        for (var i = 0; i < a.length; i++) {
+            if(a[i].checked){
+                v.push(a[i].value);
+			}
+        }
+		$('#html').hide();
+		$('#loading').show();
+        $('#myform').attr('action','<?=site_url('news/admin/html/show_save')?>?ids='+v.join(','));
+		$('#myform').submit();
+	}
+}
+function pledit() {
+　　var a=$("input[name='id[]']");  
+    var v = [];
+    for (var i = 0; i < a.length; i++) {
+            if(a[i].checked){
+                v.push(a[i].value);
+			}
+    }
+    Popsboxif('新闻批量修改',550,450,'<?=site_url('news/admin/news/pledit')?>?id='+v.join(','));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/**
+* @cscms4.x open source management system
+* @copyright 2009-2015  All rights reserved.
+* @Author:Cheng Jie
+* @Dtime:2015-01-17
+*/
+/* 文章列表 */
+.list2{padding:20px 0;}
+.box_left,.box_right{width:478px;}
+.box_left{float:left;}
+.box_right{float:right;}
+.box_left .title,.box_right .title{margin-left:29px;}
+.box_left ul,.box_right ul{margin-top:20px;}
+.box_left li a,.box_right li a{height:36px;line-height:36px;background:url(../images/text.png) 29px 13px no-repeat;}
+.box_left li a:hover,.box_right li a:hover {background:url(../images/text_active.png) 29px 13px no-repeat;}
+.channel{width:978px;}
+.channel li a{height:50px;line-height:50px;background:url(../images/text.png) 29px 20px no-repeat;}
+.channel li a:hover{background:url(../images/text_active.png) 29px 20px no-repeat;}
+.list li{border-bottom:#CEDCF0 dashed 1px;font-size:15px;}
+.list li a{display:block;overflow:hidden;padding-left:50px;}
+.list li a:hover,.list li a:active{background-color:#EEF3FA;text-decoration:none;}
+.list li a:visited{color:#000;} 
+.list span{float:right;margin-right:29px;cursor:pointer;font-size:13px;color:#000;overflow:hidden;}
+
+/* 文章内容页 */
+.news_text {padding-top:20px;}
+.news_text .page_title{color:#000;font-size:30px;text-align:center;}
+.news_text ul,.play ul{border:#FFF solid 2px;padding:0 29px;height:40px;line-height:40px;background-color:#e1e1e1;overflow:hidden;}
+.news_text li,.play li{overflow:hidden;width:400px;}
+.news_text .last,.play .last{float:left;}
+.news_text .next,.play .next{float:right;text-align:right;}
+.news_text h3,.play h3{font-size:16px;}
+.content{padding:0 29px;color:#000;font-size:16px;line-height:200%;word-break:break-word;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-hp-pre-wrap;white-space:-o-pre-wrap;white-space: -pre-wrap;white-space:pre;white-space:pre-wrap;white-space:pre-line;}
+.content img{margin:10px 0;clear:both;max-width:920px;width:expression(this.width> 920 ? 920 : true);overflow:hidden;}
+

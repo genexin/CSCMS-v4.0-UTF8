@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/pic.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<script>$('#pic').addClass('a_sub_nav_clo');</script>
+
+<div id="pic_list" style="margin-top:10px;">
+      <h2>{cscms:class table="pic_list" field="id,name" id="1"}[class:name]<A href="[class:url link=lists,id]">更多</A>{/cscms:class}</h2>
+      <div class="hot fl">
+                {cscms:pic table="pic_type" field="id,name,pic" start="1" cid="1" loop="1" sort="hits"}
+                     <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="300" height="225" alt="[pic:name]"></a>
+                     <p class="black"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                {/cscms:pic}
+       </div>
+       <div class="picList_small fl">
+                <ul>
+			    {cscms:pic table="pic_type" field="id,name,pic" start="2" cid="1" loop="8" sort="hits"}
+                     <li>
+                            <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="150" height="120" alt="[pic:name]"></a>
+                            <p class="picTips"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                     </li>
+				 {/cscms:pic}
+                 </ul>
+       </div>
+       <div class="clear"></div>
+</div>
+
+<div id="pic_list" style="margin-top:10px;">
+      <h2>{cscms:class table="pic_list" field="id,name" id="2"}[class:name]<A href="[class:url link=lists,id]">更多</A>{/cscms:class}</h2>
+      <div class="hot fl">
+                {cscms:pic table="pic_type" field="id,name,pic" start="1" cid="2" loop="1" sort="hits"}
+                     <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="300" height="225" alt="[pic:name]"></a>
+                     <p class="black"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                {/cscms:pic}
+       </div>
+       <div class="picList_small fl">
+                <ul>
+			    {cscms:pic table="pic_type" field="id,name,pic" start="2" cid="2" loop="8" sort="hits"}
+                     <li>
+                            <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="150" height="120" alt="[pic:name]"></a>
+                            <p class="picTips"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                     </li>
+				 {/cscms:pic}
+                 </ul>
+       </div>
+       <div class="clear"></div>
+</div>
+
+<div id="pic_list" style="margin-top:10px;">
+      <h2>{cscms:class table="pic_list" field="id,name" id="3"}[class:name]<A href="[class:url link=lists,id]">更多</A>{/cscms:class}</h2>
+      <div class="hot fl">
+                {cscms:pic table="pic_type" field="id,name,pic" start="1" cid="3" loop="1" sort="hits"}
+                     <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="300" height="225" alt="[pic:name]"></a>
+                     <p class="black"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                {/cscms:pic}
+       </div>
+       <div class="picList_small fl">
+                <ul>
+			    {cscms:pic table="pic_type" field="id,name,pic" start="2" cid="3" loop="8" sort="hits"}
+                     <li>
+                            <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="150" height="120" alt="[pic:name]"></a>
+                            <p class="picTips"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                     </li>
+				 {/cscms:pic}
+                 </ul>
+       </div>
+       <div class="clear"></div>
+</div>
+
+<div id="pic_list" style="margin-top:10px;">
+      <h2>{cscms:class table="pic_list" field="id,name" id="4"}[class:name]<A href="[class:url link=lists,id]">更多</A>{/cscms:class}</h2>
+      <div class="hot fl">
+                {cscms:pic table="pic_type" field="id,name,pic" start="1" cid="4" loop="1" sort="hits"}
+                     <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="300" height="225" alt="[pic:name]"></a>
+                     <p class="black"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                {/cscms:pic}
+       </div>
+       <div class="picList_small fl">
+                <ul>
+			    {cscms:pic table="pic_type" field="id,name,pic" start="2" cid="4" loop="8" sort="hits"}
+                     <li>
+                            <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="150" height="120" alt="[pic:name]"></a>
+                            <p class="picTips"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                     </li>
+				 {/cscms:pic}
+                 </ul>
+       </div>
+       <div class="clear"></div>
+</div>
+
+<table width="980" border="0" align="center"  style="border:1px solid #D9D9D9; margin-top:10px; background:#FFF;">
+<tr>
+<td height="50">&nbsp;友情链接：
+{cscms:link table="link" field="url,name" loop="100" order="asc"}<a href="[link:url]" target="_blank">[link:name] </a>&nbsp;&nbsp;{/cscms:link}</td>
+</tr>
+</table>
+{cscms:bottom}
+</body>
+</html>

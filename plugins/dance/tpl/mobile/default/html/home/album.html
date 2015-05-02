@@ -1,0 +1,25 @@
+{cscms:indexhead}
+<div class="mainNav mainNav3">
+<ul>
+<li><a href="[user:url ulink=dance]">歌曲</a></li>
+<li class="current"><a href="[user:url ulink=dance,album]">专辑</a></li>
+<li><a href="[user:url ulink=pic]">图片</a></li>
+</ul>
+</div>
+
+<ul class="pubList">
+{cscms:album table="dance_topic" field="id,pic,name,tags,addtime" pagesize="10" uid="auto"}
+      <li>
+          <a href="[album:url link=topic/show]">
+          <span class="t-i"><img data-original="[album:pic dir=dancetopic]" /></span>
+          <span class="t-t"><strong>[album:name]</strong><em>共收录[album:count zdy=dance,tid,id]首</em></span>
+          <span class="t-z"><img src="{cscms:indextempurl}images/z2.png" /></span></a>
+      </li>
+{/cscms:album}
+</ul>
+<div class="mores">{if:{cscms:pagecout}<={cscms:pagenow}}没有更多了...{else}<a href="{cscms:pagedown}">点击加载更多..</a>{end if}</div>
+</div>
+
+</div>
+</div>
+{cscms:indexbottom}

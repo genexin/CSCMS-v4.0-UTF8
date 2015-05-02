@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/datepicker/wdatepicker.js"></script>
+</head>
+<body>
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>">首页</a></li><li><a href="<?=site_url('vod/admin/vod')?>">视频管理</a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('vod/admin/vod')?>"<?php if($yid!=2 && $yid!=3) echo ' class="selected"';?>>视频列表</a></li> 
+               <li><a href="<?=site_url('vod/admin/vod')?>?yid=2"<?php if($yid==2) echo ' class="selected"';?>>待审核视频</a></li>  
+               <li><a href="<?=site_url('vod/admin/vod')?>?yid=3"<?php if($yid==3) echo ' class="selected"';?>>回收站视频</a></li> 
+               <li><a href="<?=site_url('vod/admin/vod/edit')?>">增加视频</a></li>  
+               <li><a href="<?=site_url('vod/admin/opt/downpic')?>">一键同步视频图片到本地</a></li>  
+  	        </ul>
+        </div> 
+    </div> 
+    <div class="rightinfo">
+	<form action="<?=site_url('vod/admin/vod')?>" method="post">
+    <ul class="seachform">
+         <li><label>
+             <div class="vocation">
+                <select class="select3" name="zd">
+                   <option value="name"<?php if($zd=='name') echo ' selected';?>>视频名称</option>
+                   <option value="zhuyan"<?php if($zd=='zhuyan') echo ' selected';?>>视频主演</option>
+                   <option value="daoyan"<?php if($zd=='daoyan') echo ' selected';?>>视频导演</option>
+                </select>
+             </div>
+         </label><input style="width:150px;" name="key" value="<?=$key?>" type="text" class="scinput" />
+         </li>
+         <li>
+         <div class="vocation">
+                <select class="select5" name="cid">
+		        <option value="0"<?php if($cid==0) echo ' selected';?>>视频分类</option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."vod_list where fid=0 order by xid asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$cid)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>&nbsp;|—'.$row->name.'</option>';
+            $query2 = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."vod_list where fid=".$row->id." order by xid asc"); 
+            foreach ($query2->result() as $row2) {
+                $clas2=($row2->id==$cid)?' selected="elected"':'';
+			    echo '<option value="'.$row2->id.'"'.$clas2.'>&nbsp;|&nbsp;&nbsp;&nbsp;|—'.$row2->name.'</option>';
+			}
+}
+?>
+                </select>
+         </div>
+         <div style="margin-left:6px;" class="vocation">
+                <select class="select3" name="form">
+		        <option value=""<?php if(empty($form)) echo ' selected';?>>视频来源</option>
+<?php
+            require_once APPPATH.'config/player.php';
+			$player=$player_config;
+			for ($i=0; $i<count($player); $i++) {
+				$selec=($form==$player[$i]['form'])?' selected':'';
+                echo '<option value="'.$player[$i]['form'].'"'.$selec.'>'.$player[$i]['name'].'</option>';
+			}
+?>
+                </select>
+         </div> 
+         <div style="margin-left:6px;" class="vocation">
+                <select class="select3" name="yid">
+                   <option value="0"<?php if($yid==0) echo ' selected';?>>视频状态</option>
+                   <option value="1"<?php if($yid==1) echo ' selected';?>>正常</option>
+                   <option value="2"<?php if($yid==2) echo ' selected';?>>待审核</option>
+                   <option value="3"<?php if($yid==3) echo ' selected';?>>回收站</option>
+                </select>
+         </div>
+         <div style="margin-left:6px;" class="vocation">
+                <select class="select3" name="yuyan">
+                   <option value=""<?php if(empty($yuyan)) echo ' selected';?>>视频语言</option>
+	               <option value="国语"<?php if($yuyan=='国语') echo ' selected';?>>国语</option>
+	               <option value="英语"<?php if($yuyan=='英语') echo ' selected';?>>英语</option>
+	               <option value="粤语"<?php if($yuyan=='粤语') echo ' selected';?>>粤语</option>
+	               <option value="闽南语"<?php if($yuyan=='闽南语') echo ' selected';?>>闽南语</option>
+	               <option value="韩语"<?php if($yuyan=='韩语') echo ' selected';?>>韩语</option>
+	               <option value="日语"<?php if($yuyan=='日语') echo ' selected';?>>日语</option>
+	               <option value="法语"<?php if($yuyan=='法语') echo ' selected';?>>法语</option>
+	               <option value="德语"<?php if($yuyan=='德语') echo ' selected';?>>德语</option>
+	               <option value="其它"<?php if($yuyan=='其它') echo ' selected';?>>其它</option>
+                </select>
+         </div>  
+         <div style="margin-left:6px;" class="vocation">
+                <select class="select3" name="diqu">
+                   <option value=""<?php if(empty($diqu)) echo ' selected';?>>视频地区</option>
+	               <option value="大陆"<?php if($diqu=='大陆') echo ' selected';?>>大陆</option>
+	               <option value="香港"<?php if($diqu=='香港') echo ' selected';?>>香港</option>
+	               <option value="台湾"<?php if($diqu=='台湾') echo ' selected';?>>台湾</option>
+	               <option value="美国"<?php if($diqu=='美国') echo ' selected';?>>美国</option>
+	               <option value="韩国"<?php if($diqu=='韩国') echo ' selected';?>>韩国</option>
+	               <option value="日本"<?php if($diqu=='日本') echo ' selected';?>>日本</option>
+	               <option value="泰国"<?php if($diqu=='泰国') echo ' selected';?>>泰国</option>
+	               <option value="新加坡"<?php if($diqu=='新加坡') echo ' selected';?>>新加坡</option>
+	               <option value="马来西亚"<?php if($diqu=='马来西亚') echo ' selected';?>>马来西亚</option>
+	               <option value="印度"<?php if($diqu=='印度') echo ' selected';?>>印度</option>
+	               <option value="英国"<?php if($diqu=='英国') echo ' selected';?>>英国</option>
+	               <option value="法国"<?php if($diqu=='法国') echo ' selected';?>>法国</option>
+	               <option value="加拿大"<?php if($diqu=='加拿大') echo ' selected';?>>加拿大</option>
+	               <option value="西班牙"<?php if($diqu=='西班牙') echo ' selected';?>>西班牙</option>
+	               <option value="俄罗斯"<?php if($diqu=='俄罗斯') echo ' selected';?>>俄罗斯</option>
+	               <option value="其它"<?php if($diqu=='其它') echo ' selected';?>>其它</option>
+                </select>
+         </div>  
+         <div style="margin-left:6px;" class="vocation">
+                <select class="select3" name="remark">
+                   <option value="0"<?php if($remark==0) echo ' selected';?>>视频连载</option>
+	               <option value="1"<?php if($remark=='1') echo ' selected';?>>完结了</option>
+	               <option value="2"<?php if($remark=='2') echo ' selected';?>>连载中</option>
+                </select>
+         </div>  
+         <div style="margin-left:6px;" class="vocation">
+                <select class="select4" name="reco">
+                   <option value="0"<?php if($reco==0) echo ' selected';?>>视频推荐</option>
+	               <option value="1"<?php if($reco=='1') echo ' selected';?>>★☆☆☆☆</option>
+	               <option value="2"<?php if($reco=='2') echo ' selected';?>>★★☆☆☆</option>
+	               <option value="3"<?php if($reco=='3') echo ' selected';?>>★★★☆☆</option>
+	               <option value="4"<?php if($reco=='4') echo ' selected';?>>★★★★☆</option>
+	               <option value="5"<?php if($reco=='5') echo ' selected';?>>★★★★★</option>
+                </select>
+         </div>  
+         <div style="margin-left:6px;" class="vocation">
+                <select class="select3" name="sort">
+                   <option value=""<?php if($sort=='') echo ' selected';?>>视频排序</option>
+	               <option value="id"<?php if($sort=='id') echo ' selected';?>>ID编号</option>
+	               <option value="addtime"<?php if($sort=='addtime') echo ' selected';?>>更新时间</option>
+	               <option value="hits"<?php if($sort=='hits') echo ' selected';?>>总人气</option>
+	               <option value="yhits"<?php if($sort=='yhits') echo ' selected';?>>月人气</option>
+	               <option value="zhits"<?php if($sort=='zhits') echo ' selected';?>>周人气</option>
+	               <option value="rhits"<?php if($sort=='rhits') echo ' selected';?>>日人气</option>
+                </select>
+         </div>
+         <div style="margin-left:6px;" class="vocation">
+		        <input name="so" type="submit" class="scbtn" value="查询"/>
+         </div>
+         </li>
+    </ul>
+	</form>
+	<form action="<?=site_url('vod/admin/vod/del')?>?yid=<?=$yid?>" method="post" id="myform" name="myform">
+    <table class="imgtable">
+    	<thead>
+    	<tr>
+        <th>选</th>
+        <th>ID</th>
+        <th width="70px;">图片</th>
+        <th width="370px;">视频名称</th>
+        <th>分类</th>
+        <th>人气</th>
+        <th>推荐</th>
+        <th>状态</th>
+        <th>更新时间</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+<?php
+if(empty($vod)) echo '<tr><td align="center" height="50" colspan="10">没有找到相关记录~!</td></tr>';
+foreach ($vod as $row) {
+        $pic=!empty($row->pic)?'<a href="'.piclink('vod',$row->pic).'" target="pic"><img height="30" src="'.piclink('vod',$row->pic).'"></a>':'-';
+		//状态
+		$zt=($row->yid==0)?'<a title="点击锁定" href="javascript:get_cmd(\''.site_url('vod/admin/vod/init').'?sid=1\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/ok.gif" /></a>':'<a title="点击解除锁定" href="javascript:get_cmd(\''.site_url('vod/admin/vod/init').'?sid=0\',\'zt\','.$row->id.');"><img align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" /></a>';
+		if($row->hid==1){ //回收站
+		    $zt='<img title="回收站" align="absmiddle" src="'.Web_Path.'packs/admin/images/icon/no.gif" />';
+		}
+		//推荐状态
+		$tj='<a title="点击取消推荐" href="javascript:get_cmd(\''.site_url('vod/admin/vod/init').'?sid=0\',\'tj\','.$row->id.');"><font color="#ff0033">×</font></a>';
+        for($i=1;$i<=$row->reco;$i++){
+            $tj.='<a title="推荐：'.$i.'星" href="javascript:get_cmd(\''.site_url('vod/admin/vod/init').'?sid='.$i.'\',\'tj\','.$row->id.');">★</a>';
+        }
+        for($j=$row->reco+1;$j<=5;$j++){
+            $tj.='<a title="推荐：'.$j.'星" href="javascript:get_cmd(\''.site_url('vod/admin/vod/init').'?sid='.$j.'\',\'tj\','.$row->id.');">☆</a>';
+        }
+		//分类
+		$cname=$this->CsdjDB->getzd('vod_list','name',$row->cid);
+		//时间加亮
+		if(date('Y-m-d',$row->addtime)==date('Y-m-d')){
+             $addtime='<font color=red>'.date('Y-m-d',$row->addtime).'</font>';
+		}else{
+             $addtime=date('Y-m-d',$row->addtime);
+		}
+        echo '
+        <tr>
+        <td><input name="id[]" type="checkbox" value="'.$row->id.'" /></td>
+        <td>'.$row->id.'</td>
+        <td class="imgtd">'.$pic.'</td>
+        <td><a href="'.linkurl('show','id',$row->id,1,'vod').'" target="web">'.$row->name.'</a> <font color=#ff6600>'.$row->remark.'</font></td>
+        <td><a href="'.linkurl('lists','id',$row->cid,1,'vod').'" target="web">'.$cname.'</a></td>
+        <td>'.$row->hits.'</td>
+        <td id="tj_'.$row->id.'">'.$tj.'</td>
+        <td id="zt_'.$row->id.'">'.$zt.'</td>
+        <td>'.$addtime.'</td>
+        <td><a href="'.site_url('vod/admin/vod/edit').'?id='.$row->id.'">修改</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Popsbox(\'提示信息\',505,245,\'您确定删除吗？\',\''.site_url('vod/admin/vod/del').'?id='.$row->id.'&yid='.$yid.'\');">删除</a></td>
+        </tr> ';
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span>全选</li>
+            <li class="click" onclick="Popsbox('提示信息',505,245,'您确定删除所选视频吗？','submit');"><span><img src="<?=Web_Path?>packs/admin/images/t03.png" /></span>删除所选</li>
+            <li onclick="pledit();" class="click"><span><img src="<?=Web_Path?>packs/admin/images/t01.png" /></span>批量修改</li>
+
+<?php 
+if($yid==3) echo '<li class="click" onclick="cmd(1);"><span><img src="'.Web_Path.'packs/admin/images/t05.png" /></span>还原所选</li><li class="click" onclick="cmd(3);"><span></span>一键清空回收站</li>';
+if(config('Web_Mode')==3 && $yid!=3) echo '<li id="html" class="click" onclick="cmd(2);"><span><img src="'.Web_Path.'packs/admin/images/t04.png" /></span>生成所选</li><li class="click" id="loading" style="display:none;color:red"><span><img src="'.Web_Path.'packs/admin/images/loading.gif"></span>页面生成中...</li>';
+?>
+       </ul>
+    </div>
+	</form>
+    <div class="pagin">
+    	<div class="message">共<i class="blue"><?=$nums?></i>条记录，当前显示第&nbsp;<i class="blue"><?=$page?>&nbsp;</i>页</div>
+        <ul class="paginList"><?=$pages?></ul>
+    </div>
+</div> 
+<div class="footer">页面执行时间{elapsed_time}秒，共{sql_queries}个查询语句，消耗内存{memory_usage}</div>
+<script type="text/javascript"> 
+$(document).ready(function(e) {
+	$(".select3").uedSelect({
+		width : 80,
+		clas:'uew-select2'
+	});
+	$(".select4").uedSelect({
+		width : 90,
+		clas:'uew-select2'
+	});
+	$(".select5").uedSelect({
+		width : 120,
+		clas:'uew-select2'
+	});
+});
+$('.imgtable tbody tr:odd').addClass('odd');
+function cmd(n) {
+    if(n==1){
+        $('#myform').attr('action','<?=site_url('vod/admin/vod/hy')?>');
+	    Popsbox('提示信息',505,245,'您确定还原所选视频吗？','submit');
+    } else if(n==3){
+        $('#myform').attr('action','<?=site_url('vod/admin/vod/hy')?>');
+	    Popsbox('提示信息',505,245,'不可还原，您确定清空回收站吗？','<?=site_url('vod/admin/vod/del')?>?ac=hui');
+	}else{
+　　    var a=$("input[name='id[]']");  
+        var v = [];
+        for (var i = 0; i < a.length; i++) {
+            if(a[i].checked){
+                v.push(a[i].value);
+			}
+        }
+		$('#html').hide();
+		$('#loading').show();
+        $('#myform').attr('action','<?=site_url('vod/admin/html/show_save')?>?ids='+v.join(','));
+		$('#myform').submit();
+	}
+}
+function pledit() {
+　　var a=$("input[name='id[]']");  
+    var v = [];
+    for (var i = 0; i < a.length; i++) {
+            if(a[i].checked){
+                v.push(a[i].value);
+			}
+    }
+    Popsboxif('视频批量修改',550,480,'<?=site_url('vod/admin/vod/pledit')?>?id='+v.join(','));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+.mbox-lyout-bd {
+position: absolute;
+top: 42px;
+bottom: 0;
+left: 0;
+width: 100%;
+overflow: hidden;
+}
+.mbox-tab-frame {
+position: absolute;
+top: 42px;
+bottom: 0;
+left: 0;
+padding: 20px 0;
+background: #fafafa;
+border-right: #ddd 1px solid;
+width: 240px;
+}
+.mbox-list-frame{
+left: 240px;
+top: 142px;
+}
+.mb-progress-wrap {
+left: 240px;
+top: -30px;
+}
+.mb-relate-wrap {
+width: 710px;
+}
+.mb-lrc-wrap{
+right: 200px;
+}
+.mb-info .song {
+width: 422px;
+}
+.mb-oper {
+right:0px;
+}
+.download,.love,.lyric{
+display:none; 
+}
+.mb-play {
+right:-50px;
+}
+.mb-play .play-btns {
+float: left;
+margin-left:80px;
+}
+#feedback{
+display:none; 
+}
+.mb-play .volume-inner {
+top:10px;
+}
+.mb-play .time {
+margin-top: 10px;
+}
+.vc-btn {
+background: url(../images/t01d67a96f947209ca3.png) no-repeat;
+_background: url(../images/t013047ff09da671595.png) no-repeat;
+}
+.mb-song-list-wrap .vc-btn {
+background: url(../images/t015d4aaf48c0f250c1.png);
+_background: url(../images/t01bbd664c08fad4e7e.png);
+}

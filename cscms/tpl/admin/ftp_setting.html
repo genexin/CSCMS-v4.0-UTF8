@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$("#usual1 ul").idTabs();
+});
+//上传方式操作
+function get_upmode(n){  
+    for (var i = 1; i < 7; i++) {
+	     if(i==n){
+             $('#m_'+i).show();
+		 }else{
+             $('#m_'+i).hide();
+		 }
+    }
+}
+//ACC返回
+function att_acc(serverData)
+{
+	var data = serverData.split('||');
+	$('#acc').val(data[0]);
+	$('#acc_key').val(data[1]);
+	$('.webox').css({display:'none'});
+	$('.background').css({display:'none'});
+	parent.web_box(2);
+}
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('setting/ftp')?>"><?=L('setting_91')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=L('setting_92')?></a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('setting/ftp_save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_93')?></label>
+<?php
+foreach ($up as $k=>$v) {
+            $check = (UP_Mode==$k)?' checked="checked"':'';
+			echo '<label><input onclick="get_upmode('.$k.');" class="box" name="UP_Mode" type="radio" value="'.$k.'"'.$check.'>&nbsp;'.$v['name'].'&nbsp;&nbsp;</label>';
+}
+?>
+                </li>
+                <li><label><?=L('setting_94')?></label><input name="UP_Size" type="text" class="dfinput" value="<?=UP_Size?>" style="width:95px;"/>&nbsp;Kb<b>*</b><?=L('setting_95')?></li>
+                <li><label><?=L('setting_96')?></label><input name="UP_Type" type="text" class="dfinput" value="<?=UP_Type?>" style="width:345px;"/><b>*</b><?=L('setting_97')?></li>
+				<li class="end"></li>
+      	   </ul>
+      	   <ul class="forminfo" id="m_1"<?php if(UP_Mode!=1) echo 'style="display:none";';?>>
+                <li><label><?=L('setting_98')?></label><input name="UP_Url" type="text" class="dfinput" value="<?php echo (UP_Url=='')?'http://'.Web_Url.Web_Path:UP_Url;?>" style="width:345px;"/><b>*</b><?=L('setting_99')?></li>
+                <li><label><?=L('setting_100')?></label><input name="UP_Pan" type="text" class="dfinput" value="<?=UP_Pan?>" style="width:245px;"/><b>*</b><?=L('setting_101')?></li>
+      	   </ul>
+      	   <ul class="forminfo" id="m_2"<?php if(UP_Mode!=2) echo 'style="display:none";';?>>
+                <li><label><?=L('setting_102')?></label><input name="FTP_Url" type="text" class="dfinput" value="<?=FTP_Url?>" style="width:245px;"/><b>*</b><?=L('setting_103')?></li>
+                <li><label><?=L('setting_104')?></label><input name="FTP_Server" type="text" class="dfinput" value="<?=FTP_Server?>" style="width:245px;"/><b>*</b><?=L('setting_105')?></li>
+                <li><label><?=L('setting_106')?></label><input name="FTP_Port" type="text" class="dfinput" value="<?=FTP_Port?>" style="width:245px;"/><b>*</b><?=L('setting_107')?></li>
+                <li><label><?=L('setting_108')?></label><input name="FTP_Dir" type="text" class="dfinput" value="<?=FTP_Dir?>" style="width:245px;"/><b>*</b><?=L('setting_109')?></li>
+                <li><label><?=L('setting_110')?></label><input name="FTP_Name" type="text" class="dfinput" value="<?=FTP_Name?>" style="width:245px;"/><b>*</b><?=L('setting_110')?></li>
+                <li><label><?=L('setting_111')?></label><input name="FTP_Pass" type="text" class="dfinput" value="<?=substr(FTP_Pass,0,3)?>******" style="width:245px;"/><b>*</b><?=L('setting_112')?></li>
+                <li><label><?=L('setting_113')?></label>
+				  <div class="vocation">
+                      <select class="select1" name="FTP_Ive">
+                            <option value="TRUE"<?php if(FTP_Ive=='TRUE') echo ' selected';?>><?=L('open')?></option>
+                            <option value="FALSE"<?php if(FTP_Ive=='FALSE') echo ' selected';?>><?=L('close')?></option>
+                      </select>
+                  </div><b>*</b><?=L('setting_114')?>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="m_3"<?php if(UP_Mode!=3) echo 'style="display:none";';?>>
+				<li><b>&nbsp;&nbsp;<?=L('setting_115')?>&nbsp;&nbsp;<a href="http://www.qiniu.com" target="ss">http://www.qiniu.com</a></b></li>
+                <li><label><?=L('setting_116')?></label><input name="CS_Qn_Bk" type="text" class="dfinput" value="<?=CS_Qn_Bk?>" style="width:245px;"/><b>*</b><?=L('setting_117')?></li>
+                <li><label><?=L('setting_118')?></label><input name="CS_Qn_Ak" type="text" class="dfinput" value="<?=CS_Qn_Ak?>" style="width:245px;"/><b>*</b><?=L('setting_119')?></li>
+                <li><label><?=L('setting_120')?></label><input name="CS_Qn_Sk" type="text" class="dfinput" value="<?=CS_Qn_Sk?>" style="width:245px;"/><b>*</b><?=L('setting_121')?></li>
+                <li><label><?=L('setting_120_1')?></label><input name="CS_Qn_Url" type="text" class="dfinput" value="<?=CS_Qn_Url?>" style="width:245px;"/><b>*</b><?=L('setting_121_1')?></li>
+      	   </ul>
+      	   <ul class="forminfo" id="m_4"<?php if(UP_Mode!=4) echo 'style="display:none";';?>>
+				<li><b>&nbsp;&nbsp;<?=L('setting_115')?>&nbsp;&nbsp;<a href="http://www.kuaipan.cn/developers" target="ss">http://www.kuaipan.cn/developers</a></b></li>
+                <li><label>consumer_key</label><input name="CS_Kp_Ck" type="text" class="dfinput" value="<?=CS_Kp_Ck?>" style="width:245px;"/><b>*</b><?=L('setting_122')?></li>
+                <li><label>consumer_secret</label><input name="CS_Kp_Cs" type="text" class="dfinput" value="<?=CS_Kp_Cs?>" style="width:245px;"/><b>*</b><?=L('setting_123')?></li>
+                <li><label>access_token</label><input id="acc" name="CS_Kp_Acc" type="text" class="dfinput" value="<?=CS_Kp_Acc?>" style="width:345px;"/><input onclick="Popsboxif('<?=L('setting_124')?>',650,450,'http://<?=Web_Url.Web_Path?>packs/uploads/kdisk/acc.php');" class="button" type="button" name="button" value="<?=L('setting_124')?>"><b>*</b>access_token。</li>
+                <li><label>access_token_secret</label><input id="acc_key" name="CS_Kp_Acc_Key" type="text" class="dfinput" value="<?=CS_Kp_Acc_Key?>" style="width:345px;"/><b>*</b>access_token_secret。</li>
+      	   </ul>
+      	   <ul class="forminfo" id="m_5"<?php if(UP_Mode!=5) echo 'style="display:none";';?>>
+				<li><b>&nbsp;&nbsp;<?=L('setting_115')?>&nbsp;&nbsp;<a href="http://www.aliyun.com/" target="ss">http://www.aliyun.com</a></b></li>
+                <li><label>BUCKET</label><input name="CS_Os_Bk" type="text" class="dfinput" value="<?=CS_Os_Bk?>" style="width:245px;"/><b>*</b><?=L('setting_125')?></li>
+                <li><label>ACCESS_ID</label><input name="CS_Os_Ai" type="text" class="dfinput" value="<?=CS_Os_Ai?>" style="width:245px;"/><b>*</b><?=L('setting_126')?></li>
+                <li><label>ACCESS_KEY</label><input name="CS_Os_Ak" type="text" class="dfinput" value="<?=CS_Os_Ak?>" style="width:245px;"/><b>*</b><?=L('setting_127')?></li>
+      	   </ul>
+      	   <ul class="forminfo" id="m_6"<?php if(UP_Mode!=6) echo 'style="display:none";';?>>
+				<li><b>&nbsp;&nbsp;<?=L('setting_115')?>&nbsp;&nbsp;<a href="https://www.upyun.com/index.html" target="ss">https://www.upyun.com</a></b></li>
+                <li><label><?=L('setting_128')?></label><input name="CS_Upy_Bucket" type="text" class="dfinput" value="<?=CS_Upy_Bucket?>" style="width:245px;"/><b>*</b><?=L('setting_129')?></li>
+                <li><label><?=L('setting_130')?></label><input name="CS_Upy_Name" type="text" class="dfinput" value="<?=CS_Upy_Name?>" style="width:245px;"/><b>*</b><?=L('setting_131')?></li>
+                <li><label><?=L('setting_132')?></label><input name="CS_Upy_Pwd" type="text" class="dfinput" value="<?=substr(CS_Upy_Pwd,0,3)?>******" style="width:245px;"/><b>*</b><?=L('setting_133')?></li>
+      	   </ul>
+  	    </div> 
+      	<ul class="forminfo">
+		     <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('setting_57')?>"/></li>
+      	</ul>
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

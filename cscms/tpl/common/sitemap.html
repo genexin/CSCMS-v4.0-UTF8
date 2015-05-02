@@ -1,0 +1,23 @@
+<\?xml version="1.0" encoding="utf-8" ?>
+<rss version='2.0'>
+	<channel>
+		<title><![CDATA[{cscms:webname}]]></title>
+		<description><![CDATA[{cscms:description}]]></description>
+		<link>{cscms:path}</link>
+		<language>zh-cn</language>
+		<docs>{cscms:webname}</docs>
+		<generator>Rss Powered By {cscms:weburl}</generator>
+		<image>
+			<url>{cscms:path}attachment/logo.png</url>
+		</image>
+	</channel>
+	{cscms:dance table="dance" loop="500" sort="addtime"}
+	<item>
+			<title><![CDATA[[dance:name]]]></title>
+			<link>[dance:url zdy=dance,id,play,id]</link>
+			<author>[dance:singer zd=name]</author>
+			<pubDate>[dance:addtime]</pubDate>
+			<description><![CDATA[[dance:text len=200]]]></description>
+	</item>
+	{/cscms:dance}
+</rss>

@@ -1,0 +1,96 @@
+<?php
+//控制器
+$lang['plub_01']	= 'The template path cannot be empty~!';
+$lang['plub_02']	= 'Section name cannot be empty~!';
+$lang['plub_03']	= 'Timeout, please try again later~！';
+$lang['plub_04']	= 'Section KEY is not correct authorization~！';
+$lang['plub_05']	= 'Congratulations on your successful configuration, section';
+$lang['plub_06']	= 'The plate does not exist~!';
+$lang['plub_07']	= 'The lack of the installation plate configuration file~!';
+$lang['plub_08']	= 'The plate is installed~!';
+$lang['plub_09']	= 'Congratulations on your successful installation, section~!';
+$lang['plub_10']	= 'The plate is not installed~!';
+$lang['plub_11']	= 'Congratulations on your success, plate unloading~!';
+$lang['plub_12']	= 'Congratulations on your success, section data clear~!';
+$lang['plub_13']	= 'Congratulations, section deleted successfully~!';
+$lang['plub_14']	= 'I\'m sorry, wrong parameters~!';
+$lang['plub_15']	= 'I\'m sorry, wrong plate file address~!';
+$lang['plub_16']	= 'Sorry, your server does not support remote download~!';
+$lang['plub_17']	= 'I\'m sorry, directory (./attachment/other/) do not have write permissions~!';
+$lang['plub_18']	= 'I\'m sorry, a failed download section~!';
+$lang['plub_19']	= 'Your current version can not be used~!';
+$lang['plub_20']	= 'I\'m sorry, a failed download section~!';
+$lang['plub_21']	= 'I\'m sorry, section decompression failed, please manually extract./plugins/, compressed package path：';
+$lang['plub_22']	= 'Sorry, forum or complete~!';
+$lang['plub_23']	= 'Congratulations on your successful download, view~!';
+$lang['plub_24']	= 'Illegal downloading~!';
+$lang['plub_25']	= 'There is no upgrade accessories~!';
+$lang['plub_26']	= 'GBK code upgrade attachment does not exist~!';
+$lang['plub_27']	= 'I\'m sorry, forum upgrade files failed to download~!';
+$lang['plub_28']	= 'Sorry, the upgrade file coverage failed, please manually extract./plugins/%s/, compressed package path：';
+$lang['plub_29']	= 'Congratulations on your plate, updated successfully~!';
+$lang['plub_30']	= 'Congratulations on your success, operation~!';
+
+
+//视图
+$lang['tpl_01']	 = 'The forum management';
+$lang['tpl_02']	 = 'Local plate';
+$lang['tpl_03']	 = 'Get more plate';
+$lang['tpl_04']	 = 'Section is the core part of the system, can be in the<a style="color:#0000ff" href="%s">“Section of the store”</a>Download the article section, section, section and the group purchase store download section etc.';
+$lang['tpl_05']	 = 'Sequence';
+$lang['tpl_06']	 = 'Name';
+$lang['tpl_07']	 = 'Catalog';
+$lang['tpl_08']	 = 'State';
+$lang['tpl_09']	 = 'Edition';
+$lang['tpl_10']	 = 'Developers';
+$lang['tpl_11']	 = 'Operation';
+$lang['tpl_12']	 = 'Prompt information';
+$lang['tpl_13']	 = 'This operation will delete it from the disk and the data can not be restored, you sure？';
+$lang['tpl_14']	 = 'Delete';
+$lang['tpl_15']	 = 'To configure';
+$lang['tpl_16']	 = 'This will clear the database of all data, can not be restored, you sure？';
+$lang['tpl_17']	 = 'Initialization';
+$lang['tpl_18']	 = 'This will clear the plates and the database of all data, can not be restored, you sure？';
+$lang['tpl_19']	 = 'Unloading';
+$lang['tpl_20']	 = 'Visit';
+$lang['tpl_21']	 = 'Online upgrade';
+$lang['tpl_22']	 = 'Is the cloud version checking...';
+$lang['tpl_23']	 = 'Installation';
+
+$lang['tpl_24']	 = '[%s] the background plate division of authority';
+$lang['tpl_25']	 = 'Tips: the system default management authority to the role of management settings。';
+$lang['tpl_26']	 = 'Select / deselect';
+
+$lang['tpl_27']	 = 'The configuration section';
+$lang['tpl_28']	 = 'The basic configuration';
+$lang['tpl_29']	 = 'Management authority';
+$lang['tpl_30']	 = 'Membership privileges';
+$lang['tpl_31']	 = 'SEO settings';
+$lang['tpl_32']	 = 'Operation mode';
+$lang['tpl_33']	 = 'The name of the section';
+$lang['tpl_34']	 = 'Authorized KEY';
+$lang['tpl_35']	 = 'Don\'t know please contact area developers, if free forum。';
+$lang['tpl_36']	 = 'The default template';
+$lang['tpl_37']	 = 'Member center template';
+$lang['tpl_38']	 = 'Section of the page cache';
+$lang['tpl_39']	 = 'The page cache time';
+$lang['tpl_40']	 = 'After the opening, the page open speed will increase several times, to generate a static model is invalid。';
+$lang['tpl_41']	 = 'Section two level domain name';
+$lang['tpl_42']	 = 'The two level domain.';
+$lang['tpl_43']	 = 'After the opening, binding domain to the domain name, the root directory';
+$lang['tpl_44']	 = 'Mobile phone portal';
+$lang['tpl_45']	 = 'Mobile phone default template';
+$lang['tpl_46']	 = 'The division of authority';
+$lang['tpl_47']	 = 'Group members';
+$lang['tpl_48']	 = 'The prohibition of the use of';
+$lang['tpl_49']	 = 'The grade of membership';
+$lang['tpl_50']	 = 'Note: check, where the group or class member, the menu does not appear in the module menu';
+$lang['tpl_51']	 = 'Section operation mode';
+$lang['tpl_52']	 = 'Dynamic model';
+$lang['tpl_53']	 = 'Pseudo static';
+$lang['tpl_54']	 = 'Generate static';
+$lang['tpl_55']	 = 'URL rules';
+$lang['tpl_56']	 = 'Note: the above rule must be complete, if one is not complete, may lead to the failure of rules';
+$lang['tpl_57']	 = 'Closed formation';
+$lang['tpl_58']	 = 'Open formation';
+

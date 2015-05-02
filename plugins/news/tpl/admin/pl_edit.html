@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select").uedSelect({
+		width : 520	
+	});
+    $(".select2").uedSelect({
+		width : 120	,
+		height: 20
+	});
+});
+//转换
+function xuan(id) {
+     var csids=document.getElementById("csids"+id).disabled;
+     if(csids==true){
+           if(id==9||id==12||id==14){
+               document.getElementById("csidsc"+id).disabled=false; 
+           }
+		   $("#csids"+id).css("border-color","red red red red");
+           document.getElementById("csid"+id).style.color='red'; 
+           document.getElementById("csids"+id).disabled=false;  
+     }else{
+           if(id==9||id==12||id==14){
+               document.getElementById("csidsc"+id).disabled=true; 
+           }
+		   $("#csids"+id).css("border-color","#a7b5bc #a7b5bc #a7b5bc #a7b5bc");
+           document.getElementById("csid"+id).style.color=''; 
+           document.getElementById("csids"+id).disabled=true; 
+     }
+}
+function zh(id) {
+   for(var i=1;i<=3;i++){
+        if(id==i){
+            document.getElementById('opss'+i).style.display='';
+        }else{
+            document.getElementById('opss'+i).style.display='none';
+        }
+   }
+}
+</script>
+</head>
+<body>
+<form name=form method=post action="<?=site_url('news/admin/news/pl_save')?>">
+<table align="center" width="100%" border="1" cellspacing="0" cellpadding="3" bordercolor="#C4DFF4">
+<tr height="30"><td colspan="2" align="center"><b style="font-size:18px;">文章批量操作</b></td></tr>
+<tr height="30">
+<td align="center"><label style="font-size:16px;"><input onclick="zh(1)" name='xid' type='radio' value='1' <?php if(!empty($id)) echo 'checked';?>>按ID操作</label></td>
+<td align="center"><label style="font-size:16px;"><input onclick="zh(2)" name='xid' type='radio' value='2'>按分类操作</label></td>
+</tr>
+<tr>
+<td style="<?php if(empty($id)) echo 'display:none';?>" id="opss1" align="center" colspan="3">填写要操作的ID:    <input type="text" name="id" class="dfinput" style="width:400px;" value="<?=$id?>"></td>
+<td style="display:none" id="opss2" align="center" colspan="3">    
+<div style="margin-left:10px;" class="vocation"><select class="select" style="left:0;" name='cids'><option value=0>=========选择要操作的分类============</option>
+<?php
+$sstrss="";
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."news_list where fid=0 order by xid asc"); 
+foreach ($query->result() as $row) {
+			$sstrss.='<option value="'.$row->id.'">&nbsp;|—'.$row->name.'</option>';
+            $query2 = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."news_list where fid=".$row->id." order by xid asc"); 
+            foreach ($query2->result() as $row2) {
+			    $sstrss.='<option value="'.$row2->id.'">&nbsp;|&nbsp;&nbsp;&nbsp;|—'.$row2->name.'</option>';
+			}
+}
+echo $sstrss;
+?>
+       </select></div>
+</td>
+</tr>
+</table>
+<table align="center" width="100%" border="1" cellspacing="0" cellpadding="3" bordercolor="#C4DFF4">
+<tr>
+<td align="center" width="40%"><table align="center">
+
+<tr height="30">
+   <td Height="25" align="right">&nbsp;&nbsp;<label id="csid1"><input onclick="xuan(1)" name="csid[]" type="checkbox" value="hits">&nbsp;年度人气&nbsp;</label></td>
+   <td Height="25"><input class="dfinput" style="width:120px;height:20px;line-height:20px;" name='hits' id="csids1" type='text' value='0' disabled /></td>
+</tr>
+<tr height="30">
+   <td align="right">&nbsp;&nbsp;<label id="csid2"><input onclick="xuan(2)" name="csid[]" type="checkbox" value="rhits">&nbsp;每日人气&nbsp;</label></td>
+   <td><input class="dfinput" style="width:120px;height:20px;line-height:20px;" name='rhits' id="csids2" type='text' value='0' disabled /></td>
+</tr>
+<tr height="30">
+   <td align="right">&nbsp;&nbsp;<label id="csid3"><input onclick="xuan(3)" name="csid[]" type="checkbox" value="zhits">&nbsp;每周人气&nbsp;</label></td>
+   <td><input class="dfinput" style="width:120px;height:20px;line-height:20px;" name='zhits' id="csids3" type='text' value='0' disabled /></td>
+</tr>
+<tr height="30">
+   <td align="right">&nbsp;&nbsp;<label id="csid4"><input onclick="xuan(4)" name="csid[]" type="checkbox" value="yhits">&nbsp;每月人气&nbsp;</label></td>
+   <td><input class="dfinput" style="width:120px;height:20px;line-height:20px;" name='yhits' id="csids4" type='text' value='0' disabled /></td>
+</tr>
+<tr height="30">
+   <td align="right">&nbsp;&nbsp;<label id="csid5"><input onclick="xuan(5)" name="csid[]" type="checkbox" value="xhits">&nbsp;下载人气&nbsp;</label></td>
+   <td><input class="dfinput" style="width:120px;height:20px;line-height:20px;" name='xhits' id="csids5" type='text' value='0' disabled /></td>
+</tr>
+<tr height="30">
+   <td align="right">&nbsp;&nbsp;<label id="csid6"><input onclick="xuan(6)" name="csid[]" type="checkbox" value="shits">&nbsp;收藏人气&nbsp;</label></td>
+   <td><input class="dfinput" style="width:120px;height:20px;line-height:20px;" name='shits' id="csids6" type='text' value='0' disabled /></td>
+</tr>
+<tr height="30">
+   <td align="right">&nbsp;&nbsp;<label id="csid7"><input onclick="xuan(7)" name="csid[]" type="checkbox" value="user">&nbsp;所属会员&nbsp;</label></td>
+   <td><input class="dfinput" style="width:120px;height:20px;line-height:20px;" name='user' id="csids7" type='text' value='' disabled /></td>
+</tr>
+<tr height="30">
+   <td align="right">&nbsp;&nbsp;<label id="csid14"><input onclick="xuan(14)" name="csid[]" type="checkbox" value="yid">&nbsp;文章审核&nbsp;</label></td>
+   <td><input name='yid' type='radio' id='csids14' value='0' checked disabled>&nbsp;通过&nbsp;<input name='yid' type='radio' id='csidsc14' value='1' disabled>&nbsp;取消&nbsp;&nbsp;</label></td>
+</tr>
+</table>
+</td>
+<td align="center" width="50%"><table align="center">
+<tr height="30">
+   <td align="right"><label id="csid11"><input onclick="xuan(11)" name="csid[]" type="checkbox" value="cion">&nbsp;阅读金币&nbsp;</label></td>
+   <td><input class="dfinput" style="width:120px;height:20px;line-height:20px;" name='cion' id="csids11" type='text' value='1' disabled /></td>
+</tr>
+<tr height="30">
+   <td align="right"><label id="csid10"><input onclick="xuan(10)" name="csid[]" type="checkbox" value="vip">&nbsp;会员权限&nbsp;</label></td>
+   <td><div class="vocation"><select name='vip' id="csids10" class="select2" disabled>
+                          <option value="0">会员组权限</option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."userzu order by id asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$vip)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>'.$row->name.'</option>';
+}
+?>
+</select></div></td>
+</tr>
+<tr height="30">
+   <td align="right"><label id="csid13"><input onclick="xuan(13)" name="csid[]" type="checkbox" value="reco">&nbsp;推荐星际&nbsp;</label></td>
+   <td><div class="vocation"><select name='reco' id="csids13" class="select2" disabled><option value='0'>☆☆☆☆☆</option><option value='1'>★☆☆☆☆</option><option value='2'>★★☆☆☆</option><option value='3'>★★★☆☆</option><option value='4'>★★★★☆</option><option value='5'>★★★★★</option></select></div></td>
+</tr>
+<tr height="30">
+   <td align="right"><label id="csid16"><input onclick="xuan(16)" name="csid[]" type="checkbox" value="cid">&nbsp;转移分类&nbsp;</label></td>
+   <td><div class="vocation"><select name='cid' id="csids16" class="select2" disabled>
+<?php
+                echo $sstrss;
+?>
+       </select></div>
+   </td>
+</tr>
+<tr height="30">
+   <td align="right"><label id="csid17"><input onclick="xuan(17)" name="csid[]" type="checkbox" value="tid">&nbsp;批量专题&nbsp;</label></td>
+   <td><div class="vocation"><select name='tid' id="csids17" class="select2" disabled>
+<?php
+        echo '<option value=0>取消</option>';
+        $sqlstr="select id,name from ".CS_SqlPrefix."news_topic order by id desc";
+		$result=$this->db->query($sqlstr);
+		foreach ($result->result() as $row) {
+              echo '<option value='.$row->id.'>'.$row->name.'</option>';
+        }
+?>
+       </select></div>
+   </td>
+</tr>
+<tr height="30">
+   <td align="right"><label id="csid18"><input onclick="xuan(18)" name="csid[]" type="checkbox" value="hid">&nbsp;批量删除&nbsp;</label></td>
+   <td><div class="vocation"><select name='hid' id="csids18" class="select2" disabled><option value=1>移进回收站</option><option value=0>还原回收站</option><option value=2>直接删除</option></select></div>
+   </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td height="30" align="center" colspan=2>
+<input style="width:120px;" type="submit" name="ZTADD" value="批量修改" class="button">&nbsp;&nbsp;&nbsp;
+<input style="width:120px;" type="button" onclick="parent.tip_cokes();" name="qx" value="取消修改" class="button">
+</td></tr>
+</table>
+</form>
+</body>
+</HTML>
+

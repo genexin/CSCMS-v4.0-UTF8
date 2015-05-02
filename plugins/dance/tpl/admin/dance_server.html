@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<style>
+.tablelist td {border:0;}
+</style>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('dance/admin/server')?>"><?=L('tpl_129')?></a></li></ul>
+</div>
+<div class="rightinfo">
+    <table class="tablelist">
+    	<thead>
+    	<tr align="left">
+        <th width="50"><?=L('tpl_31')?></th>
+        <th width="50">id</th>
+        <th width="200"><?=L('tpl_130')?></th>
+        <th width="205"><?=L('tpl_131')?></th>
+        <th width="205"><?=L('tpl_132')?></th>
+		<th width="*"><a href="###" onclick="get_server();"><b style="color:#0000ff"><?=L('tpl_133')?></b></a></th>
+        </tr>
+        </thead>
+        <form action="<?=site_url('dance/admin/server/plsave')?>" id="myform" name="myform" method="post">
+        <tbody>
+<?php
+        echo '<tr id="fwqzu" style="display:none;"><td>&nbsp;</td><td>&nbsp;</td><td><input id="add_name" class="dfinput" value="" style="width:140px;height:20px;line-height:20px;"/></td><td><input id="add_purl" class="dfinput" value="" style="width:195px;height:20px;line-height:20px;"/></td><td><input id="add_durl" class="dfinput" value="" style="width:195px;height:20px;line-height:20px;"/></td><td><input class="button" type="button" name="button" onclick="get_server_add(\''.site_url('dance/admin/server/save').'\');" value="'.L('tpl_134').'"></td></tr>';
+foreach ($dance_server as $row) {
+        echo '<tr><td><input name="id[]" type="checkbox" value="'.$row->id.'"/></td><td>'.$row->id.'</td><td><input name="name_'.$row->id.'" class="dfinput" value="'.$row->name.'" style="width:140px;height:20px;line-height:20px;"/></td><td><input name="purl_'.$row->id.'" class="dfinput" value="'.$row->purl.'" style="width:195px;height:20px;line-height:20px;"/></td><td><input name="durl_'.$row->id.'" class="dfinput" value="'.$row->durl.'" style="width:195px;height:20px;line-height:20px;"/></td><td><a href="###" onclick="Popsbox(\''.L('tpl_48').'\',505,245,\''.L('tpl_49').'\',\''.site_url('dance/admin/server/del').'?id='.$row->id.'&fid=1\');">'.L('tpl_50').'</a></td></tr>';
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span><?=L('tpl_62')?></li>
+            <li class="click" onclick="Popsbox('<?=L('tpl_48')?>',505,245,'<?=L('tpl_127')?>','submit');"><span><img src="<?=Web_Path?>packs/admin/images/t02.png" /></span><?=L('tpl_128')?></li>
+       </ul>
+    </div>
+	</form>
+    <div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+<script type="text/javascript">
+$('.tablelist tbody tr:odd').addClass('odd');
+//隐藏切换
+function get_server(){
+    var none=$("#fwqzu").css('display');
+    if(none=='none'){
+　　    $("#fwqzu").show();  
+    }else{
+　　    $("#fwqzu").hide();  
+    }
+}
+//新增
+function get_server_add(_url){
+    var name=$("#add_name").val();
+    var purl=$("#add_purl").val();
+    var durl=$("#add_durl").val();
+　　if(name==''){
+          alert('<?=L('tpl_135')?>');
+          $("#add_name").focus();
+    }else{
+	  location.href=_url+'?purl='+purl+'&durl='+durl+'&name='+name;
+    }
+}
+</script>
+</body>
+</html>

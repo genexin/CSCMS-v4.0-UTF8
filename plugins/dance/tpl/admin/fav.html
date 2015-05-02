@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/datepicker/wdatepicker.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('dance/admin/opt/fav')?>"><?=L('tpl_148')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('dance/admin/opt/fav')?>" class="selected"><?=L('tpl_137')?></a></li> 
+               <li><a href="<?=site_url('dance/admin/opt/down')?>"><?=L('tpl_138')?></a></li>  
+               <li><a href="<?=site_url('dance/admin/opt/play')?>"><?=L('tpl_139')?></a></li>   
+  	        </ul>
+        </div> 
+    </div> 
+    <div class="rightinfo">
+	<form action="<?=site_url('dance/admin/opt/fav')?>" method="post">
+    <ul class="seachform">
+         <li><label>
+             <div class="vocation">
+                <select class="select" name="zd">
+                   <option value="name"<?php if($zd=='name') echo ' selected';?>><?=L('tpl_130')?></option>
+                   <option value="user"<?php if($zd=='user') echo ' selected';?>><?=L('tpl_146')?></option>
+                </select>
+             </div>
+         </label><input style="width:150px;" name="key" value="<?=$key?>" type="text" class="scinput" />
+         </li>
+         <div class="vocation">
+                <select class="select" name="sid">
+                   <option value="0"<?php if($sid==0) echo ' selected';?>><?=L('tpl_149')?></option>
+                   <option value="1"<?php if($sid==1) echo ' selected';?>><?=L('tpl_150')?></option>
+                   <option value="2"<?php if($sid==2) echo ' selected';?>><?=L('tpl_151')?></option>
+                </select>
+         </div>
+		 </li>
+         <li style="margin-left:10px;"><label><?=L('tpl_152')?>：</label><input style="width:90px;" name="kstime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" type="text" value="<?=$kstime?>" class="date scinput" /> - <input style="width:90px;" name="jstime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<?=$jstime?>" type="text" class="date scinput" /></li>
+         <li><label>&nbsp;</label><input name="so" type="submit" class="scbtn" value="<?=L('tpl_30')?>"/></li>
+    </ul>
+	</form>
+	<form action="<?=site_url('dance/admin/opt/fav_del')?>" method="post" id="myform" name="myform">
+    <table class="imgtable">
+    	<thead>
+    	<tr>
+        <th><?=L('tpl_31')?></th>
+        <th>ID</th>
+        <th width="70px;"><?=L('tpl_32')?></th>
+        <th width="370px;"><?=L('tpl_130')?></th>
+        <th><?=L('tpl_149')?></th>
+        <th><?=L('tpl_146')?></th>
+        <th><?=L('tpl_152')?></th>
+        <th><?=L('tpl_129')?></th>
+        </tr>
+        </thead>
+
+        <tbody>
+<?php
+if(empty($fav)) echo '<tr><td align="center" height="50" colspan="8">'.L('tpl_41').'</td></tr>';
+foreach ($fav as $row) {
+        if($row->sid==2){
+			$links=linkurl('topic','show',$row->did,1,'dance');
+			$lx='<font color=#ff6600>'.L('tpl_151').'</font>';
+		}else{
+			$links=linkurl('play','id',$row->did,1,'dance');
+			$lx='<font color=#0000ff>'.L('tpl_150').'</font>';
+        }
+        $pic=!empty($row->pic)?'<img height="30" src="'.piclink('dancetopic',getzd('dance','pic',$row->did)).'">':'-';
+		//时间加亮
+		if(date('Y-m-d',$row->addtime)==date('Y-m-d')){
+             $addtime='<font color=red>'.date('Y-m-d',$row->addtime).'</font>';
+		}else{
+             $addtime=date('Y-m-d',$row->addtime);
+		}
+        echo '
+        <tr style="height:35px;">
+        <td><input name="id[]" type="checkbox" value="'.$row->id.'" /></td>
+        <td>'.$row->id.'</td>
+        <td class="imgtd">'.$pic.'</td>
+        <td><a href="'.$links.'" target="play">'.$row->name.'</a></td>
+        <td>'.$lx.'</td>
+        <td>'.getzd('user','name',$row->uid).'</td>
+        <td>'.$addtime.'</td>
+        <td><a href="javascript:void(0);" onclick="Popsbox(\''.L('tpl_48').'\',505,245,\''.L('tpl_49').'\',\''.site_url('dance/admin/opt/fav_del').'?id='.$row->id.'\');">'.L('tpl_50').'</a></td>
+        </tr> ';
+}
+?>
+        </tbody>
+    </table>
+    <div class="tools">
+       <ul class="toolbar">
+            <li class="click quanxuan"><span><img src="<?=Web_Path?>packs/admin/images/t04.png" /></span>全选</li>
+            <li class="click" onclick="Popsbox('<?=L('tpl_48')?>',505,245,'<?=L('tpl_51')?>','submit');"><span><img src="<?=Web_Path?>packs/admin/images/t03.png" /></span><?=L('tpl_52')?></li>
+            <li class="click" onclick="Popsbox('<?=L('tpl_48')?>',505,245,'<?=L('tpl_143')?>','<?=site_url('dance/admin/opt/fav_pldel')?>?id=3');"><span><img src="<?=Web_Path?>packs/admin/images/t03.png" /></span><?=L('tpl_147')?></li>
+            <li class="click" onclick="Popsbox('<?=L('tpl_48')?>',505,245,'<?=L('tpl_144')?>','<?=site_url('dance/admin/opt/fav_pldel')?>');"><span><img src="<?=Web_Path?>packs/admin/images/t03.png" /></span><?=L('tpl_145')?></li>
+       </ul>
+    </div>
+	</form>
+    <div class="pagin">
+    	<div class="message"><?=L('tpl_58',array($nums,$page))?></div>
+        <ul class="paginList"><?=$pages?></ul>
+    </div>
+</div> 
+<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+<script type="text/javascript"> 
+$(document).ready(function(e) {
+	$(".select").uedSelect({
+		width : 80,
+		clas:'uew-select2'
+	});
+});
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li class=""><span><a href="[user:url userlink=pay]">在线充值</a></span></li>
+								<li class=""><span><a href="[user:url userlink=pay,card]">充值卡充值</a></span></li>
+								<li class="on"><span><a href="[user:url userlink=pay,group]">在线升级</a></span></li>
+								<li class=""><span><a href="[user:url userlink=pay,change]">金币兑换</a></span></li>
+								<li class=""><span><a href="[user:url userlink=pay,lists]">充值记录</a></span></li>
+							</ul>
+						</div><div class="clear"></div>
+						<div class="minHeight500">
+						<form class="think-form" action="[user:groupsave]" method="post">
+							<div class="profile">
+            				<table class="bd">
+                				<tr>
+                    				<th>当前级别</th>
+                    				<td><font color=red>[user:user zd=zid]</font>
+									{if:[user:zutime]>0}&nbsp;&nbsp;到期时间：<font color=red>[user:zutime style=Y-m-d]</font>{end if}
+									</td>
+                				</tr>
+                				<tr>
+                    				<th>剩余金币</th>
+                    				<td><font color=red>[user:cion]</font> 个&nbsp;&nbsp;<a style="color:#009966" href="[user:url userlink=pay,change]">兑换</a></td>
+                				</tr>
+                				<tr>
+                    				<th>选择会员组</th>
+                    				<td>
+										<select id="zu" class="select_normal" name="zu" style="width:250px;" datatype="*" nullmsg="请选择要升级的会员组" onchange="get_zu(this)">
+											<option value="">请选择会员组</option>
+                                            {cscms:userzu table="userzu" vid="1" loop="20" order="asc"}
+                                            <optgroup label="=========[userzu:name]=========">
+												<option value="[userzu:id]-1">[userzu:name] ([userzu:cion_d]金币/天)</option>
+												<option value="[userzu:id]-2">[userzu:name] ([userzu:cion_m]金币/月)</option>
+												<option value="[userzu:id]-3">[userzu:name] ([userzu:cion_y]金币/年)</option>
+                                            </optgroup>
+                                            {/cscms:userzu}
+										</select>
+										<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr id="time" style="display:none;">
+                    				<th id="time1">升级月数</th>
+                    				<td>
+					    				<input type="hidden" id="zid" name="zid" value="0"/>
+					    				<input type="hidden" id="type" name="type" value="2"/>
+                        				<input id="time2" style="width:70px;" class="text" name="times" value="3" datatype="n" nullmsg="请填写时长" errormsg="请填写正确格式的时长"/> <font id="time3">个月<font>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>&nbsp;</th>
+                    				<td>
+					    				<input type="hidden" name="token" value="[user:token]"/>
+                        				<input class="submit" type="submit" value="升 级" />
+                    				</td>
+                				</tr>
+            				</table>
+            				<!-- /表单项 -->
+							</div></form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_pay').addClass('on');
+user.form();
+function get_zu(){
+     var zu=$('#zu').val();
+     if(zu){
+		 $('#time').show();
+	     var arr=zu.split('-');
+	     if(arr[1]==1){
+             $('#time1').text('升级天数');
+             $('#time2').val('30');
+             $('#time3').text('天');
+		 } else if(arr[1]==2){
+             $('#time1').text('升级月数');
+             $('#time2').val('3');
+             $('#time3').text('个月');
+		 } else if(arr[1]==3){
+             $('#time1').text('升级年数');
+             $('#time2').val('1');
+             $('#time3').text('年');
+		 }
+         $('#zid').val(arr[0]);
+         $('#type').val(arr[1]);
+	 }
+}
+</script>
+{cscms:bottom}
+</body>
+</html>

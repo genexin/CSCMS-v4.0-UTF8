@@ -1,0 +1,30 @@
+<div id="footer" style="margin-top:10px;">
+<li>
+<a href="#" target="diy">关于我们</a>&nbsp;- &nbsp;
+<a href="#" target="diy">权利声明</a>&nbsp;- &nbsp;
+<a href="#" target="diy">商务合作</a>&nbsp;- &nbsp;
+<a href="#" target="diy">合作伙伴</a>&nbsp;- &nbsp;
+<a href="#" target="diy">诚聘英才</a>&nbsp;- &nbsp;
+<a href="#" target="diy">联系我们</a>&nbsp;- &nbsp;
+<a href="{cscms:gbooklink}" target="_blank">意见留言</a>
+</li>
+<li>Copyright @2014 - 2015 {cscms:weburl}.All Rights Reserved. {cscms:webname} 版权所有 <a href="http://www.miitbeian.gov.cn/" target="_blank">{cscms:icp}</a> {cscms:stat}</li>
+</div>
+<script src="{cscms:webpath}packs/js/jquery.lazyload.js?v=1.9.1"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+   //图片延时
+   $("img.lazy").lazyload({effect: "fadeIn"});
+   //回到顶部按钮
+   var n=0;
+   var x=0;
+   var top_btn = $("<span id='top_btn'><a title='回到顶部' href='#top'></a></span>");
+   $("body").append(top_btn);
+   $("body").attr("id","top");
+   var fe=$("#top_btn");
+   window.onscroll=function(){
+       x=(document.body.scrollTop||document.documentElement.scrollTop)+n;
+       if(x==0){fe.fadeOut().hide()}else{fe.fadeIn().show()};
+   };
+});
+</script>

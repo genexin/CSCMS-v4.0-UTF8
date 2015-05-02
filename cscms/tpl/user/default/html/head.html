@@ -1,0 +1,35 @@
+<div id="header">
+<div class="box">
+<div class="logo">
+<a href="{cscms:path}" title="{cscms:webname}-新闻"></a>
+</div>
+<ul id="menu">
+<li><a href="{cscms:path}">首页</a></li>
+{cscms:model table="plugins" field="dir,name" loop="8" order="asc"}
+<li><a href="{cscmsphp}cscmslink('[model:dir]');{/cscmsphp}">[model:name]</a></li>
+{/cscms:model}
+<li><a class="ok" href="{cscms:userlink}">会员</a></li>
+</ul></div></div>
+<div id="nav">
+<div class="navs">
+<div class="login">
+{cscms:logkuang}
+</div>
+<div class="serach">
+                <div class="seh_list">
+                    <strong><a href="javascript:;" class="seh_list_a"><span id="keytxt">音乐</span><b class="arrow"></b></a></strong>
+                    <div class="seh_sort" id="seh_sort" style="display:none;">
+{cscms:model table="plugins" field="dir,name" loop="10" order="asc"}
+                        <a href="javascript:getsearch('[model:dir]','[model:name]');">[model:name]</a>
+{/cscms:model}
+                    </div>
+                </div>
+                <div class="seh_m">
+				    <input type="hidden" value="dance" id="keytype">
+				    <input class="seh_v" type="text" name="key" x-webkit-speech="" x-webkit-grammar="builtin:translate">
+				    <button onclick="search_ok();" class="seh_b">搜 索</button>
+				</div>
+</div>
+</div>
+</div>
+<div class="tophead"></div>

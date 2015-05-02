@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('admin_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$("#usual1 ul").idTabs();
+});
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('sys')?>"><?=$title?><?=L('admin_edit_09')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div class="formtitle"><span><?=$title?><?=L('admin_edit_09')?></span></div>
+    <form action="<?=site_url('sys/save')?>" method="post">
+    <ul class="forminfo">
+    <li><label><?=L('admin_edit_02')?></label><input name="adminname" value="<?=$adminname?>" type="text" class="dfinput" /><i><?=L('admin_edit_03')?></i></li>
+    <li><label><?=L('admin_edit_04')?></label><input name="adminpass" value="" type="text" class="dfinput" /><i><?=L('admin_edit_05')?></i></li>
+    <li><label><?=L('admin_edit_06')?></label>  
+                  <div class="vocation">
+                      <select class="select1" id="sid" name="sid">
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."adminzu"); 
+foreach ($query->result() as $row) {
+       $clas=($sid==$row->id)?' selected':'';
+	   echo '<option value="'.$row->id.'"'.$clas.'>'.$row->name.'</option>';
+}
+?>
+                      </select>
+                  </div><?=L('admin_edit_07')?>
+    </li><input name="id" type="hidden" value="<?=$id?>">
+    <li><label>&nbsp;</label><input name="submit" type="submit" class="btn" value="<?=L('admin_edit_08')?>"/></li>
+    </ul>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>[singer:name]_最新[singer:name]好听的歌曲_MV_资料图片_新歌_[singer:name]专辑_{cscms:webname}</title>
+<meta name="Keywords" content="[singer:name],[singer:name]资料,[singer:name]歌曲,[singer:name]专辑,[singer:name]好听的歌,[singer:name]新歌,[singer:name]图片,{cscms:webname}" />
+<meta name="Description" content="[singer:name]好听的歌曲，{cscms:webname}收集所有[singer:name]的歌曲大全，包含最新[singer:name]专辑免费在线试听、[singer:name]的歌曲mp3下载、以及[singer:name]资料、MV、新歌和[singer:name]专辑等信息。" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/singer.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div id="cscms_singer_show" style="border:1px solid #D9D9D9;background:#FFF;">
+    <div class="wrapper clearfix">
+            	<div class="title clearfix">
+                    <h1 title="[singer:name]">[singer:name]</h1>
+                </div>
+                <div class="submenu">
+                    <ul>
+                        <li><a href="[singer:url link=show]" title="[singer:name]主页">主页</a></li>
+                        <li class="current"><a href="[singer:url link=info]" title="[singername]资料">资料</a></li>
+                        <li><a href="[singer:url link=music,id]" title="[singer:name]歌曲">歌曲</a></li>
+                        <li><a href="[singer:url link=pic,id]" title="[singer:name]图片">图片</a></li>
+                        <li><a href="[singer:url link=mv,hits]" title="[singer:name]MV">MV</a></li>
+                        <li><a href="[singer:url link=album,id]" title="[singer:name]专辑">专辑</a></li>
+                    </ul>
+                </div>
+                <!-- 左边内容 begin -->
+                <div class="mainwrap fl">
+                    <!-- singer begin -->
+                    <div class="singer clearfix gbg">
+                    	<!-- s_img begin -->
+                        <div class="s_img">
+                        	<a href="[singer:url link=show]" target="_blank" title="[singer:name]"><img src="[singer:pic dir=singer]?size=240*240" title="[singer:name]" w="240" h="240" width="240" height="240" alt="[singer:name]"></a>
+                        </div>
+                        <!-- s_img end -->
+                        <!-- comm begin -->
+                        <div class="comm">
+                        	<ul class="clearfix">
+                            	<li>姓名：<span>[singer:name]</span></li>
+                                <li>性别：<span>[singer:sex]</span></li>
+                                <li>别名：<span>[singer:nichen]</span></li>
+                                <li>国籍：<span>[singer:nat]</span></li>
+                                <li>语言：<span>[singer:yuyan]</span></li>
+                                <li>出生地：<span>[singer:city]</span></li>
+                                <li>生日：<span>[singer:sr]</span></li>
+                                <li>星座：<span>[singer:xingzuo]</span></li>
+                                <li>身高：<span>[singer:height]</span></li>
+                                <li>体重：<span>[singer:weight]</span></li>
+                            </ul>
+                            <p class="tag">
+                            	歌手标签：
+                                [singer:tags]</p>
+                        </div>
+                        <!-- comm end -->
+                    </div>
+                    <!-- singer end -->
+                    <div class="singer_comm">
+                        <p>[singer:content]</p>
+                    </div>
+
+                </div>
+                <!-- 左边内容 end-->
+
+                <!-- 右边内容 begin -->
+                <div class="sider">
+                    <!-- singer begin -->
+                    <div class="singers clear">
+                    	<h1>[singer:name]相似歌手</h1>
+                        <ul>
+{cscms:singer table="singer" loop="12" tags="auto" sort="hits"}
+                            <li>
+                                    <a href="[singer:url link=show]" title="[singer:name]" class="img"><img src="[singer:pic dir=singer]?size=60*60" width="55" height="55"></a>
+                                    <a href="[singer:url link=show]" title="[singer:name]" class="s_name">[singer:name]</a>
+                                </li>
+{/cscms:singer}
+                         </ul>
+                    </div>
+                    <!-- singer end -->
+                     <p class="h10"></p>
+                </div>
+                <!-- 右边内容 end-->
+            </div>
+</div>
+{cscms:bottom}
+</body>
+</html>

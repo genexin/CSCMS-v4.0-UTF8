@@ -1,0 +1,61 @@
+					<div class="uMain_home_right">
+						<div class="face">
+							<a href="[user:url ulink=index]" target="_blank"><img class="imgs" src="[user:logo dir=logo]?size=160*160" id="menu-avatar"></a>
+						</div>
+						<ul class="info_list">
+							<li>
+								<a href="[user:url userlink=friend]"><span>[user:count zdy=friend,uida,id]</span><strong>关注</strong></a>
+							</li>
+							<li>
+								<a href="[user:url userlink=fans]"><span>[user:count zdy=fans,uida,id]</span><strong>粉丝</strong></a>
+							</li>
+							<li class="last">
+								<a href="javascript:;"><span>[user:hits]</span><strong>人气</strong></a>
+							</li>
+						</ul>
+					    <div class="sFriendTitle">	
+					    <div onclick="qiandao();" title="每日签到领金币，您已连续签到[user:qdts]天" class="cscms_qd">
+							{if:date('Y-m-d','[user:qdtime]')==date('Y-m-d')}
+							<span>今天已签到</span>
+							{else}
+							<span>签到领金币</span>
+							{end if}
+						</div>
+						<li>当前等级：[user:user level=1]</li>	
+						<div title="当前经验[user:jinyan]点，升级还需[user:user level=3]点" id="title-1">
+						<div class="jinyan_div">当前经验：</div><div class="jinyan"><div class="jinyan_img"><img src="{cscms:tempurl}images/jinyan_jd.jpg" width="[user:user level=4]%" height="16" border="0" /><div class="jinyan_name">&nbsp;&nbsp;[user:user level=4]%</div></div></div></div>	
+						<li>会员类型：{if:[user:vip]==0}普通会员{else}VIP会员{end if}</li>
+						<li>会员级别：[user:user zd=zid]<a style="float:right;" href="[user:url userlink=pay,group]">升级</a></li>	
+						<li>剩余金钱：<font>[user:rmb]</font>&nbsp;元<a style="float:right;" href="[user:url userlink=pay]">充值</a></li>
+						<li>剩余金币：<font>[user:cion]</font>&nbsp;个<a style="float:right;" href="[user:url userlink=pay,change]">兑换</a></li>
+						</div>
+
+					    <div class="sFriendTitle"><span>最近访客</span><p><a target="_blank" href="[user:url userlink=funco]">更多</a></p></div>
+					    <ul class="sFriend">
+{cscms:funco table="funco" loop="12" uida="auto" sort="addtime" order="desc"}
+                            <li>
+								<div class="friendAvatar">
+									<a title="[funco:user zd=nichen]" href="[funco:url ulink=index]"><img src="[funco:user zd=logo]"/></a>
+								</div>
+								<div class="friendInfo">
+									<span><a title="[funco:user zd=nichen]" href="[funco:url ulink=index]">[funco:user zd=nichen]</a></span>
+									<p>[funco:addtime style=time]</p>
+								</div>
+							</li>
+{/cscms:funco}
+					    </ul>
+					    <div class="sFriendTitle"><span>最新粉丝</span><p><a target="_blank" href="[user:url userlink=fans]">更多</a></p></div>
+					    <ul class="sFriend">
+{cscms:fans table="fans" loop="12" uida="auto" sort="addtime" order="desc"}
+                            <li>
+								<div class="friendAvatar">
+									<a title="[fans:user zd=nichen]" href="[fans:url ulink=index]"><img src="[fans:user zd=logo]"/></a>
+								</div>
+								<div class="friendInfo">
+									<span><a title="[fans:user zd=nichen]" href="[fans:url ulink=index]">[fans:user zd=nichen]</a></span>
+									<p>[fans:addtime style=time]</p>
+								</div>
+							</li>
+{/cscms:fans}
+					    </ul>
+					</div>

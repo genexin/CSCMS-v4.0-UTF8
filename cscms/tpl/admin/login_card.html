@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+</head>
+<body class="admin-login">
+<form action="<?=site_url('login/log_card')?>?backurl=<?=$this->input->get('backurl')?>" method="post" id="formlogin" name="formlogin">
+<div class="login-screen" id="adminlog">
+        <div class="login-form">
+        <h1><?=L('login_card_title')?></h1>
+        <div class="control-group">
+			<?=vsprintf(L('login_card_ts'),array($zb))?>
+        </div>
+        <div class="control-group">
+            <input name="admincard" type="text" id="txtAdminName" class="login-field" title="<?=L('login_card')?>" />
+            <label id="lab_card" class="login-field-icon" for="username"><?=L('login_card')?></label>
+            <label id="err_card" class="login-field-err" for="errname"><?=L('login_card_err')?></label>
+        </div>
+        <div>
+	    <input type="button" name="btnLogin" value="<?=L('login_submit')?>" id="btnSubmit" class="btn-login" /></div>
+        <span class="login-tips"><b>&copy; 2008-2015  <a title="cscms" href="http://www.chshcms.com" target="_blank">Cscms</a> v4.0</b></span>
+    </div>
+</div>
+</form>
+<script type="text/javascript">adminlogin.card();</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li class=""><span><a href="[user:url userlink=edit]">基本资料</a></span></li>
+								<li class=""><span><a href="[user:url userlink=edit,logo]">修改头像</a></span></li>
+								<li class=""><span><a href="[user:url userlink=edit,pass]">修改密码</a></span></li>
+								<li class="on"><span><a href="[user:url userlink=edit,open]">绑定同步</a></span></li>
+							</ul>
+						</div><div class="clear"></div>
+						<div class="minHeight500">
+						     <div id="sync" class="sync">
+							     <div class="top">您已经绑定的网站</div>
+							     <div class="bsite cf">
+									     <div class="bs-icon qq"></div>
+									     <div class="bs-mid">
+										     <strong>腾讯QQ</strong>
+										     <div>绑定腾讯QQ帐号后，您便可使用腾讯QQ帐号登录网站</div>
+									     </div>
+										 {if:[user:qqmode]==0}
+										 <a class="bs-btn" href="{cscms:qqlink}"></a>
+										 {else}
+										 <a class="bs-btn unbs-btn" href="javascript:;" onclick="open_del(1);"></a>
+										 {end if}
+								 </div>
+							     <div class="bsite cf">
+									     <div class="bs-icon sina"></div>
+									     <div class="bs-mid">
+										     <strong>新浪微博</strong>
+										     <div>绑定新浪微博帐号后，您便可使用新浪微博帐号登录网站</div>
+									     </div>
+										 {if:[user:wbmode]==0}
+										 <a class="bs-btn" href="{cscms:weibolink}"></a>
+										 {else}
+										 <a class="bs-btn unbs-btn" href="javascript:;" onclick="open_del(2);"></a>
+										 {end if}
+								 </div>	
+							     <div class="bsite cf">
+									     <div class="bs-icon baidu"></div>
+									     <div class="bs-mid">
+										     <strong>百度网账号</strong>
+										     <div>绑定百度网账号后，您便可使用百度网帐号登录网站</div>
+									     </div>
+										 {if:[user:bdmode]==0}
+										 <a class="bs-btn" href="{cscms:baidulink}"></a>
+										 {else}
+										 <a class="bs-btn unbs-btn" href="javascript:;" onclick="open_del(3);"></a>
+										 {end if}
+								 </div>
+							     <div class="bsite cf">
+									     <div class="bs-icon renren"></div>
+									     <div class="bs-mid">
+										     <strong>人人网账号</strong>
+										     <div>绑定人人网账号后，您便可使用人人网账号登录网站</div>
+									     </div>
+										 {if:[user:rrmode]==0}
+										 <a class="bs-btn" href="{cscms:renrenlink}"></a>
+										 {else}
+										 <a class="bs-btn unbs-btn" href="javascript:;" onclick="open_del(4);"></a>
+										 {end if}
+								 </div>
+							     <div class="bsite cf">
+									     <div class="bs-icon kaixin"></div>
+									     <div class="bs-mid">
+										     <strong>开心网账号</strong>
+										     <div>绑定开心网账号后，您便可使用开心网账号登录网站</div>
+									     </div>
+										 {if:[user:kxmode]==0}
+										 <a class="bs-btn" href="{cscms:kaixinlink}"></a>
+										 {else}
+										 <a class="bs-btn unbs-btn" href="javascript:;" onclick="open_del(5);"></a>
+										 {end if}
+								 </div>
+							     <div class="bsite cf">
+									     <div class="bs-icon douban"></div>
+									     <div class="bs-mid">
+										     <strong>豆瓣网账号</strong>
+										     <div>绑定豆瓣网账号后，您便可使用豆瓣网账号登录网站</div>
+									     </div>
+										 {if:[user:dbmode]==0}
+										 <a class="bs-btn" href="{cscms:doubanlink}"></a>
+										 {else}
+										 <a class="bs-btn unbs-btn" href="javascript:;" onclick="open_del(6);"></a>
+										 {end if}
+								 </div>
+						     </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_edit').addClass('on');
+</script>
+{cscms:bottom}
+</body>
+</html>

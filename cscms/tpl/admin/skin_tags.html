@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+</head>
+<body>
+<?php if($ac=='save'){ ?>
+<div class="formbody2">
+     <div style="border: 1px solid #DCE3ED;margin-top:10px;padding:10px;width:540px;">
+       <table width="100%">
+          <tbody>
+               <tr><td height="20">{cscms:<?=$mx?> table="<?=$mx?>" field="*" loop="<?=$loop?>" order="<?=$order?>"}</td></tr>
+			   <tr><td><?=vsprintf(L('tpl_47'),array($mx))?></td></tr>
+			   <tr><td><?=vsprintf(L('tpl_48'),array($mx))?></td></tr>
+               <tr><td>{/cscms:<?=$mx?>}</td></tr>
+          </tbody>
+       </table>
+     </div>
+     <div style="border: 1px solid #DCE3ED;margin-top:10px;padding:10px;width:540px;">
+       <table width="100%">
+          <tbody>
+               <tr style="border-bottom: 1px solid #DCE3ED;"><th align="left" width="200" height="30"><?=L('tpl_49')?></th><th align="left"><?=L('tpl_50')?></th></tr>
+<?php
+foreach ($ziduan as $row) {
+        if($row['Field']!='ak' && $row['Field']!='sk'){
+               $sm=($row['Field']=='id')?L('tpl_51'):$row['Comment'];
+               echo '<tr height="25"><td>['.$mx.':'.$row['Field'].']</td><td>'.$sm.'</td></tr>';
+		}
+}
+?>
+          </tbody>
+       </table>
+     </div>
+</div>
+<?php }else{ ?>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('skin/tags')?>"><?=L('tpl_52')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=L('tpl_52')?></a></li> 
+  	        </ul>
+        </div> 
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_53')?></label>
+                  <div class="vocation">
+                      <select class="select1" id="mx">
+                            <option value=""><?=L('tpl_54')?></option>
+<?php if(empty($dir)){ ?>
+                            <option value="plugins"><?=L('tpl_55')?></option>
+                            <option value="link"><?=L('tpl_56')?></option>
+                            <option value="user"><?=L('tpl_57')?></option>
+                            <option value="userzu"><?=L('tpl_58')?></option>
+                            <option value="userlevel"><?=L('tpl_59')?></option>
+                            <option value="user_log"><?=L('tpl_60')?></option>
+                            <option value="blog"><?=L('tpl_61')?></option>
+                            <option value="funco"><?=L('tpl_62')?></option>
+                            <option value="fans"><?=L('tpl_63')?></option>
+                            <option value="friend"><?=L('tpl_64')?></option>
+                            <option value="gbook"><?=L('tpl_65')?></option>
+                            <option value="dt"><?=L('tpl_66')?></option>
+                            <option value="msg"><?=L('tpl_67')?></option>
+                            <option value="pay"><?=L('tpl_68')?></option>
+                            <option value="spend"><?=L('tpl_69')?></option>
+                            <option value="paycard"><?=L('tpl_70')?></option>
+                            <option value="tags"><?=L('tpl_71')?></option>
+                            <option value="pl"><?=L('tpl_72')?></option>
+<?php 
+}else{ 
+  if(file_exists(FCPATH.'plugins/'.$dir.'/config/install.php')){
+     $SQLDB = require_once(FCPATH.'plugins/'.$dir.'/config/install.php');
+	 //判断数据库
+	 if(is_array($SQLDB)){
+	        foreach ($SQLDB as $sql) {
+			      preg_match('/CREATE TABLE IF NOT EXISTS `{prefix}([\s\S]+?)`([\s\S]+?)COMMENT=\'([\s\S]+?)\';/',$sql,$tarr);
+				  if(!empty($tarr[1]) && $this->db->table_exists(CS_SqlPrefix.$tarr[1])){
+                          $tname=!empty($tarr[3])?$tarr[3]:$tarr[1];
+                          echo '<option value="'.$tarr[1].'">'.$tname.'</option>';
+				  }
+	        }
+	 }else{
+			preg_match('/CREATE TABLE IF NOT EXISTS `{prefix}([\s\S]+?)`([\s\S]+?)COMMENT=\'([\s\S]+?)\';/',$SQLDB,$tarr);
+			if(!empty($tarr[1]) && $this->db->table_exists(CS_SqlPrefix.$tarr[1])){
+                   $tname=!empty($tarr[3])?$tarr[3]:$tarr[1];
+                   echo '<option value="'.$tarr[1].'">'.$tname.'</option>';
+			}
+	 }
+  }
+}?>
+                      </select>
+                  </div>
+                </li>
+                <li><label><?=L('tpl_73')?></label><input id="loop" type="text" class="dfinput" value="" style="width:145px;"  onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"/><b>*</b><?=L('tpl_74')?></li>
+                <li><label><?=L('tpl_75')?></label>
+				  <input class="box" name="order" type="radio" value="desc" checked="checked">&nbsp;<?=L('tpl_76')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="order" type="radio" value="asc">&nbsp;<?=L('tpl_77')?>
+                </li>
+                <li><label><?=L('tpl_78')?></label><a style="float:left;margin-top:7px;" href="http://www.chshcms.com/help/show/1688.html" target="_blank">http://www.chshcms.com/help/show/1688.html</a></li>
+		        <li><label>&nbsp;</label><input name="button" type="button" class="btn" value="<?=L('tpl_79')?>"/></li>
+      	   </ul>
+  	    </div> 
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$('.btn').click(function () {
+        var mx=$('#mx').val();
+        var loop=$('#loop').val();
+        var order=$('input:radio:checked').val();
+		if(mx==''){
+              alert('<?=L('tpl_80')?>')
+		}else{
+              Popsboxif('<?=L('tpl_81')?>',600,450,'<?=site_url('skin/tags_save')?>?mx='+mx+'&loop='+loop+'&order='+order);
+		}
+	});
+});
+</script>
+<?php } ?>
+</body>
+</html>

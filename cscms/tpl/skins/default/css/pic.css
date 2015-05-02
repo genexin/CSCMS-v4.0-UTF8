@@ -1,0 +1,127 @@
+/**
+* @cscms4.x open source management system
+* @copyright 2009-2015  All rights reserved.
+* @Author:Cheng Jie
+* @Dtime:2015-01-17
+*/
+
+.fl {float: left;}
+.fr {float: right;}
+
+/*图片列表版块*/
+#pic_list {width:960px;margin:0px auto;border:1px solid #D9D9D9; margin-top:10px;padding:10px; background:#FFF;}
+#pic_list h2 {font: normal 18px "微软雅黑";color: #111;height: 30px;border-bottom: 2px solid #f60;padding: 15px 0 0 0;padding-top:0;position: relative;clear: both;}
+#pic_list h2 a {color: #7e7e7e;position: absolute;right: 0;top: 2px;font-size: 14px;}
+#pic_list .hot {width: 300px;height: 250px;position: relative;overflow: hidden;margin-top: 10px;}
+#pic_list .black{width: 100%;height: 25px;line-height: 25px;color: #fff;position: absolute;left: 0;bottom: 0;overflow: hidden;background: #000;}
+#pic_list .black a {display: block;width: 92%;height: 25px;line-height: 25px;color: #fff;margin: 0 auto;overflow: hidden;}
+#pic_list .picList_small {width: 660px;}
+#pic_list .picList_small li{float: left;width: 155px;margin: 10px 0 0 10px;display: inline;position: relative;}
+#pic_list .picList {width: 960px;}
+#pic_list .picList li{float: left;width: 180px;margin: 10px 0 0 10px;display: inline;position: relative;}
+#pic_list .picList_small .picTips {width:150px;}
+#pic_list .picList .picTips {width:175px;}
+#pic_list .picTips a{padding-left:10px;color:#fff}
+
+
+/*图片内容*/
+.comm{ width:970px;}
+.comm h1 {color:#222;}
+#mainPic img{width:960px;margin-top:10px;margin-left:8px;}
+.picTips,.black,.gray{width:100%;height:25px; line-height:25px; color:#fff; position:absolute; left:0; bottom:0; overflow:hidden;}
+.picTips{filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7F000000', endColorstr='#7F000000');background:rgba(0,0,0,0.5);}
+.fr_ad{ float:left; width:300px; min-height:100px; _height:100px; background:#e5e5e5;}
+.pic img{ display:block;margin:0 auto;}
+.pic{padding-top:10px}
+.big{width:960px;overflow:hidden; position:relative; text-align:center; display:table;height:auto !important;height:600px;min-height:600px;}
+.big span{ display:table-cell; vertical-align:middle;}
+.big_prev, .big_next{ display:block; width:34px; height:96px; position:absolute; top:50%; margin-top:-48px;cursor:pointer; z-index:100;}
+.big_prev{ left:8px; background:url(http://image.kuwo.cn/artistxz/pic_prev.png) no-repeat; _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://image.kuwo.cn/artistxz/pic_prev.png');}
+.big_next{ right:0; background:url(http://image.kuwo.cn/artistxz/pic_next.png) no-repeat; _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://image.kuwo.cn/artistxz/pic_next.png');}
+.big_prev:hover{ background:url(http://image.kuwo.cn/artistxz/pic_prev_hover.png) no-repeat; _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://image.kuwo.cn/artistxz/pic_prev_hover.png');}
+.big_next:hover{ background:url(http://image.kuwo.cn/artistxz/pic_next_hover.png) no-repeat; _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://image.kuwo.cn/artistxz/pic_next_hover.png');}
+.small{ margin-top:5px; width:100%; overflow:hidden; height:97px;}
+.small p.prev{ float:left;margin-left:8px; margin-right:5px;}
+.small p.next{ float:right;}
+.small .pic_list{ float:left; width:765px;}
+.small_btn, .small_btn:hover{ display:block; background:url(http://image.kuwo.cn/artistxz/small_btn.png) no-repeat; width:20px; height:74px;}
+.small_prev{ background-position:0 0; float:left;}
+.small_next{ background-position:-20px 0; float:right;}
+.small_prev:hover{ background-position:0 -74px;}
+.small_next:hover{ background-position:-20px -74px;}
+.small ul li{ float:left; margin:0 4px;}
+.small p, .small ul li{ position:relative; width:93px; height:72px; border:1px solid #ede9e9;}
+.gray{filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7F000000', endColorstr='#7F000000');background:rgba(0,0,0,0.5);text-align:center;}
+.btm{ width:100%; height:40px; line-height:40px; overflow:hidden; margin:5px 0;}
+.btm a{ color:#0196ef;}
+.btm ul {float:left;margin-left:8px;}
+.btm ul li{ float:left; height:20px; line-height:20px; overflow:hidden;}
+.btm ul li.back{ width:106px;}
+.btm ul li.tab{ width:220px; font-size:16px;}
+.btm ul li.tab a{ font-size:14px; margin:0 5px;}
+.btm ul li.n_tips{ width:130px; margin-right:88px;}
+.btm ul li.down{ width:19px; margin-right:35px;}
+.btm ul li.zan, .btm ul li.cai{ width:75px; text-indent:6px;}
+.btm ul li.zan img, .btm ul li.cai img{ margin:0; float:left;}
+.btm ul li.zan a, .btm ul li.cai a{ color:#ac2020;}
+.btm ul li.author{ float:right; width:85px; overflow:hidden;}
+.tips{ width:99%;margin-left:8px;border:1px solid #eee; border-left:none; border-right:none; padding:10px 0;}
+.tips h1{ font-size:18px; font-weight:normal; padding-bottom:15px; line-height:100%;}
+.tips p{ font-size:14px; color:#333; line-height:25px;}
+.picList{ width:680px; float:left; overflow:hidden; margin-bottom:20px;}
+.small ul li.current{ border:1px solid #eb7a06;}
+.orange{width:100%;height:25px; line-height:25px; color:#fff; position:absolute; left:0; bottom:0;overflow:hidden;background:#eb7a06; text-align:center;}
+.pic .tp_title div.pl{ float:right; display:block; width:150px; text-align:left; color:#d42626; font-size:14px;}
+.pic .tp_title div.pl img{ float:left; margin:0;}
+.pic .tp_title a{ color:#00baff; margin:0 5px;}
+.pic .tp_title div{ float:left; padding-top:6px;margin-bottom:3px}
+.pic .tp_title div.share{ float:right; padding-top:0;}
+.pic .big .piclist{ width:850px; height:430px; filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7F000000', endColorstr='#7F000000');background:rgba(0,0,0,0.9); position:absolute; top:50%; left:50%; margin-top:-215px; margin-left:-425px;}
+.pic .big .ad{ padding:0; width:400px; float:left; margin:50px 32px 0 32px; _display:inline;}
+.pic .big .tj{ width:385px; float:left; text-align:left; margin-top:20px;}
+.pic .big .tj .bt{ font-size:20px; color:#fff; margin:23px 0 15px 0;}
+.pic .big .tj .bt span{ display:inline; vertical-align:bottom; font-size:14px; margin-left:38px;}
+.pic .big .picList{ width:385px; overflow:hidden; margin:0;}
+.pic .big .picList ul{ height:295px; overflow:hidden;}
+.pic .big .picList ul li{ margin:0 32px 42px 0;}
+.pic .big .picList ul li a{ font-size:15px;}
+.pic .big .new_page{ width:100%; height:14px; line-height:14px; text-align:center;}
+.pic .big .new_page ul{ width:105px; margin:0 auto;}
+.pic .big .new_page ul li{ float:left; width:14px; height:14px; background:url(http://image.kuwo.cn/artistxz/pic_icon.png) no-repeat; margin:0 5px; cursor:pointer;}
+.pic .big .new_page ul li.current{ background:url(http://image.kuwo.cn/artistxz/pic_icon_current.png) no-repeat;}
+.pic .tp_title{margin-left:8px;width:99%; position:relative;}
+.tp_title h1{height:32px; line-height:32px;text-align:center;font-size:18px; font-weight:normal;overflow:hidden; background:url(http://image.kuwo.cn/artistxz/sep.png) repeat-x left bottom; padding:5px 0;}
+.tp_title h1 a{float:left;margin-right:20px;color:#0196ef;font-weight:normal;font-size:14px;}
+.tp_title h1 .mingx_pic{left:70px;width:98px;height:32px;overflow:hidden}
+.tp_title h1 p{font-size:14px;width:104px;overflow:hidden;position:absolute;right:0;top:0;height:32px; line-height:32px;}
+.tp_title h1 p a{float:none;position:static;}
+.left_area, .right_area{ display:block; height:100%; width:50%; position:absolute; top:0;background:url(http://image.kuwo.cn/artistxz/empty_browse.gif); z-index:10;}
+.left_area{ left:0;}
+.right_area{ right:0;}
+
+.recommend{overflow:hidden;_zoom:1;}
+.recommend h1{ font-size:18px; font-weight:normal; line-height:100%; padding:19px 0 5px 0; margin-bottom:5px;}
+.left_con{ width:650px; float:left;margin-left:8px; overflow:hidden;}
+.left_con h1{width:100%; float:left;}
+.comments{ width:100%; overflow:hidden;}
+.right_con{ width:300px; float:right;margin-left:10px; overflow:hidden;}
+.right_con h1{width:100%; float:left;}
+.right_con ul {float: left;margin-top:6px;}
+.right_con li {width: 140px;height: 100px;float: left;position: relative;margin: 0 10px 10px 0;}
+
+.pic .big .picList ul{ height:295px; overflow:hidden;}
+.pic .big .picList ul li{ margin:0 32px 42px 0;}
+.pic .big .picList ul li a{ font-size:15px;}
+.picList ul{ width:110%; overflow:hidden;}
+.picList li{ width:160px; height:120px; float:left; position:relative; margin:0 10px 10px 0;}
+.picList li img{ display:block;}
+.pic .tj .bt{ font-size:20px; text-align:left; font-weight:normal; color:#88abc3; margin:23px 0 13px 0;}
+.pic .tj .bt a{ color:#fff; font-size:14px; display:inline-block; padding:4px 10px; text-indent:0; margin-left:30px;}
+.pic .tj .bt a.current,.pic .tj .bt a:hover{ background:#ea7603; color:#fff; border-radius:5px;}
+.pic .big .piclist{ width:850px; height:430px; filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7F000000', endColorstr='#7F000000');background:rgba(0,0,0,0.9); position:absolute; top:50%; left:50%; margin-top:-215px; margin-left:-425px;}
+.pic .big .ad{ padding:0; width:400px; float:left; margin:50px 32px 0 32px; _display:inline;}
+.pic .big .tj{ width:385px; float:left; text-align:left; margin-top:20px;}
+.pic .big .tj .bt{ font-size:20px; color:#fff; margin:23px 0 15px 0;}
+.pic .big .tj .bt span{ display:inline; vertical-align:bottom; font-size:14px; margin-left:38px;}
+.pic .big .picList{ width:385px; overflow:hidden; margin:0;}
+.pic a.close{ background:url(../images/close.png) no-repeat; display:block; width:22px; height:22px; _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/close.png'); position:absolute; top:10px; right:10px;}

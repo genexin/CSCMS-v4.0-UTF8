@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/setcolor.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$("#usual1 ul").idTabs();
+});
+function denglu(n){  
+    for (var i = 1; i < 7; i++) {
+	     if(i==n){
+             $('#mode_'+i).show();
+		 }else{
+             $('#mode_'+i).hide();
+		 }
+    }
+}
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('setting/tb')?>"><?=L('setting_74')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=L('setting_74')?></a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('setting/denglu_save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo" style="float:left;width:98%;border-bottom:2px solid #ccc;">
+                <li><label><?=L('setting_75')?></label><label><input onclick="$('#off1').show();$('#off2').hide();" class="box" name="CS_Appmode" type="radio" value="1"<?php if(CS_Appmode==1) echo ' checked="checked"';?>>&nbsp;<?=L('setting_76')?>&nbsp;&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  <label><input onclick="$('#off1').hide();$('#off2').show();" class="box" name="CS_Appmode" type="radio" value="0"<?php if(CS_Appmode==0) echo ' checked="checked"';?>>&nbsp;<?=L('setting_77')?>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="off1" style="float:left;margin-top:20px;<?php if(CS_Appmode==0) echo 'display:none;';?>">
+				<li><b>&nbsp;&nbsp;<?=L('setting_78')?>&nbsp;&nbsp;<a href="http://www.chshcms.com/member/denglu.html" target="ss">http://www.chshcms.com/member/denglu.html</a></b></li>
+                <li><label>APP_ID</label><input name="CS_Appid" type="text" class="dfinput" value="<?=CS_Appid?>" style="width:345px;"/><b>*</b>APP_ID</li>
+                <li><label>APP_KEY</label><input name="CS_Appkey" type="text" class="dfinput" value="<?=CS_Appkey?>" style="width:345px;"/><b>*</b>APP_KEY</li>
+      	   </ul>
+		   <div id="off2" style="float:left;width:90%;margin-left:30px;margin-top:0px;<?php if(CS_Appmode==1) echo 'display:none;';?>">
+      	       <ul class="forminfo">
+                <li>
+				  <label><input onclick="denglu(1);" class="box" name="mode" type="radio" value="1" checked="checked">&nbsp;<?=L('setting_79')?>&nbsp;&nbsp;</label>
+				  <label><input onclick="denglu(2);" class="box" name="mode" type="radio" value="2">&nbsp;<?=L('setting_80')?>&nbsp;&nbsp;</label>
+				  <label><input onclick="denglu(3);" class="box" name="mode" type="radio" value="3">&nbsp;<?=L('setting_81')?>&nbsp;&nbsp;</label>
+				  <label><input onclick="denglu(4);" class="box" name="mode" type="radio" value="4">&nbsp;<?=L('setting_82')?>&nbsp;&nbsp;</label>
+				  <label><input onclick="denglu(5);" class="box" name="mode" type="radio" value="5">&nbsp;<?=L('setting_83')?>&nbsp;&nbsp;</label>
+				  <label><input onclick="denglu(6);" class="box" name="mode" type="radio" value="6">&nbsp;<?=L('setting_84')?>&nbsp;&nbsp;</label>
+                </li>
+      	       </ul>
+      	       <ul class="forminfo" id="mode_1" style="float:left;width:98%;border-top:1px solid #ccc;margin-top:10px;">
+                      <li><label><?=L('setting_90')?></label>
+				         <input class="box" name="CS_Qqmode" type="radio" value="1"<?php if(CS_Qqmode==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				         <input class="box" name="CS_Qqmode" type="radio" value="0"<?php if(CS_Qqmode==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;<b>*</b>&nbsp;&nbsp;<?=L('setting_78')?>&nbsp;&nbsp;<a href="http://connect.qq.com/" target="ss">http://connect.qq.com/</a>
+                      </li>
+                      <li><label>APP_ID</label><input name="CS_Qqid" type="text" class="dfinput" value="<?=CS_Qqid?>" style="width:345px;"/><b>*</b>APP_ID</li>
+                      <li><label>APP_KEY</label><input name="CS_Qqkey" type="text" class="dfinput" value="<?=CS_Qqkey?>" style="width:345px;"/><b>*</b>APP_KEY</li>
+      	       </ul>
+			   <ul class="forminfo" id="mode_2" style="float:left;width:98%;border-top:1px solid #ccc;margin-top:10px;display:none;">
+                      <li><label><?=L('setting_85')?></label>
+				         <input class="box" name="CS_Wbmode" type="radio" value="1"<?php if(CS_Wbmode==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				         <input class="box" name="CS_Wbmode" type="radio" value="0"<?php if(CS_Wbmode==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;<b>*</b>&nbsp;&nbsp;<?=L('setting_78')?>&nbsp;&nbsp;<a href="http://open.weibo.com/" target="ss">http://open.weibo.com/</a>
+                      </li>
+                      <li><label>APP_ID</label><input name="CS_Wbid" type="text" class="dfinput" value="<?=CS_Wbid?>" style="width:345px;"/><b>*</b>APP_ID</li>
+                      <li><label>APP_KEY</label><input name="CS_Wbkey" type="text" class="dfinput" value="<?=CS_Wbkey?>" style="width:345px;"/><b>*</b>APP_KEY</li>
+      	       </ul>
+			   <ul class="forminfo" id="mode_3" style="float:left;width:98%;border-top:1px solid #ccc;margin-top:10px;display:none;">
+                      <li><label><?=L('setting_86')?></label>
+				         <input class="box" name="CS_Bdmode" type="radio" value="1"<?php if(CS_Bdmode==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				         <input class="box" name="CS_Bdmode" type="radio" value="0"<?php if(CS_Bdmode==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;<b>*</b>&nbsp;&nbsp;<?=L('setting_78')?>&nbsp;&nbsp;<a href="http://developer.baidu.com/" target="ss">http://developer.baidu.com/</a>
+                      </li>
+                      <li><label>APP_ID</label><input name="CS_Bdid" type="text" class="dfinput" value="<?=CS_Bdid?>" style="width:345px;"/><b>*</b>APP_ID</li>
+                      <li><label>APP_KEY</label><input name="CS_Bdkey" type="text" class="dfinput" value="<?=CS_Bdkey?>" style="width:345px;"/><b>*</b>APP_KEY</li>
+      	       </ul>
+			   <ul class="forminfo" id="mode_4" style="float:left;width:98%;border-top:1px solid #ccc;margin-top:10px;display:none;">
+                      <li><label><?=L('setting_87')?></label>
+				         <input class="box" name="CS_Rrmode" type="radio" value="1"<?php if(CS_Rrmode==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				         <input class="box" name="CS_Rrmode" type="radio" value="0"<?php if(CS_Rrmode==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;<b>*</b>&nbsp;&nbsp;<?=L('setting_78')?>&nbsp;&nbsp;<a href="http://dev.renren.com/" target="ss">http://dev.renren.com/</a>
+                      </li>
+                      <li><label>APP_ID</label><input name="CS_Rrid" type="text" class="dfinput" value="<?=CS_Rrid?>" style="width:345px;"/><b>*</b>APP_ID</li>
+                      <li><label>APP_KEY</label><input name="CS_Rrkey" type="text" class="dfinput" value="<?=CS_Rrkey?>" style="width:345px;"/><b>*</b>APP_KEY</li>
+      	       </ul>
+			   <ul class="forminfo" id="mode_5" style="float:left;width:98%;border-top:1px solid #ccc;margin-top:10px;display:none;">
+                      <li><label><?=L('setting_88')?></label>
+				         <input class="box" name="CS_Kxmode" type="radio" value="1"<?php if(CS_Kxmode==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				         <input class="box" name="CS_Kxmode" type="radio" value="0"<?php if(CS_Kxmode==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;<b>*</b>&nbsp;&nbsp;<?=L('setting_78')?>&nbsp;&nbsp;<a href="http://open.kaixin001.com/" target="ss">http://open.kaixin001.com/</a>
+                      </li>
+                      <li><label>APP_ID</label><input name="CS_Kxid" type="text" class="dfinput" value="<?=CS_Kxid?>" style="width:345px;"/><b>*</b>APP_ID</li>
+                      <li><label>APP_KEY</label><input name="CS_Kxkey" type="text" class="dfinput" value="<?=CS_Kxkey?>" style="width:345px;"/><b>*</b>APP_KEY</li>
+      	       </ul>
+			   <ul class="forminfo" id="mode_6" style="float:left;width:98%;border-top:1px solid #ccc;margin-top:10px;display:none;">
+                      <li><label><?=L('setting_89')?></label>
+				         <input class="box" name="CS_Dbmode" type="radio" value="1"<?php if(CS_Dbmode==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				         <input class="box" name="CS_Dbmode" type="radio" value="0"<?php if(CS_Dbmode==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;<b>*</b>&nbsp;&nbsp;<?=L('setting_78')?>&nbsp;&nbsp;<a href="http://developers.douban.com/" target="ss">http://developers.douban.com/</a>
+                      </li>
+                      <li><label>APP_ID</label><input name="CS_Dbid" type="text" class="dfinput" value="<?=CS_Dbid?>" style="width:345px;"/><b>*</b>APP_ID</li>
+                      <li><label>APP_KEY</label><input name="CS_Dbkey" type="text" class="dfinput" value="<?=CS_Dbkey?>" style="width:345px;"/><b>*</b>APP_KEY</li>
+      	       </ul>
+		   </div>
+      	   <ul class="forminfo">
+		     <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('setting_57')?>"/></li>
+      	   </ul>
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

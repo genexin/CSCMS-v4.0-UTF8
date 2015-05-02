@@ -1,0 +1,228 @@
+/**
+* @cscms4.x open source management system
+* @copyright 2009-2015  All rights reserved.
+* @Author:Cheng Jie
+* @Dtime:2015-01-17
+*/
+
+.fl {float: left;}
+.fr {float: right;}
+.h10 {height: 10px;overflow: hidden;font-size: 0;clear: both;}
+.bg{ background:url(../images/new_icons.png) no-repeat;}
+.fenleft {float: left;width: 4px;height: 33px;background: url(../images/fentan1.png);_filter: alpha(opacity:60);}
+.fenmiddle {float: left;width: 190px;height: 33px;background: url(../images/fentan2.png) repeat-x;_filter: alpha(opacity:60);}
+.fenright {float: left;width: 4px;height: 33px;background: url(../images/fentan3.png);_filter: alpha(opacity:60);}
+.fenmiddle .closed {width: 9px;height: 9px;margin-left: 10px;}
+.mainwrap .musiclist .list ul li p.listen a, .mainwrap .musiclist .list ul li p.video a, .mainwrap .musiclist .list ul li p.share a, .mainwrap .musiclist .list ul li p.down a, .mainwrap .musiclist .list ul li p.listen a:hover, .mainwrap .musiclist .list ul li p.video a:hover, .mainwrap .musiclist .list ul li p.share a:hover, .mainwrap .musiclist .list ul li p.down a:hover {display: block;width: 24px;height: 25px;background: url(http://image.kuwo.cn/yinyue/artistnew/art2014/icon.png) no-repeat;padding: 0;}
+.singer{width: 960px;margin-left: auto;margin-right: auto;font-size:14px;padding:10px;padding-top:20px;}
+.singer .left {float: left;overflow: hidden;margin-top: -10px;width: 200px;}
+.singer .right {float: left;padding-left: 30px;min-height: 560px;width: 700px;border-left: 1px solid #dbe0ed;_height: 560px;}
+.singer .left .cate {margin-bottom: -1px;border-bottom: 1px dashed #dcdcdc;padding: 10px 0;padding-left: 20px;}
+.singer .left li {padding-left: 10px;font: 14px/34px "Microsoft Yahei";}
+.singer .left li.active {background: #f60;font-weight: bold;}
+.singer .left li.active a {color:#fff;}
+
+.singer .right h2 {font: 24px/26px "Microsoft Yahei",SimHei;color: #333;}
+.singer .right .filter {margin: 15px 0;}
+.singer .right dl {display: block;-webkit-margin-before: 1em;-webkit-margin-after: 1em;-webkit-margin-start: 0px;-webkit-margin-end: 0px;}
+.singer .right dt {display: inline-block;margin-right: 10px;}
+.singer .right dd {display: inline;-webkit-margin-start:10px;}
+.singer .right dd a {display: inline-block;height: 25px;text-align: center;line-height: 25px;padding: 0 6px;}
+.singer .right .section {float: left;width:100%;margin: 10px 0;padding: 15px 0;border-top: 1px solid #efefef;}
+.singer .right .section h4 {color: #333;font-size: 26px;padding-bottom: 10px;font-weight: bold;}
+.singer .right .section ul {float: left;list-style-type: disc;}
+.singer .right .section li {float: left;display: inline-block;width: 112px;height: 36px;line-height:36px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.singer .right .section-img li {float: left;text-align:center;width: 120px;height: 145px;padding: 10px 20px 10px 0;}
+.singer .right .section-img img {float: left;width: 120px;height: 120px;margin-bottom: 4px;vertical-align: middle;}
+.singer .right .section-img li p {float: left;width: 120px;text-align:center;}
+
+/*歌手内容*/
+#cscms_singer_show {width: 980px;margin: 0 auto;margin-top:10px;}
+.headwrap h1, .btn, .listen a, .listen a:hover, p.listen a, p.video a, p.share a, p.down a, .listen a:hover, p.video a:hover, p.share a:hover, p.down a:hover, .ranklist ul li, span.rank, .main .hotmusic ul li p.play, .butn, .butn:hover, .showbox p.tip, .btn_icon { background: url('../images/icon2.png') no-repeat;}
+.mainwrap {float: left;width: 655px;padding: 0 15px;background: #fff;margin-right: 15px;padding-bottom: 21px;overflow: hidden;}
+.submenu{ height:36px; line-height:36px; border-bottom:1px solid #c8c8c8; width:980px; margin:0 auto 15px;}
+.submenu ul li{ float:left; width:86px; padding:0 10px; text-align:center; font-size:18px; background:url(../images/line2.gif) no-repeat right center;}
+.submenu ul li.nobg{ background:none;}
+.submenu ul li a{ color:#000; display:block; height:35px; line-height:35px;}
+.submenu ul li a:hover{ text-decoration:none; color:#f60; border-bottom:2px solid #f60;}
+.submenu ul li.current a{ border-bottom:2px solid #f60; color:#f60;}
+.wrapper .title{ height:48px; line-height:48px; overflow:hidden; width:100%; padding-top:7px;}
+.wrapper .title h1{ font-size:24px; text-indent:16px; float:left; margin-right:25px;color:#111;}
+.wrapper .title h1 span{ margin-left:10px;}
+.wrapper .title a{ display:block; float:left; margin-top:9px;}
+.wrapper .title p{ float:right; margin-right:30px; display:inline;}
+.wrapper{ background:#fff;}
+.bg .title h1 {font-size: 24px;text-indent: 16px;float: left;margin-right: 25px;}
+
+.mainwrap .tab{ position:relative;}
+.mainwrap .tab .tab_menu{ margin-bottom:10px;}
+.mainwrap .tab .tab_menu ul li{ float:left; width:90px; height:38px; line-height:38px; text-align:center; font-size:16px; cursor:pointer; margin-right:10px; padding:0 10px;}
+.mainwrap .tab .tab_menu ul li.selected{ background:#1093d7; color:#fff;}
+.mainwrap .tab .tab_menu ul li a{ color:#333;}
+.mainwrap .tab .tab_menu ul li.selected a{color:#fff;}
+.mainwrap .tab .tab_menu ul li a:hover{ text-decoration:none;}
+
+.mainwrap .singer .s_img{ width:240px; float:left; overflow:hidden; margin-right:21px;}
+.mainwrap .singer .s_img ul{ width:249px;}
+.mainwrap .singer .s_img ul li{ float:left; width:76px; height:57px; margin:7px 6px 0 0;}
+.mainwrap .singer .s_img ul li img{ display:block;}
+.mainwrap .singer .s_img a.more{ font-size:12px; color:#1093d7; display:block; padding:12px 0;}
+.mainwrap .singer .comm{ float:left; width:389px; position:relative;}
+.mainwrap .singer .comm ul li{ float:left; width:185px; margin-right:5px; overflow:hidden; height:20px; line-height:20px; margin-bottom:4px; color:#6e6e6e;}
+.mainwrap .singer .comm ul li span{ color:#000;}
+.mainwrap .singer .comm p.tips{ font-size:12px; line-height:200%; padding:16px 0 11px;}
+.mainwrap .singer .comm p.tips a{ color:#1093d7; text-decoration:underline;}
+.mainwrap .singer .comm p.tag a{ display:inline-block; padding:1px 7px; margin:5px 0; font-weight:bold;}
+.mainwrap .singer .comm p.tag a:hover{ text-decoration:none;}
+.mainwrap .singer .comm p.tag a.cblue{ color:#005784; background:#d9f2ff;}
+.mainwrap .singer .comm p.tag a.corange{ color:#aa3000; background:#ffd0b0;}
+.mainwrap .singer .comm p.tag a.cpurple{ color:#a23c6c; background:#ffd6e9;}
+.mainwrap .singer .comm p.tag a.addtag{ padding: 0 6px; background:#fff; border:1px solid #e5e5e5; color:#777;}
+.mainwrap .musiclist{ width:100%; overflow:hidden;}
+.mainwrap .musiclist .top{ height:25px; line-height:25px;}
+.mainwrap .musiclist .top p.fl input{ float:left; margin:6px 5px 0 17px; display:inline;}
+.mainwrap .musiclist .top a{ display:inline-block; padding:0 20px; background:#f1f1f1; color:#5d5d5d; border-radius:3px;}
+.mainwrap .musiclist .top a:hover{ text-decoration:none; background:#f60; color:#fff;}
+.mainwrap .musiclist .top a.current{ text-decoration:none; background:#f60; color:#fff;}
+.mainwrap .musiclist .list dl{ background:#f5f5f5; margin-top:13px;}
+.mainwrap .musiclist .list dl dd{ height:28px; line-height:28px; float:left; color:#7c7c7c; text-align:center; overflow:hidden; padding:0 10px;}
+.mainwrap .musiclist .list dl dd.m_name{ width:340px; text-align:center;}
+.mainwrap .musiclist .list dl dd.s_name{ width:82px;}
+.mainwrap .musiclist .list dl dd.listen, .main .mainwrap .musiclist .list dl dd.video, .main .mainwrap .musiclist .list dl dd.share, .main .mainwrap .musiclist .list dl dd.down{ width:40px;}
+.mainwrap .musiclist .list ul li{ height:25px; line-height:25px; overflow:hidden; margin:18px 0; font-weight:normal;}
+.mainwrap .musiclist .list ul li p{ display:block; height:25px; line-height:25px; overflow:hidden; float:left; color:#3b3b3b;padding:0 10px;}
+.mainwrap .musiclist .list ul li p.number{ width:45px; margin:0px 5px 0 7px; _margin:0px 5px 0 2px;}
+.mainwrap .musiclist .list ul li p.number input{ margin-right:5px;}
+.mainwrap .musiclist .list ul li p.m_name{ width:280px;}
+.mainwrap .musiclist .list ul li p.s_name{ width:77px;}
+.mainwrap .musiclist .list ul li p a{ color:#3b3b3b;}
+.mainwrap .musiclist .list ul li p.down{ margin:0;}
+.mainwrap .musiclist .list ul li p.listen a{ background-position:0 -300px; _background-position:0 -301px}
+.mainwrap .musiclist .list ul li p.listen a:hover{ background-position:0 -325px;}
+.mainwrap .musiclist .list ul li p.share a{margin-left:15px; background-position:0 -400px;}
+.mainwrap .musiclist .list ul li p.share a:hover{ background-position:0 -425px;}
+.mainwrap .musiclist .list ul li p.down a{margin-left:15px; background-position:0 -450px;}
+.mainwrap .musiclist .list ul li p.down a:hover{ background-position:0 -475px;}
+
+.mainwrap .hotpic .hot{ float:left; width:300px; height:250px; overflow:hidden; margin-right:17px;}
+.mainwrap .hotpic .hot img{ display:block;}
+.mainwrap .hotpic .hot p{ height:25px; line-height:25px; background:#000; color:#fff; width:96%; padding:0 2%;}
+.mainwrap .hotpic .hot p a{ color:#fff;}
+.mainwrap .hotpic .list{float:left; overflow:hidden; width:337px;}
+.mainwrap .hotpic ul{ width:354px;}
+.mainwrap .hotpic ul li{ float:left; width:160px; height:120px; margin:0 17px 10px 0; position:relative;}
+.mainwrap .hotpic ul li img{ display:block;}
+.mainwrap .hotpic ul li a.tip{ display:block; width:96%; padding:0 2%; position:absolute; bottom:0; left:0; color:#fff; background:url(http://image.kuwo.cn/yinyue/artistnew/art2014/tip.png) repeat-x; height:25px; line-height:25px; overflow:hidden;}
+.mainwrap .hotalbum ul, .mainwrap .hotmusic ul{ width:664px;}
+.mainwrap .hotalbum ul li, .mainwrap .hotmusic ul li{ width:155px; float:left; margin-right:11px;}
+.mainwrap .hotalbum ul li img, .mainwrap .hotmusic ul li img{ display:block;}
+.mainwrap .hotalbum ul li a.m_name, .mainwrap .hotwrap ul li a.s_name{ display:block; text-align:center; width:100%; overflow:hidden; height:14px; line-height:22px; padding:11px 0; color:#1093d7;}
+.mainwrap .hotmusic ul li{ font-size:12px;}
+.mainwrap .hotmusic ul li a.m_name{ font-size:12px; color:#1093d7; display:block; width:100%; height:14px; line-height:22px; padding:10px 0; overflow:hidden;}
+.mainwrap .hotmusic ul li p{ color:#808080; height:14px; line-height:14px; width:100%; overflow:hidden;}
+.mainwrap .hotmusic ul li p a{ color:#1093d7;}
+.mainwrap .hotmusic ul li p span{ color:#f30;}
+.mainwrap .hotmusic ul li p.play{ width:100%; background:url(http://image.kuwo.cn/yinyue/artistnew/art2014/icon.png) no-repeat 0 -499px; text-indent:20px; margin-top:10px; overflow:hidden;}
+.mainwrap .hotwrap ul{ width:670px;}
+.mainwrap .hotwrap ul li{ float:left; width:118px; margin-right:16px;}
+.mainwrap .hotwrap ul li img{ display:block;}
+.mainwrap .comment h1 {float:left;width:100%;font-size:18px;color:#111;height:20px;line-height:20px;margin-top:10px;margin-bottom:5px;}
+.singer_comm{ line-height:140%;color:#333;}
+
+/* MV */
+.mainwrap .tab h1{ font-size:18px; color:#333; margin-bottom:10px;}
+.mainwrap .tab_div dl{ width:660px; overflow:hidden; margin-top:20px;}
+.mainwrap .tab_div .list .img{ float:left; margin-right:23px; _margin-right:25px; width:140px; height:130px; position:relative; overflow:hidden;}
+.mainwrap .tab_div .list .img .time{ position:absolute; top:58px; right:5px; color:#fff;font-size:12px;}
+.mainwrap .tab_div .list .img .play{ display:none; position:absolute; top:30%; left:50%; margin-top:-13px; margin-left:-13px;}
+.mainwrap .tab_div .list .img a.v_name{ display:block; width:100%; height:14px; line-height:14px; text-align:center; font-weight:bold; margin:11px 0;overflow:hidden;}
+
+/* 专辑*/
+.mainwrap .tab .tab_div .music{ margin:12px 0; position:relative;}
+.mainwrap .tab .tab_div .music img{ display:block; float:left; margin-right:12px;}
+.mainwrap .tab .tab_div .music .comm{ float:left; width:485px; height:155px; overflow:hidden;}
+.mainwrap .tab .tab_div .music .comm h2{ color:#656565; font-size:14px; font-weight:bold; padding-top:10px;}
+.mainwrap .tab .tab_div .music .comm h2 a{ color:#656565;}
+.mainwrap .tab .tab_div .music .comm h2 span{ float:right; margin-right:80px; display:inline;}
+.mainwrap .tab .tab_div .music .comm p{ font-size:12px;}
+.mainwrap .tab .tab_div .music .comm p.author{ color:#808080; padding:10px 0;}
+.mainwrap .tab .tab_div .music .comm p.author a{ color:#0e87c6; margin:0 5px;}
+.mainwrap .tab .tab_div .music .comm p.time{ background:url(../images/icon.png) no-repeat 0 -498px; text-indent:15px;}
+.mainwrap .tab .tab_div .music .comm p.time span{ color:#f30; margin:0 5px;}
+.mainwrap .tab .tab_div .music .comm p.tips{ padding-top:5px; line-height:180%; color:#656565;height: 45px;overflow: hidden;}
+.mainwrap .tab .tab_div .albumNum{ position:absolute; top:12px; right:25px;}
+.mainwrap .tab .tab_div .albumNum a{ color:#000}
+
+/* 图片 */
+.mainwrap .tab_div dl dd{ float:left; width:160px; height:120px; overflow:hidden; margin:0 5px 10px 0;}
+.mainwrap .tab_div p.picNum{ color:#666; text-indent:1em; padding-top:10px;}
+
+/*右边样式*/
+.sider {float: left;width:280px;overflow: hidden;}
+.sider .albumrank h1, .sider .video h1, .sider .kuba h1, .sider .singers h1, .sider .music h1, .sider .hotalbum h1, .mainwrap .musiclist h1, .mainwrap .hotpic h1, .mainwrap .hotmusic h1, .mainwrap .hotalbum h1, .mainwrap .hotwrap h1, .mainwrap .tab h1 {font-size: 18px;color: #111;height: 20px;line-height: 20px;margin-top:10px;margin-bottom: 15px;}
+.sider .video h1 a, .sider .kuba h1 a, .sider .hotalbum h1 a, .mainwrap .musiclist h1 a, .mainwrap .hotpic h1 a, .mainwrap .hotmusic h1 a, .mainwrap .hotalbum h1 a, .mainwrap .hotwrap h1 a, .mainwrap .musiclist h1 span {float: right;font-size: 12px;color: #111;margin-right:10px;}
+.sider .video, .sider .kuba, .sider .singers, .sider .hotalbum, .sider .ad, .sider .music, .sider .u_listen{ margin-bottom:14px;}
+.sider ul li{ overflow:hidden;}
+.sider ul li a{ font-size:12px; overflow:hidden;}
+.sider ul li img{ display:block;}
+.sider .video ul li{ width:90px; height:93px; float:left; margin-right:50px;}
+.sider .video ul li a.img{ width:120px; height:56px; display:block; position:relative;}
+.sider .video ul li a.m_name, .sider .singer ul li a.s_name{ display:block; width:100%; text-align:center; height:14px; line-height:14px;}
+.sider .video ul li a.m_name{ margin:11px auto;}
+.sider .kuba ul li{ width:100%; font-size:12px; height:20px; line-height:20px; margin-bottom:5px;}
+.sider .singers ul li{ width:55px; height:91px; float:left; margin-right:15px;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sider .singers ul li a.s_name{ margin:10px 0;}
+.sider .singer h1{ height:34px; line-height:34px; color:#111; font-size:18px;}
+.sider .music h1{ font-size:18px; height:43px; line-height:43px; border-bottom:1px solid #1093d7; color:#1093d7; text-indent:12px;}
+.sider .music h1 span{ color:#f27815;}
+.sider .music h1 a{ float:right; font-size:12px; color:#4f484f; margin-right:6px; display:inline;}
+.sider .music .tab_menu1 li{ float:left; width:64px; height:30px; line-height:30px; text-align:center; color:#555; cursor:pointer; margin:8px 0 0 8px; display:inline;}
+.sider .music .tab_menu1 li.selected{ color:#fff; background:#67c3f2;}
+.sider .music .tab_box1{ clear:both;}
+.sider .music .tab_box1 ul{ padding-top:3px;}
+.sider .music .tab_box1 ul li{ height:25px; line-height:25px; margin-top:10px;}
+.sider .music .tab_box1 ul li span{ float:left; display:block; overflow:hidden;}
+.sider .music .tab_box1 ul li span.num, .sider .music ul li span.subnum{ width:25px; height:25px; line-height:25px; text-align:center; margin:0 13px 0 7px; _display:inline-block;}
+.sider .music .tab_box1 ul li span.num{ background:#f27815; color:#fff;}
+.sider .music .tab_box1 ul li span.subnum{ background:#fff; color:#656565;}
+.sider .music .tab_box1 ul li span.m_name{ width:195px; height:25px; line-height:25px; margin-right:20px;}
+.sider .music .tab_box1 ul li a{ color:#656565;}
+.sider .music .tab_box1 ul li span.listen a{ display:block; width:22px; height:25px; background-position:0 -300px; _background-position:0 -301px;}
+.sider .music .tab_box1 ul li span.listen a:hover{ background-position:0 -325px; _background-position:0 -325px;}
+.sider .music{ padding-bottom:15px;}
+.sider .music ul{ padding-top:3px;}
+.sider .music ul li{ height:25px; line-height:25px; margin-top:10px;}
+.sider .music ul li span{ float:left; display:block; overflow:hidden;}
+.sider .music ul li span.num, .sider .music ul li span.subnum{ width:25px; height:25px; line-height:25px; text-align:center; margin:0 13px 0 7px; _display:inline-block;}
+.sider .music ul li span.num{ background:#f27815; color:#fff;}
+.sider .music ul li span.subnum{ background:#fff; color:#656565;}
+.sider .music ul li span.m_name{ width:195px; height:25px; line-height:25px; margin-right:20px;}
+.sider .music ul li a{ color:#656565; font-size:14px;}
+.sider .music ul li span.listen a{ display:block; width:22px; height:25px; background-position:0 -300px; _background-position:0 -301px;}
+.sider .music ul li span.listen a:hover{ background-position:0 -325px; _background-position:0 -325px;}
+.sider .u_listen p{ line-height:200%; margin-left:-10px;}
+.sider .u_listen p a{ color:#1093d7; margin:0 10px;}
+.sider .u_listen p.login{ color:#9e9e9e; text-indent:10px;}
+.sider .u_listen p.login a{ margin-left:10px; display:inline;}
+.sider .mvrank, .sider .albumrank, .sider .musicrank, .sider .mvlist, .sider .ranklist, .sider .hotlist, .sider .tjlist, .sider .sdlist{ margin-bottom:15px; background:#fff;}
+.sider .rank{ width:270px; margin:0 auto; overflow:hidden;}
+.sider .rank p{ height:25px; line-height:25px; margin-top:12px;}
+.sider .rank span{ display:block; float:left; height:25px; line-height:25px;}
+.sider .rank span.num{ width:25px; text-align:center; color:#656565; background:#dadada; margin-right:11px;}
+.sider .rank span.topnum{ color:#fff; background:#666;}
+.sider .rank span.m_name{ width:160px; overflow:hidden;}
+.sider .rank span.m_name a{ color:#111;}
+.sider .rank span.s_name{ width:5em; overflow:hidden;}
+.sider .rank span.s_name a{ font-size:12px; color:#808080;}
+.sider .rank .album2{ height:74px; overflow:hidden; margin-top:12px;}
+.sider .rank .album2 img{ display:block; float:left; margin-right:12px; margin-top:10px;}
+.sider .rank .album2 p{ display:block; float:left; height:20px; line-height:20px; margin-top:11px; width:120px; overflow:hidden; margin-right:-3px;}
+.sider .rank .album2 p a{ display:block;}
+.sider .rank .album2 p a.m_name{ color:#111;}
+.sider .rank .album2 p a.s_name{ font-size:12px; color:#808080;}
+.untxt {display: none !important;}
+
+
+
+
+

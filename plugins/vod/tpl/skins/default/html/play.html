@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/vod.css"/>
+</head>
+<body> 
+{cscms:head}
+<div class="wrap mt20" style="margin-top:10px;">
+<div class="box cat_pos clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+<span class="cat_pos_l">您的位置：<a href='{cscms:webpath}'>首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href='[vod:classlink]'>[vod:classname]</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href='[vod:url link=lists,id]'>[vod:name]</a></h2></span>
+</div></div>
+
+<div class="wrap" style="width:978px;margin-top:3px;background:#fff;border:1px solid #D9D9D9;">
+   <div class="player">[vod:player]</div>
+   <div class="cmd">
+     <div class="left">
+         <a href="javascript:vod_fav([vod:id]);"><img title="收藏" src="{cscms:indextempurl}images/fav.png">&nbsp;(<span id="shits">[vod:shits]</span>)</a>
+         <a href="javascript:vod_ding([vod:id]);"><img title="喜欢" src="{cscms:indextempurl}images/ding.png">&nbsp;(<span id="dhits">[vod:dhits]</span>)</a>
+	 </div>
+	 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a><a href="#" class="bds_tsohu" data-cmd="tsohu" title="分享到搜狐微博"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+     <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin","kaixin001","douban","tqf","tsohu","tieba","copy"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=1.js?cdnversion='+~(-new Date()/36e5)];</script>	
+     <div class="right">
+         <b>人气：</b>[vod:hits]&nbsp;&nbsp;
+         <b>时间：</b>[vod:addtime style=Y-m-d H:i:s]
+	 </div>
+   </div>
+</div>
+<div class="wrap" style="margin-top:10px;">
+<div class="box cat_pos clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+   <div class="playend">
+     <div class="t">
+          <a id="t_1" class="cur" href="javascript:play_cmd(1);">视频详情</a>
+          <a id="t_2" href="javascript:play_cmd(2);">剧集列表</a>
+          <a id="t_3" href="javascript:play_cmd(3);">视频评论</a>
+          <a id="t_4" href="javascript:play_cmd(4);">相关视频</a>
+	 </div>
+     <div class="s" id="s_1">
+	    <p>名称：[vod:name]</p>
+	    <p>导演：[vod:daoyan]</p>
+	    <p>主演：[vod:zhuyan]</p>
+	    <p>地区：[vod:diqu]</p>
+	    <p>时间：[vod:addtime]</p>
+	    <p>介绍：[vod:text]</p>
+	 </div>
+     <div class="s" id="s_2" style="display:none;">
+		 <div class="plist">
+         {vod:play}
+		      <h2>[play:name]</h2>
+              {vod:url order=desc}<a id="vod_[play:i]_[url:i]" title="[url:name]" href="[url:link]">[url:name]</a>{/vod:url}
+		 {/vod:play}
+		 </div>
+	 </div>
+     <div class="s" id="s_3" style="display:none;">
+		 <div class="pl">
+         [vod:pl]
+		 </div>
+	 </div>
+     <div class="s" id="s_4" style="display:none;">
+		 <ul class="vlistbox2">
+		 {cscms:vod table="vod" field="id,name,pic,color" cid="auto" loop="14" reco="1,2,3,4,5" sort="rhits"}
+		 <li><a href="[vod:url link=show,id]"><img class="lazy" alt="[vod:name]" title="[vod:name]" data-original="[vod:pic dir=vod]?size=107*133"/></a><a href="[vod:url link=show,id]"><font color="[vod:color]">[vod:name]</font></a></li>
+		 {/cscms:vod}
+		 </ul>
+	 </div>
+   </div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+{cscms:bottom}
+<div class="playshow_mask"></div>
+<div class="light_switch" title="关灯" onclick="light();"><span>关灯</span></div>
+<script type='text/javascript'>
+$('#vod_[vod:zu]_[vod:ji]').addClass('cur');
+</script>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</body>
+</html>

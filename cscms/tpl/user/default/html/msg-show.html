@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_home_left">
+						<div class="main_nav">
+							<ul>
+								<li class="on"><span><a href="[user:url userlink=msg]">我的消息</a></span></li>
+                                {if:[msg:uidb]>0}<li class="right"><a href="[user:url userlink=msg,add]/[msg:id]">回复消息</a></li>{end if}
+							</ul>
+						</div>
+						<div class="main_nav2">
+							<ul>
+								<li class="current"><a href="[user:url userlink=msg]">全部消息</a></li>
+								<li><a href="[user:url userlink=msg,index,xt]">系统消息</a></li>
+								<li><a href="[user:url userlink=msg,index,wd]">未读消息</a></li>
+							</ul>
+						</div>
+						<div class="minHeight500">
+							<div class="Ignore02">
+								<font style="color:#ff6600;font-size:14px;">[msg:name]</font>
+								<span>[msg:addtime style=Y-m-d h:i:s]</span>
+							</div>
+							<div class="notification">
+                                <div class="info">
+                                       [msg:neir]
+                                       {if:[msg:uidb]==0}
+									   <P>发送者：管理员</P>
+									   {else}
+									   <P>发送者：<a href="[msg:ulink]" target="_blank">[msg:user zd=nichen]</a></P>
+									   {end if}
+                                </div>
+							</div>
+						</div>
+					</div>
+                    {cscms:right}
+				</div>
+			</div>
+			<div id="rand"></div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_msg').addClass('on');
+</script>
+{cscms:bottom}
+</body>
+</html>

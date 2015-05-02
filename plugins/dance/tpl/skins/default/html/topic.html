@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/dance.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<script>$("#class_0").addClass("a_sub_nav_clo");</script>
+<div id="cscms_topic_list" style="border:1px solid #D9D9D9;background:#FFF;">
+    <div class="box cat_pos clearfix" style="border-bottom:1px solid #D9D9D9;background:#FFF;">
+       <span class="cat_pos_l">您的位置：<a href='{cscms:webpath}'>首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href='{cscmsphp}linkurl('topic','{cscms:fid}',1,1,'dance');{/cscmsphp}'>专辑</a></h2></span><span class="cat_pos_r">共有<em>{cscms:pagedata}</em>张专辑</span>
+	</div>
+	<div class="v_left">
+		<div class="v_sort">
+			<h3>排序方式</h3>
+			<ul class="hot">
+                  <li><a {if:'{cscms:fid}'=='id'}class="on"{end if} href="[topic:link]">最新</a></li>
+                  <li><a {if:'{cscms:fid}'=='hits'}class="on"{end if} href="[topic:hlink]">人气</a></li>
+                  <li><a {if:'{cscms:fid}'=='ri'}class="on"{end if} href="[topic:rlink]">今日</a></li>
+                  <li><a {if:'{cscms:fid}'=='zhou'}class="on"{end if} href="[topic:zlink]">本周</a></li>
+                  <li><a {if:'{cscms:fid}'=='yue'}class="on"{end if} href="[topic:ylink]">本月</a></li>
+                  <li><a {if:'{cscms:fid}'=='fav'}class="on"{end if} href="[topic:slink]">收藏</a></li>
+			</ul>
+			<h3>按分类</h3>
+			<ul class="list">
+{cscms:class table="dance_list" field="id,name" sort="xid" order="asc"}
+        	<li><a {if:{cscms:ids}==[class:id]}class="on"{end if} href="[class:url link=topic/lists,id]">[class:name]</a></li>
+{/cscms:class}
+			</ul>
+		</div>
+	</div>
+	<div class="v_right">
+		   <div class="v_sift">
+		        <div class="title">
+				{if:'{cscms:fid}'=='id' || '{cscms:fid}'=='lists/id'}最新专集{end if}
+				{if:'{cscms:fid}'=='hits' || '{cscms:fid}'=='lists/hits'}人气排序{end if}
+				{if:'{cscms:fid}'=='ri' || '{cscms:fid}'=='lists/ri'}今日排行{end if}
+				{if:'{cscms:fid}'=='zhou' || '{cscms:fid}'=='lists/zhou'}本周排行{end if}
+				{if:'{cscms:fid}'=='yue' || '{cscms:fid}'=='lists/yue'}本月排行{end if}
+				{if:'{cscms:fid}'=='fav' || '{cscms:fid}'=='lists/fav'}收藏排行{end if}
+				</div>
+		   </div>
+		   <div class="v_list">
+{cscms:topic table="dance_topic" field="id,name,pic,tags,yuyan,hits,diqu,singerid,neir,addtime" pagesize="8" cid="auto" sort="addtime" order="desc"}
+                    	<div class="topic">
+				<span class="pics"><a href="[topic:url link=topic/show,id]" target="_blank" title="[topic:name]"><img class="lazy" data-original="[topic:pic dir=dancetopic]?size=140*140" art="[topic:name]"/></a></span>
+				<span class="info">
+					<p class="name"><a href="[topic:url link=topic/show,id]" target="_blank" title="[topic:name]">[topic:name]</a></p>
+					<p class="tags"><span class="user">歌手：<a href="[topic:url zdy=singer,singerid,show,id]" target="_blank">[topic:singer zd=name]</a></span><span>标签：{cscmsphp}SearchLink('[topic:tags]');{/cscmsphp}</span></p>
+					<p class="tags"><span class="user">语言：[topic:yuyan]</span><span>地区：[topic:diqu]</span></p>
+					<p class="tags"><span class="user">时间：[topic:addtime style=Y-m-d]</span><span>人气：[topic:hits]</span></p>
+					<p class="jies">简介：[topic:neir len=70]</p>
+				</span>
+		       </div>
+{/cscms:topic}
+		   </div>
+           <div class="clear"></div>
+           <div class="page">
+               <span class="page_rt">
+			       <span class="num">
+                       <a class="fir" href="{cscms:pagefirst}" target="_self">首页</a>
+                       <a class="sec" href="{cscms:pageup}" target="_self">上一页</a>
+                       {cscms:pagenum len=8}
+                       <a class="sec" href="{cscms:pagedown}" target="_self">下一页</a>
+                       <a class="fir" href="{cscms:pagelast}" target="_self">尾页</a>
+				   </span>
+                   <span class="page_num">当前在第<em>{cscms:pagenow}/{cscms:pagecout}</em>页</span>
+               </span>
+           </div>
+	</div>
+    <div class="clear"></div>
+</div>
+{cscms:bottom}
+</body>
+</html>

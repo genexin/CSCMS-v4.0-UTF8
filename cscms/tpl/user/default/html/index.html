@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div class="container-1k border MG-T10" style="margin-top:10px;">
+    <ul class="div-title container-1k">
+        <li class="tips"><p class="light"></p><p>当前活跃用户 <em>{cscmscount param="user|zx=1"}</em> 人</p></li>
+        <li class="recommend">他们在这里分享音乐、发现知音</li>
+    </ul>
+    <ul class="users-L">
+{cscms:user table="user" field="id,name,nichen,logo" loop="24" sort="addtime" order="desc"}
+            <li><a title="[user:nichen]" href="[user:url ulink=index]" target="_blank"><img class="lazy" data-original="[user:logo dir=logo]?size=60*60" alt="[user:nichen]" /></a></li>
+{/cscms:user}
+        </ul>
+    <ul class="users-M">
+        <li class="you">You</li>
+{cscms:user table="user" field="id,name,nichen,logo" loop="2" start="25" sort="addtime" order="desc"}
+            <li><a title="[user:nichen]" href="[user:url ulink=index]" target="_blank"><img class="lazy" data-original="[user:logo dir=logo]?size=60*60" alt="[user:nichen]" /></a></li>
+{/cscms:user}
+        </ul>
+    <ul class="users-R">
+        <li class="millions">海量高品质歌曲<br/><em>Millions of Music</em></li>
+        <li class="discover">发现喜欢的音乐<br/><em>Recommend & Discover</em></li>
+        <li class="share">与朋友们分享好歌曲<br/><em>Share music Friends</em></li>
+        <li class="anyway">随时随地<br/><em>Anywhere anytime anyway</em></li>
+    </ul>
+</div>
+
+<div class="container-1k MG-T20">
+    <div class="trends-bg">
+        <ul class="div-title container-1k">
+            <li class="trend">会员动态</li>
+        </ul>
+        <div class="scroll" id="demo">
+            <div class="trends" id="demo1">
+{cscms:dt table="dt" field="*" loop="30" sort="addtime" order="desc"}
+                <div class="li">
+                    <a href="[dt:url ulink=index]" target="_blank"><img class="avatar" src="[dt:user zd=logo]?size=60*60" alt="[dt:user zd=nichen]" /></a>
+                    <div class="txt2">
+                        <a href="[dt:url ulink=index]" target="_blank">[dt:user zd=nichen]</a><br />
+                        [dt:title]<a href="[dt:link]" target="play">《[dt:name]》</a><br />
+                    </div>
+                </div>
+{/cscms:dt}
+            </div>
+            <div class="trends" id="demo2"></div>
+        </div>
+    </div>
+ 
+    <div class="stars-bg">
+        <ul class="div-title container-1k">
+            <li class="star">明星会员</li>
+        </ul>
+ 
+        <ul class="stars">
+{cscms:user table="user" field="id,name,nichen,logo" loop="7" tid="1" sort="hits" order="desc"}
+                    <li>
+                <p class="{if:[user:i]<4}n{else}n4-7{end if}">[user:i]</p>
+                <p><a href="[user:url ulink=index]" title="[user:nichen]" target="_blank"><img class="lazy" data-original="[user:logo dir=logo]?size=60*60" alt="[user:nichen]" /></a></p>
+                <p>
+                    <a href="[user:url ulink=index]" title="[user:nichen]">[user:nichen]</a><br />
+                    <span>粉丝 <em>[user:count zdy=fans,uida,id]</em> 人<br />
+                    歌曲 <em>[user:count zdy=dance,uid,id]</em> 首</span>
+                </p>
+            </li>
+{/cscms:user}
+                </ul>
+    </div>
+</div>
+ 
+<div class="container-1k border MG-T20">
+    <ul class="div-title container-1k">
+        <li class="photo">最新相册</li>
+    </ul>
+    <ul class="home-photos">
+{cscms:pic table="pic_type" field="id,pic,name" loop="14" sort="addtime" order="desc"}
+            <li><a href="[pic:url zdy=pic,id,show,id]" title="[pic:name]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]?size=120*120" alt="[pic:name]" /><br />[pic:name]</a></li>
+{/cscms:pic}
+    </ul>
+</div>
+{cscms:bottom}
+<script type="text/javascript"> 
+var speed=30
+demo2.innerHTML=demo1.innerHTML
+function Marquee(){
+   if(demo2.offsetTop-demo.scrollTop<=0)
+      demo.scrollTop-=demo1.offsetHeight
+   else{
+      demo.scrollTop++
+   }
+}
+var MyMar=setInterval(Marquee,speed)
+demo.onmouseover=function() {clearInterval(MyMar)}
+demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+</script>
+</body>
+</html>

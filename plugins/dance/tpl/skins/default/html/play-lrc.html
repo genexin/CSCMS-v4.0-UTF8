@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/danceplay.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<script>$("#class_[dance:cid]").addClass("a_sub_nav_clo");</script>
+<div id="cscms_music_play" style="border:1px solid #D9D9D9;background:#FFF;">
+        <div class="content wap">
+            <div class="lt1">
+                <div class="mc_info rt">
+                    <div class="mc_info_tit" title="[dance:name]"><b class="pl_ting"></b><h1>[dance:name]</h1></div>
+                    <p class="blue lt">
+                        <em>歌手：</em><strong><a href="[dance:url zdy=singer,singerid,show]" target="_blank">[dance:singer zd=name]</a></strong><br />
+                        <em>标签：</em>[dance:tags]<br />
+                        <em>作词：</em>[dance:zc]<br />
+                        <em>作曲：</em>[dance:zq]<br />
+                        <em>编曲：</em>[dance:bq]<br />
+                        <em>分类：</em><a target="_blank" href="[dance:classlink]">[dance:classname]</a><br />
+                        <em>专辑：</em><a href="[dance:url zdy=dance,tid,topic/show]" target="_blank">[dance:topicname]</a><br />
+                        <em>点击/下载：</em>[dance:hits]/[dance:xhits]<br />
+                        <em>上传时间：</em>20[dance:addtime style=y-m-d h:i:s]
+                    </p>
+                    <dl class="lt evaluate" style="{if:[dance:reco]<3}display:none;{end if}">
+                        <dt class="evaluate_icon">
+                            <span class="evaluate_bian"><a href="{cscms:opt-reco}" target="_blank">[dance:reco]编辑推荐</a></span>
+                        </dt>
+                    </dl>
+                </div>
+                <div class="user lt">
+                    <h4><a href="[dance:url ulink=index]" target="_blank"><img src="[dance:user zd=logo]?size=180*180" width="180" height="180" /></a></h4>
+                    <div class="u_name">
+                        <div class="name"><a href="[dance:url ulink=index]" target="_blank">[dance:user zd=nichen]</a></div>
+                        <div class="u_follow">
+                            <a href="[dance:url ulink=friend]" target="_blank"  class="user_a1" title="关注">关注</a>
+                            <a href="[dance:url userlink=msg,add]?user=[dance:user zd=name]" target="_blank" class="user_a3" title="私信">私信</a>
+                            <a href="[dance:url ulink=dance]" class="user_a2" title="TA的所有歌曲" target="_blank">歌曲</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="rt_play">
+                    [dance:jplayer]
+                </div>
+                <div class="box_func">
+                    <ul class="box_func_list1">
+                        <li class="func_icon1"><a href="javascript:;" onclick="dance_ding([dance:id]);"><b></b>赞(<font id="dhits">[dance:dhits]</font>)</a></li>
+                        <li class="func_icon2"><a href="javascript:;"><b></b>人气([dance:hits])</a></li>
+                    </ul>
+                    <ul class="box_func_list2">
+                        <li class="func_icon3"><a href="[dance:url link=down,id]" target="_blank" title="格式：mp3&#10;大小：[dance:dx]"><b></b>下载([dance:xhits])</a></li>
+                        <li class="func_icon4"><a id="dance_share" href="javascript:;"><b></b>分享</a></li>
+                        <li class="func_icon5"><a href="javascript:;" onclick="dance_fav([dance:id]);"><b></b>收藏(<font id="shits">[dance:shits]</font>)</a></li>
+                        <li class="func_icon6"><a href="javascript:;" title="ios下载"><b></b>ios下载</a></li>
+                        <li class="func_icon7"><a href="javascript:;" title="Android下载"><b></b>Android下载</a></li>
+                    </ul>
+                </div>
+                <div class="song_play_sx">
+                    <ul class="song_p_sx">
+                        <li><a href="[dance:slink]" title="上一首：[dance:sname]">上一首：[dance:sname]</a></li>
+                        <li><a href="[dance:xlink]" title="下一首：[dance:xname]">下一首：[dance:xname]</a></li>
+                    </ul>
+                </div>
+                <div class="song_play">
+                    <ul class="song_p_nav">
+                        <li><a id="play_tags_1" href="javascript:;" class="song_p_nav_clo" onclick="play_hits_tags(1);">最新</a></li>
+                        <li class="song_p_nav_fc"><a id="play_tags_2" href="javascript:;" onclick="play_hits_tags(2);">人气</a></li>
+                        <li><a id="play_tags_3" href="javascript:;" onclick="play_hits_tags(3);">推荐</a></li>
+                    </ul>
+                    <div class="song_p_list">
+                        <ul id="play_list_1">
+                                {cscms:dance table="dance" field="id,name,reco,addtime" loop="15" sort="addtime"}<li{if:{cscms:ids}==[dance:id]} class="song_p_clo"{end if}><span class="lt"><a href="[dance:url link=play,id]" title="[dance:name]">[dance:name]</a>{if:[dance:reco]>0}<img src="{cscms:indextempurl}images/tj.gif" width="13" height="13" alt="推荐" />{end if}</span><em>[dance:addtime style=Y-m-d]</em></li>{/cscms:dance}
+                        </ul>
+                        <ul id="play_list_2" style="display:none;">
+                                {cscms:dance table="dance" field="id,name,reco,addtime" loop="15" sort="hits"}<li{if:{cscms:ids}==[dance:id]} class="song_p_clo"{end if}><span class="lt"><a href="[dance:url link=play,id]" title="[dance:name]">[dance:name]</a>{if:[dance:reco]>0}<img src="{cscms:indextempurl}images/tj.gif" width="13" height="13" alt="推荐" />{end if}</span><em>[dance:addtime style=Y-m-d]</em></li>{/cscms:dance}
+                        </ul>
+                        <ul id="play_list_3" style="display:none;">
+                                {cscms:dance table="dance" field="id,name,reco,addtime" reco="3,4,5" loop="15" sort="addtime"}<li{if:{cscms:ids}==[dance:id]} class="song_p_clo"{end if}><span class="lt"><a href="[dance:url link=play,id]" title="[dance:name]">[dance:name]</a>{if:[dance:reco]>0}<img src="{cscms:indextempurl}images/tj.gif" width="13" height="13" alt="推荐" />{end if}</span><em>[dance:addtime style=Y-m-d]</em></li>{/cscms:dance}
+                        </ul>
+                    </div>
+                </div>
+                <div class="rt4">
+                    <h2><i class="dis"></i>歌词</h2>
+                    <div class="rt5_lrc"><table><tr><td><div  class="pl_lianxu">[dance:name]<br />[dance:text]</div></td></tr></table>
+                    </div>
+                </div>
+                <div class="rt6">
+                    <h3><i class="dis"></i>最新听众</h3>
+                    <div class="ting_list">
+                        <ul>
+						{cscms:play table="dance_play" did="auto" field="id,name,uid,addtime" loop="6" sort="addtime"}<li><a href="[play:url ulink=index]" target="_blank" title="[play:user zd=nichen]"><img src="[play:user zd=logo]?size=50*50" width="32" height="32"></a><a href="[play:url ulink=index]" title="[play:user zd=nichen]">[play:user zd=nichen]</a><span>[play:addtime style=time]听过</span></li>{/cscms:play}</ul>
+                    </div>
+                </div>
+                <div class="rt8">
+                    <h4><i class="dis"></i>附加资讯</h4>
+                    <div class="rt8_view">
+                        <ul>
+                            <li>歌曲ID：[dance:id]</li>
+                            <li>歌曲名：[dance:name]</li>
+                            <li>宣传地址： <input id="fz" size="29" type="text" value="[dance:url link=play,id]" onclick="javascript:copyToClipboard('[dance:url link=play,id]','复制地址成功,您可以发给你的好友分享!');"/><br></li>
+                        </ul>
+                        <div class="two_code"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="left">
+                <div class="recommend">
+                    <div class="recommend_tit"><h4>相关歌曲</h4><p class="rt recommend_page"><a href="javascript:;" onclick="play_reco_tag_top(1);" id="reco_top_1" class="recommend_tit_clo"></a><a href="javascript:;" id="reco_top_2" onclick="play_reco_tag_top(2);"></a><a id="reco_top_3" href="javascript:;" onclick="play_reco_tag_top(3);"></a></p></div>
+                    <div class="recommend_list" id="reco_list_1" style="display:block">
+                          <a href="javascript:;" onclick="play_reco_tag(1,1);" class="recommend_list_up">向上</a>
+                          <ul>
+							 {cscms:dance table="dance" field="id,name,singerid" loop="3" start="1"}<li><a target="_blank" href="[dance:url zdy=singer,singerid,music]" class="lt" title="[dance:singer zd=name]"><img src="[dance:singer zd=pic]?size=50*50" width="48" height="48" alt="[dance:singer zd=name]" /></a><p class="lt title"><a href="[dance:url link=play,id]" title="[dance:name]">[dance:name]</a><br />音乐人:[dance:singer zd=name]</p></li>{/cscms:dance}
+                          </ul>
+                          <a href="javascript:;" onclick="play_reco_tag(1,2);" class="recommend_list_next" >向下</a>
+                    </div>
+                    <div class="recommend_list" id="reco_list_2" style="display:none">
+                          <a href="javascript:;" onclick="play_reco_tag(2,1);" class="recommend_list_up" >向上</a>
+                          <ul>
+                             {cscms:dance table="dance" field="id,name,singerid" loop="3" start="4"}<li><a target="_blank" href="[dance:url zdy=singer,singerid,music]" class="lt" title="[dance:singer zd=name]"><img src="[dance:singer zd=pic]?size=50*50" width="48" height="48" alt="[dance:singer zd=name]" /></a><p class="lt title"><a href="[dance:url link=play,id]" title="[dance:name]">[dance:name]</a><br />音乐人:[dance:singer zd=name]</p></li>{/cscms:dance}
+                          </ul>
+                          <a href="javascript:;" onclick="play_reco_tag(2,2);" class="recommend_list_next" >向下</a>
+                    </div>
+                    <div class="recommend_list" id="reco_list_3" style="display:none">
+                          <a href="javascript:;" onclick="play_reco_tag(3,1);" class="recommend_list_up" >向上</a>
+                          <ul>
+                             {cscms:dance table="dance" field="id,name,singerid" loop="3" start="7"}<li><a target="_blank" href="[dance:url zdy=singer,singerid,music]" class="lt" title="[dance:singer zd=name]"><img src="[dance:singer zd=pic]?size=50*50" width="48" height="48" alt="[dance:singer zd=name]" /></a><p class="lt title"><a href="[dance:url link=play,id]" title="[dance:name]">[dance:name]</a><br />音乐人:[dance:singer zd=name]</p></li>{/cscms:dance}
+                          </ul>
+                          <a href="javascript:;" onclick="play_reco_tag(3,2);" class="recommend_list_next">向下</a>
+                    </div>
+                </div>
+                <div class="lt5">
+                    <h3><a href="javascript:click_scroll('cscms_pl');" class="rt">我来说两句</a> <i class="dis"></i>乐评</h3>
+                    <div class="neir">
+                        [dance:pl]
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+</div>
+<!----分享弹窗-------->
+<div data-title="[dance:name]" data-url="[dance:url link=play,id]" id="showbg"></div>
+<div class="popup t_share" style="display:none;">
+    <div class="tag_adfo dis_wap">
+        <div class="share">
+            <h4>分享到：</h4>
+            <ul>
+                <li class="share_qzone"><a href="javascript:;" title="QQ空间">QQ空间</a></li>
+                <li class="share_weibo"><a href="javascript:;" title="新浪微博">新浪微博</a></li>
+                <li class="share_qwei"><a href="javascript:;" title="腾讯微博">腾讯微博</a></li>
+                <li class="share_baidu"><a href="javascript:;" title="百度">百度</a></li>
+                <li class="share_renren"><a href="javascript:;" title="人人网">人人网</a></li>
+                <li class="share_kaixin"><a href="javascript:;" title="开心网">开心网</a></li>
+            </ul>
+        </div>
+    </div>
+	<div title="Close" class="fancybox-close"></div>
+</div>
+<script type='text/javascript'>dance.play();</script>
+{cscms:bottom}
+</body>
+</html>

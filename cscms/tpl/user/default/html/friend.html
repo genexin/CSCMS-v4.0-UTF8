@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_content width">
+						<div class="main_nav" style="margin-bottom:12px">
+							<ul style="width:785px;">
+								<li><span><a href="[user:url userlink=fans]">我的粉丝</a></span></li>
+								<li class="on"><span><a href="[user:url userlink=friend]">我的关注</a></span></li>
+								<li><span><a href="[user:url userlink=funco]">访问脚印</a></span></li>
+							</ul>
+						</div>
+						<div class="minHeight500">
+							<div class="friendList">
+								<div id="friendList" class="followingList">
+									<ul>
+                              {cscms:friend table="friend" pagesize="10" uida="auto" sort="addtime" order="desc"}            
+										<li>
+											<div>
+											<div class="avatar"><a title="[friend:user zd=nichen]" href="[friend:url ulink=index]" target="_blank"><img width="70" height="70" src="[friend:user zd=logo]"></a></div>
+											<div class="hr"></div>
+											<div class="info">
+												<p class="F_14 B">[friend:user zd=nichen] <font>([friend:user zd=name])</font><a class="del" title="解除好友" href="javascript:;" onclick="fans.del('[friend:id]','friend');"></a></p>
+												<p><font>地区</font>[friend:user zd=city]</p>
+												<p><font>关注</font>[friend:count zdy=friend,uida,uidb]<font>|</font><font>粉丝</font>[friend:count zdy=fans,uida,uidb]<font>|</font><font>人气</font>[friend:user zd=hits]<font></p>
+											</div>
+											</div>
+											<div class="info_bot">												
+												<p><strong>个性签名：</strong>[friend:user zd=qianm]</p>
+											</div>
+											<div class="info_action"><a href="[user:url userlink=msg,add]?user=[friend:user zd=name]">给Ta私信</a>　<a title="[friend:user zd=nichen]" target="_blank" href="[friend:url ulink=index]">访问空间</a></div>
+										</li>
+                              {/cscms:friend}                      
+									</ul>
+									{if:{cscms:pagedata}==0}<div class="zanwu">暂无数据！</div>{end if}
+								</div>
+							</div>
+							<div class="page" style="{if:{cscms:pagecout}<2}display:none;{end if}">
+									<div class="pages">
+									<em title="总数量">{cscms:pagedata}</em>
+                                    <a href="{cscms:pagefirst}">首页</a>
+									{cscms:pagenum len=8}
+                                    <a href="{cscms:pagelast}">尾页</a>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div id="rand"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$('#left_fans').addClass('on');
+</script>
+{cscms:bottom}
+</body>
+</html>

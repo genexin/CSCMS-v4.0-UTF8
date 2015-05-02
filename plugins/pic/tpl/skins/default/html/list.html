@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/pic.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div class="wrap mt20" style="margin-top:10px;">
+<div class="box cat_pos clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+<span class="cat_pos_l">您的位置：<a href='{cscms:webpath}'>首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href='[pic:url link=lists,id]'>[pic:name]</a></h2></span><span class="cat_pos_r">共有<em>{cscms:pagedata}</em>张相册</span>
+</div></div>
+
+<div id="pic_list" style="margin-top:10px;">
+       <div class="picList fl">
+                <ul>
+			    {cscms:pic table="pic_type" field="id,name,pic" start="2" cid="auto" pagesize="30" sort="hits"}
+                     <li>
+                            <a href="[pic:url link=show,id]" target="_blank"><img class="lazy" data-original="[pic:pic dir=pic]" width="180" height="120" alt="[pic:name]"></a>
+                            <p class="picTips"><a href="[pic:url link=show,id]" target="_blank" title="[pic:name]">[pic:name]</a></p>
+                     </li>
+				 {/cscms:pic}
+                 </ul>
+       </div>
+       <div class="clear"></div>
+	   <div class="pagination"{if:{cscms:pagecout}==1} style="display:none;"{end if}>
+	       <a href="{cscms:pagefirst}" class="pagelink_a">首页</a>
+	       <a href="{cscms:pageup}" class="pagelink_a">上一页</a>
+	       {cscms:pagenum len=10}
+	       <a href="{cscms:pagedown}" class="pagelink_a">下一页</a>
+	       <a href="{cscms:pagelast}" class="pagelink_a">尾页</a>
+	   </div>
+</div>
+{cscms:bottom}
+</body>
+</html>

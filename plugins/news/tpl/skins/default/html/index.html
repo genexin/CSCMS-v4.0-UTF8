@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/news.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<script>$('#news').addClass('a_sub_nav_clo');</script>
+<div class="wrap mt20 clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+<div class="box list box_left list2">
+<div class="title"><b class="sp_pri novel_ico"></b><h2>{cscms:class table="news_list" field="id,name" id="1"}<A href="[class:url link=lists,id]">最新[class:name]</A>{/cscms:class}</h2></div>
+<ul>
+{cscms:news table="news" field="id,color,name,addtime" cid="1" loop="20" sort="addtime"}
+<li><a href="[news:url link=show,id]" target="_blank"><span>[news:addtime style=Y-m-d H:i:s]</span><font color="[news:color]">[news:name]-[news:i]</font></a></li>
+{if:[news:i]==10}</ul></div><div class="box list box_right list2"><div class="title"> </div><ul>{end if}
+{/cscms:news}
+</ul>
+</div>
+</div>
+
+<div class="wrap mt20 clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+<div class="box list box_left list2">
+<div class="title"><b class="sp_pri novel_ico"></b><h2>{cscms:class table="news_list" field="id,name" id="2"}<A href="[class:url link=lists,id]">最新[class:name]</A>{/cscms:class}</h2></div>
+<ul>
+{cscms:news table="news" field="id,color,name,addtime" cid="2" loop="20" sort="addtime"}
+<li><a href="[news:url link=show,id]" target="_blank"><span>[news:addtime style=Y-m-d H:i:s]</span><font color="[news:color]">[news:name]</font></a></li>
+{if:[news:i]==10}</ul></div><div class="box list box_right list2"><div class="title"> </div><ul>{end if}
+{/cscms:news}
+</ul>
+</div>
+</div>
+
+<div class="wrap mt20 clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+<div class="box list box_left list2">
+<div class="title"><b class="sp_pri novel_ico"></b><h2>{cscms:class table="news_list" field="id,name" id="3"}<A href="[class:url link=lists,id]">最新[class:name]</A>{/cscms:class}</h2></div>
+<ul>
+{cscms:news table="news" field="id,color,name,addtime" cid="3" loop="20" sort="addtime"}
+<li><a href="[news:url link=show,id]" target="_blank"><span>[news:addtime style=Y-m-d H:i:s]</span><font color="[news:color]">[news:name]</font></a></li>
+{if:[news:i]==10}</ul></div><div class="box list box_right list2"><div class="title"> </div><ul>{end if}
+{/cscms:news}
+</ul>
+</div>
+</div>
+
+<div class="wrap mt20 clearfix" style="border:1px solid #D9D9D9;background:#FFF;">
+<div class="box list box_left list2">
+<div class="title"><b class="sp_pri novel_ico"></b><h2>{cscms:class table="news_list" field="id,name" id="4"}<A href="[class:url link=lists,id]">最新[class:name]</A>{/cscms:class}</h2></div>
+<ul>
+{cscms:news table="news" field="id,color,name,addtime" cid="4" loop="20" sort="addtime"}
+<li><a href="[news:url link=show,id]" target="_blank"><span>[news:addtime style=Y-m-d H:i:s]</span><font color="[news:color]">[news:name]</font></a></li>
+{if:[news:i]==10}</ul></div><div class="box list box_right list2"><div class="title"> </div><ul>{end if}
+{/cscms:news}
+</ul>
+</div>
+</div>
+
+<table width="980" border="0" align="center"  style="border:1px solid #D9D9D9; margin-top:10px; background:#FFF;">
+<tr>
+<td height="50">&nbsp;友情链接：
+{cscms:link table="link" field="url,name" loop="100" order="asc"}<a href="[link:url]" target="_blank">[link:name] </a>&nbsp;&nbsp;{/cscms:link}</td>
+</tr>
+</table>
+{cscms:bottom}
+</body>
+</html>

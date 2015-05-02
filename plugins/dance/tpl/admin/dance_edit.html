@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/setcolor.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/editor/kindeditor.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 80			  
+	});
+    $(".select2").uedSelect({
+		width : 120			  
+	});
+    $(".select3").uedSelect({
+		width : 90			  
+	});
+    $(".select4").uedSelect({
+		width : 200			  
+	});
+});
+function seo(){
+   var none=$("#seo").css('display');
+   if(none=='none') {
+        $("#seo").show();
+        $("#seo2").show();
+        $("#seo1").hide();
+   }else{
+        $("#seo").hide();
+        $("#seo1").show();
+        $("#seo2").hide();
+   }
+}
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('dance/admin/dance')?>"><?=($id==0)?L('add'):L('edit');?><?=L('tpl_63')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('dance/admin/dance')?>"><?=L('tpl_01')?></a></li> 
+               <li><a href="<?=site_url('dance/admin/dance')?>?yid=2"><?=L('tpl_02')?></a></li>  
+               <li><a href="<?=site_url('dance/admin/dance')?>?yid=3"><?=L('tpl_03')?></a></li> 
+               <li><a href="#tab1" class="selected"><?=($id==0)?L('add'):L('edit');?><?=L('tpl_63')?></a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('dance/admin/dance/save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_64')?></label>
+                      <div class="vocation">
+                             <select class="select2" name="cid">
+		                     <option value="0"><?=L('tpl_65')?></option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."dance_list where fid=0 order by xid asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$cid)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>&nbsp;|—'.$row->name.'</option>';
+            $query2 = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."dance_list where fid=".$row->id." order by xid asc"); 
+            foreach ($query2->result() as $row2) {
+                $clas2=($row2->id==$cid)?' selected="elected"':'';
+			    echo '<option value="'.$row2->id.'"'.$clas2.'>&nbsp;|&nbsp;&nbsp;&nbsp;|—'.$row2->name.'</option>';
+			}
+}
+?>
+                             </select>
+                       </div>
+                       <div style="margin-left:10px;" class="vocation">
+                              <select class="select2" name="tid">
+		                     <option value="0"><?=L('tpl_66')?></option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."dance_topic order by id asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$tid)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>'.$row->name.'</option>';
+}
+?>
+                             </select>
+                       </div>
+                       <div style="margin-left:10px;" class="vocation">
+                              <select class="select2" name="fid">
+		                     <option value="0"><?=L('tpl_67')?></option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."dance_server order by id asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$fid)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>'.$row->name.'</option>';
+}
+?>
+                             </select>
+                       </div>
+                       <div style="margin-left:10px;" class="vocation">
+                              <select class="select2" name="reco">
+                                 <option value="0"<?php if($reco==0) echo ' selected';?>><?=L('tpl_22')?></option>
+	                             <option value="1"<?php if($reco=='1') echo ' selected';?>>★☆☆☆☆</option>
+	                             <option value="2"<?php if($reco=='2') echo ' selected';?>>★★☆☆☆</option>
+	                             <option value="3"<?php if($reco=='3') echo ' selected';?>>★★★☆☆</option>
+	                             <option value="4"<?php if($reco=='4') echo ' selected';?>>★★★★☆</option>
+	                             <option value="5"<?php if($reco=='5') echo ' selected';?>>★★★★★</option>
+                              </select>
+                       </div> 
+                       <div style="margin-left:10px;" class="vocation">
+                              <select class="select2" name="yid">
+                                 <option value="0"<?php if($yid==0) echo ' selected';?>><?=L('tpl_68')?></option>
+                                 <option value="1"<?php if($yid==1) echo ' selected';?>><?=L('tpl_69')?></option>
+                              </select>
+                       </div>
+					   &nbsp;&nbsp;&nbsp;<input class="box" name="addtime" type="checkbox" value="ok" checked="checked">&nbsp;<?=L('tpl_70')?>
+                </li>
+                <li><label><?=L('tpl_33')?></label><input id="name" name="name" type="text" class="dfinput" value="<?=$name?>" style="width:350px;"/>&nbsp;&nbsp;
+				<?=L('tpl_71')?>&nbsp;&nbsp;<input name="color" id="color" type="text" class="dfinput" value="<?=$color?>" style="width:88px;"/><img src="<?=Web_Path?>packs/admin/images/rect.gif" width="18" height="17" border=0 style="position:relative;left:-20px;margin-right:-20px;cursor:pointer;background-Color:#ff0000;" title="<?=L('tpl_71')?>" onClick="initcolor('color','imgs_color');" id="imgs_color" align="absmiddle" vspace="1">
+				</li>
+                <li><label><?=L('tpl_72')?></label>
+				<input name="zc" type="text" class="dfinput" value="<?=$zc?>" style="width:105px;"/>&nbsp;&nbsp;
+				<?=L('tpl_73')?>&nbsp;<input name="zq" type="text" class="dfinput" value="<?=$zq?>" style="width:105px;"/>&nbsp;&nbsp;
+				<?=L('tpl_74')?>&nbsp;<input name="bq" type="text" class="dfinput" value="<?=$bq?>" style="width:105px;"/>&nbsp;&nbsp;
+				<?=L('tpl_75')?>&nbsp;<input name="hy" type="text" class="dfinput" value="<?=$hy?>" style="width:105px;"/>&nbsp;&nbsp;
+				<?=L('tpl_76')?>&nbsp;<input name="singer" type="text" class="dfinput" value="<?=getzd('singer','name',$singerid)?>" style="width:105px;"/>&nbsp;&nbsp;
+				</li>
+                <li><label><?=L('tpl_77')?></label>
+				<input name="dx" type="text" class="dfinput" value="<?=$dx?>" style="width:105px;"/>&nbsp;&nbsp;
+				<?=L('tpl_78')?>&nbsp;<input name="yz" type="text" class="dfinput" value="<?=$yz?>" style="width:105px;"/>&nbsp;&nbsp;
+				<?=L('tpl_79')?>&nbsp;<input name="sc" type="text" class="dfinput" value="<?=$sc?>" style="width:105px;"/>&nbsp;&nbsp;
+				</li>
+                <li><label><?=L('tpl_80')?></label><input name="tags" type="text" class="dfinput" value="<?=$tags?>" style="width:520px;"/>&nbsp;<?=L('tpl_81')?></li>
+                <li><label><?=L('tpl_82')?></label><input name="pic" id="pic" type="text" class="dfinput" value="<?=$pic?>" style="width:520px;"/>&nbsp;<input onclick="Popsboxif('<?=L('tpl_111')?>',550,450,'<?=site_url('upload/up')?>?dir=dance');" class="button" type="button" name="button" value="<?=L('tpl_111')?>">
+                <li><label><?=L('tpl_83')?></label>
+				<?=L('tpl_84')?>&nbsp;<input name="hits" type="text" class="dfinput" value="<?=$hits?>" style="width:65px;"/>&nbsp;&nbsp;
+				<?=L('tpl_85')?>&nbsp;<input name="yhits" type="text" class="dfinput" value="<?=$yhits?>" style="width:65px;"/>&nbsp;&nbsp;
+				<?=L('tpl_86')?>&nbsp;<input name="zhits" type="text" class="dfinput" value="<?=$zhits?>" style="width:65px;"/>&nbsp;&nbsp;
+				<?=L('tpl_87')?>&nbsp;<input name="rhits" type="text" class="dfinput" value="<?=$rhits?>" style="width:65px;"/>&nbsp;&nbsp;
+				<?=L('tpl_88')?>&nbsp;<input name="dhits" type="text" class="dfinput" value="<?=$dhits?>" style="width:65px;"/>&nbsp;&nbsp;
+				<?=L('tpl_89')?>&nbsp;<input name="chits" type="text" class="dfinput" value="<?=$chits?>" style="width:65px;"/>&nbsp;&nbsp;
+				<?=L('tpl_90')?>&nbsp;<input name="shits" type="text" class="dfinput" value="<?=$shits?>" style="width:65px;"/>&nbsp;&nbsp;
+				<?=L('tpl_91')?>&nbsp;<input name="xhits" type="text" class="dfinput" value="<?=$xhits?>" style="width:65px;"/>&nbsp;&nbsp;
+				</li>
+                <li><label><?=L('tpl_92')?></label>
+                <input style="float:left;width:125px;" name="user" type="text" class="dfinput" value="<?=getzd('user','name',$uid)?>"/>
+			    <div class="vocation" style="margin-left:10px;">
+                    <select class="select2" name="vip">
+                          <option value="0"><?=L('tpl_93')?></option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."userzu order by id asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$vip)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>'.$row->name.'</option>';
+}
+?>
+                    </select>
+					</div>&nbsp;&nbsp;
+			        <div class="vocation" style="margin-left:10px;">
+                    <select class="select2" name="level">
+                          <option value="0"><?=L('tpl_94')?></option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."userlevel order by id asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$level)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>'.$row->name.'</option>';
+}
+?>
+                    </select>
+                </div>&nbsp;&nbsp;
+				<?=L('tpl_95')?>&nbsp;&nbsp;<input name="cion" type="text" class="dfinput" value="<?=$cion?>" style="width:65px;"/>
+				</li>
+                <li><label><?=L('tpl_96')?></label><input name="purl" id="purl" type="text" class="dfinput" value="<?=$purl?>" style="width:520px;"/>&nbsp;<input onclick="Popsboxif('<?=L('tpl_97')?>',550,450,'<?=site_url('upload/up')?>?fhid=purl&dir=music&type=*.mp3;*.m4a;*.mp4;*.wma');" class="button" type="button" name="button" value="<?=L('tpl_97')?>">
+                </li>
+                <li><label><?=L('tpl_98')?></label><input name="durl" type="text" class="dfinput" value="<?=$durl?>" style="width:520px;"/>&nbsp;
+                </li>
+                <li><label><?=L('tpl_99')?></label><input name="wpurl" type="text" class="dfinput" value="<?=$wpurl?>" style="width:320px;"/>&nbsp;&nbsp;
+				<?=L('tpl_100')?>&nbsp;<input name="wppass" type="text" class="dfinput" value="<?=$wppass?>" style="width:120px;"/>&nbsp;&nbsp;</li>
+                <li><label><?=L('tpl_101')?></label><input id="skins" name="skins" type="text" class="dfinput" value="<?=$skins?>" style="width:250px;"/>&nbsp;&nbsp;<?=L('tpl_102')?>
+				</li>
+                <li>
+				<label>
+				   <span id="gc_1" class="on" onclick="$('#text').show();$('#lrc').hide();$('#gc_1').addClass('on');$('#gc_2').removeClass('on');"><?=L('tpl_103')?></span>
+				   <span id="gc_2" onclick="$('#text').hide();$('#lrc').show();$('#gc_2').addClass('on');$('#gc_1').removeClass('on');"><?=L('tpl_104')?></span>
+				</label>
+				<span id="text"><textarea style="width:760px;height:200px" class="textinput" name="text" id="text"><?=$text?></textarea><script type="text/javascript">AdminEditor('text');</script></span>
+				<span id="lrc" style="display:none"><textarea style="width:760px;height:200px" class="textinput" name="lrc" id="lrc"><?=$lrc?></textarea></span>
+				</li>
+                <li id="seo1" onclick="seo();" style='cursor:pointer;height:30px;line-height:30px;'><img src='<?=base_url()?>packs/admin/images/btn_add.gif' align='absmiddle'/>&nbsp;&nbsp;<b><font color='#666'><?=L('tpl_105')?></font></b></li>
+                <li id="seo2" onclick="seo();" style='display:none;cursor:pointer;height:30px;line-height:30px;'><img src='<?=base_url()?>packs/admin/images/btn_dec.gif' align='absmiddle'/>&nbsp;&nbsp;<b><font color='#666'><?=L('tpl_106')?></font></b></li>
+      	   </ul>
+      	   <ul class="forminfo" style="display:none"; id="seo">
+                <li><label><?=L('tpl_107')?></label><input name="title" type="text" class="dfinput" value="<?=$title?>" style="width:520px;"/></li>
+                <li><label><?=L('tpl_108')?></label><input name="keywords" type="text" class="dfinput" value="<?=$keywords?>" style="width:520px;"/></li>
+                <li><label><?=L('tpl_109')?></label><input name="description" type="text" class="dfinput" value="<?=$description?>" style="width:520px;"/></li>
+      	   </ul>
+      	   <ul class="forminfo">
+                <input name="id" type="hidden" value="<?=$id?>">
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('tpl_110')?>"/></li>
+      	   </ul>
+  	    </div> 
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('dance/admin/dance/saomiao')?>"><?=L('tpl_233')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected" href="<?=site_url('dance/admin/saomiao')?>"><?=L('tpl_234')?></a></li> 
+               <li><a href="<?=site_url('dance/admin/saomiao/ftp')?>"><?=L('tpl_235')?></a></li>   
+               <li><a href="<?=site_url('dance/admin/saomiao/ftp_config')?>"><?=L('tpl_236')?></a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('dance/admin/saomiao/yps')?>" method="get">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_237')?></label><input name="dir" type="text" class="dfinput" value="" style="width:250px;"/>&nbsp;&nbsp;<?=L('tpl_238')?>
+				</li>
+                <li><label><?=L('tpl_239')?></label><input name="path" type="text" class="dfinput" value="" style="width:250px;"/>&nbsp;&nbsp;<?=L('tpl_240')?>
+				</li>
+                <li><label><?=L('tpl_241')?></label><input name="hz" type="text" class="dfinput" value="<?=$hz?>" style="width:250px;"/>&nbsp;&nbsp;<?=L('tpl_242')?>
+				</li>
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('tpl_243')?>"/></li>
+      	   </ul>
+  	    </div> 
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

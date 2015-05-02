@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li class="on"><span><a href="[user:url userlink=web]">主页模板</a></span></li>
+								<li class=""><span><a href="[user:url userlink=web,pic]">主页背景</a></span></li>
+							</ul>
+						</div><div class="clear"></div>
+						<div class="minHeight500">
+							<div>
+								<ul class="show_ul">
+                                {cscmsweb}
+                                        <li{if:'[web:path]'=='[user:skins]'} class="show_ul_clo"{end if}>
+                                            <img src="[web:pic]" width="220" height="120">
+                                            <strong>[web:name]</strong>
+                                            <span class="show_action" style="display: none;"><a href="[user:url ulink=index]/index/[web:dir]" class="show_look" target="_blank">预览</a><a onclick="web.init('[web:dir]','[web:cion]');" href="javascript:;" class="show_use">启用</a></span>
+                                            <span class="show_ul_clo_icon"></span>
+                                        </li>
+								{/cscmsweb}
+                                </ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_web').addClass('on');
+</script>
+{cscms:bottom}
+</body>
+</html>

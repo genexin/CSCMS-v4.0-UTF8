@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>视频搜索 - {cscms:title}</title>
+<meta name="Keywords" content="{cscms:key}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/vod.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div id="cscms_list">
+    <div class="a_sub_nav">
+    	<ul>
+        	<li><a href="{cscmsphp}cscmslink('vod');{/cscmsphp}">视频首页</a></li>
+{cscms:class table="vod_list" field="id,name" id="1,2,3,4" sort="xid" order="asc"}
+        	<li{if:'{cscms:cid}'=='[class:id]'} class="a_sub_nav_clo"{end if}><a href="[class:url link=lists,id]">[class:name]</a></li>
+{/cscms:class}
+        	<li><a href="{cscms:opt-new}">今日更新</a></li>
+        	<li><a href="{cscms:opt-hot}">播放排行</a></li>
+        	<li><a href="{cscms:opt-tv}">电视直播</a></li>
+        	<li><a href="{cscmsphp}linkurl('topic/lists','id',1,1,'vod');{/cscmsphp}">视频专题</a></li>
+        </ul>
+    </div>
+</div>
+<div id="cscms_zimu">
+    <div class="a_sub_nav">
+    	<b>按分类查找：</b>
+		<a {if:'{cscms:cid}'=='' || {cscms:cid}<5}class="on"{end if} href="{cscmsphp}linkurl('search','cid','',1);{/cscmsphp}&type={cscms:type}&diqu={cscms:diqu}&year={cscms:year}&zm={cscms:zm}">全部</a>
+        {cscms:class table="vod_list" field="id,name" fid="auto,sid" loop="10" sort="xid" order="asc"}
+        <a {if:[class:id]=={cscms:cid}}class="on"{end if} href="{cscmsphp}linkurl('search','cid','[class:id]',1);{/cscmsphp}&type={cscms:type}&diqu={cscms:diqu}&year={cscms:year}&zm={cscms:zm}">[class:name]</a>
+        {/cscms:class}
+    </div>
+</div>
+<div id="cscms_zimu">
+    <div class="a_sub_nav">
+    	<b>按类型查找：</b>
+		<a {if:''=='{cscms:type}'}class="on"{end if} href="{cscmsphp}linkurl('search','type','',1);{/cscmsphp}&cid={cscms:cid}&diqu={cscms:diqu}&year={cscms:year}&zm={cscms:zm}">全部</a>
+		{cscms:type table="vod_type" field="name" cid="auto,sid" loop="17" sort="xid" order="asc"}
+               <a {if:'[type:name]'=='{cscms:type}'}class="on"{end if} href="{cscmsphp}linkurl('search','type','[type:name]',1);{/cscmsphp}&cid={cscms:cid}&diqu={cscms:diqu}&year={cscms:year}&zm={cscms:zm}">[type:name]</a>
+		{/cscms:type}
+    </div>
+</div>
+<div id="cscms_zimu">
+    <div class="a_sub_nav">
+    	<b>按地区查找：</b>
+		<a {if:''=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}">全部</a>
+		<a {if:'内地'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','内地',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">内地</a>
+		<a {if:'香港'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','香港',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">香港</a>
+		<a {if:'台湾'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','台湾',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">台湾</a>
+		<a {if:'韩国'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','韩国',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">韩国</a>
+		<a {if:'泰国'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','泰国',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">泰国</a>
+		<a {if:'日本'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','日本',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">日本</a>
+		<a {if:'美国'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','美国',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">美国</a>
+		<a {if:'英国'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','英国',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">英国</a>
+		<a {if:'新加坡'=='{cscms:diqu}'}class="on"{end if} href="{cscmsphp}linkurl('search','diqu','新加坡',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&zm={cscms:zm}" target="_self">新加坡</a>
+    </div>
+</div>
+<div id="cscms_zimu">
+    <div class="a_sub_nav">
+    	<b>按年代查找：</b>
+		<a {if:''=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}">全部</a>
+		<a {if:'2015'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2015',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2015</a>
+		<a {if:'2014'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2014',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2014</a>
+		<a {if:'2013'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2013',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2013</a>
+		<a {if:'2012'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2012',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2012</a>
+		<a {if:'2011'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2011',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2011</a>
+		<a {if:'2010'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2010',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2010</a>
+		<a {if:'2009'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2009',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2009</a>
+		<a {if:'2008'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2008',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2008</a>
+		<a {if:'2007'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2007',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2007</a>
+		<a {if:'2006'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2006',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2006</a>
+		<a {if:'2005'=='{cscms:year}'}class="on"{end if} href="{cscmsphp}linkurl('search','year','2005',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&zm={cscms:zm}" target="_self">2005</a>
+    </div>
+</div>
+<div id="cscms_zimu">
+    <div class="a_sub_nav">
+    	<b>按字母查找：</b>
+		<a {if:''=='{cscms:zm}'}class="on"{end if} href="{cscmsphp}linkurl('search','zm','',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&diqu={cscms:diqu}&year={cscms:year}">全部</a>
+		{cscmszm:27}
+               <a {if:'[zm:name]'=='{cscms:zm}'}class="on"{end if} href="{cscmsphp}linkurl('search','zm','[zm:name]',1);{/cscmsphp}&cid={cscms:cid}&type={cscms:type}&year={cscms:year}&diqu={cscms:diqu}">[zm:name]</a>
+		{/cscmszm}
+    </div>
+</div>
+<div class="wrap mt20" style="border:1px solid #D9D9D9;background:#FFF; margin-top:10px;">
+<div class="box movie_list">
+<ul>
+{cscms:vod table="vod" field="id,color,name,addtime,pic" pagesize="20" sort="addtime" order="desc"}<li><a href="[vod:url link=show,id]" target="_blank"><img class="lazy" data-original="[vod:pic dir=vod]?size=201*230"/><h3><font color="[vod:color]">[vod:name]</font></h3><span class="movie_date">
+<!--[if lt IE 9 ]><span class="bg_top"><![endif]-->[vod:addtime style=Y-m-d H:i:s]<!--[if lt IE 9 ]></span>
+<span class="bg_tail"></span><![endif]--></span></a></li>{/cscms:vod}
+</ul>
+<div class="clear"></div>
+<div class="pagination"{if:{cscms:pagecout}==1} style="display:none;"{end if}>
+<a href="{cscms:pagefirst}" class="pagelink_a">首页</a>
+<a href="{cscms:pageup}" class="pagelink_a">上一页</a>
+{cscms:pagenum len=10}
+<a href="{cscms:pagedown}" class="pagelink_a">下一页</a>
+<a href="{cscms:pagelast}" class="pagelink_a">尾页</a>
+</div>
+</div>
+</div>
+{cscms:bottom}
+</body>
+</html>

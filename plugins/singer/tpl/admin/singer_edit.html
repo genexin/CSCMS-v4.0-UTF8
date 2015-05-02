@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/setcolor.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/editor/kindeditor.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 80			  
+	});
+    $(".select2").uedSelect({
+		width : 120			  
+	});
+    $(".select3").uedSelect({
+		width : 90			  
+	});
+    $(".select4").uedSelect({
+		width : 200			  
+	});
+});
+function seo(){
+   var none=$("#seo").css('display');
+   if(none=='none') {
+        $("#seo").show();
+        $("#seo2").show();
+        $("#seo1").hide();
+   }else{
+        $("#seo").hide();
+        $("#seo1").show();
+        $("#seo2").hide();
+   }
+}
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('singer/admin/singer')?>"><?=($id==0)?'新增':'修改';?>歌手</a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('singer/admin/singer')?>">歌手管理</a></li> 
+               <li><a href="<?=site_url('singer/admin/singer')?>?yid=2">待审核歌手</a></li>  
+               <li><a href="<?=site_url('singer/admin/singer')?>?yid=3">回收站歌手</a></li> 
+               <li><a href="#tab1" class="selected"><?=($id==0)?'新增':'修改';?>歌手</a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('singer/admin/singer/save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label>歌手参数</label>
+                      <div class="vocation">
+                             <select class="select4" name="cid"  onchange="getType($(this).val(),'<?=$type?>');">
+		                     <option value="0">请选择分类</option>
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."singer_list where fid=0 order by xid asc"); 
+foreach ($query->result() as $row) {
+            $clas=($row->id==$cid)?' selected="elected"':'';
+			echo '<option value="'.$row->id.'"'.$clas.'>&nbsp;|—'.$row->name.'</option>';
+            $query2 = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."singer_list where fid=".$row->id." order by xid asc"); 
+            foreach ($query2->result() as $row2) {
+                $clas2=($row2->id==$cid)?' selected="elected"':'';
+			    echo '<option value="'.$row2->id.'"'.$clas2.'>&nbsp;|&nbsp;&nbsp;&nbsp;|—'.$row2->name.'</option>';
+			}
+}
+?>
+                             </select>
+                       </div>
+                       <div style="margin-left:10px;" class="vocation">
+                              <select class="select2" name="reco">
+                                 <option value="0"<?php if($reco==0) echo ' selected';?>>歌手推荐</option>
+	                             <option value="1"<?php if($reco=='1') echo ' selected';?>>★☆☆☆☆</option>
+	                             <option value="2"<?php if($reco=='2') echo ' selected';?>>★★☆☆☆</option>
+	                             <option value="3"<?php if($reco=='3') echo ' selected';?>>★★★☆☆</option>
+	                             <option value="4"<?php if($reco=='4') echo ' selected';?>>★★★★☆</option>
+	                             <option value="5"<?php if($reco=='5') echo ' selected';?>>★★★★★</option>
+                              </select>
+                       </div> 
+                       <div style="margin-left:10px;" class="vocation">
+                              <select class="select2" name="yid">
+                                 <option value="0"<?php if($yid==0) echo ' selected';?>>显示</option>
+                                 <option value="1"<?php if($yid==1) echo ' selected';?>>隐藏</option>
+                              </select>
+                       </div>
+					   &nbsp;&nbsp;&nbsp;<input class="box" name="addtime" type="checkbox" value="ok" checked="checked">&nbsp;更新时间
+                </li>
+                <li><label>歌手名称</label><input id="name" name="name" type="text" class="dfinput" value="<?=$name?>" style="width:250px;"/>&nbsp;&nbsp;
+				英文别名&nbsp;&nbsp;<input name="bname" type="text" class="dfinput" value="<?=$bname?>" style="width:130px;"/>&nbsp;&nbsp;
+				名称颜色&nbsp;&nbsp;<input name="color" id="color" type="text" class="dfinput" value="<?=$color?>" style="width:65px;"/><img src="<?=Web_Path?>packs/admin/images/rect.gif" width="18" height="17" border=0 style="position:relative;left:-20px;margin-right:-20px;cursor:pointer;background-Color:#ff0000;" title="选取颜色!" onClick="initcolor('color','imgs_color');" id="imgs_color" align="absmiddle" vspace="1">
+				</li>
+                <li><label>歌手图片</label><input name="pic" id="pic" type="text" class="dfinput" value="<?=$pic?>" style="width:520px;"/>&nbsp;<input onclick="Popsboxif('上传图片',550,450,'<?=site_url('upload/up')?>?dir=singer');" class="button" type="button" name="button" value="上传图片">
+                <li><label>TAGS标签</label><input name="tags" type="text" class="dfinput" value="<?=$tags?>" style="width:520px;"/>&nbsp;多个逗号隔开</li>
+                <li><label>歌手资料</label>
+				别名&nbsp;<input name="nichen" type="text" class="dfinput" value="<?=$nichen?>" style="width:95px;"/>&nbsp;&nbsp;
+				生日&nbsp;<input name="sr" type="text" class="dfinput" value="<?=$sr?>" style="width:95px;"/>&nbsp;&nbsp;
+				身高&nbsp;<input name="height" type="text" class="dfinput" value="<?=$height?>" style="width:95px;"/>&nbsp;&nbsp;
+				体重&nbsp;<input name="weight" type="text" class="dfinput" value="<?=$weight?>" style="width:95px;"/>&nbsp;&nbsp;
+				国籍&nbsp;<input name="nat" type="text" class="dfinput" value="<?=$nat?>" style="width:95px;"/>
+				</li>
+                <li><label>&nbsp;</label>
+				性别&nbsp;<input name="sex" type="text" class="dfinput" value="<?=$sex?>" style="width:95px;"/>&nbsp;&nbsp;
+				星座&nbsp;<input name="xingzuo" type="text" class="dfinput" value="<?=$xingzuo?>" style="width:95px;"/>&nbsp;&nbsp;
+				语言&nbsp;<input name="yuyan" type="text" class="dfinput" value="<?=$yuyan?>" style="width:150px;"/>&nbsp;&nbsp;
+				出生地&nbsp;<input name="city" type="text" class="dfinput" value="<?=$city?>" style="width:150px;"/>
+				</li>
+                <li><label>歌手人气</label>
+				总&nbsp;<input name="hits" type="text" class="dfinput" value="<?=$hits?>" style="width:75px;"/>&nbsp;&nbsp;
+				月&nbsp;<input name="yhits" type="text" class="dfinput" value="<?=$yhits?>" style="width:75px;"/>&nbsp;&nbsp;
+				周&nbsp;<input name="zhits" type="text" class="dfinput" value="<?=$zhits?>" style="width:75px;"/>&nbsp;&nbsp;
+				日&nbsp;<input name="rhits" type="text" class="dfinput" value="<?=$rhits?>" style="width:75px;"/>&nbsp;&nbsp;
+				</li>
+                <li><label>歌手内容</label><textarea style="width:760px;height:300px" class="textinput" name="content" id="content"><?=$content?></textarea><script type="text/javascript">AdminEditor('content');</script></li>
+                <li id="seo1" onclick="seo();" style='cursor:pointer;height:30px;line-height:30px;'><img src='<?=base_url()?>packs/admin/images/btn_add.gif' align='absmiddle'/>&nbsp;&nbsp;<b><font color='#666'>点击展开SEO设置</font></b></li>
+                <li id="seo2" onclick="seo();" style='display:none;cursor:pointer;height:30px;line-height:30px;'><img src='<?=base_url()?>packs/admin/images/btn_dec.gif' align='absmiddle'/>&nbsp;&nbsp;<b><font color='#666'>点击关闭SEO设置</font></b></li>
+      	   </ul>
+      	   <ul class="forminfo" style="display:none"; id="seo">
+                <li><label>SEO标题</label><input name="title" type="text" class="dfinput" value="<?=$title?>" style="width:520px;"/></li>
+                <li><label>SEO关键词</label><input name="keywords" type="text" class="dfinput" value="<?=$keywords?>" style="width:520px;"/></li>
+                <li><label>SEO介绍</label><input name="description" type="text" class="dfinput" value="<?=$description?>" style="width:520px;"/></li>
+      	   </ul>
+      	   <ul class="forminfo">
+                <input name="id" type="hidden" value="<?=$id?>">
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="确定操作"/></li>
+      	   </ul>
+  	    </div> 
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

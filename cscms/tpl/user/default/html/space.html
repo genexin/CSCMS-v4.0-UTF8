@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/jquery.emot.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/jquery.poshytip.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_home_left">
+						<div class="title">
+							<p>发布说说</p>
+						</div>
+						<div class="user_info">
+							<div class="doing">
+								<div id="note" contenteditable="true" class="blogInput" name="note"></div>
+							</div>
+							<div id="act" class="act" style="display: block;">
+								<div id="emot_note" class="emot" to="note"></div>
+								<!--表情-->
+								<div class="button">
+									<button type="button" op="all" class="send">发布</button>
+								</div>
+							</div>
+						</div>
+						<div class="feed_menu">
+							<ul>
+								<li class="on" id="feed_1">
+									<span><a onclick="dt.list(1);" href="javascript:;">全站动态</a></span>
+								</li>
+								<li id="feed_2">
+									<span><a onclick="dt.list(2);" href="javascript:;">好友动态</a></span>
+								</li>
+								<li id="feed_3">
+									<span><a onclick="dt.list(3);" href="javascript:;">我的动态</a></span>
+								</li>
+							</ul>
+						</div>
+						<div class="feed_menu2">
+							<ul id="a_all">
+								<li id="all_0" class="current"><a onclick="dt.init('all',0);" href="javascript:;">全部动态</a></li>
+								<li id="all_100"><a onclick="dt.init('blog','100');" href="javascript:;">说说</a></li>
+{cscms:model table="plugins" field="dir,name" loop="10" order="asc"}
+                      {if:'[model:dir]'!='singer'}
+								<li id="all_[model:i]"><a onclick="dt.init('[model:dir]',[model:i]);" href="javascript:;">[model:name]</a></li>
+					  {end if}
+{/cscms:model}
+							</ul>
+						</div>
+						<div class="feed" id="feed" style="height:500px;">
+{cscms:dt table="dt" field="*" loop="30" sort="addtime" order="desc"}
+						<ul class="all">
+     						     <li><em></em>
+            						<div class="friendAvatar"><a href="[dt:url ulink=index]" target="_blank"><img src="[dt:user zd=logo]?size=60*60"></a></div>
+            						<div class="feedContent">
+                       						 <div class="feedName">
+                               						 <a href="[dt:url ulink=index]" target="_blank">&nbsp;[dt:user zd=nichen]</a><span class="createTime">&nbsp;[dt:addtime style=time]</span>
+                               						<span>[dt:title]</span>
+                        						</div>
+                       						    <div class="line"><div class="detail">&nbsp;[dt:name]<a href="[dt:link]" target="_blank">
+												{if:'[dt:dir]'=='dance'}视听{end if}
+												{if:'[dt:dir]'=='vod'}观看{end if}
+												{if:'[dt:dir]'=='news'}阅读{end if}
+												{if:'[dt:dir]'=='pic' || '[dt:dir]'=='singer' || '[dt:dir]'=='blog'}[dt:did]查看{end if}
+                                                </a></div>
+											</div>
+            						</div>
+     						     </li>
+						</ul>
+{/cscms:dt}
+						</div>
+					</div>
+                    {cscms:right}
+				</div>
+			</div>
+			<div id="rand"></div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_space').addClass('on');
+miniblog.addinit();
+</script>
+{cscms:bottom}
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/lrc.js'></script>
+<script type='text/javascript' src='{cscms:tempurl}js/player.js'></script>
+</head>
+<body id="xtopjsinfo">
+<div class="wrapper">
+{cscms:head}
+<div class="container">
+<section class="module_user">
+<div class="hd">
+<div class="mod_left"><span class="name">[dance:name]</span></div>
+<div class="mod_right"><a href="javascript:history.back();"><<返回</a></div>
+</div>
+<!--S wrap -->
+<div class="wrap wrap_player">
+	<!--=S 播放器页 mod_mainplayer -->
+	<div class="mod_mainplayer" id="mod_mainplayer" style="">
+		<div class="con">
+			<div class="cover" id="cover" style="display:block;"><img src="[dance:singer zd=pic]" width="100%"><i style="display:none;"></i></div>
+			<div class="lrc" style="display:none;">
+				<div id="lrc" class="lrc_con">
+                <p id="LR1"></p>
+				<p id="LR2"></p>
+				<p id="LR3"></p>
+				<p id="LR4"></p>
+				<p id="LR5"></p>
+				<p id="LR6"></p>
+				<p id="LR7"></p>
+                </div>
+			</div>
+		</div>
+
+		<div class="tools" id="tools">
+			<div class="control">
+				<div class="btn_download" onclick="window.location.href='[dance:url link=down,id]';"><span></span></div>
+				<div class="btn_play" id="btn_mainplay"><span></span></div>
+				<div id="btn_change" class="btn_change btn_cover"><span></span></div>
+			</div>
+
+			<div class="time_wrap" id="time_wrap">
+				<div id="timeshow">00:00</div>
+				<div class="progress_wrap" id="progress_wrap">
+					<div class="progress" id="progress"></div>
+				</div>
+				<div id="time">00:00</div>
+			</div>
+		</div>
+	</div>
+	<!--=E 播放器页 mod_mainplayer -->
+</div>
+<!--E wrap -->
+</section>
+<section class="module_user">
+<div class="hd"><div class="mod_left"><span class="name">[dance:name]评论</span></div></div>
+	<div class="pl">
+         [dance:pl]
+	</div>
+</section>
+</div>
+<div class="push"></div>
+</div>
+<script>
+var mp3_id="[dance:id]";
+var mp3_lrc="[dance:lrc]";
+waps.init();
+wap_player_one();
+</script>
+{cscms:bottom}
+</body>
+</html>

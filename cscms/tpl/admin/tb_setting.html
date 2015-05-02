@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/setcolor.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$("#usual1 ul").idTabs();
+});
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('setting/tb')?>"><?=L('setting_134')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=L('setting_134')?></a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('setting/tb_save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('setting_135')?></label>
+				  <input class="box" name="CS_WaterMark" type="radio" value="1"<?php if(CS_WaterMark==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterMark" type="radio" value="0"<?php if(CS_WaterMark==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>
+                </li>
+                <li><label><?=L('setting_136')?></label>
+				  <input onclick="$('#off1').show();$('#off2').hide();" class="box" name="CS_WaterMode" type="radio" value="1"<?php if(CS_WaterMode==1) echo ' checked="checked"';?>>&nbsp;<?=L('setting_137')?>&nbsp;&nbsp;&nbsp;&nbsp;
+				  <input onclick="$('#off1').hide();$('#off2').show();" class="box" name="CS_WaterMode" type="radio" value="2"<?php if(CS_WaterMode==2) echo ' checked="checked"';?>>&nbsp;<?=L('setting_138')?>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="off1"<?php if(CS_WaterMode==2) echo 'style="display:none";';?>>
+                <li><label><?=L('setting_139')?></label><input name="CS_WaterFont" type="text" class="dfinput" value="<?=CS_WaterFont?>" style="width:145px;"/><b>*</b><?=L('setting_140')?></li>
+                <li><label><?=L('setting_141')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="CS_WaterFontSize" type="text" class="dfinput" value="<?=CS_WaterFontSize?>" style="width:145px;"/>PX<b>*</b><?=L('setting_142')?></li>
+                <li><label><?=L('setting_143')?></label>
+				  <input class="box" name="CS_WaterLocation" type="radio" value="1"<?php if(CS_WaterLocation==1) echo ' checked="checked"';?>>&nbsp;<?=L('setting_144')?>&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterLocation" type="radio" value="2"<?php if(CS_WaterLocation==2) echo ' checked="checked"';?>>&nbsp;<?=L('setting_145')?>&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterLocation" type="radio" value="3"<?php if(CS_WaterLocation==3) echo ' checked="checked"';?>>&nbsp;<?=L('setting_146')?>&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterLocation" type="radio" value="4"<?php if(CS_WaterLocation==4) echo ' checked="checked"';?>>&nbsp;<?=L('setting_147')?>&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterLocation" type="radio" value="5"<?php if(CS_WaterLocation==5) echo ' checked="checked"';?>>&nbsp;<?=L('setting_148')?>&nbsp;&nbsp;&nbsp;
+                </li>
+                <li><label><?=L('setting_149')?></label><input name="CS_WaterFontColor" id="CS_WaterFontColor" type="text" class="dfinput" value="<?=CS_WaterFontColor?>" style="width:145px;"/><img src="<?=Web_Path?>packs/admin/images/rect.gif" width="18" height="17" border=0 style="position:relative;left:-20px;margin-right:-20px;cursor:pointer;background-Color:#ff0000;" title="<?=L('setting_149')?>" onClick="initcolor('CS_WaterFontColor','imgs_CS_WaterFontColor');" id="imgs_CS_WaterFontColor" align="absmiddle" vspace="1"><b>*</b><?=L('setting_150')?></li>
+      	   </ul>
+      	   <ul class="forminfo" id="off2"<?php if(CS_WaterMode==1) echo 'style="display:none";';?>>
+                <li><label><?=L('setting_151')?></label><input name="CS_WaterLogo" type="text" class="dfinput" value="<?=CS_WaterLogo?>" style="width:245px;"/><b>*</b><?=L('setting_152')?></li>
+                <li><label><?=L('setting_153')?></label>
+				  <input class="box" name="CS_WaterLocations" type="radio" value="1"<?php if(CS_WaterLocations==1) echo ' checked="checked"';?>>&nbsp;<?=L('setting_144')?>&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterLocations" type="radio" value="2"<?php if(CS_WaterLocations==2) echo ' checked="checked"';?>>&nbsp;<?=L('setting_145')?>&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterLocations" type="radio" value="3"<?php if(CS_WaterLocations==3) echo ' checked="checked"';?>>&nbsp;<?=L('setting_146')?>&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterLocations" type="radio" value="4"<?php if(CS_WaterLocations==4) echo ' checked="checked"';?>>&nbsp;<?=L('setting_147')?>&nbsp;&nbsp;&nbsp;
+				  <input class="box" name="CS_WaterLocations" type="radio" value="5"<?php if(CS_WaterLocations==5) echo ' checked="checked"';?>>&nbsp;<?=L('setting_148')?>&nbsp;&nbsp;&nbsp;
+                </li>
+                <li><label><?=L('setting_154')?></label><input onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" name="CS_WaterLogotm" type="text" class="dfinput" value="<?=CS_WaterLogotm?>" style="width:145px;"/><b>*</b><?=L('setting_155')?></li>
+      	   </ul>
+  	    </div> 
+      	<ul class="forminfo">
+		     <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('setting_57')?>"/></li>
+      	</ul>
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

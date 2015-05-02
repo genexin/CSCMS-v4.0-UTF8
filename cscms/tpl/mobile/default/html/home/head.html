@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>{cscms:title}</title>
+<meta name="keywords" content="{cscms:keywords}" />
+<meta name="description" content="{cscms:description}" />
+<link type="text/css" rel="stylesheet" href="{cscms:indextempurl}css/home.css"/>
+<script src="{cscms:webpath}packs/js/jquery.lazyload.js?v=1.9.1"></script>
+<script>
+$(document).ready(function(){
+     $("img").lazyload();
+	 $("#topNav_main").click(function(){
+		$(this).hide();
+		$(".topNavCur").show();
+		$(".disNav").show();
+	 });
+	 $(".topNavCur").click(function(){
+		$(this).hide();
+		$(".topNav").show();
+		$(".disNav").hide();
+	 });
+});
+</script>
+</head>
+<body>
+<div class="page">
+<div id="topWrap">
+<div id="top">
+<div class="topMain">
+<a href="javascript:history.back();" class="topBack"><img src="{cscms:indextempurl}images/back.png" /></a>
+<span class="topTit">[user:nichen]的个主页</span>
+<a href="javascript:void(0)" class="topNav" id="topNav_main"></a>
+<a href="javascript:void(0)" class="topNavCur"></a>
+</div>
+</div>
+<div id="topZan"></div>
+</div>
+<div class="body" id="songBox">
+<div id="singerTop">
+<img id="singerPic" src="[user:logo dir=logo]" />
+<span id="singerRedu">热度：[user:hits]</span>
+<span id="singerInfo">[user:qianm len=200]</span>
+<img id="singerBg" class="blur" src="[user:logo dir=logo]" />
+</div>
+

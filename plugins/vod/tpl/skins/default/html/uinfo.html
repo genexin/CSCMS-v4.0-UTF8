@@ -1,0 +1,11 @@
+        会员中心，欢迎回来,&nbsp;&nbsp;<b><font color=red>[user:nichen]</font></b>！
+        <a href="[user:url userlink=space]" target="u">会员中心</a>&nbsp;&nbsp;
+        <a href="[user:url ulink=index]" target="web">个人主页</a>&nbsp;&nbsp;
+		{if:[user:count zdy=msg,uida,id,did,0]==0}
+        <a href="{cscmsphp}spacelink('dance,add','dance');{/cscmsphp}" target="web">上传歌曲</a>&nbsp;&nbsp;
+		{else}
+        <a href="[user:url userlink=msg]" target="msg" style="color:red;">[user:count zdy=msg,uida,id,did,0]条新消息<img src="{cscms:indextempurl}images/msg.gif"></a>&nbsp;&nbsp;
+		{end if}
+        <a href="[user:url userlink=edit]" target="web">修改资料</a>&nbsp;&nbsp;
+        <a href="[user:url userlink=pay]" target="u">充值</a>&nbsp;&nbsp;
+        <a href="#none" onclick="{cscms:logout}">退出</a>&nbsp;&nbsp;

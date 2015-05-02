@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+    $(".select2").uedSelect({
+		width : 245			  
+	});
+    $(".select3").uedSelect({
+		width : 85			  
+	});
+	$("#usual1 ul").idTabs();
+});
+function getmode(n){
+    if(n==1){
+          $('#wjt').hide();
+          $('#cjt').hide();
+	} else if(n==2){
+          $('#wjt').show();
+          $('#cjt').hide();
+	} else if(n==3){
+          $('#wjt').hide();
+          $('#cjt').show();
+    }
+}
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('setting')?>"><?=L('tpl_27')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=L('tpl_28')?></a></li> 
+               <li><a href="#tab2"><?=L('tpl_29')?></a></li> 
+               <li><a href="#tab3"><?=L('tpl_30')?></a></li>
+               <li><a href="#tab4"><?=L('tpl_31')?></a></li>
+               <li><a href="#tab5"><?=L('tpl_32')?></a></li>
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('plugins/setting_save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo"><input name="dir" type="text" class="dfinput" value="<?=$dir?>" style="display:none;"/>
+                <li><label><?=L('tpl_33')?></label><input name="name" type="text" class="dfinput" value="<?=$model['name']?>" style="width:245px;"/></li>
+                <li><label><?=L('tpl_34')?></label><input name="key" type="text" class="dfinput" value="<?=$key?>" style="width:245px;"/><b>*</b><?=L('tpl_35')?></li>
+                <li><label><?=L('tpl_36')?></label>
+				  <div class="vocation">
+                      <select class="select2" name="Skins_Dir">
+<?php
+foreach ($skins as $t) {
+          $clas=($SITE['Skins_Dir']==$t['path'])?' selected':'';
+          echo '<optgroup label="'.$t['name'].'"><option value="'.$t['path'].'"'.$clas.'>'.$t['path'].'</option></optgroup>';
+}
+?>
+                      </select>
+                  </div>
+                </li>	
+                <li><label><?=L('tpl_37')?></label>
+				  <div class="vocation">
+                      <select class="select2" name="User_Dir">
+<?php
+foreach ($user_skins as $t) {
+          $clas=($SITE['User_Dir']==$t['path'])?' selected':'';
+          echo '<optgroup label="'.$t['name'].'"><option value="'.$t['path'].'"'.$clas.'>'.$t['path'].'</option></optgroup>';
+}
+?>
+                      </select>
+                  </div>
+                </li>					
+                <li><label><?=L('tpl_38')?></label>
+				  <label><input onclick="$('#offs').show();" class="box" name="Cache_Is" type="radio" value="1"<?php if($SITE['Cache_Is']==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;</label>
+				  <label><input onclick="$('#offs').hide();" class="box" name="Cache_Is" type="radio" value="0"<?php if($SITE['Cache_Is']==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;</label>
+                </li>
+                <li id="offs"<?php if($SITE['Cache_Is']==0) echo 'style="display:none";';?>><label><?=L('tpl_39')?></label><input name="Cache_Time" type="text" class="dfinput" value="<?=$SITE['Cache_Time']?>" style="width:245px;"/><b></b><?=L('tpl_40')?></li>
+                <li><label><?=L('tpl_41')?></label>
+				  <label><input onclick="$('#off').show();" class="box" name="Ym_Mode" type="radio" value="1"<?php if($SITE['Ym_Mode']==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;</label>
+				  <label><input onclick="$('#off').hide();" class="box" name="Ym_Mode" type="radio" value="0"<?php if($SITE['Ym_Mode']==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;</label>
+                </li>
+                <li id="off"<?php if($SITE['Ym_Mode']==0) echo 'style="display:none";';?>><label><?=L('tpl_42')?></label><input name="Ym_Url" type="text" class="dfinput" value="<?=$SITE['Ym_Url']?>" style="width:245px;"/><b></b><?=L('tpl_43')?></li>
+                <li><label><?=L('tpl_44')?></label>
+				  <label><input onclick="$('#offm').show();" class="box" name="Mobile_Is" type="radio" value="1"<?php if($SITE['Mobile_Is']==1) echo ' checked="checked"';?>>&nbsp;<?=L('open')?>&nbsp;&nbsp;</label>
+				  <label><input onclick="$('#offm').hide();" class="box" name="Mobile_Is" type="radio" value="0"<?php if($SITE['Mobile_Is']==0) echo ' checked="checked"';?>>&nbsp;<?=L('close')?>&nbsp;&nbsp;</label>
+                </li>
+                <li id="offm"<?php if($SITE['Mobile_Is']==0) echo 'style="display:none";';?>><label><?=L('tpl_45')?></label>
+				  <div class="vocation">
+                      <select class="select2" name="Mobile_Dir">
+<?php
+foreach ($mobile_skins as $t) {
+          $clas=($SITE['Mobile_Dir']==$t['path'])?' selected':'';
+          echo '<optgroup label="'.$t['name'].'"><option value="'.$t['path'].'"'.$clas.'>'.$t['path'].'</option></optgroup>';
+}
+?>
+                      </select>
+                  </div>
+                </li>	
+      	   </ul>
+  	    </div> 
+
+        <div id="tab2" class="tabson">
+      	   <ul class="forminfo">
+<?php
+$query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."adminzu where id>1 order by id asc");
+foreach ($query->result() as $row) {
+          echo '<li><label>'.$row->name.'</label><label style="color:#0000ff;cursor:pointer;" onclick="Popsboxif(\''.$row->name.''.L('tpl_46').'\',600,300,\''.site_url('plugins/role').'?id='.$row->id.'&dir='.$dir.'\');"><b>['.L('tpl_46').']</b></label></li>';
+}
+?>
+      	   </ul>
+  	    </div> 
+
+        <div id="tab3" class="tabson">
+      	   <ul class="forminfo">
+<?php
+ echo '<li style="color:#0000ff;">---------------'.L('tpl_47').'----------------</li>';
+ $check=(getqx(0,$SITE['User_Qx'])=='ok')?' checked':'';
+ $userzu=$this->db->query("SELECT id,name FROM ".CS_SqlPrefix."userzu order by xid asc")->result();
+ foreach ($userzu as $row) {
+             $check=(getqx($row->id,$SITE['User_Qx'])=='ok')?' checked':'';
+             echo '<li><label>'.$row->name.'</label><label style="cursor:pointer;"><input name="user[]" value="'.$row->id.'" type="checkbox" '.$check.'/>&nbsp;'.L('tpl_48').'</label></li>';
+ }
+ echo '<li class="end"></li><li style="color:#0000ff;">---------------'.L('tpl_49').'---------------</li>';
+ $query = $this->db->query("SELECT id,name FROM ".CS_SqlPrefix."userlevel order by id asc");
+ foreach ($query->result() as $row) {
+             $check=(getqx($row->id,$SITE['User_Dj_Qx'])=='ok')?' checked':'';
+             echo '<li><label>'.$row->name.'</label><label style="cursor:pointer;"><input name="user_dj[]" value="'.$row->id.'" type="checkbox" '.$check.'/>&nbsp;'.L('tpl_48').'</label></li>';
+ }
+?>
+                <li style="color:red;"><b>*</b><?=L('tpl_50')?></li>
+      	   </ul>
+  	    </div> 
+
+        <div id="tab4" class="tabson">
+      	   <ul class="forminfo">
+                <li><label>Title</label><textarea name="seo[title]" cols="70" rows="2" class="textinput"><?=$SITE['Seo']['title']?></textarea><b></b><?=vsprintf(L('setting_00'),array('{cscms:title}'))?></li>
+				<li><label>Keywords</label><textarea name="seo[keywords]" cols="70" rows="2" class="textinput"><?=$SITE['Seo']['keywords']?></textarea><b></b><?=vsprintf(L('setting_00'),array('{cscms:keywords}'))?></li>
+				<li><label>Description</label><textarea name="seo[description]" cols="70" rows="2" class="textinput"><?=$SITE['Seo']['description']?></textarea><b></b><?=vsprintf(L('setting_00'),array('{cscms:description}'))?></li>
+      	   </ul>
+  	    </div> 
+        <div id="tab5" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_51')?></label>
+				  <label><input onclick="getmode(1);" class="box" name="Web_Mode" type="radio" value="1"<?php if($SITE['Web_Mode']==1) echo ' checked="checked"';?>>&nbsp;<?=L('tpl_52')?></label>
+				  <label><input onclick="getmode(2);" class="box" name="Web_Mode" type="radio" value="2"<?php if($SITE['Web_Mode']==2) echo ' checked="checked"';?>>&nbsp;<?=L('tpl_53')?></label>
+				  <label><input onclick="getmode(3);" class="box" name="Web_Mode" type="radio" value="3"<?php if($SITE['Web_Mode']==3) echo ' checked="checked"';?>>&nbsp;<?=L('tpl_54')?></label>
+                </li>
+      	   </ul>
+      	   <ul class="forminfo" id="wjt"<?php if($SITE['Web_Mode']!=2) echo 'style="display:none";';?>>
+<?php
+foreach ($SITE['Rewrite_Uri'] as $key=>$value) {
+            if(empty($value['title'])) $value['title']=$key;
+            echo '<li><label><input name="rewrite['.$key.'][title]" type="text" class="dfinput" value="'.$value['title'].'" style="width:75px;"/></label><input name="rewrite['.$key.'][uri]" type="text" class="dfinput" value="'.$value['uri'].'" style="width:200px;" readonly/> => <input name="rewrite['.$key.'][url]" type="text" class="dfinput" value="'.$value['url'].'" style="width:220px;"/><b style="color:#0000ff;cursor:pointer;" onclick="Popsboxif(\''.L('tpl_55').'\',450,260,\''.site_url('plugins/rule').'?g=r\');">'.L('tpl_55').'</b></li>';
+}
+?>
+             <li><label>&nbsp;</label><b>*<?=L('tpl_56')?></b></li>
+      	   </ul>
+      	   <ul class="forminfo" id="cjt"<?php if($SITE['Web_Mode']!=3) echo 'style="display:none";';?>>
+<?php
+foreach ($SITE['Html_Uri'] as $key=>$value) {
+            if(empty($value['title'])) $value['title']=$key;
+			if($value['check']==0){
+                 $check='<option value="0" selected>'.L('tpl_57').'</option><option value="1">'.L('tpl_58').'</option>';
+			}else{
+                 $check='<option value="0">'.L('tpl_57').'</option><option value="1" selected>'.L('tpl_58').'</option>';
+			}
+            echo '<li><label><input name="html['.$key.'][title]" type="text" class="dfinput" value="'.$value['title'].'" style="width:75px;"/></label><input name="html['.$key.'][url]" type="text" class="dfinput" value="'.$value['url'].'" style="float:left;width:345px;"/>
+            <div class="vocation" style="margin-left:10px;"><select class="select3" name="html['.$key.'][check]">'.$check.'</select></div>
+			<b style="color:#0000ff;cursor:pointer;" onclick="Popsboxif(\''.L('tpl_55').'\',450,330,\''.site_url('plugins/rule').'\');">'.L('tpl_55').'</b></li>';
+}
+?>
+             <li><label>&nbsp;</label><b>*<?=L('tpl_56')?></b></li>
+      	   </ul>
+  	    </div> 
+      	<ul class="forminfo">
+		     <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="<?=L('setting_57')?>"/></li>
+      	</ul>
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

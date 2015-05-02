@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:indextempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:indextempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:indexhead}
+<div id="cscms_space">
+                {cscms:indexleft}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li><span><a href="[user:url userlink=vod]">我分享的</a></span></li>
+								<li><span><a href="[user:url userlink=vod,verify]">审核中的</a></span></li>
+								<li><span><a href="[user:url userlink=fav]">我收藏的</a></span></li>
+								<li><span><a href="[user:url userlink=look]">我观看的</a></span></li>
+								<li class="right"><a class="" href="[user:url userlink=vod,add]">分享视频</a></li>
+							</ul>
+						</div>
+						<div class="minHeight500">
+							<form class="think-form" action="[user:vodsave]" method="post">
+							<div class="profile" style="margin-top:10px;">
+           				 <!-- 表单项 -->
+            				<table class="bd">
+                				<tr>
+                    				<th>所属分类</th>
+                    				<td>
+										<div class="sex">
+											<select class="select_normal" name="cid" style="width:140px;">
+											{cscms:class table="vod_list" fid="0" sort="xid" order="asc"}
+												<option value="[class:id]">&nbsp;|—[class:name]</option>
+                                                {cscmstype:class table="vod_list" fid="auto" sort="xid" order="asc"}
+												<option value="[class:id]">&nbsp;|&nbsp;&nbsp;&nbsp;|—[class:name]</option>
+                                                {/cscmstype:class}
+                                            {/cscms:class}
+											</select>&nbsp;&nbsp;
+											地区&nbsp;&nbsp;<select class="select_normal" name="diqu" style="width:100px;">
+	                                        <option value="大陆">大陆</option>
+	                                        <option value="香港">香港</option>
+	                                        <option value="台湾">台湾</option>
+	                                        <option value="美国">美国</option>
+	                                        <option value="韩国">韩国</option>
+	                                        <option value="日本">日本</option>
+	                                        <option value="泰国">泰国</option>
+	                                        <option value="新加坡">新加坡</option>
+	                                        <option value="马来西亚">马来西亚</option>
+	                                        <option value="印度">印度</option>
+	                                        <option value="英国">英国</option>
+	                                        <option value="法国">法国</option>
+	                                        <option value="加拿大">加拿大</option>
+	                                        <option value="西班牙">西班牙</option>
+	                                        <option value="俄罗斯">俄罗斯</option>
+	                                        <option value="其它">其它</option>
+                                            </select>&nbsp;&nbsp;
+											语言&nbsp;&nbsp;<select class="select_normal" name="yuyan" style="width:100px;">
+                                            <option value="国语">国语</option>
+	                                        <option value="英语">英语</option>
+	                                        <option value="粤语">粤语</option>
+	                                        <option value="闽南语">闽南语</option>
+	                                        <option value="韩语">韩语</option>
+	                                        <option value="日语">日语</option>
+	                                        <option value="法语">法语</option>
+	                                        <option value="德语">德语</option>
+	                                        <option value="其它">其它</option>
+                                            </select>
+                        				    <span class="Validform_checktip"></span>
+										</div>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>视频名称</th>
+                    				<td>
+                        				<input class="text" type="text" name="name" value="" datatype="*2-20" nullmsg="视频名称不能为空" errormsg="名称为2-20个字以内"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>导演</th>
+                    				<td>
+                        				<input class="text" type="text" name="daoyan" style="width:140px;"/>&nbsp;&nbsp;
+										主演&nbsp;<input class="text" type="text" name="zhuyan" style="width:140px;"/>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>年份</th>
+                    				<td>
+                        				<input class="text" type="text" name="year" style="width:140px;"/>&nbsp;&nbsp;
+										别名&nbsp;<input class="text" type="text" name="info" style="width:140px;"/>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>演唱</th>
+                    				<td>
+                        				<input class="text" type="text" name="singer" value=""/>
+                        				<span class="Validform_checktip">可以留空</span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>标签</th>
+                    				<td>
+                        				<input class="text" type="text" id="tags" name="tags"/>&nbsp;
+										<input onclick="cscms_tags('tags');" class="button" type="button" name="button" value="快速选择">
+                        				<span class="Validform_checktip">多个逗号隔开</span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>图片</th>
+                    				<td>
+                        				<input class="text" type="text" id="pic" name="pic"/>&nbsp;
+										<input onclick="cscms_up('vod','pic','*.jpg;*.png;*.gif','up_pic');" class="button" type="button" name="button" value="上传图片">
+                        				<span class="Validform_checktip" id="up_pic"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>播放来源</th>
+                    				<td>
+                                        <select class="select_normal" id="play" name="play" style="width:200px;" onchange="get_play(this)">
+                                        <option value="youku">优酷 — youku.com</option><option value="tudou">土豆 — tudou.com</option><option value="sina">新浪 — video.sina.com.cn</option><option value="sohu">搜狐 — tv.sohu.com</option><option value="qq">Q Q — v.qq.com</option><option value="ku6">酷 6 — ku6.com</option><option value="qiyi">奇艺 — iqiyi.com</option><option value="letv">乐视 — letv.com</option><option value="56">56高清— tv.56.com</option><option value="yyt">音悦台 — yinyuetai.com</option><option value="swf">swf数据—绝对地址SWF文件</option><option value="flv">Mp4、Flv数据—文件上传</option><option value="media">media—wmv/asf/avi文件上传</option></select>&nbsp;&nbsp;
+										观看金币&nbsp;&nbsp;<input class="text" type="text" name="cion" value="0" style="width:70px;"/>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>播放地址</th>
+                    				<td>
+                        				<input class="text" type="text" id="purl" name="purl" datatype="*" nullmsg="播放地址不能为空">&nbsp;&nbsp;
+										<input id="vodup" style="display:none" onclick="cscms_up('video','purl','*.mp4;*.flv;*.avi;*.asf;*.wmv','up_msg');" class="button" type="button" name="button" value="上传视频">
+                        				<span class="Validform_checktip" id="up_msg">视频播放地址,每行一集(多集分行) 。</span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>下载来源</th>
+                    				<td>
+                                        <select class="select_normal" name="down" style="width:200px;">
+										<option value="http">HTTP下载</option><option value="ftp">FTP下载</option><option value="thunder">迅雷下载</option><option value="flashget">快车下载</option><option value="qqdl">旋风下载</option><option value="bt">BT下载</option><option value="magnet">磁力链下载</option><option value="ed2k">电炉下载</option></select>&nbsp;&nbsp;
+										下载金币&nbsp;&nbsp;<input class="text" type="text" name="dcion" value="0" style="width:70px;"/>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>下载地址</th>
+                    				<td>
+                        				<input class="text" type="text" name="durl">&nbsp;&nbsp;
+                        				<span class="Validform_checktip" id="up_msg">视频下载地址,每行一集(多集分行) 。</span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>视频介绍</th>
+                    				<td>
+                        				<textarea style="width:400px;height:120px;" name="text"></textarea>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>&nbsp;</th>
+                    				<td>
+					    				<input type="hidden" name="token" value="[user:token]"/>
+                        				<input class="submit" type="submit" value="确定保存" />
+                    				</td>
+                				</tr>
+            				</table>
+            				<!-- /表单项 -->
+							</div></form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_vod_2').addClass('on');
+user.form();
+function get_play(){
+     var play=$('#play').val();
+     if(play=='flv' || play=='media'){
+		 $('#vodup').show();
+	 }else{
+		 $('#vodup').hide();
+	 }
+}
+</script>
+{cscms:indexbottom}
+</body>
+</html>

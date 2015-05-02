@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/editor/kindeditor.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select").uedSelect({
+		width : 90			  
+	});
+});
+</script>
+<style>
+#type {float:left;margin-top:10px;}
+#type input{margin-left:6px;}
+</style>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('vod/admin/topic')?>"><?=($id==0)?'新增':'修改';?>视频专题</a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="#tab1" class="selected"><?=($id==0)?'新增':'修改';?>视频专题</a></li> 
+               <li><a href="<?=site_url('vod/admin/topic')?>">视频专题管理</a></li> 
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('vod/admin/topic/save')?>" method="post">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label>专题名称</label>
+                       <input id="name" name="name" type="text" class="dfinput" value="<?=$name?>" style="float:left;width:225px;"/>
+                       <div style="margin-left:10px;" class="vocation">
+                              <select class="select" name="tid">
+                                 <option value="0"<?php if($tid==0) echo ' selected';?>>不推荐</option>
+                                 <option value="1"<?php if($tid==1) echo ' selected';?>>推荐</option>
+                              </select>
+                       </div>
+                       <div style="margin-left:10px;" class="vocation">
+                              <select class="select" name="yid">
+                                 <option value="0"<?php if($yid==0) echo ' selected';?>>显示</option>
+                                 <option value="1"<?php if($yid==1) echo ' selected';?>>隐藏</option>
+                              </select>
+                       </div>
+					   &nbsp;&nbsp;&nbsp;<input class="box" name="addtime" type="checkbox" value="ok" checked="checked">&nbsp;更新时间
+                </li>
+
+                <li><label>英文别名</label><input name="bname" type="text" class="dfinput" value="<?=$bname?>" style="width:225px;"/>
+				</li>
+                <li><label>模板文件</label><input name="skins" type="text" class="dfinput" value="<?=$skins?>" style="width:225px;"/></li>
+                <li><label>专题图片</label><input name="pic" id="pic" type="text" class="dfinput" value="<?=$pic?>" style="width:325px;"/>&nbsp;<input onclick="Popsboxif('上传图片',550,450,'<?=site_url('upload/up')?>?dir=vodtopic');" class="button" type="button" name="button" value="上传图片">
+                <li><label>头部图片</label><input name="toppic" id="pic2" type="text" class="dfinput" value="<?=$toppic?>" style="width:325px;"/>&nbsp;<input onclick="Popsboxif('上传图片',550,450,'<?=site_url('upload/up')?>?dir=vodtopic&fid=2');" class="button" type="button" name="button" value="上传图片">
+				</li>
+                <li><label>专题人气</label>
+				总&nbsp;<input name="hits" type="text" class="dfinput" value="<?=$hits?>" style="width:75px;"/>&nbsp;&nbsp;
+				月&nbsp;<input name="yhits" type="text" class="dfinput" value="<?=$yhits?>" style="width:75px;"/>&nbsp;&nbsp;
+				周&nbsp;<input name="zhits" type="text" class="dfinput" value="<?=$zhits?>" style="width:75px;"/>&nbsp;&nbsp;
+				日&nbsp;<input name="rhits" type="text" class="dfinput" value="<?=$rhits?>" style="width:75px;"/>&nbsp;&nbsp;
+				</li>
+                <li><label>专题介绍</label><textarea style="width:680px;height:250px" class="textinput" name="neir" id="neir"><?=$neir?></textarea><script type="text/javascript">AdminEditor('neir');</script></li>
+                <li><label>SEO标题</label><input name="title" type="text" class="dfinput" value="<?=$title?>" style="width:520px;"/></li>
+                <li><label>SEO关键词</label><input name="keywords" type="text" class="dfinput" value="<?=$keywords?>" style="width:520px;"/></li>
+                <li><label>SEO介绍</label><input name="description" type="text" class="dfinput" value="<?=$description?>" style="width:520px;"/></li>
+      	   </ul>
+      	   <ul class="forminfo">
+                <input name="id" type="hidden" value="<?=$id?>">
+		        <li><label>&nbsp;</label><input name="Submit" type="Submit" class="btn" value="确定操作"/></li>
+      	   </ul>
+  	    </div> 
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

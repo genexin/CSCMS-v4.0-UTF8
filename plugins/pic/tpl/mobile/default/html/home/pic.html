@@ -1,0 +1,20 @@
+{cscms:indexhead}
+<div class="mainNav mainNav3">
+<ul>
+<li><a href="[user:url ulink=dance]">歌曲</a></li>
+<li><a href="[user:url ulink=dance,album]">专辑</a></li>
+<li class="current"><a href="[user:url ulink=pic]">相片</a></li>
+</ul>
+</div>
+
+<ul class="picList">
+{cscms:pic table="pic" field="pic" pagesize="10" uid="auto"}
+<li><img data-original="[pic:pic dir=pic]" /></li>
+{/cscms:pic}
+</ul>
+<div class="mores">{if:{cscms:pagecout}<={cscms:pagenow}}没有更多了...{else}<a href="{cscms:pagedown}">点击加载更多..</a>{end if}</div>
+</div>
+
+</div>
+</div>
+{cscms:indexbottom}

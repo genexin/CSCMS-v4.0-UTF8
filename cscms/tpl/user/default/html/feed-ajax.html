@@ -1,0 +1,19 @@
+{cscms:dt table="dt" field="*" loop="20" sort="addtime" order="desc"}
+						<ul class="all">
+     						     <li><em></em>
+            						<div class="friendAvatar"><a href="[dt:url ulink=index]" target="_blank"><img src="[dt:user zd=logo]?size=60*60"></a></div>
+            						<div class="feedContent">
+                       						 <div class="feedName">
+                               						 <a href="[dt:url ulink=index]" target="_blank">&nbsp;[dt:user zd=nichen]</a><span class="createTime">&nbsp;[dt:addtime style=time]</span>
+                               						<span>[dt:title]</span>
+                        						</div>
+                       						    <div class="line"><div class="detail">&nbsp;[dt:name]<a href="[dt:link]" target="_blank">
+												{if:'[dt:dir]'=='dance'}视听{end if}
+												{if:'[dt:dir]'=='vod'}观看{end if}
+												{if:'[dt:dir]'=='news'}阅读{end if}
+												{if:'[dt:dir]'=='pic' || '[dt:dir]'=='singer' || '[dt:dir]'=='blog'}查看{end if}
+                                                </a></div></div>
+            						</div>
+     						     </li>
+						</ul>
+{/cscms:dt}

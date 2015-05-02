@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>[singer:name]mv_[singer:name]mv高清合集_[singer:name]演唱会MV全集下载_{cscms:webname}</title>
+<meta name="Keywords" content="[singer:name]mv,[singer:name]高清mv,[singer:name]mv下载,[singer:name]高清mv下载,[singer:name]mv在线观看,[singer:name]MV合集,[singer:name]MV全集,{cscms:webname}" />
+<meta name="Description" content="[singer:name]MV大全，{cscms:webname}提供最新[singer:name]MV全集下载，包含[singer:name]MV在线观看，好听的[singer:name]MV高清合集，[singer:name]所有MV免费在线观看，高清花絮、mp3下载等。" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/singer.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<div id="cscms_singer_show" style="border:1px solid #D9D9D9;background:#FFF;">
+    <div class="wrapper clearfix">
+            	<div class="title clearfix">
+                    <h1 title="[singer:name]">[singer:name] MV</h1>
+                </div>
+                <div class="submenu">
+                    <ul>
+                        <li><a href="[singer:url link=show]" title="[singer:name]主页">主页</a></li>
+                        <li><a href="[singer:url link=info]" title="[singername]资料">资料</a></li>
+                        <li><a href="[singer:url link=music,id]" title="[singer:name]歌曲">歌曲</a></li>
+                        <li><a href="[singer:url link=pic,id]" title="[singer:name]图片">图片</a></li>
+                        <li class="current"><a href="[singer:url link=mv,hits]" title="[singer:name]MV">MV</a></li>
+                        <li><a href="[singer:url link=album,id]" title="[singer:name]专辑">专辑</a></li>
+                    </ul>
+                </div>
+                <!-- 左边内容 begin -->
+                <div class="mainwrap">
+                    <!-- tab begin -->
+                    <div class="tab">
+                    	<h1>[singer:name]的MV</h1>
+                    	<!-- tab_menu begin -->
+                    	<div class="tab_menu clearfix">
+                        	<ul>
+                            	<li{if:'{cscms:fid}'=='hits'} class="selected"{end if}><a href="[singer:url link=mv,hits]">最热</a></li>
+                                <li{if:'{cscms:fid}'=='id'} class="selected"{end if}><a href="[singer:url link=mv,id]">最新</a></li>
+                            </ul>
+                        </div>
+                        <!-- tab_menu end -->
+                        <!-- tab_box begin -->
+                        <div class="tab_box">
+                        	<div class="tab_div">
+                            	<div class="list clearfix" id="mvListDiv">
+{cscms:vod table="vod" field="id,name,pic,hits,singerid" pagesize="28" singerid="auto" sort="addtime" order="desc"}
+                            		<div class="img" style="_margin-right:20px;">
+		                                    	<a href="[vod:url zdy=vod,id,show,id]" target="_blank" title="[vod:name]"><img class="lazy" data-original="[vod:pic dir=vod]?size=140*78" width="140" height="78"></a>
+		                                        <p class="time"><img src="{cscms:indextempurl}images/icon1.png" width="12" height="11">[vod:hits]</p>
+		                                        <a href="[vod:url zdy=vod,id,show,id]" target="_blank" title="[vod:name]" class="v_name">[vod:name]</a>
+		                             </div>
+{/cscms:vod}
+								</div>
+								 <div class="pagination"{if:{cscms:pagecout}==1} style="display:none;"{end if}>
+								 <a href="{cscms:pagefirst}" class="pagelink_a">首页</a>
+								 <a href="{cscms:pageup}" class="pagelink_a">上一页</a>
+								 {cscms:pagenum len=10}
+								 <a href="{cscms:pagedown}" class="pagelink_a">下一页</a>
+								 <a href="{cscms:pagelast}" class="pagelink_a">尾页</a>
+								 </div>
+                            </div>
+                            <!-- tab_div end -->
+                        </div>
+                        <!-- tab_box end -->
+                    </div>
+                    <!-- tab end -->
+                </div>
+                <!-- 左边内容 end-->
+
+                <!-- 右边内容 begin -->
+                <div class="sider">
+                    <!-- singer begin -->
+                    <div class="singers clear">
+                    	<h1>[singer:name]相似歌手</h1>
+                        <ul>
+{cscms:singer table="singer" loop="12" tags="auto" sort="hits"}
+                            <li>
+                                    <a href="[singer:url link=show]" title="[singer:name]" class="img"><img src="[singer:pic dir=singer]?size=60*60" width="55" height="55"></a>
+                                    <a href="[singer:url link=show]" title="[singer:name]" class="s_name">[singer:name]</a>
+                                </li>
+{/cscms:singer}
+                         </ul>
+                    </div>
+                    <!-- singer end -->
+                    <p class="h10"></p>
+                	<!-- video begin -->
+                    <div class="video clear">
+                    	<h1><a href="[singer:url link=mv]" target="_blank" title="[singer:name]MV">更多</a>全站MV推荐</h1>
+                        <ul>
+{cscms:vod table="vod" loop="6" reco="3,4,5" sort="hits"}
+                            <li><a href="[vod:url zdy=vod,id,show,id]" target="_blank" title="[vod:name]" class="img"><img src="[vod:pic dir=vod]?size=120*56" width="120" height="56" alt="[vod:name]"></a><a href="[vod:url zdy=vod,id,show,id]" target="_blank" title="[vod:name]" class="m_name">[vod:name]</a></li>
+{/cscms:vod}
+                         </ul>
+                    </div>
+                    <!-- video end -->
+                </div>
+                <!-- 右边内容 end-->
+            </div>
+</div>
+{cscms:bottom}
+</body>
+</html>

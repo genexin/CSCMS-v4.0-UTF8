@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li class=""><span><a href="[user:url userlink=pay]">在线充值</a></span></li>
+								<li class=""><span><a href="[user:url userlink=pay,card]">充值卡充值</a></span></li>
+								<li class=""><span><a href="[user:url userlink=pay,group]">在线升级</a></span></li>
+								<li class="on"><span><a href="[user:url userlink=pay,change]">金币兑换</a></span></li>
+								<li class=""><span><a href="[user:url userlink=pay,lists]">充值记录</a></span></li>
+							</ul>
+						</div><div class="clear"></div>
+						<div class="minHeight500">
+						<form class="think-form" action="[user:changesave]" method="post">
+							<div class="profile">
+            				<table class="bd">
+                				<tr>
+                    				<th>剩余金额</th>
+                    				<td><font color=red>[user:rmb]</font> 元</td>
+                				</tr>
+                				<tr>
+                    				<th>剩余金币</th>
+                    				<td><font color=red>[user:cion]</font> 个</td>
+                				</tr>
+                				<tr>
+                    				<th>兑换金额</th>
+                    				<td>
+                        				<input style="width:100px;" class="text" type="text" name="rmb" value="" datatype="n" nullmsg="请填写兑换金额" errormsg="请填写正确格式"/>
+                        				<span class="Validform_checktip"><font color=red>(1金钱=<?=User_RmbToCion?>金币)</font></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>&nbsp;</th>
+                    				<td>
+					    				<input type="hidden" name="token" value="[user:token]"/>
+                        				<input class="submit" type="submit" value="兑换" />
+                    				</td>
+                				</tr>
+            				</table>
+            				<!-- /表单项 -->
+							</div></form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_pay').addClass('on');
+user.form();
+</script>
+{cscms:bottom}
+</body>
+</html>

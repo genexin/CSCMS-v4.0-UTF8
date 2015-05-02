@@ -1,0 +1,12 @@
+<header class="header">
+<a href="{cscms:path}" class="logo"></a>
+</header>
+<nav class="nav" style="overflow: hidden;">
+<a href="{cscmsphp}cscmslink('news');{/cscmsphp}" class="cur1">首页</a>
+{cscms:class table="news_list" field="id,name" id="1,2,3,4" order="asc"}
+<a href="[class:url link=lists,id]">[class:name]</a>
+{/cscms:class}
+</nav>
+<div class="container" style="margin-bottom:0;">
+{cscms:logkuang}
+</div>

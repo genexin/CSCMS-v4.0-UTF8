@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title><?=L('login_title')?></title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?=Web_Path?>packs/admin/css/style.css" />
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery-min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/common.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?=Web_Path?>packs/editor/kindeditor.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 145			  
+	});
+	$("#usual1 ul").idTabs();
+});
+function getmail(n){
+   for(var i=1;i<=3;i++){
+        if(n==i){
+            $('#sid_'+i).show();
+        }else{
+            $('#sid_'+i).hide();
+        }
+   }
+}
+function emailSubmit() {
+    $('#tips').show();
+	$('#submit').attr("disabled", "disabled");
+}
+</script>
+</head>
+<body>
+<div class="place">
+    <span><?=L('place')?></span>
+    <ul class="placeul"><li><a href="<?=site_url('opt/main')?>"><?=L('home')?></a></li><li><a href="<?=site_url('mail/add')?>"><?=L('tpl_28')?></a></li></ul>
+</div>
+<div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+  	        <ul> 
+               <li><a href="<?=site_url('collect')?>"><?=L('tpl_29')?></a></li> 
+               <li><a href="#tab1" class="selected"><?=L('tpl_30')?></a></li>  
+  	        </ul>
+        </div> 
+		<form action="<?=site_url('collect/daoru_save')?>" method="post" enctype="multipart/form-data">
+  	    <div id="tab1" class="tabson">
+      	   <ul class="forminfo">
+                <li><label><?=L('tpl_31')?></label>
+				  <input onClick="$('#sid2').hide();$('#sid1').show();" class="box" name="sid" type="radio" value="1" checked="checked">&nbsp;<?=L('tpl_32')?>&nbsp;&nbsp;
+				  <input onClick="$('#sid1').hide();$('#sid2').show();" class="box" name="sid" type="radio" value="2">&nbsp;<?=L('tpl_33')?>
+                </li>
+                <li id="sid2" style="display:none"><label><?=L('tpl_34')?></label><input class="button" type="file" name="userfile"><b>*</b><?=L('tpl_35')?></li>
+                <li id="sid1"><label><?=L('tpl_36')?></label><textarea style="width:50%;height:150px" class="textinput" name="neir" id="neir"></textarea></li>
+      	   </ul>
+  	    </div> 
+      	<ul class="forminfo">
+		     <li><label>&nbsp;</label><input id="submit" name="Submit" type="Submit" class="btn" value="<?=L('tpl_37')?>"/></li>
+      	</ul>
+		</form>
+    </div> 
+	<div class="footer"><?=vsprintf(L('bottom'),array('{elapsed_time}','{sql_queries}','{memory_usage}'))?></div>
+</div>
+</body>
+</html>

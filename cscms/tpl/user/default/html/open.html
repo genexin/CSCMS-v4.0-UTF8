@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div class="wrap mt20 " style="margin-top:10px;">
+  <div id="cscms_user">
+        <div class="login">
+            <!-- 头部提示 -->
+			<div class="option">
+					<span id="existing" class="on">
+							<a href="javascript:;" onclick="$('#Binding').show();$('#regData').hide();$('#existing').addClass('on');$('#not').removeClass('on');">已有账号</a>
+					</span>
+					<span id="not" class="">
+							<a href="javascript:;" onclick="$('#regData').show();$('#Binding').hide();$('#not').addClass('on');$('#existing').removeClass('on');">没有账号</a>
+					</span>
+			</div>
+            <!-- 头部提示 -->
+            <!-- 绑定项 -->
+            <form class="think-form" action="[user:loginsave]" method="post">
+            <table class="bd" id="Binding">
+                <tr>
+                    <th>用户名</th>
+                    <td>
+                        <input class="text" type="text" name="username" value=""  datatype="*3-15" nullmsg="请填写用户名" errormsg="用户名为6-15位"/>
+                        <span class="Validform_checktip"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>密码</th>
+                    <td>
+                        <input class="text" type="password" name="userpass" datatype="*6-20" nullmsg="请填写密码" errormsg="密码为6-20位"/>
+                        <span class="Validform_checktip"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>&nbsp;</th>
+                    <td>
+					    <input type="hidden" name="token" value="[user:token]"/>
+                        <input class="submit" type="submit" value="完成绑定" />
+                    </td>
+                </tr>
+            </table>
+			</form>
+            <!-- /绑定项 -->
+
+            <!-- 注册项 -->
+            <form class="think-form" action="[user:regsave]" method="post">
+            <table class="bd" id="regData" style="display:none;">
+                <tr>
+                    <th>用户名</th>
+                    <td>
+                        <input class="text" type="text" name="username" value=""  datatype="*3-15" nullmsg="请填写用户名" errormsg="用户名为6-15位"  ajaxurl="[user:nameajaxurl]"/>
+                        <span class="Validform_checktip"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>密码</th>
+                    <td>
+                        <input class="text" type="password" name="userpass" datatype="*6-20" nullmsg="请填写密码" errormsg="密码为6-20位"/>
+                        <span class="Validform_checktip"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>确认密码</th>
+                    <td>
+                        <input class="text" type="password" name="repassword" datatype="*" nullmsg="请填确认密码" errormsg="您两次输入的密码不一致" recheck="userpass"/>
+                        <span class="Validform_checktip"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>邮箱</th>
+                    <td>
+                        <input class="text" type="text" name="useremail" datatype="e" nullmsg="请填写邮箱" errormsg="请填写正确格式的邮箱" ajaxurl="[user:emailajaxurl]"/>
+                        <span class="Validform_checktip"></span>
+                    </td>
+                </tr>
+				{if:[user:telcheck]==1}
+                <tr>
+                    <th>手机</th>
+                    <td>
+                        <input class="text" type="text" name="usertel" datatype="m" nullmsg="请填写手机号码" errormsg="请填写正确的手机号码" ajaxurl="[user:telajaxurl]"/>
+                        <span class="Validform_checktip"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>手机验证码</th>
+                    <td>
+                        <input class="text" type="text" name="telcode" datatype="s6-6" nullmsg="请填写手机号码" errormsg="请填写正确的手机号码" ajaxurl="[user:telajaxurl]"/> <input id="getcode" class="btn" onClick="get_code(this);" name="button" type="button" value="获取验证码" />
+                        <span class="Validform_checktip"></span>
+                    </td>
+                </tr>
+				{end if}
+                <tr>
+                    <th>&nbsp;</th>
+                    <td>
+					    <input type="hidden" name="token" value="[user:token]"/>
+                        <input class="submit" type="submit" value="完成注册" />
+                    </td>
+                </tr>
+            </table>
+            <!-- /注册项 -->
+        </div>
+        <!-- /注册 -->
+
+        <!-- 其他登陆 -->
+        <div class="login-other">
+            <div class="hd">
+                <strong>使用其他帐号直接登录</strong>
+            </div>
+            <div class="bd">
+                <ul class="other-account">
+                    <li><a class="qq" href="{cscms:qqlink}">腾讯QQ登录</a></li>
+		            <li><a class="weibo" href="{cscms:weibolink}">新浪微博登录</a></li>
+		            <li><a class="baidu" href="{cscms:baidulink}">百度账号登录</a></li>
+		            <li><a class="renren" href="{cscms:renrenlink}">人人账号登录</a></li>
+		            <li><a class="kaixin" href="{cscms:kaixinlink}">开心账号登录</a></li>
+		            <li><a class="douban" href="{cscms:doubanlink}">豆瓣账号登录</a></li>
+		        </ul>
+            </div>
+        </div>
+        <!-- /其他登陆 -->
+    </form>
+  </div>
+</div>
+{cscms:bottom}
+<script type="text/javascript">
+$('.reloadverify').click(function(){
+    $('.verifyimg').attr('src', "{cscms:codes}?" + Math.random());
+});
+user.form();
+</script>
+</body>
+</html>

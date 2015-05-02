@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:indextempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:indexhead}
+<div id="cscms_space">
+                {cscms:indexleft}
+				<div class="user_main">
+					<div class="uMain_content">
+						<div class="main_nav width">
+							<ul style="width: 785px;">
+								<li><span><a href="[user:url userlink=dance]">我分享的</a></span></li>
+								<li><span><a href="[user:url userlink=dance,verify]">审核中的</a></span></li>
+								<li class="on"><span><a href="[user:url userlink=fav]">我收藏的</a></span></li>
+								<li><span><a href="[user:url userlink=down]">我下载的</a></span></li>
+								<li class="right"><a class="" href="[user:url userlink=dance,add]">上传歌曲</a></li>
+							</ul>
+						</div>
+						<div class="main_nav2">
+							<ul>
+							    <li><a href="[user:url userlink=fav]">收藏的歌曲</a></li>
+							    <li class="current"><a href="[user:url userlink=fav,album]">收藏的专辑</a></li>
+							</ul>
+						</div>
+						<div id="dancelist" class="minHeight500">
+							<div class="private_topic_list">
+								<!--有内容-->
+								<div class="v_list">
+								{cscms:topic table="dance_fav" pagesize="8" uid="auto" sort="time" order="desc"}
+                    			<div class="topic">
+									<span class="pics"><a href="[topic:url zdy=dance,did,topic/show]" target="_blank" title="[topic:name]" class="v_pic"><img src="{cscmsphp}piclink('topic',getzd('dance_topic','pic','[topic:did]'));{/cscmsphp}" art="[topic:name]"/></a></span>
+									<span class="info">
+										<p class="name"><a href="[topic:url zdy=dance,did,topic/show]" target="_blank" title="[topic:name]">[topic:name]</a></p>
+										<p class="tags"><span class="user">歌手：{cscmsphp}getzd('singer','name',getzd('dance_topic','singerid','[topic:did]'));{/cscmsphp}</span></p>
+										<p class="tags"><span class="user">时间：[topic:addtime style=time]</span></p>
+										<p class="tags"><span class="user"><a onClick="fav.del('[user:url userlink=fav,del]/[topic:id]/2');" href="javascript:;" title="删除收藏">删除</a></span></p>
+									</span>
+		       					</div>
+								{/cscms:topic}
+								</div>
+							</div>
+							{if:{cscms:pagedata}==0}<div class="zanwu">暂无数据！</div>{end if}
+							<div class="page" style="{if:{cscms:pagecout}<2}display:none;{end if}">
+								<div class="pages">
+									<em title="总数量">{cscms:pagedata}</em>
+                                    <a href="{cscms:pagefirst}">首页</a>
+									{cscms:pagenum len=8}
+                                    <a href="{cscms:pagelast}">尾页</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+$('#left_dance_3').addClass('on');
+</script>
+{cscms:indexbottom}
+</body>
+</html>

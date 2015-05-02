@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type="text/javascript" src="{cscms:tempurl}js/jquery.validform.js"></script>
+<script type="text/javascript" src="{cscms:tempurl}js/common.js"></script>
+</head>
+<body>
+{cscms:head}
+<div id="cscms_space">
+                {cscms:left}
+				<div class="user_main">
+					<div class="uMain_home_left">
+						<div class="main_nav">
+							<ul>
+								<li class="on"><span><a href="[user:url userlink=msg]">我的消息</a></span></li>
+                                <li class="right"><a href="[user:url userlink=msg,add]">发送消息</a></li>
+							</ul>
+						</div>
+						<div class="main_nav2">
+							<ul>
+								<li class="current"><a href="[user:url userlink=msg]">全部消息</a></li>
+								<li><a href="[user:url userlink=msg,index,xt]">系统消息</a></li>
+								<li><a href="[user:url userlink=msg,index,wd]">未读消息</a></li>
+							</ul>
+						</div>
+						<div class="minHeight500"><form class="think-form" action="[user:msgsave]" method="post">
+           				 <!-- 表单项 -->
+            				<table class="bd">
+                				<tr>
+                    				<th>接收会员</th>
+                   				    <td>
+                        				<input class="text" type="text" name="user" value="[msg:user]" datatype="*3-15" nullmsg="请填写接收会员名" errormsg="接收会员名为3-15位"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>消息标题</th>
+                    				<td>
+                        				<input class="text" type="text" name="name" value="[msg:name]" datatype="*3-50" nullmsg="消息标题不能为空" errormsg="消息标题为3-50个字以内"/>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>消息内容</th>
+                    				<td>
+                        				<textarea style="width:350px;height:130px;" name="neir" datatype="*" nullmsg="请填写消息内容" errormsg="消息内容不能为空"></textarea>
+                        				<span class="Validform_checktip"></span>
+                    				</td>
+                				</tr>
+                				<tr>
+                    				<th>&nbsp;</th>
+                    				<td>
+					    				<input type="hidden" name="token" value="[user:token]"/>
+                        				<input class="submit" type="submit" value="完成" />
+                    				</td>
+                				</tr>
+            				</table>
+            				<!-- /表单项 -->
+						</div></form>
+					</div>
+                    {cscms:right}
+				</div>
+			</div>
+			<div id="rand"></div>
+		</div>
+</div>
+{cscms:bottom}
+<script type="text/javascript">
+$('#left_msg').addClass('on');
+user.form();
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{cscms:title}</title>
+<link href="{cscms:tempurl}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:tempurl}css/user.css" rel="stylesheet" type="text/css" />
+<link href="{cscms:tempurl}css/space.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{cscms:tempurl}js/user.js"></script>
+</head>
+<body>
+<div class=""></div>
+<div class="sub_head_top">
+	<div class="title">修改密码</div>
+	<div class="back" id="pageback"><img src="{cscms:tempurl}/images/18.jpg" alt="#"   border="0"/></div>  
+	<div class="menu" id="topmenu_sub"><a href="javascript:;"><img src="{cscms:tempurl}/images/2.jpg"  border="0"/></a></div>
+</div>
+{cscms:head}
+<!-- 编辑修改密码页面 -->
+<form class="think-form" action="[user:passsave]" method="post">
+	<table class="password">
+		<tbody>
+			<tr>
+				<td class="password_l">旧密码</td>
+				<td class="password_r"><input type="password" name="userpass" id="oldpassword" class="password_input" placeholder="请填写旧的密码"/></td>
+			</tr>
+			<tr>
+				<td class="password_l">新密码</td>
+				<td class="password_r"><input type="password" name="password" id="userpass1" class="password_input" placeholder="请填写新密码"/></td>
+			</tr>
+			<tr>
+				<td class="password_l">确认新密码</td>
+				<td class="password_r"><input type="password" name="password" id="userpass2" class="password_input" placeholder="请再次填写新密码"/></td>
+			</tr>
+		</tbody>
+	</table>
+</form>
+<div class="password_but_group">
+    <input type="hidden" name="token" value="[user:token]"/>
+	<div class="edit_exp_save_but"><a type="submit">保存</a></div>
+	<div class="edit_exp_cancel_but"><a href="">取消</a></div>
+	<div class="clear"></div>
+</div>
+
+
+
+<!-- footer -->
+<script>user.init();</script>
+{cscms:bottom}
+</body>
+</html>
+            	

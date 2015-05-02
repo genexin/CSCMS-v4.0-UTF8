@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>{cscms:title}</title>
+<meta name="Keywords" content="{cscms:keywords}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:path}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:tempurl}css/style.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/player.js'></script>
+</head>
+<body id="xtopjsinfo">
+<div class="wrapper">
+{cscms:head}
+<div class="container">
+<section class="module_user">
+<div class="hd">
+<div class="mod_left"><span class="name">[singer:name]</span></div>
+<div class="mod_right"><a href="[singer:classlink]"><<返回</a></div>
+</div>
+<div class="tabCon">
+  <div class="singer">
+     <div class="img"><img src="[singer:pic dir=singer]?size=100*100" ></div>
+     <div class="text">[singer:content len=200]</div>
+  </div>
+</div>
+</section>
+<div class="mod_subnav">
+        <ul>
+			<li class="it1"><a class="on" href="[singer:url link=music,id]"><i>歌曲</i></a></li>
+			<li class="it2"><a href="[singer:url link=mv,id]"><i>MV</i></a></li>
+			<li class="it3"><a href="[singer:url link=album,id]"><i>专辑</i></a></li>
+			<li class="it4"><a href="[singer:url link=pic,id]"><i>图片</i></a></li>
+        </ul>
+</div>
+<section class="mod_tab" style="margin-top:-5px;">
+<div class="tabNav">
+[singer:name]的歌曲
+</div>
+<div class="tabCon">
+<ul class="dance_list">
+{cscms:dance table="dance" field="id,name,color" pagesize="15" singerid="auto" sort="addtime"}
+<li data-str="[dance:name]==cscms==[dance:id]" id="player_[dance:i]" class="songslist cur"><div did="[dance:i]" class="btn_play"><i></i></div>
+<a href="[dance:url zdy=dance,id,play,id]"><em>[dance:i].</em><span>[dance:name]</span></a>
+<div class="btn_down" onclick="window.location.href='[dance:url zdy=dance,id,down,id]';"><i></i></div>
+</li>
+{/cscms:dance}
+</ul>
+</div>
+</section>
+<div class="pagination clearfix"><a class="pre" href="{cscms:pageup}">上一页</a><a class="next" href="{cscms:pagedown}">下一页</a><span>{cscms:pagenow}/{cscms:pagecout}</span></div>
+</div>
+</div>
+<div class="push"></div>
+</div>
+</div>
+{cscms:bottom}
+<script>waps.init();</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset=utf-8/>
+<title>搜索：{cscms:key} - {cscms:title}</title>
+<meta name="Keywords" content="{cscms:key}" />
+<meta name="Description" content="{cscms:description}" />
+<link rel="shortcut icon" href="{cscms:webpath}favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/style.css"/>
+<link rel="stylesheet" type="text/css" href="{cscms:indextempurl}css/dance.css"/>
+<script type='text/javascript' src='{cscms:tempurl}js/common.js'></script>
+</head>
+<body> 
+{cscms:head}
+<script>$("#class_0").addClass("a_sub_nav_clo");</script>
+<div id="cscms_zimu">
+    <div class="a_sub_nav">
+    	<b>按字母查找：</b>
+		<a {if:''=='{cscms:zm}'}class="on"{end if} href="{cscmsphp}linkurl('search','zm','',1);{/cscmsphp}">全部</a>
+		{cscmszm:27}
+               <a {if:'[zm:name]'=='{cscms:zm}'}class="on"{end if} href="{cscmsphp}linkurl('search','zm',[zm:name],1);{/cscmsphp}">[zm:name]</a>
+		{/cscmszm}
+    </div>
+</div>
+<div id="cscms_music_list" style="border:1px solid #D9D9D9;background:#FFF;">
+    <div class="box cat_pos clearfix" style="border-bottom:1px solid #D9D9D9;background:#FFF;">
+       <span class="cat_pos_l">您的位置：<a href='{cscms:webpath}'>首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;搜索{if:'{cscms:zm}'==''}关键字{else}字母{end if}:{cscms:key}</h2></span><span class="cat_pos_r">共有<em>{cscms:pagedata}</em>首歌曲</span>
+	</div>
+    <div class="yc_list_main">
+        <div class="yc_list" style="width:940px">
+        <table class="ct_list" cellpadding="0" cellspacing="0" width="100%">
+			<tbody><tr>
+				<th width="320"><div class="aleft">歌曲名称</div></th>
+				<th>演唱</th>
+				<th>上传者</th>
+                <th>格式</th>
+				<th>上传时间</th>
+				<th>试听</th>
+				<th>下载</th>
+			</tr>
+			{if:{cscms:pagedata}==0}<tr><td colspan="7">没有找到相关记录~!</td></tr>{end if}
+            {cscms:dance table="dance" field="id,name,uid,addtime,singerid" pagesize="50" sort="addtime" order="desc"}
+			<tr {if:[dance:i]%2!=1}class="c2"{end if}><input style="display:none;" name="check" type="checkbox" value="[dance:id]" checked />
+				<td><div class="aleft"><a href="[dance:url link=play,id]" target="_blank" title="[dance:name]">[dance:name]</a></div></td>
+				<td><a href="[dance:url zdy=singer,singerid,music]" target="_blank">[dance:singer zd=name]</a></td>
+				<td><a href="[dance:url ulink=index]" target="_blank">[dance:user zd=nichen]</a></td>
+				<td>mp3</td>
+				<td>[dance:addtime style=Y-m-d]</td>
+				<td><a href="[dance:url link=play,id]" target="_blank" class="t_bnt shit" title="试听歌曲">试听</a></td>
+				<td><a href="[dance:url link=down,id]" target="_blank" class="t_bnt xiaz" title="下载歌曲">下载</a></td>
+				
+			</tr>
+            {/cscms:dance}
+		</tbody>
+        </table>
+        <div class="page">
+        	<span class="play_all"><a href="javascript:playsongs(1);">播放本页歌曲</a></span>
+            <span class="page_rt">
+			    <span class="num">
+                    <a class="fir" href="{cscms:pagefirst}" target="_self">首页</a>
+                    <a class="sec" href="{cscms:pageup}" target="_self">上一页</a>
+                    {cscms:pagenum len=8}
+                    <a class="sec" href="{cscms:pagedown}" target="_self">下一页</a>
+                    <a class="fir" href="{cscms:pagelast}" target="_self">尾页</a>
+				</span>
+                <span class="page_num">当前在第<em>{cscms:pagenow}/{cscms:pagecout}</em>页</span>
+            </span>
+        </div>
+    </div>
+    </div>
+</div>
+{cscms:bottom}
+</body>
+</html>

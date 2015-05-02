@@ -1,0 +1,8 @@
+# Robots For CSCMS 4.0
+User-agent: *
+Disallow: /attachment
+Disallow: /cache
+Disallow: /cscms
+Disallow: /csdj
+Disallow: /plugins
+Disallow: /admin.php
