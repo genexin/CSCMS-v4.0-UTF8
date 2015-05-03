@@ -141,7 +141,7 @@ foreach ($singer as $row) {
         <td><input name="id[]" type="checkbox" value="'.$row->id.'" /></td>
         <td>'.$row->id.'</td>
         <td class="imgtd">'.$pic.'</td>
-        <td><a href="'.linkurl('show','id',$row->id,1,'singer').'" target="web">'.$row->name.'</a></td>
+        <td><a href="'.linkurl('show','',$row->id,1,'singer').'" target="web">'.$row->name.'</a></td>
         <td><a href="'.linkurl('lists','id',$row->cid,1,'singer').'" target="web">'.$cname.'</a></td>
         <td>'.$row->hits.'</td>
         <td id="tj_'.$row->id.'">'.$tj.'</td>
